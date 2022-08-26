@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 # Web Frameworks
 
 In principe kan je met HTML, CSS en JavaScript elke website die je maar kan bedenken laten werken. Dat geldt zowel voor de frontend als de backend. In de praktijk is dit voor complexe applicaties niet haalbaar. Een fontend met heel veel onderling afhankelijke elementen scripten met alleen JavaScript is onnoemelijk complex. Een backend zelf HTTP requests volledig laten ontleden is dat ook.

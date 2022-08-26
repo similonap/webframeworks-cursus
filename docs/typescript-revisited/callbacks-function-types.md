@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Callbacks/Function types
 
 Een callback is een functie (functie A) die wordt meegegeven als parameter van een andere functie (functie B). Deze functie (B) zal dan de meegegeven functie (A) uitvoeren.

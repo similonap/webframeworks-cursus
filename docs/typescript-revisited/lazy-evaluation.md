@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Lazy evaluation
 
 Een belangrijk concept om te kennen in TypeScript is het concept van Lazy Evaluation. Dit wil zeggen dat een expressie niet helemaal wordt geëvalueerd als het voorgaande deel al undefined/null of false is.

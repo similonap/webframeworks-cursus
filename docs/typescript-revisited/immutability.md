@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Immutability
 
 **Immutability** of **onveranderlijkheid** is een heel belangrijk concept dat je onder de knie moet hebben. Eigenlijk is het een heel eenvoudig concept:

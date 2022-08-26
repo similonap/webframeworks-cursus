@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # TypeScript Revisited
 
 Voordat we kunnen beginnen met React.js is het belangrijk om een aantal concepten van TypeScript nog eens te herhalen.

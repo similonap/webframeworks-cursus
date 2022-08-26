@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Single Page Applications
 
 In deze cursus gaan we voornamelijk kijken naar het meest gebruikte Single Page Applications framework namelijk React.js (ontwikkeld door Meta). Er zijn nog vele andere SPA-frameworks zoals Angular (door Google) en Vue.js. Deze frameworks laten het toe om eenvoudig uitgebreidere applicaties te maken dan met gewone JavaScript en algemene frameworks zoals jQuery.

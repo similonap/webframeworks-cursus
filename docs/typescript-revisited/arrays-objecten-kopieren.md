@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Arrays/Objecten kopieren
 
 ### Arrays kopiëren
