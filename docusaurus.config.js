@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Webframeworks',
+  tagline: 'Webframeworks is cool',
   url: 'https://similonap.github.io/',
   baseUrl: '/webframeworks-cursus/',
   onBrokenLinks: 'throw',
