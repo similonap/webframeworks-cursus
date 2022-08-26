@@ -37,6 +37,11 @@ Wil je deze lijst gebruiken zoals een array moet je deze wel nog terug omzetten 
 Een concreet voorbeeld waar het gebruik van een `Set` interessant kan zijn is het volgende.
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+interface Animal {
+  name: string;
+  category: string;
+}
+
 let animals : Animal[] = [
   {
     name:"Lion",
@@ -59,14 +64,14 @@ let animals : Animal[] = [
 
 Stel dat we van deze dieren een lijst willen hebben van alle categorieën. We kunnen dit doen aan de hand van de map functie
 
-```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+```typescript
 animals.map(animal => animal.category);
 // ["carnivore","pet","pet","carnivore"]
 ```
 
 Je ziet hierboven dat deze lijst dubbele waarden bevat. Willen we er nu voor zorgen dat alle dubbele waarden uit deze lijst worden gehaald kunnen we gebruik maken van een handig truukje met `Set`. We gebruiken de Set constructor om deze array om te zetten naar een `Set` en vervolgens zetten we deze terug om naar een Array aan de hand van de `Array.from` functie
 
-```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+```typescript
 Array.from(new Set(animals.map((animal) => animal.category)));
 // ["carnivore","pet"]
 ```

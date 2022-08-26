@@ -8,7 +8,7 @@ Een callback is een functie (functie A) die wordt meegegeven als parameter van e
 
 Dit ziet er in code als volgt uit:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 interface Callback {
     (): void
 }
@@ -26,15 +26,27 @@ functionA(functionB);
 
 Wil je geen interface aanmaken kan je ook gebruik maken van TypeScript types rechtstreeks in de functie signature.
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Callback {
+    (): void
+}
+//hide-end
 let functionA = (functionB: () => void) => {
     functionB();
 }
+//hide-start
+let functionB: Callback = () => {
+    console.log("Function B executed")
+}
+
+functionA(functionB);
+//hide-end
 ```
 
 Een voorbeeld van zo'n callback functie kan je hieronder vinden
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let sum = (a: number, b: number, callback: (sum: number) => void) => {
   callback(a + b);
 };
