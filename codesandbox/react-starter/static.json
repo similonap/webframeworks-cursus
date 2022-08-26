@@ -1,0 +1,17 @@
+{
+    "public/favicon.ico":
+    {
+        "isBinary": true,
+        "content": "https://raw.githubusercontent.com/facebook/create-react-app/main/packages/cra-template-typescript/template/public/favicon.ico"
+    },
+    "public/logo192.png": 
+    {
+        "isBinary": true,
+        "content": "https://raw.githubusercontent.com/facebook/create-react-app/main/packages/cra-template-typescript/template/public/logo192.png"
+    },
+    "public/logo512.png": 
+    {
+        "isBinary": true,
+        "content": "https://raw.githubusercontent.com/facebook/create-react-app/main/packages/cra-template-typescript/template/public/logo512.png"
+    }
+}
