@@ -1,4 +1,4 @@
-# 00. TypeScript Revisited
+# TypeScript Revisited
 
 Voordat we kunnen beginnen met React.js is het belangrijk om een aantal concepten van TypeScript nog eens te herhalen.
 
@@ -18,5 +18,3 @@ Voordat we kunnen beginnen met React.js is het belangrijk om een aantal concepte
 * Promises/Async/Fetch
 
 Zonder deze concepten goed te begrijpen is React.js leren een onmogelijke taak, dus zorg er zeker voor dat je alles goed begrijpt!
-
-<!-- ![](../.gitbook/assets/the-office-hardest-thing-ive-ever-had-to-do.gif) -->

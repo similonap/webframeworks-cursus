@@ -1,4 +1,4 @@
-# 01. Create React App
+# Create React App
 
 ### Create React App
 
