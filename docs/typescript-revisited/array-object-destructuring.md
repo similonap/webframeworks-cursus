@@ -10,7 +10,7 @@ Vaak willen we bepaalde delen van een object of array op een gemakkelijke manier
 
 Zoals je weet kan je aan de hand van de array index bepaalde elementen aanspreken van een array:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 // Een array die een voornaam en achternaam bevat
 let arr : string[] = ['Andie', 'Similon'];
 
@@ -37,7 +37,7 @@ Dit concept noemen we **Array Destructuring**
 
 Wil je bepaalde elementen overslagen dan kan je dit doen op de volgende manier:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let arr : string[] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 let [firstName, , title] = arr;
 
@@ -46,7 +46,7 @@ console.log(title); // Consul
 
 Wil je bijvoorbeeld alleen de eerste twee waarden in een variabele en de rest in een nieuwe array kan je dit doen aan de hand van de `...` notatie:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let arr : string[] = ['Julius', 'Caesar', 'Consul', 'of the Roman Republic'];
 let [firstName, lastName, ...rest] = arr;
 
@@ -61,7 +61,7 @@ De `rest` variabele bevat dan de array van de laatste twee elementen.&#x20;
 
 Hetzelfde concept kan je ook gebruiken bij objecten. In plaats van&#x20;
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 interface Options {
   title: string;
   width?: number;
@@ -81,7 +81,7 @@ let height = options.height;
 
 te doen kan je dit veel compacter schrijven aan de hand van object destructuring:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options : Options = {
   title: "Menu",
   width: 100,
@@ -109,7 +109,7 @@ let {title} = options;
 
 Je kan hier net zoals bij arrays ook gebruik maken van de `...` notatie (of rest operator)
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options : Options = {
   title: "Menu",
   height: 200,
@@ -129,7 +129,7 @@ alert(rest.width);   // 100
 
 Willen we hier niet dezelfde namen gebruiken als de keys van het object is het ook mogelijk om deze een andere naam te geven:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options : Options = {
   title: "Menu",
   width: 100,
@@ -152,7 +152,7 @@ console.log(h);      // 200
 
 Als je naar de interface van `Options` kijkt dan zie je dat de width en de height optioneel zijn. Als je deze leeg laat dan zijn `width` en `height` undefined bij het destructuren:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options: Options = {
   title: 'Menu',
 };
@@ -165,7 +165,7 @@ console.log(height); // undefined
 
 wil je dit voorkomen kan je dit doen aan de hand van default waarden op te geven
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options: Options = {
   title: 'Menu',
 };
@@ -180,7 +180,7 @@ console.log(height); // 200
 
 Je kan ook rechtstreeks in de functie parameters het object destructuren. Stel dat je de volgende functie hebt:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let options : Options  = {
   title: "Menu",
   width: 100,
