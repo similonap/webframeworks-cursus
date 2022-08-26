@@ -55,6 +55,9 @@ export default function CodeBlockString({
     }
   }
 
+  let allCode = code.replace(/\/\/hide-start\n/g,"").replace(/\/\/hide-end/g,"").replace(/\/\/hide-start/g,"").replace(/\/\/hide-end\n/g,"");
+  let partialCode = code.replace(/(\/\/hide-start)[\w\W]*?(\/\/hide-end)\n/g, "").replace(/(\/\/hide-start)[\w\W]*?(\/\/hide-end)/g, "").replace(/\n+$/, "");
+
   return (
     <div>
       {sandboxId !== '' && (
@@ -105,7 +108,7 @@ export default function CodeBlockString({
             <Highlight
               {...defaultProps}
               theme={prismTheme}
-              code={code}
+              code={partialCode}
               language={language ?? 'text'}
             >
               {({ className, tokens, getLineProps, getTokenProps }) => (
@@ -151,7 +154,7 @@ export default function CodeBlockString({
               {hasCodeSandbox && (
                 <CodeSandboxButton
                   className={styles.codeButton}
-                  code={code}
+                  code={allCode}
                   metastring={metastring}
                   setSandboxId={setSandboxId}
                 />

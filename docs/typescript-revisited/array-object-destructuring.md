@@ -82,6 +82,13 @@ let height = options.height;
 te doen kan je dit veel compacter schrijven aan de hand van object destructuring:
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options : Options = {
   title: "Menu",
   width: 100,
@@ -110,6 +117,13 @@ let {title} = options;
 Je kan hier net zoals bij arrays ook gebruik maken van de `...` notatie (of rest operator)
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options : Options = {
   title: "Menu",
   height: 200,
@@ -130,6 +144,13 @@ alert(rest.width);   // 100
 Willen we hier niet dezelfde namen gebruiken als de keys van het object is het ook mogelijk om deze een andere naam te geven:
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options : Options = {
   title: "Menu",
   width: 100,
@@ -153,6 +174,13 @@ console.log(h);      // 200
 Als je naar de interface van `Options` kijkt dan zie je dat de width en de height optioneel zijn. Als je deze leeg laat dan zijn `width` en `height` undefined bij het destructuren:
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options: Options = {
   title: 'Menu',
 };
@@ -166,6 +194,13 @@ console.log(height); // undefined
 wil je dit voorkomen kan je dit doen aan de hand van default waarden op te geven
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options: Options = {
   title: 'Menu',
 };
@@ -181,6 +216,13 @@ console.log(height); // 200
 Je kan ook rechtstreeks in de functie parameters het object destructuren. Stel dat je de volgende functie hebt:
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+//hide-end
 let options : Options  = {
   title: "Menu",
   width: 100,
@@ -192,37 +234,82 @@ const showOptions = (options: Options) => {
   console.log(options.width);
   console.log(options.height)
 }
+
+showOptions(options);
 ```
 
 Je ziet hier dat we telkens de dot notatie moeten gebruiken voor title, width en height uit het `options` object moeten halen. Je zou uiteraard dit al kunnen vereenvoudigen door de `showOptions` functie als volgt te schrijven:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+let options : Options  = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+//hide-end
 const showOptions = (options: Options) => {
   let {title,width, height} = options;
   console.log(title);
   console.log(width);
   console.log(height);
 }
+showOptions(options);
 ```
 
 maar je kan dit zelfs nog korter door rechtstreeks in de functie parameters  de destructuring operator te gebruiken:
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+let options : Options  = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+//hide-end
 const showOptions = ({title, width, height}: Options) => {
   console.log(title);
   console.log(width);
   console.log(height)
 }
+//hide-start
+showOptions(options);
+//hide-end
 ```
 
 Kort en bondig! Je kan dit zelfs combineren met default waarden
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
+//hide-start
+interface Options {
+  title: string;
+  width?: number;
+  height?: number;
+}
+let options : Options  = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+//hide-end
 const showOptions = ({title, width = 200, height = 100}: Options) => {
   console.log(title);
   console.log(width);
   console.log(height)
 }
+//hide-start
+showOptions(options);
+//hide-end
 ```
 
 als `width` of `height` dan niet zijn ingegeven dan zullen hier de default waarden gebruikt worden.
@@ -241,7 +328,7 @@ f(0,2,4, "test",.... Euh.... ik weet het niet meer!)
 
 dit kan je ook herschrijven door alle parameters in een apart object in te pakken
 
-```typescript
+```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 interface Params {
     a:number, b: number, c: number, d: string, e: number, f: number, g: boolean
 }
