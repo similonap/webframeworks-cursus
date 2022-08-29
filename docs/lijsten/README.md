@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Lijsten
 
 ### Lijsten in React
@@ -5,13 +9,15 @@
 Wanneer we in TSX een lijst opnemen in de gegenereerde inhoud, wordt er gewoon een tekstvoorstelling voor die lijst gegenereerd door elk element rechtstreeks in de HTML in te voegen. In de praktijk is dit niet zinvol.&#x20;
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import React from "react";
-
+//hide-start
+import React from 'react';
+//hide-end
 const App = () => {
   return <p>{["een element", "tweede element", "derde element"]}</p>;
 };
-
+//hide-start
 export default App;
+//hide-end
 ```
 
 Normaal willen we een HTML-tag met eigen inhoud renderen per element van de array. Dit kan door elk element van de array eerst te vertalen naar een TSX-expressie op zich door middel van de `map` functie.
@@ -21,8 +27,9 @@ Normaal willen we een HTML-tag met eigen inhoud renderen per element van de arra
 De `map` functie kan gebruikt worden om informatie uit een lijst van gegevens te extraheren of om te zetten. Ze kan dan ook gebruikt worden om TSX-elementen te vormen. In onderstaande CodePen vertaalt ze elk element van de invoerlijst met games (voorgesteld als `string`) naar een`<li>` element, genest binnen een `<ul>` element:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
 import React from "react";
-
+//hide-end
 const App = () => {
   const games : string[] = [
     "World of Warcraft",
@@ -38,8 +45,9 @@ const App = () => {
     </>
   );
 }
-
+//hide-start
 export default App;
+//hide-end
 ```
 
 Door elke string te mappen naar een li-element, wordt de TypeScript-lijst getoond als een HTML-lijst.
@@ -49,6 +57,9 @@ Omdat React gebruik maakt van geoptimaliseerde technieken voor het tonen van lij
 Onderstaande CodePen toont hetzelfde principe, maar met objecten en complexere structuren:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
 interface Game {
   id: number
   name: string,
@@ -91,8 +102,9 @@ const App = () => {
     </>
   );
 }
-
+//hide-start
 export default App;
+//hide-end
 ```
 
 :::caution
@@ -104,6 +116,9 @@ Dit is zowat het enige scenario waarin je de lange notatie voor een `Fragment` m
 Onderstaande CodePen toont `filter` en `map` in combinatie in een React applicatie:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
 interface Game {
   id: number
   name: string,
@@ -146,4 +161,7 @@ const App = () => {
     </>
   );
 }
+//hide-start
+export default App;
+//hide-end
 ```

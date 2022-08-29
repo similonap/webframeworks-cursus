@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # TSX
 
 TSX is eigenlijk TypeScript code. Dus is het mogelijk TypeScript-expressies te integreren in de gegenereerde output. Als we de `title` variabele willen renderen tussen de h1 tags kunnen we deze als volgt toevoegen:
