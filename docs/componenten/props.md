@@ -293,9 +293,9 @@ interface ListItemProps {
   game: Game
 }
 
-const ListItem = ({game} : Game) => {
+const ListItem = ({game} : ListItemProps) => {
     return (
-        <React.Fragment key={game.id}>
+        <React.Fragment>
             <h2>{game.name} ({game.releaseYear})</h2>
             <p>Aantal keer verkocht: {game.sales}</p>
         </React.Fragment>
@@ -306,7 +306,7 @@ const List = ({games}: ListProps) => {
   return (
     <div>
     {games.map((game: Game) => {
-        return <ListItem game={game}/>
+        return <ListItem key={game.id} game={game}/>
       })}
     </div>
   );

@@ -15,6 +15,7 @@ import CopyButton from '@theme/CodeBlock/CopyButton';
 import CodeSandboxButton from '../CodeSandboxButton';
 import WordWrapButton from '@theme/CodeBlock/WordWrapButton';
 import Container from '@theme/CodeBlock/Container';
+import {parseMetaString} from '../CodeSandboxButton';
 import styles from './styles.module.css';
 export default function CodeBlockString({
   children,
@@ -44,6 +45,7 @@ export default function CodeBlockString({
   });
   const showLineNumbers =
     showLineNumbersProp ?? containsLineNumbers(metastring);
+  let filename = "";
 
   const codesandboxRegex = /codesandbox=({.*})/g;
   let hasCodeSandbox = false;
@@ -51,6 +53,8 @@ export default function CodeBlockString({
     if (metastring.match(codesandboxRegex)) {
       if (metastring.match(codesandboxRegex)[0]) {
         hasCodeSandbox = true;
+        let parsedMetaString = parseMetaString(metastring);
+        filename = parsedMetaString.filename;
       }
     }
   }
@@ -73,7 +77,7 @@ export default function CodeBlockString({
           >
             <iframe
               style={{ width: '100%', height: '500px' }}
-              src={`https://codesandbox.io/embed/${sandboxId}?fontsize=14&hidenavigation=1&theme=light&view=preview&autoresize=1&expanddevtools=1`}
+              src={`https://codesandbox.io/embed/${sandboxId}?fontsize=14&hidenavigation=1&theme=light&view=preview&autoresize=1&expanddevtools=1&module=/${filename}`}
               allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
               sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
             ></iframe>

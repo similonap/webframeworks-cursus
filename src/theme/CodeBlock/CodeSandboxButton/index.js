@@ -4,19 +4,19 @@ import clsx from 'clsx';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import styles from './styles.module.css';
 
+export const parseMetaString = (metastring) => {
+  let groups = /codesandbox=({.*})/g.exec(metastring);
+
+  return JSON.parse(groups[1]);  
+}
 
 export default function CodeSandboxButton({code, className, metastring,setSandboxId}) {
   const {templates} = usePluginData('codesandbox-plugin');
-
-  let groups = /codesandbox=({.*})/g.exec(metastring);
-
-  let { template, filename } = JSON.parse(groups[1]);
+  let { template, filename } = parseMetaString(metastring);
   
   const openCodeSandbox = async() => {
     let templateJson = templates[template];
     templateJson.files[filename] = {"content": code};
-
-    console.log(templateJson);
 
     const res = await fetch(
       'https://codesandbox.io/api/v1/sandboxes/define?json=1',
