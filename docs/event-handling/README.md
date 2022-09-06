@@ -131,7 +131,7 @@ const handleChange : React.ChangeEventHandler<HTMLInputElement> = (event) => {
   console.log(event.target.value);
 }
 //hide-end
-const handleClick : MouseEventHandler<HTMLInputElement> = (event) => {
+const handleClick : React.MouseEventHandler<HTMLInputElement> = (event) => {
   console.log("button clicked");
 }
 //hide-start

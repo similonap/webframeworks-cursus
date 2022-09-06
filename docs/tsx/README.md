@@ -64,6 +64,91 @@ We lijsten ze hier niet allemaal op. Deze verschillen zullen vermeld worden waar
 
 Een volledige lijst met verschillen vind je [hier](https://reactjs.org/docs/dom-elements.html) in de documentatie van React.
 
+
+### Conditionele rendering
+
+Conditionele rendering in React werkt op dezelfde manier als condities werken in TypeScript. Je kan hiervoor een if statement gebruiken of de conditionele operator (vraagteken operator) en afhankelijk hiervan UI elementen te tonen.
+
+#### Met een if statement
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+const App = () => {
+  let random : number = Math.random();
+  if (random > 0.5) {
+    return <p>We hebben geluk gehad</p>
+  } else {
+    return <p>We hebben pech gehad</p>
+  }
+};
+//hide-start
+export default App;
+//hide-end
+```
+
+#### JSX in een variabele
+
+Het is perfect mogelijk om JSX toe te kennen aan een variabele en deze dan op een later moment te renderen. 
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+const App = () => {
+  let random : number = Math.random();
+  let luckyText : JSX.Element;
+  if (random > 0.5) {
+    luckyText = <p>We hebben geluk gehad</p>
+  } else {
+    luckyText = <p>We hebben pech gehad</p>
+  }
+  return <div>{luckyText}</div>
+};
+//hide-start
+export default App;
+//hide-end
+```
+
+#### Inline If-Else met conditional ? operator 
+
+Een andere manier om een `If-Else` conditie na te bootsen is met het gebruik van de conditional operator. Dit zal er als volgt uitzien:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+const App = () => {
+  let random : number = Math.random();
+  return (
+    <p>{random > 0.5 ? <p>We hebben geluk gehad</p> : <p>We hebben pech gehad</p>}</p>
+  );
+};
+//hide-start
+export default App;
+//hide-end
+```
+
+#### Inline If met logische && operator
+
+Als je enkel iets wil tonen als een bepaalde conditie waar is kan je ook gebruik maken van de `&&` operator. 
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+const App = () => {
+  let random : number = Math.random();
+  return (
+    <p>{random > 0.5 && <p>We hebben geluk gehad</p>}</p>
+  );
+};
+//hide-start
+export default App;
+//hide-end
+```
+
 ### Geneste accolades
 
 Accolades zijn nodig om te wisselen van de HTML-achtige syntax naar de klassieke TypeScript syntax. Binnenin deze syntax kan weer naar de HTML-achtige syntax gewisseld worden, enzovoort. Dit wordt hier gedemonstreerd:

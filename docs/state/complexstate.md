@@ -1,107 +1,14 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# State
-
-State en Props zijn een van de meest essentiële concepten die je moet begrijpen in React. Props dienen om informatie door een componenten structuur te geven, en state wordt gebruikt om applicaties interactief te maken. State wordt gebruikt om informatie bij te houden en deze aan te passen over de looptijd van je applicatie.
-
-## useState hook
-
-We zullen dat laatste demonstreren aan de hand van een voorbeeld. We gaan hiervoor terug naar ons `InputView` voorbeeld. Stel dat we elke keer de gebruiker iets intypt in de input box, dat we deze text willen laten tonen ergens anders in de applicatie. Dit is dus informatie die aangepast wordt over de looptijd van de applicatie. 
-
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-const InputView = () => {
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(event.target.value);
-  }
-  return (
-    <input type="text" id="name" onChange={handleChange} />
-  )
-}
-//hide-start
-const App = () => {
-    return <InputView/>
-}
-
-export default App;
-//hide-end
-```
-
-We zouden foutief kunnen veronderstellen dat we dit probleem kunnen oplossen door een variabele te maken die de ingetypte tekst opslaat. Een verstaanbare poging is deze:
-
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-// DEZE CODE IS FOUT
-const InputView = () => {
-  let name = "";
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    event = event.target.value;
-  }
-  return (
-    <>
-      <input type="text" id="name" onChange={handleChange} />
-      <p>
-        The name you typed is {name}
-      </p>
-    </>
-  );
-}
-//hide-start
-const App = () => {
-    return <InputView/>
-}
-
-export default App;
-//hide-end
-```
-
-Wijzigingen in het input veld hebben **geen effect** op de rest van de pagina. Elke render (en er vindt er niet eens een plaats wanneer de handler de waarde wijzigt) runt de code voor de component opnieuw. Er wordt dus telkens een nieuwe variabele name met beginwaarde ```""``` aangemaakt.
-
-In plaats van een gewone variabele is een state variabele nodig. **Bij een wijziging hiervan wordt de component hertekend en de waarde wordt bijgehouden over uitvoeringen heen.** Deze variabele kan aangemaakt worden door middel van de useState hook.
-
-```typescript
-const [name, setName] = useState<string>('');
-```
-
-De `useState` functie heeft als argument een initiële state. Dit is de start waarde die de state zal krijgen als de component voor de eerste keer gerenderd wordt. De functie geeft een array terug met twee elementen in: het eerste element is de huidige state en het tweede element is een functie waarmee je de state **kan en moet** aanpassen. We geven aan welk type onze state zal bevatten door `<string>` mee te geven aan de `useState` functie.
-
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import { useState } from "react";
-
-const InputView = () => {
-  const [name, setName] = useState<string>('');
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setName(event.target.value);
-  }
-
-  return (
-    <>
-      <input type="text" id="name" onChange={handleChange} value={name}/>
-      <p>
-        The name you typed is {name}
-      </p>
-    </>
-  );
-}
-//hide-start
-const App = () => {
-    return <InputView/>
-}
-
-export default App;
-//hide-end
-```
-
-Het value attribuut wordt ingesteld op de huidige waarde van de state. Zo zorgen we ervoor dat het inputveld altijd up-to-date is met de huidige waarde van de state. Dit noemen ze in react **controlled components**.
-
-## State met complexe waarden
+# Arrays en objecten in state
 
 Tot nu toe hebben we enkel gebruik gemaakt van een primitieve waarde in de state. Zo is de werking van number, string en boolean vrij gelijkaardig en moeten we deze niet in detail behandelen. 
 
 Voor complexe data types zoals arrays en objecten zijn er een aantal speciale dingen waarmee je rekening moet houden.
 
-### Array als state
+## Array als state
 
 Een array als state definieren gebeurd op identiek dezelfde manier als een state met andere data types:
 
@@ -221,3 +128,82 @@ const App = () => {
 export default App;
 //hide-end
 ```
+
+Het verwijderen van elementen kan je doen aan de hand van een filter. We kunnen hier een `removeNumber` functie aanmaken die een `i` (de index) als argument aanvaard. Dit werkt omdat filter altijd een **nieuwe** array teruggeeft.
+
+```typescript {9-11,22} codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import {useState} from "react";
+//hide-end
+const App = () => {
+  const [numbers, setNumbers] = useState<number[]>([0,1,2,3,4]);
+  const [number, setNumber] = useState<number>(0);
+
+  const addClicked : React.MouseEventHandler<HTMLButtonElement> = () => {
+    setNumbers([...numbers, number]);
+  }
+
+  const removeNumber = (i : number) => {
+    setNumbers(numbers.filter((number, index) => index !== i));
+  }
+
+  return (
+    <>
+      <input type="number" onChange={(event) => setNumber(parseInt(event.target.value))} value={number}/>
+      <button onClick={addClicked}>Add</button>
+      <table>
+        <tbody>
+          {numbers.map((number, index) => 
+            (<tr key={index}>
+              <td>{number}</td>
+              <td><button onClick={() => { removeNumber(index); }}>X</button></td>
+            </tr>)
+            )}
+        </tbody>
+      </table>
+    </>
+  );
+};
+//hide-start
+export default App;
+//hide-end
+```
+
+## Object als state
+
+In het volgende code voorbeeld plaatsen we een object in een state zodat we dynamisch de keys en values van dit object kunnen aanpassen. Omdat het een object is met een niet op voorhand gedefinieerde interface moeten we een speciale interface gebruiken waar we gewoon aangeven welk type de key heeft en welk type de value (zie dictionary). Dit object mag net zoals een array niet rechtstreeks worden aangepast maar er moet een kopie voorzien worden.
+
+```typescript {11} codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React, { useState } from "react";
+//hide-end
+interface Dictionary {
+  [key: string]: string
+}
+
+const App = () => {
+  const [dictionary, setDictionary] = useState<Dictionary>({})
+  const [key,setKey] = useState("");
+  const [value,setValue] = useState("");
+
+  const buttonClicked : React.MouseEventHandler<HTMLButtonElement> = () => {
+    setDictionary({...dictionary, [key]:value});
+  }
+
+  return (
+    <>
+      <div>
+        <input placeholder="key" type="text" value={key} onChange={(event) => setKey(event.target.value)}/>
+        <input placeholder="value" type="text" value={value} onChange={(event) => setValue(event.target.value)}/>
+        <button onClick={buttonClicked}>Set</button>
+        <br/>
+        {JSON.stringify(dictionary)}
+      </div>
+    </>
+  );
+};
+//hide-start
+export default App;
+//hide-end
+```
+
