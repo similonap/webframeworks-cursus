@@ -1,0 +1,17 @@
+{
+    "static/logo.png":
+    {
+        "isBinary": true,
+        "content": "https://reactjs.org/logo-og.png"
+    },
+    "static/lightbulb_off.png":
+    {
+        "isBinary": true,
+        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-off-icon.png"
+    },
+    "static/lightbulb_on.png":
+    {
+        "isBinary": true,
+        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-icon.png"
+    }
+}
