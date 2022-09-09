@@ -61,9 +61,11 @@ Je ziet dat zelfs voor een kleine applicatie, zoals die hierboven, dat we deze t
 Het eerste wat we moeten doen is een Context aanmaken aan de hand van de createContext
 
 ```typescript
+interface IThemeContext {
+    theme: string
+}
 
-
-export const ThemeContext = React.createContext({theme: 'light'});
+export const ThemeContext = React.createContext<IThemeContext>({theme: 'light'});
 ```
 
 Je moet altijd een default waarde meegeven aan de context. Deze default waarde wordt enkel gebruikt als er geen provider aanwezig is bovenaan in de component structuur. We geven hier een object met een mode property. Dus in ons geval zal onze layout dus standaard in light mode staan.
@@ -90,7 +92,10 @@ Nu kan je de values van de ThemeContext provider opvragen aan de hand van de `us
 //hide-start
 import React, { useState, useContext } from "react";
 
-export const ThemeContext = React.createContext({theme: 'light'});
+interface IThemeContext {
+    theme: string
+}
+export const ThemeContext = React.createContext<IThemeContext>({theme: 'light'});
 
 const getThemeStyle = (theme: string, color: string) => {
   return { backgroundColor: theme === "dark" ? "black" : "white", padding: 10, border: "10px solid " + color }
@@ -149,18 +154,27 @@ Je ziet nu dat elk component toegang heeft tot de mode variabele die we in de co
 We kunnen ook functies toevoegen in onze `ThemeContext` zodat we bijvoorbeeld ook vanuit elk component de theme kunnen aanpassen. We voegen nu aan de createContext functie een setMode functie toe. We moeten hier een default value voor aanbieden, op dit moment hebben we nog geen handler dus we geven een lege functie mee.
 
 ```typescript
-export const ThemeContext = React.createContext({theme: "light", setTheme: (theme: string) => {}});
+interface IThemeContext {
+    theme: string,
+    setTheme: (theme: string) => void
+}
+
+export const ThemeContext = React.createContext<IThemeContext>({theme: "light", setTheme: (theme: string) => {}});
 ```
 
-We moeten hier geen types voorzien want TypeScript kan uit de default value het type afleiden.
+We geven hier bij de createContext een interface mee tussen de `<>` haken zodat TypeScript weet welke keys er in de context zullen voorkomen en welke types deze hebben.
 
-Als we nu de `setMode` functie (van de useState) meegeven aan de provider dan is deze functie beschikbaar in elk component.
+Als we nu de `setTheme` functie (van de useState) meegeven aan de provider dan is deze functie beschikbaar in elk component.
 
 ```typescript {2} codesandbox={"template": "react", "filename": "src/App.tsx"}
 //hide-start
 import React, { useState, useContext } from "react";
 
-export const ThemeContext = React.createContext({theme: 'light', setTheme: (theme: string)=>{}});
+interface IThemeContext {
+    theme: string,
+    setTheme: (theme: string) => void
+}
+export const ThemeContext = React.createContext<IThemeContext>({theme: 'light', setTheme: (theme: string)=>{}});
 
 const getThemeStyle = (theme: string, color: string) => {
   return { backgroundColor: theme === "dark" ? "black" : "white", padding: 10, border: "10px solid " + color }
@@ -212,6 +226,90 @@ export default App;
 //hide-end
 ```
 
-## Voorbeelden
+## Globale state
 
-### Globale API state
+Het komt vaak voor dat data die vanuit een externe API komt moet beschikbaar zijn over verschillende componenten of verschillende paginas. We zouden deze data kunnen doorgeven aan de hand van properties, maar meestal wordt dit gedaan met de `Context` api. Zo bekomen we een grote state die we kunnen delen over de verschillende componenten. 
+
+```typescript codesandbox={"template": "react-router-context-api", "filename": "src/App.tsx"}
+//hide-start
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+interface RootObject {
+    genres: Genre[]
+}
+
+interface Genre {
+    id: string;
+    description: string;
+    count: number;
+}
+//hide-end
+interface IGenreDataContext {
+    genres: Genre[]
+}
+
+const GenreDataContext = React.createContext<IGenreDataContext>({genres: []});
+
+const HomePage = () => {
+    let {genres} = useContext(GenreDataContext);
+    return (<>
+        Welcome to the home page!
+        <ul>
+        {genres.map((genre) => {
+            return <li key={`detail/${genre.id}`}><Link to={`detail/${genre.id}`}>{genre.description}</Link></li>
+        })}
+        </ul>
+      </>);
+}
+
+const DetailPage = () => {
+    let { id } = useParams();
+    let {genres} = useContext(GenreDataContext);
+
+    let genre : Genre | undefined = genres.find(genre => genre.id === id);
+
+    if (!genre) {
+        return <>Not found!</>
+    }
+    return (
+        <>
+            <h1>
+                {genre.description}
+            </h1>
+            <ul>
+                <li>{genre.description} has {genre.count} games</li>
+            </ul>
+            <Link to="/">Back</Link>
+        </>
+    );
+}
+
+const App = () => {
+    const [genres, setGenres] = useState<Genre[]>([]);
+    useEffect(() => {
+        const fetchGenres = async () => {
+            let result = await fetch("/steam.json");
+            let json : RootObject = await result.json();
+            setGenres(json.genres);
+        }
+        fetchGenres();
+    },[]);
+
+    return (
+        <GenreDataContext.Provider value={{genres: genres}}>
+            <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="/detail/:id" element={<DetailPage />}/>
+            </Routes>
+            </BrowserRouter>
+        </GenreDataContext.Provider>
+    );
+}
+export default App;
+```
+
+:::warning
+Een groot nadeel van Context is dat elk component dat deze context gebruikt zal gererendered worden als iets in die context veranderd. Het is daarom aangewezen niet alle data zomaar in 1 context te plaatsen maar verschillende kleine `Context` objecten aan te maken en enkel deze context te gebruiken als je hem echt nodig hebt.
+:::
