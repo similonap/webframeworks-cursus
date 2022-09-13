@@ -133,12 +133,13 @@ const App = () => {
   );
 }
 ```
-
-Dit is echter niet de beste keuze, omdat het de prestaties van React negatief kan beïnvloeden. React gebruikt de key om te bepalen welke elementen in de lijst veranderd zijn, toegevoegd of verwijderd. Als je de index gebruikt, kan React niet meer bepalen welke elementen veranderd zijn, omdat de index van elk element in de lijst verandert als je een element toevoegt of verwijdert.
+:::caution
+Het gebruiken van de index als de key is niet de beste keuze, omdat het de prestaties van React negatief kan beïnvloeden. React gebruikt de key om te bepalen welke elementen in de lijst veranderd zijn, toegevoegd of verwijderd. Als je de index gebruikt, kan React niet meer bepalen welke elementen veranderd zijn, omdat de index van elk element in de lijst verandert als je een element toevoegt of verwijdert. Probeer dus dit niet te doen, tenzij je echt geen andere keuze hebt.
+:::
 
 #### filter
 
-Onderstaande CodePen toont `filter` en `map` in combinatie in een React applicatie:
+Onderstaande code toont `filter` en `map` in combinatie in een React applicatie:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 //hide-start
