@@ -2,17 +2,17 @@
     "src/assets/logo.png":
     {
         "isBinary": true,
-        "content": "https://reactjs.org/logo-og.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/logo-og.png"
     },
     "public/llama.png":
     {
         "isBinary": true,
-        "content": "https://github.com/similonap/json/raw/master/llama.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/llama.png"
     },
     "public/llama2.png":
     {
         "isBinary": true,
-        "content": "https://github.com/similonap/json/raw/master/llama2.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/llama2.png"
     },
     "public/llama3.png":
     {
@@ -22,26 +22,26 @@
     "src/assets/llama.png":
     {
         "isBinary": true,
-        "content": "https://github.com/similonap/json/raw/master/llama.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/llama.png"
     },
     "src/assets/llama2.png":
     {
         "isBinary": true,
-        "content": "https://github.com/similonap/json/raw/master/llama2.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/llama2.png"
     },
     "src/assets/llama3.png":
     {
         "isBinary": true,
-        "content": "https://github.com/similonap/json/raw/master/llama3.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/llama3.png"
     },
     "src/assets/lightbulb_off.png":
     {
         "isBinary": true,
-        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-off-icon.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/Lightbulb-off-icon.png"
     },
     "src/assets/lightbulb_on.png":
     {
         "isBinary": true,
-        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-icon.png"
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/img/Lightbulb-icon.png"
     }
 }
