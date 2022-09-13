@@ -39,7 +39,6 @@ const App = () => {
             {slot2 == 3 && <img src={slotPrune} height="64" width="64"/>} 
             {slot2 == 4 && <img src={slotSeven} height="64" width="64"/>} 
 
-
             {slot3 == 0 && <img src={slotCherry} height="64" width="64"/>} 
             {slot3 == 1 && <img src={slotLemon} height="64" width="64"/>} 
             {slot3 == 2 && <img src={slotMelon} height="64" width="64"/>} 

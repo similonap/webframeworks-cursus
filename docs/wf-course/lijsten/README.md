@@ -111,6 +111,31 @@ export default App;
 Dit is zowat het enige scenario waarin je de lange notatie voor een `Fragment` moet gebruiken: wanneer je een key op het fragment moet zetten.
 :::
 
+#### Index als key
+
+In de bovenstaande voorbeelden hebben we de naam van het spel gebruikt als key. Dit is een goede keuze, omdat de naam van het spel uniek is. Maar wat als we geen unieke eigenschap hebben om als key te gebruiken? In dat geval kan je de index van het element in de lijst gebruiken. Je kan hier het tweede argument van de `map` functie voor gebruiken. Deze geeft de index van het element in de lijst.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  const numbers: number[] = [1, 2, 3, 4, 5, 1, 3];
+
+  return (
+    <>
+      <h1>Numbers</h1>
+      <ul>
+        {numbers.map((number: number, index: number) => <li key={index}>{number}</li>)}
+      </ul>
+    </>
+  );
+}
+```
+
+Dit is echter niet de beste keuze, omdat het de prestaties van React negatief kan beïnvloeden. React gebruikt de key om te bepalen welke elementen in de lijst veranderd zijn, toegevoegd of verwijderd. Als je de index gebruikt, kan React niet meer bepalen welke elementen veranderd zijn, omdat de index van elk element in de lijst verandert als je een element toevoegt of verwijdert.
+
 #### filter
 
 Onderstaande CodePen toont `filter` en `map` in combinatie in een React applicatie:
