@@ -1,5 +1,5 @@
 {
-    "static/logo.png":
+    "src/assets/logo.png":
     {
         "isBinary": true,
         "content": "https://reactjs.org/logo-og.png"
@@ -19,19 +19,29 @@
         "isBinary": true,
         "content": "https://github.com/similonap/json/raw/master/llama3.png"
     },
-    "static/llama.png":
+    "src/assets/llama.png":
     {
         "isBinary": true,
         "content": "https://github.com/similonap/json/raw/master/llama.png"
     },
-    "static/llama2.png":
+    "src/assets/llama2.png":
     {
         "isBinary": true,
         "content": "https://github.com/similonap/json/raw/master/llama2.png"
     },
-    "static/llama3.png":
+    "src/assets/llama3.png":
     {
         "isBinary": true,
         "content": "https://github.com/similonap/json/raw/master/llama3.png"
+    },
+    "src/assets/lightbulb_off.png":
+    {
+        "isBinary": true,
+        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-off-icon.png"
+    },
+    "src/assets/lightbulb_on.png":
+    {
+        "isBinary": true,
+        "content": "https://icons.iconarchive.com/icons/emey87/trainee/48/Lightbulb-icon.png"
     }
 }

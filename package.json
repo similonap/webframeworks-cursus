@@ -21,6 +21,7 @@
     "clsx": "^1.2.1",
     "codesandbox": "^2.2.3",
     "glob": "^8.0.3",
+    "istextorbinary": "^6.0.0",
     "mermaid": "^9.1.6",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",

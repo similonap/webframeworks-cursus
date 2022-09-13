@@ -96,7 +96,7 @@ Dit zorgt ervoor dat we de selectedOptions omzetten naar een array en dan elk el
 
 Iets gelijkaardigs kunnen we nu doen met een `Checkbox`:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-images", "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 
@@ -121,7 +121,7 @@ const App = () => {
         />
 
         <div style={centerBulb} onClick={() => {alert(`This light is ${light ? "on" : "off"}`)}}>
-        {light ? <img src={require("/static/lightbulb_on.png")}/> : <img src={require("/static/lightbulb_off.png")}/>}
+        {light ? <img src={require("./assets/lightbulb_on.png")}/> : <img src={require("./assets/lightbulb_off.png")}/>}
         </div>
       </div>
     )
