@@ -1,0 +1,37 @@
+{
+    "static/logo.png":
+    {
+        "isBinary": true,
+        "content": "https://reactjs.org/logo-og.png"
+    },
+    "public/llama.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama.png"
+    },
+    "public/llama2.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama2.png"
+    },
+    "public/llama3.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama3.png"
+    },
+    "static/llama.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama.png"
+    },
+    "static/llama2.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama2.png"
+    },
+    "static/llama3.png":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/json/raw/master/llama3.png"
+    }
+}

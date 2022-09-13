@@ -59,9 +59,15 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'inleiding/README',
+            docId: 'wf-course/inleiding/README',
             position: 'left',
             label: 'Cursus',
+          },
+          {
+            type: 'doc',
+            docId: 'wf-lab/README',
+            position: 'left',
+            label: 'Labos',
           }
         ],
       },
