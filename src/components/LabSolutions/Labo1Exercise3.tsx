@@ -7,7 +7,8 @@ interface Student {
 
 const App = () => {
   const [refresh, setRefresh] = useState(0);
-
+  let numbers: number[] = [1,2,3,4,5,4,3];
+  
   // array of five students
   let fiveUniqueStudents: Student[] = [
     {
@@ -34,9 +35,19 @@ const App = () => {
   return (
     <>
       <h1>Labo 3</h1>
-      <h3>Ordered List</h3>
+      <h3>Getallenlijst</h3>
+      <ul>
+        {numbers.map((number, index) => <li key={index}>{number}</li>)}
+      </ul>
+      <h3>Studentenlijst</h3>
       <ol>
         {fiveUniqueStudents.map((student) => (
+          <li>{student.naam}</li>
+        ))}
+      </ol>
+      <h3>Studentenlijst met J</h3>
+      <ol>
+        {fiveUniqueStudents.filter(student => student.naam.startsWith("J")).map((student) => (
           <li>{student.naam}</li>
         ))}
       </ol>
