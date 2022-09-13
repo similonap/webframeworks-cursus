@@ -34,6 +34,11 @@
         "isBinary": true,
         "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/assets/llama3.png"
     },
+    "src/assets/horse.mp3":
+    {
+        "isBinary": true,
+        "content": "https://github.com/similonap/webframeworks-cursus/raw/master/static/assets/horse.mp3"
+    },
     "src/assets/lightbulb_off.png":
     {
         "isBinary": true,
