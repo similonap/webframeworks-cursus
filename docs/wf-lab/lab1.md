@@ -58,6 +58,8 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-ap
     - ...
 - Probeer de afbeeldingen te tonen met behulp van import, require en een url (public folder)
 
+#### Voorbeeldoplossing
+
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise2/>
 </div>
@@ -72,6 +74,9 @@ Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app co
 - Gebruik een ordered list (ol) om de namen van de personen te tonen in de browser.
 - Gebruik een select met options element om de namen van de personen te tonen in de browser. 
 - Gebruik een table om de namen en leeftijden van de personen te tonen in de browser.
+
+#### Voorbeeldoplossing
+
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise3/>
 </div>
@@ -85,6 +90,8 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-reac
 - Zorg ervoor dat je niet meer werkt met aparte variabelen per slot, maar dat je een array maakt met een variabel aantal slots (bepaald in een variabele).
 - Pas je code nu aan dat je gebruik maakt van een map functie om de slots te tonen in de browser.
 - Ook de tekst "Je hebt gewonnen" of "Je hebt verloren" moet je nu bepalen met een array functie.
+
+#### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
