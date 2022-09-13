@@ -63,6 +63,8 @@ const App = () => {
             ))}
         </tbody>
       </table>
+      <br/>
+      <button onClick={() => { setRefresh(Math.random()) }}>Refresh</button>
     </>
   );
 };

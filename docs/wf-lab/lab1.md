@@ -1,7 +1,7 @@
-import Labo1Exercise1 from '@site/src/components/solutions/Labo1Exercise1';
-import Labo1Exercise2 from '@site/src/components/solutions/Labo1Exercise2';
-import Labo1Exercise3 from '@site/src/components/solutions/Labo1Exercise3';
-import Labo1Exercise4 from '@site/src/components/solutions/Labo1Exercise4';
+import Labo1Exercise1 from '@site/src/components/LabSolutions/Labo1Exercise1';
+import Labo1Exercise2 from '@site/src/components/LabSolutions/Labo1Exercise2';
+import Labo1Exercise3 from '@site/src/components/LabSolutions/Labo1Exercise3';
+import Labo1Exercise4 from '@site/src/components/LabSolutions/Labo1Exercise4';
 
 # Labo 1
 
