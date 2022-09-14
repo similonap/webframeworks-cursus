@@ -17,7 +17,7 @@ const App = () => {
 
     return (
         <>
-            <h1>Labo 2</h1>
+            <h1>Labo 1: Slots</h1>
             <img src={slotCherry} height="64" width="64"/>
             <img src={slotLemon} height="64" width="64"/>
             <img src={slotMelon} height="64" width="64"/>

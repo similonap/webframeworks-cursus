@@ -17,7 +17,7 @@ const App = () => {
     let getal2: number = Math.floor(Math.random() * 10);
     return (
         <>
-            <h1>Labo 1</h1>
+            <h1>Labo 1: Expressies</h1>
             <p>Random: {random}</p>
             <p>Getal 1: {getal1}</p>
             <p>Getal 2: {getal2}</p>

@@ -5,15 +5,21 @@ import slotMelon from './assets/slot-melon.png';
 import slotPrune from './assets/slot-prune.png';
 import slotSeven from './assets/slot-seven.png';
 
+import styles from './Labo2Exercise1.module.css';
+
 export const Slot = ({ value }: { value: number }) => {
+  let img = slotCherry;
+  switch (value) {
+    case 0: img = slotCherry; break;
+    case 1: img = slotLemon; break;
+    case 2: img = slotMelon; break;
+    case 3: img = slotPrune; break;
+    case 4: img = slotSeven; break;
+  }
   return (
-    <>
-      {value == 0 && <img src={slotCherry} height="64" width="64" />}
-      {value == 1 && <img src={slotLemon} height="64" width="64" />}
-      {value == 2 && <img src={slotMelon} height="64" width="64" />}
-      {value == 3 && <img src={slotPrune} height="64" width="64" />}
-      {value == 4 && <img src={slotSeven} height="64" width="64" />}
-    </>
+    <div className={styles.slot}>
+      <img src={img}/>
+    </div>
   );
 };
 
@@ -24,13 +30,15 @@ export const SlotMachine = ({ slots }: { slots: number }) => {
   let winning = slotNumbers.find((slot) => slot !== slots[0]) == undefined;
 
   return (
-    <>
-      {winning ? <p>Je hebt gewonnen</p> : <p>Je hebt verloren</p>}
-
-      {slotNumbers.map((slot, i) => (
-        <Slot value={slot} key={i} />
-      ))}
-    </>
+    <div className={styles.slotMachineContainer}>
+      <div className={styles.slotMachineSubContainer}>
+        {slotNumbers.map((slot, i) => (
+          <Slot value={slot} key={i} />
+        ))}
+      </div>
+      {winning ? <p className={styles.linearWipe}>Je hebt gewonnen</p> : <p className={styles.linearWipe}>Je hebt verloren</p>}
+ 
+    </div>
   );
 };
 
@@ -39,15 +47,12 @@ const App = () => {
 
   return (
     <>
-      <h1>Labo 1: Slots met map</h1>
-      <Slot value={0} />
-      <Slot value={1} />
-      <Slot value={2} />
-      <Slot value={3} />
-      <Slot value={4} />
-      <br />
+      <h1>Labo 2: Slots</h1>
+      
+      <SlotMachine slots={3} />
+      <SlotMachine slots={4} />
       <SlotMachine slots={5} />
-      <br />
+      <br/>
       <button
         onClick={() => {
           setRefresh(Math.random());

@@ -34,7 +34,7 @@ const App = () => {
   ];
   return (
     <>
-      <h1>Labo 3</h1>
+      <h1>Labo 1: Lijsten</h1>
       <h3>Getallenlijst</h3>
       <ul>
         {numbers.map((number, index) => <li key={index}>{number}</li>)}
