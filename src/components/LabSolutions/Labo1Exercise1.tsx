@@ -9,9 +9,6 @@ const vermenigvuldiging = (a: number, b: number) => {
 }
 
 const App = () => {
-    const [refresh, setRefresh] = useState(0);
-
-
     let random : number = Math.random();
     let getal1: number = Math.floor(Math.random() * 10);
     let getal2: number = Math.floor(Math.random() * 10);
@@ -22,7 +19,6 @@ const App = () => {
             <p>Getal 1: {getal1}</p>
             <p>Getal 2: {getal2}</p>
             {random > 0.5 ? <p>{getal1} * {getal2}: {vermenigvuldiging(getal1, getal2)}</p> : <p>{getal1} + {getal2}: {som(getal1, getal2)}</p>}
-            <button onClick={() => { setRefresh(random) }}>Refresh</button>
         </>
     );
 }

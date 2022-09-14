@@ -35,21 +35,11 @@ const Footer = ({copy, year}: {copy: string, year: number}) => {
 
 
 const App = () => {
-  const [refresh, setRefresh] = useState(0);
-
   return (
     <>      
       <Header title="Labo 2" subtitle="Basic components" />
       <List items={["item 1", "item 2", "item 3"]} />
       <Footer copy="Andie Similon" year={2021} />
-
-      <button
-        onClick={() => {
-          setRefresh(Math.random());
-        }}
-      >
-        Refresh
-      </button>
     </>
   );
 };

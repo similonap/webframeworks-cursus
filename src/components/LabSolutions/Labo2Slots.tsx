@@ -6,6 +6,7 @@ import slotPrune from './assets/slot-prune.png';
 import slotSeven from './assets/slot-seven.png';
 
 import styles from './Labo2Slots.module.css';
+import Refreshable from './Refreshable';
 
 export const Slot = ({ value }: { value: number }) => {
   let img = slotCherry;
@@ -43,8 +44,6 @@ export const SlotMachine = ({ slots }: { slots: number }) => {
 };
 
 const App = () => {
-  const [refresh, setRefresh] = useState(0);
-
   return (
     <>
       <h1>Labo 2: Slots</h1>
@@ -52,16 +51,9 @@ const App = () => {
       <SlotMachine slots={3} />
       <SlotMachine slots={4} />
       <SlotMachine slots={5} />
-      <br/>
-      <button
-        onClick={() => {
-          setRefresh(Math.random());
-        }}
-      >
-        Refresh
-      </button>
+
     </>
   );
 };
 
-export default App;
+export default () => <Refreshable><App/></Refreshable>;

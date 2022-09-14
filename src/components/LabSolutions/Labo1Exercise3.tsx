@@ -6,7 +6,6 @@ interface Student {
 }
 
 const App = () => {
-  const [refresh, setRefresh] = useState(0);
   let numbers: number[] = [1,2,3,4,5,4,3];
   
   // array of five students
@@ -74,8 +73,6 @@ const App = () => {
             ))}
         </tbody>
       </table>
-      <br/>
-      <button onClick={() => { setRefresh(Math.random()) }}>Refresh</button>
     </>
   );
 };

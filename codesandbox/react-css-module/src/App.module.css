@@ -1,4 +1,11 @@
-/* Empty styles file */
 .App {
     padding: 10px;
+}
+
+.red {
+    color: red
+}
+
+.upper {
+    text-transform: uppercase
 }

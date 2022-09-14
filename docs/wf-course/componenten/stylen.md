@@ -73,6 +73,23 @@ Visual studio code ondersteunt geen auto completion van CSS-Module styles. Je ka
 https://marketplace.visualstudio.com/items?itemName=clinyong.vscode-css-modules
 :::
 
+Wil je meer dan een className toekennen aan een element met CSS modules, dan moet je string interpolation gebruiken:
+
+```typescript codesandbox={"template": "react-css-module", "filename": "src/App.tsx"}
+import styles from './App.module.css';
+
+const App = () => {
+  return (
+    <div className={styles.App}>
+        <h1 className={`${styles.red} ${styles.upper}`}>Hello component</h1>
+    </div>
+  );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
 ## CSS-in-JS
 
 De manier van styling die we hierboven hebben toegepast is zeer gelijkaardig aan de werkwijze voor statische HTML-pagina's. In React kan je de styles ook rechtstreeks ook in JavaScript definiëren. Het voordeel van deze manier is dat we niet afhankelijk zijn van aparte CSS-bestanden.

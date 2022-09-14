@@ -1,6 +1,7 @@
 {
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./module.css.d.ts"
     ],
     "compilerOptions": {
         "strict": true,

@@ -4,11 +4,10 @@ import slotLemon from "./assets/slot-lemon.png";
 import slotMelon from "./assets/slot-melon.png";
 import slotPrune from "./assets/slot-prune.png";
 import slotSeven from "./assets/slot-seven.png";
+import Refreshable from "./Refreshable";
 
 
 const App = () => {
-    const [refresh, setRefresh] = useState(0);
-
     let slot1 : number = Math.floor(Math.random() * 5);
     let slot2 : number = Math.floor(Math.random() * 5);
     let slot3 : number = Math.floor(Math.random() * 5);
@@ -44,10 +43,8 @@ const App = () => {
             {slot3 == 2 && <img src={slotMelon} height="64" width="64"/>} 
             {slot3 == 3 && <img src={slotPrune} height="64" width="64"/>} 
             {slot3 == 4 && <img src={slotSeven} height="64" width="64"/>} 
-            <br/>
-            <button onClick={() => { setRefresh(Math.random()) }}>Refresh</button>
         </>
     );
 }
 
-export default App;
+export default () => <Refreshable><App/></Refreshable>;
