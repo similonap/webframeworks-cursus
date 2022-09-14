@@ -5,7 +5,7 @@ import slotMelon from './assets/slot-melon.png';
 import slotPrune from './assets/slot-prune.png';
 import slotSeven from './assets/slot-seven.png';
 
-import styles from './Labo2Exercise1.module.css';
+import styles from './Labo2Slots.module.css';
 
 export const Slot = ({ value }: { value: number }) => {
   let img = slotCherry;

@@ -10,13 +10,14 @@ export const parseMetaString = (metastring) => {
   return JSON.parse(groups[1]);  
 }
 
-export default function CodeSandboxButton({code, className, metastring,setSandboxId}) {
+export const useSandbox = ({code = undefined, template, filename = undefined,setSandboxId}) => {
   const {templates} = usePluginData('codesandbox-plugin');
-  let { template, filename } = parseMetaString(metastring);
   
   const openCodeSandbox = async() => {
     let templateJson = templates[template];
-    templateJson.files[filename] = {"content": code};
+    if (code) {
+      templateJson.files[filename] = {"content": code};
+    }
 
     const res = await fetch(
       'https://codesandbox.io/api/v1/sandboxes/define?json=1',
@@ -35,6 +36,13 @@ export default function CodeSandboxButton({code, className, metastring,setSandbo
     setSandboxId(sandbox_id);
   }
 
+  return [openCodeSandbox];
+}
+
+export default function CodeSandboxButton({code, className, metastring,setSandboxId}) {
+  let { template, filename } = parseMetaString(metastring);
+
+  const [openCodeSandbox] = useSandbox({code, template, filename,setSandboxId});
   return (
     <button
       type="button"
