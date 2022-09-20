@@ -114,6 +114,7 @@ Dit vereist een aantal zaken:
 ```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
 //hide-start
 import { Outlet, BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import styles from './App.module.css';
 
 const HomePage = () => {
     return (<>
@@ -157,25 +158,29 @@ const ContactUs = () => {
 const App = () => {
     return (
         <BrowserRouter>
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li>Sub</li>
-                <ul>
-                    <li><Link to="sub/hello">Hello</Link></li>
-                    <li><Link to="sub/goodbye">Goodbye</Link></li>
-                </ul>
-                <li><Link to="contact">Contact Us</Link></li>
-            </ul>
-        </nav>
-        <Routes>
-            <Route path="" element={<HomePage />}/>
-            <Route path="contact" element={<ContactUs/>}/>
-            <Route path="sub" element={<SubPages />}>
-                <Route path="hello" element={<HelloWorld />} />
-                <Route path="goodbye" element={<GoodbyeWorld />}/>
-            </Route>
-        </Routes>
+            <div className={styles.container}>
+                <div className={styles.header}>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li>Sub</li>
+                        <ul>
+                            <li><Link to="sub/hello">Hello</Link></li>
+                            <li><Link to="sub/goodbye">Goodbye</Link></li>
+                        </ul>
+                        <li><Link to="contact">Contact Us</Link></li>
+                    </ul>
+                </div>
+                <div className={styles.content}>
+                    <Routes>
+                        <Route path="" element={<HomePage />}/>
+                        <Route path="contact" element={<ContactUs/>}/>
+                        <Route path="sub" element={<SubPages />}>
+                            <Route path="hello" element={<HelloWorld />} />
+                            <Route path="goodbye" element={<GoodbyeWorld />}/>
+                        </Route>
+                    </Routes>
+                </div>
+            </div>
         </BrowserRouter>
     );
 }

@@ -5,6 +5,12 @@ import Labo1Exercise4 from '@site/src/components/LabSolutions/Labo1Exercise4';
 
 # Labo 1
 
+Voor dit labo moet je de volgende theorie bekeken hebben:
+- Create React App
+- TSX
+- Statische bestanden
+- Lijsten
+
 ## 1. Expressies
 
 Maak een nieuwe react applicatie aan met het create-react-app commando. 

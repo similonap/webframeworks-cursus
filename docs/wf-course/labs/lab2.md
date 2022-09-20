@@ -4,6 +4,12 @@ import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicCo
 
 # Labo 2
 
+Voor dit labo moet je de volgende theorie bekeken hebben:
+- Componenten
+- Props
+- Folder structuur
+- Styling
+
 ## 1. Simpele componenten
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2`.

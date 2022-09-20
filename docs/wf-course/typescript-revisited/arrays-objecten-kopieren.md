@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Arrays/Objecten kopieren
 
-### Arrays kopiëren
+### Spread operator
 
 Het is vaak nodig in deze cursus om kopieën te maken van arrays. Je zou misschien denken dat de volgende code een kopie van een array maakt
 

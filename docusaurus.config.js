@@ -61,13 +61,13 @@ const config = {
             type: 'doc',
             docId: 'wf-course/inleiding/README',
             position: 'left',
-            label: 'Cursus',
+            label: 'React.js',
           },
           {
             type: 'doc',
-            docId: 'wf-lab/README',
+            docId: 'react-native-course/README',
             position: 'left',
-            label: 'Labos',
+            label: 'React Native',
           }
         ],
       },
@@ -95,7 +95,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-    plugins: [path.resolve(__dirname, 'plugins', 'codesandbox')],
+    plugins: [path.resolve(__dirname, 'plugins', 'codesandbox'),path.resolve(__dirname, 'plugins', 'expo')],
 };
 
 module.exports = config;

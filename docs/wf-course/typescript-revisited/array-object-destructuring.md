@@ -59,7 +59,7 @@ De `rest` variabele bevat dan de array van de laatste twee elementen.&#x20;
 
 ### Object Destructuring
 
-Hetzelfde concept kan je ook gebruiken bij objecten. In plaats van&#x20;
+Hetzelfde concept kan je ook gebruiken bij objecten. In plaats van
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 interface Options {
