@@ -6,6 +6,11 @@ import ExpoSnack from '@site/src/components/ExpoSnack/ExpoSnack';
 
 React Native is een framework om native apps te maken voor iOS en Android. Het is gebaseerd op React.js, een JavaScript library voor het maken van webapps. React Native is ontwikkeld door Meta en wordt veel gebruikt door grote bedrijven zoals Airbnb, Facebook, Instagram, Tesla, Uber en Walmart.
 
+React Native lijkt heel hard op React.js. De meeste React.js code kan je gewoon gebruiken in React Native. De grootste verschillen zijn:
+- React Native gebruikt native componenten in plaats van webcomponenten. Dit betekent dat je geen HTML tags gebruikt, maar native componenten zoals `<View>`, `<Text>` en `<Image>`. 
+- React Native gebruikt geen CSS bestanden of modules maar inline styles. Dit betekent dat je geen CSS classes kan gebruiken, maar inline styles zoals `style={{ color: 'red' }}`.
+- React Native gebruikt geen HTML bestanden maar JavaScript bestanden met de extensie `.js` of `.jsx`.
+
 ## Expo
 
 Expo is een tool die het ontwikkelen van React Native apps makkelijker maakt. Het is een bundel van tools die je kan gebruiken om je app te testen op je smartphone of tablet. Je kan ook een app bouwen zonder Expo, maar dan moet je de app eerst bundelen en dan op je smartphone installeren. Dat is een stuk moeilijker.
