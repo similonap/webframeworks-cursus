@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Core Components
 
 Zoals we al gezien hebben kan er in React Native geen gebruik gemaakt worden van HTML elementen. In plaats daarvan gebruiken we React Native componenten. Deze componenten zijn gebaseerd op de HTML elementen, maar hebben een andere naam en werken anders. In deze sectie gaan we de meest gebruikte componenten bekijken.

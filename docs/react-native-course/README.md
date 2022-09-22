@@ -1,8 +1,95 @@
-import ExpoSnack from '@site/src/components/ExpoSnack/ExpoSnack';
+---
+sidebar_position: 1
+---
 
 # Inleiding
 
+## Verschillende platformen
+
+![picture 6](images/d01787851aa79467fc17d93375b488b1a7684301cc1d7323e9cd951567ad9dbe.png)  
+
+
+### Android
+
+Android is een open source operating system dat ontwikkeld wordt door Google. Het is een van de meest gebruikte mobiele operating systems ter wereld. 
+
+Android Studio is een IDE die ontwikkeld is voor Android ontwikkelaars. Het is een volledige IDE die ondersteuning biedt voor het ontwikkelen van Android apps. Het is een gratis IDE die je kan downloaden op de [Android Studio website](https://developer.android.com/studio/). Je kan apps maken voor Android met behulp van Java, Kotlin of C++.
+
+Apps worden gepubliceerd op de Google Play Store. De kostprijs om een app te publiceren is 25 euro. 
+
+### iOS
+
+iOS is een gesloten operating system dat ontwikkeld wordt door Apple. 
+
+XCode is een IDE die ontwikkeld is voor iOS ontwikkelaars. Je kan deze IDE enkel op een Mac installeren. Je kan apps maken voor iOS met behulp van Swift of Objective-C.
+
+Apps worden gepubliceerd op de App Store. De kostprijs om een app te publiceren is 99 euro per jaar.
+
+### Problemen
+
+#### Verschillen in platforms
+
+We zitten dus met een probleem. Als je een app wil maken voor Android en iOS, moet je twee verschillende IDE's gebruiken. Je moet ook twee verschillende programmeertalen leren. Het is dus niet mogelijk om een app te maken voor beide platformen met behulp van één IDE en één programmeertaal.
+
+#### Versie fragmentatie
+
+![picture 7](images/67c7468fae647b20d88f8c3ffeb0165c66b291695b23371a7d58e9540b9dd77c.png)  
+
+Om het nog moeilijker te maken hebben zijn er ook nog veel verschillende versies van elk platform. Android heeft veel verschillende fabrikanten die niet allemaal even snel updates uitbrengen. Dit zorgt ervoor dat je rekening moet houden met veel verschillende versies van android. 
+
+Het voordeel van Apple is dat zij het eco systeem (hardware, software,...) volledig in handen hebben. Dit zorgt ervoor dat ze sneller updates kunnen uitbrengen en langer ondersteuning geven voor oudere apparaten. Dit zorgt ervoor dat je minder rekening moet houden met verschillende versies van iOS. 
+
+## Native vs Cross-platform
+
+### Native
+
+Er wordt een app ontwikkeld voor elk platform. Dit zorgt ervoor dat je gebruik kan maken van alle features van het platform. Het nadeel hierbij is dat je twee verschillende apps moet ontwikkelen. Je moet dus twee verschillende IDE's gebruiken en twee verschillende programmeertalen leren.
+
+Voordelen:
+- Gebruik kan maken van alle features van het platform
+- Snellere performance
+- Betere user experience
+
+Nadelen:
+- Twee verschillende apps moeten ontwikkeld worden
+- Duurder (meer developers/tijd nodig)
+- Apps kunnen verschillen in functionaliteit (en look & feel)
+
+In deze cursus gaan we niet dieper in op ontwikkelen van native apps. 
+
+### Cross-platform
+
+Er wordt één app ontwikkeld die op beide platformen kan uitgevoerd worden. Dit zorgt ervoor dat je maar één app hoeft te ontwikkelen in 1 programmeertaal. Soms heb je nog wel kleine aanpassingen nodig voor elk platform.
+
+Voordelen:
+- Veel goedkoper (minder developers/tijd nodig)
+- Apps kunnen dezelfde functionaliteit hebben (en look & feel)
+- Snellere ontwikkeling
+
+Nadelen:
+- Je kan niet alle features van het platform gebruiken
+- Lagere performance
+- Slechtere user experience
+
+### Cross-platform types
+
+#### Progressive Web Apps (PWA)
+
+Een PWA is een webapp die op een mobiele telefoon kan uitgevoerd worden. Het is een webapp die eruit ziet als een native app. 
+
+Eigenlijk gebruikt de PWA gewoon de browser van je mobiele telefoon. Het is dus niet echt een native app. Het is een webapp die eruit ziet als een native app. Je gebruikt dus ook gewoon een combinatie van HTML, CSS en JavaScript. Je kan hiervoor ook gebruik maken van een framework zoals React/Angular/Vue.
+
+Het is zelfs mogelijk om deze apps te installeren op je mobiele telefoon. Daarvoor heb je dan wel een tool nodig zoals Cordova,Phonegap, Ionic,...
+
+#### Cross platform applicaties met native componenten
+
+Echte cross platform applicaties gebruiken echte native componenten. Alle UI componenten zijn gebouwd uit echte componenten van het platform zelf. Bijvoorbeeld een button zal dus in iOS en Android er anders uitzien. Je schrijft dus gewoon code in één programmeertaal en een framework zorgt ervoor dat de code omgezet wordt naar native code.
+
+Bekende frameworks zijn React Native, Flutter, NativeScript,...
+
 ## React Native
+
+In deze cursus gaan we leren werken met React Native!
 
 React Native is een framework om native apps te maken voor iOS en Android. Het is gebaseerd op React.js, een JavaScript library voor het maken van webapps. React Native is ontwikkeld door Meta en wordt veel gebruikt door grote bedrijven zoals Airbnb, Facebook, Instagram, Tesla, Uber en Walmart.
 
@@ -11,112 +98,3 @@ React Native lijkt heel hard op React.js. De meeste React.js code kan je gewoon 
 - React Native gebruikt geen CSS bestanden of modules maar inline styles. Dit betekent dat je geen CSS classes kan gebruiken, maar inline styles zoals `style={{ color: 'red' }}`.
 - React Native gebruikt geen HTML bestanden maar JavaScript bestanden met de extensie `.js` of `.jsx`.
 
-## Expo
-
-Expo is een tool die het ontwikkelen van React Native apps makkelijker maakt. Het is een bundel van tools die je kan gebruiken om je app te testen op je smartphone of tablet. Je kan ook een app bouwen zonder Expo, maar dan moet je de app eerst bundelen en dan op je smartphone installeren. Dat is een stuk moeilijker.
-
-## Expo CLI
-
-Expo CLI is een command line interface die je kan gebruiken om een nieuwe React Native app aan te maken. 
-
-### Hoe Expo CLI gebruiken
-
-Je kan de Expo CLI gebruiken zonder het eerst te installeren. Je kan het gewoon gebruiken met `npx`. Zo heb je ook altijd de laatste versie.
-
-Je kan zien welke commando's je kan gebruiken met `npx expo --help`.
-
-Het wordt aangeraden om eerst een Expo account aan te maken. Je kan zien of je al een account hebt door het volgende commando uit te voeren:
-
-```bash
-npx expo whoami
-```
-
-Als je nog geen account hebt, kan je er een aanmaken met het volgende commando:
-
-```bash
-npx expo register
-```
-
-Als je een account hebt, kan je inloggen met het volgende commando:
-
-```bash
-npx expo login
-```
-
-### Expo Go App voor iOS en Android
-
-Om je app te testen op je smartphone of tablet, moet je de Expo Go app installeren. Deze app kan je vinden in de App Store en de Play Store.
-
-[Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) and greater
-[iOS App Store](https://apps.apple.com/app/expo-go/id982107779) - iOS 11 and greater
-
-Na de installatie kan je via de app met dezelfde account inloggen. Als je ingelogd bent is het veel eenvoudiger om projecten te openen. Ze zullen automatisch onder het "Projects" onderdeel staan.
-
-## Nieuwe app aanmaken
-
-Om een nieuwe app aan te maken, kan je het volgende commando gebruiken:
-
-```bash
-npx create-expo-app <project-name> --template expo-template-blank-typescript
-```
-
-Omdat we typescript gaan gebruiken in deze cursus, gebruiken we het `--template` argument. Als je geen typescript wil gebruiken, kan je het argument weglaten.
-
-## Development server
-
-Je kan de development server starten met het volgende commando:
-
-```bash
-npx expo start
-```
-
-Als je dit commando uitvoert dan wordt de Metro bundler gestart. Deze bundler is een http server die de javascript code compileert en bundelt. De bundler is ook verantwoordelijk voor het hot reloading. Als je een bestand aanpast, dan zal de bundler de code opnieuw compileren en de app opnieuw laden.
-
-## De app openen op je telefoon of tablet
-
-Om de app te openen:
-- Op android devices druk je op de "Scan QR Code" knop en scan je de QR code die in de terminal verschijnt.
-- Op een iPhone of iPad moet je de default camera app gebruiken om de QR code te scannen. Als je de QR code scant, dan zal de Expo Go app automatisch geopend worden.
-
-:::warning
-Zorg ervoor dat je op hetzelfde netwerk zit als je telefoon of tablet. Als je op een ander netwerk zit, dan zal de bundler niet kunnen verbinden met je telefoon of tablet. Gebruik desnoods een hotspot van je telefoon.
-:::
-
-## Eerste wijziging aanbrengen
-
-Open de `App.tsx` file in de `src` folder. Verander de tekst in de `Text` component naar "Hello World". Als je de app nu opnieuw laadt, dan zal je de tekst zien veranderen.
-
-```tsx expo={}
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
-
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change this code
-      </Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
-
-export default App;
-```
