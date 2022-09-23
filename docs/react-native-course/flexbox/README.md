@@ -214,3 +214,25 @@ export default App;
 
 alignContent bepaalt hoe de regels worden uitgelijnd als er meerdere regels zijn. Dit werkt enkel als flexWrap op wrap staat.
 
+## Absolute positioning
+
+Absolute positioning is een manier om de positie van een element te bepalen. Je moet hier zelf rekening houden met bepaalde schermgroottes.
+
+Je gebruikt hier de properties `top`, `bottom`, `left` en `right` om de positie van het element te bepalen.
+
+```typescript expo={}
+import {View} from 'react-native';
+
+const App = () => {
+    return (
+        <View style={{flexDirection: "column", flex: 1, justifyContent: "flex-start", alignItems: "center"}}>
+            <View style={{width: 40, height: 40, backgroundColor: "red", position: "absolute", top: 0, left: 0}}/>
+            <View style={{width: 40, height: 40, backgroundColor: "green", position: "absolute", top: 50, right: 50}}/>
+            <View style={{width: 40, height: 40, backgroundColor: "blue", position: "absolute", bottom: 10, left: 10}}/>
+            <View style={{width: 40, height: 40, backgroundColor: "pink", position: "absolute", bottom: 50, right: 30}}/>
+        </View>
+    )
+}
+
+export default App;
+```
