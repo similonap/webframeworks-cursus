@@ -224,3 +224,48 @@ const App = () => {
 
 export default App;
 ```
+
+## FlatList refreshing
+
+Een `FlatList` component heeft een `refreshing` property en een `onRefresh` handler. We kunnen deze gebruiken om een `FlatList` component te maken die een pull to refresh heeft. Hiervoor moeten we de refreshing state bijhouden en deze updaten wanneer de gebruiker de lijst heeft gerefreshed.
+
+```typescript expo={}
+import React, {useState} from 'react';
+
+import {View, FlatList, Text} from 'react-native';
+
+const generateRandomColors = (amount: number) => {
+    let colors : string[] = [];
+    for (let i = 0; i < amount; i++) {
+        colors.push("#" + Math.floor(Math.random()*16777215).toString(16));
+    }
+    return colors;
+}
+
+const App = () => {
+    const [colors, setColors] = useState(generateRandomColors(10));
+    const [refreshing, setRefreshing] = useState(false);
+
+    const refreshColors = async() => {
+        setRefreshing(true);
+        // wait 2 seconds to simulate API call (or whatever)
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+        setColors(generateRandomColors(10));
+        setRefreshing(false);
+    }
+
+    return (
+        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+            <FlatList
+                data={colors}
+                renderItem={({item}) => <View style={{height: 100, backgroundColor: item}}/>}
+                keyExtractor={(item, index) => index.toString()}
+                refreshing={refreshing}
+                onRefresh={() => refreshColors()}
+            />
+        </View>
+    )
+}
+
+export default App;
+```
