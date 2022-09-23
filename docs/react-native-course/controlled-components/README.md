@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Controlled Components
 
 Net zoals in React.js gebruiken we in React Native ook `state` om de waarde van een input te beheren. We kunnen dit doen door een `useState` hook te gebruiken. We gebruiken dan de change handlers om deze state te updaten.

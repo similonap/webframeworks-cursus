@@ -88,6 +88,10 @@ const NormalCodeBlock = ({ showLineNumbers, lineClassNames, blockClassName, lang
 const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
   const [snackVisible, setSnackVisible] = useState(false);
 
+  let groups = /expo=({.*})/g.exec(metastring);
+
+  let parameters = JSON.parse(groups[1]);
+
   return (
     <div>
       {snackVisible && (
@@ -103,7 +107,7 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
           >
             <iframe
               style={{ width: '100%', height: '500px' }}
-              src={`https://snack.expo.dev/embedded?platform=web&code=${encodeURIComponent(allCode)}`}
+              src={`https://snack.expo.dev/embedded?platform=web&code=${encodeURIComponent(allCode)}${parameters.dependencies ? `&dependencies=${parameters.dependencies}` : ""}`}
               allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
               sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
             ></iframe>
