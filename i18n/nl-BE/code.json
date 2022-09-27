@@ -1,0 +1,7 @@
+{
+    "cmfcmf/d-s-l.searchBar.placeholder": {"message":"Zoeken..."},
+    "cmfcmf/d-s-l.searchBar.noResults": {"message":"Geen resultaten."},
+    "cmfcmf/d-s-l.searchBar.clearButtonTitle": {"message":"Clear"},
+    "cmfcmf/d-s-l.searchBar.detachedCancelButtonText": {"message":"Cancel"},
+    "cmfcmf/d-s-l.searchBar.submitButtonTitle": {"message":"Submit"}
+}

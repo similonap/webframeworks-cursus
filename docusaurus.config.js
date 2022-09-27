@@ -95,7 +95,14 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-    plugins: [path.resolve(__dirname, 'plugins', 'codesandbox'),path.resolve(__dirname, 'plugins', 'expo')],
+    plugins: [
+      path.resolve(__dirname, 'plugins', 'codesandbox'),
+      path.resolve(__dirname, 'plugins', 'expo'),
+      [require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        indexDocs: true
+      }],
+    ],
 };
 
 module.exports = config;
