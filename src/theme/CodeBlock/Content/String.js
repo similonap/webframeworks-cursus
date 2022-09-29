@@ -92,6 +92,14 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
 
   let parameters = JSON.parse(groups[1]);
 
+  const files = {
+    // Inlined code
+    'App.tsx': {
+      type: 'CODE',
+      contents: allCode
+    }
+  };
+
   return (
     <div>
       {snackVisible && (
@@ -107,7 +115,7 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
           >
             <iframe
               style={{ width: '100%', height: '500px' }}
-              src={`https://snack.expo.dev/embedded?platform=web&code=${encodeURIComponent(allCode)}${parameters.dependencies ? `&dependencies=${parameters.dependencies}` : ""}`}
+              src={`https://snack.expo.dev/embedded?platform=web&files=${encodeURIComponent(JSON.stringify(files))}${parameters.dependencies ? `&dependencies=${parameters.dependencies}` : ""}`}
               allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
               sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
             ></iframe>

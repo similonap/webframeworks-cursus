@@ -128,4 +128,50 @@ const App = () => {
 export default App;
 ```
 
-## Lezen van data bij mount
+Je kan ook een array van objecten opslaan in AsyncStorage. Dit werkt op dezelfde manier als een enkel object.
+
+## State in AsyncStorage
+
+We kunnen ook de state van een component opslaan in AsyncStorage. Dit kan handig zijn als we de state willen bijhouden als de gebruiker de applicatie sluit. We moeten er dan voor zorgen dat elke wijziging in state ook opgeslagen wordt in AsyncStorage.
+
+```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const App = () => {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const getData = async () => {
+      const value = await AsyncStorage.getItem('counter');
+      if (value !== null) {
+        setCounter(parseInt(value));
+      }
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const storeData = async () => {
+      await AsyncStorage.setItem('counter', counter.toString());
+    };
+    storeData();
+  }, [counter]);
+
+  return (
+    <View>
+      <Text>AsyncStorage</Text>
+      <Text>Counter: {counter}</Text>
+      <Button title="Increment" onPress={() => setCounter(counter + 1)} />
+    </View>
+  );
+};
+
+export default App;
+```
+
+We gebruiken hier twee `useEffect` hooks. De eerste `useEffect` hook wordt uitgevoerd als het component voor het eerst geladen wordt. In deze `useEffect` hook halen we de waarde van `counter` op uit AsyncStorage. Als er een waarde gevonden wordt dan zetten we deze waarde in de state van het component. Als er geen waarde gevonden wordt dan blijft de state op 0 staan.
+
+De tweede `useEffect` hook wordt uitgevoerd als de state van `counter` verandert. In deze `useEffect` hook slaan we de nieuwe waarde van `counter` op in AsyncStorage. 
+
