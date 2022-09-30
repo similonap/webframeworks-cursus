@@ -91,12 +91,16 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-Wil je in android voorkomen dat je app onder de statusbar komt te staan, dan moet je de `translucent` property op `false` zetten. In iOS is dit niet nodig.
+Wil je in android voorkomen dat je app onder de statusbar komt te staan, dan moet je de `translucent` property op `false` zetten. 
 
 Je kan nog een aantal andere properties aan de `StatusBar` component meegeven:
 - De `backgroundColor` property kan je gebruiken om de kleur van de statusbar aan te passen. (Enkel android) 
 - De `barStyle` property kan je gebruiken om de kleur van de tekst in de statusbar aan te passen. Deze kan de volgende waarden hebben `default`, `light-content` en `dark-content`.
 - De `hidden` property kan je gebruiken om de statusbar te verbergen.
+
+:::info
+Sommige iPhones hebben een notch. De notch is een stukje scherm dat bovenaan het scherm zit. De notch wordt gebruikt om de camera en de sensoren te huisvesten. Er bestaan manieren om hiermee om te gaan, maar dit is buiten de scope van deze cursus op dit moment. Je kan dit voorlopig oplossen met een margin-top te voorzien op je app.
+:::
 
 ## StyleSheet
 

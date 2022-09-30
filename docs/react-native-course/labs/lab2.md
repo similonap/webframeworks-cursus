@@ -12,11 +12,12 @@ Maak een nieuw project `CoreComponents` aan met expo. Vervang de inhoud van `App
 
 ```typescript expo={}
 import React from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, StatusBar } from "react-native";
 
 const App = () => {
   return (
     <View style={styles.container}>
+      <StatusBar translucent={false}>
     </View>
   );
 }
@@ -70,6 +71,8 @@ Voeg een Button component toe die
 - wanneer een gebruiker erop drukt, de alert The number is X waar X een waarde is die Random0To10 teruggeeft (dit hoeft niet dezelfde waarde te zijn als die in het tekst veld)
 
 Zorg dat wanneer een gebruiker de Pokemon 3 seconden indrukt, je de naam van de Pokemon in een alert toont. 
+
+![interaction_labo1_oef1.gif](../images/interaction_labo1_oef1.gif)
 
 ## Opdracht: RandomMoviePosters
 
