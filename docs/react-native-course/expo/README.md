@@ -73,6 +73,33 @@ Om de app te openen:
 Zorg ervoor dat je op hetzelfde netwerk zit als je telefoon of tablet. Als je op een ander netwerk zit, dan zal de bundler niet kunnen verbinden met je telefoon of tablet. Gebruik desnoods een hotspot van je telefoon.
 :::
 
+## De app openen in de browser
+
+Als je de app in de browser wil openen, dan kan je het volgende commando gebruiken:
+
+```bash
+npx expo start --web
+```
+
+of je kan de w toets indrukken in de terminal als je opgestart bent met `npx expo start`.
+
+Het kan zijn dat je de volgende foutmelding krijgt:
+
+```
+It looks like you're trying to use web support but don't have the required
+dependencies installed.
+
+Please install @expo/webpack-config@^0.17.0 by running:
+```
+
+Dan moet je de Expo CLI afsluiten en eerst het volgende commando uitvoeren:
+
+```bash
+npx expo install @expo/webpack-config@^0.17.0
+```
+
+Als je daarna opnieuw `npx expo start --web` uitvoert, dan zou het moeten werken.
+
 ## Eerste wijziging aanbrengen
 
 Open de `App.tsx` file in de `src` folder. Verander de tekst in de `Text` component naar "Hello World". Als je de app nu opnieuw laadt, dan zal je de tekst zien veranderen.
