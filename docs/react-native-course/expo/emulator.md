@@ -2,7 +2,6 @@
 sidebar_position: 3
 ---
 
-
 # Android Emulator
 
 Een emulator is een programma dat een virtuele Android-telefoon nabootst. Je kunt het gebruiken om je app te testen zonder dat je een fysieke telefoon nodig hebt. Het is ook handig om te gebruiken als je een app wilt testen op een telefoon met een ander besturingssysteem dan het jouwe.

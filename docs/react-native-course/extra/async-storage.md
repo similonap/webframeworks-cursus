@@ -175,3 +175,6 @@ We gebruiken hier twee `useEffect` hooks. De eerste `useEffect` hook wordt uitge
 
 De tweede `useEffect` hook wordt uitgevoerd als de state van `counter` verandert. In deze `useEffect` hook slaan we de nieuwe waarde van `counter` op in AsyncStorage. 
 
+## Meer informatie
+
+Voor meer informatie over de `AsyncStorage` package kan je de [documentatie](https://reactnative.dev/docs/asyncstorage) raadplegen.

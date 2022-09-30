@@ -145,3 +145,7 @@ const App = () => {
 
 export default App;
 ```
+
+### Meer informatie
+
+Voor meer informatie over de `expo-camera` package kan je de [documentatie](https://docs.expo.io/versions/latest/sdk/camera/) raadplegen.
