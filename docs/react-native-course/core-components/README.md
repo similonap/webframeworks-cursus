@@ -63,6 +63,41 @@ export default App;
 
 Je ziet dat deze twee componenten erg veel op elkaar lijken. De `View` component is een container component die andere componenten kan bevatten. De `div` tag in HTML is ook een container component die andere elementen kan bevatten. Een belangrijk verschil is dat alle Views by default flexbox containers zijn. Je hoeft dit niet expliciet aan te geven. In React.js moet je dit wel expliciet aangeven door de `display: flex` property toe te voegen aan de `div` tag.
 
+## StatusBar
+
+De `StatusBar` component is een component die je gebruikt om de statusbar van je app aan te passen. De statusbar is de balk bovenaan je app die de tijd, batterij status en wifi status weergeeft. 
+
+Als je wilt voorkomen dat je app onder de statusbar komt te staan, dan moet je de `StatusBar` component gebruiken. Je moet de `StatusBar` component altijd bovenaan je app plaatsen. 
+
+```typescript expo={}
+import React from 'react';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+const App = () => {
+    return (
+        <View style={styles.container}>
+            <StatusBar translucent={false}/>
+            <Text>Hello World</Text>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+});
+
+export default App;
+```
+
+Wil je in android voorkomen dat je app onder de statusbar komt te staan, dan moet je de `translucent` property op `false` zetten. In iOS is dit niet nodig.
+
+Je kan nog een aantal andere properties aan de `StatusBar` component meegeven:
+- De `backgroundColor` property kan je gebruiken om de kleur van de statusbar aan te passen. (Enkel android) 
+- De `barStyle` property kan je gebruiken om de kleur van de tekst in de statusbar aan te passen. Deze kan de volgende waarden hebben `default`, `light-content` en `dark-content`.
+- De `hidden` property kan je gebruiken om de statusbar te verbergen.
+
 ## StyleSheet
 
 Het `StyleSheet` component is een object dat alle styling informatie bevat. In React.js wordt dit meestal gedaan met CSS. In React Native wordt dit gedaan in JavaScript. Het `StyleSheet` component is een object dat alle styling informatie bevat. 
@@ -71,11 +106,12 @@ Een stylesheet kan je als volgt aanmaken:
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 const App = () => {
     return (
         <View>
+            <StatusBar translucent={false}/>
             <View style={styles.box}/>
         </View>
     );
@@ -105,11 +141,12 @@ Het is ook mogelijk rechstreeks in de style property van een View een object mee
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 const App = () => {
     return (
         <View>
+            <StatusBar translucent={false}/>
             <View style={{width: 100,height: 100, backgroundColor: 'red',borderWidth: 1,borderColor: 'black',borderRadius: 10}}/>
         </View>
     );
@@ -127,11 +164,12 @@ Hieronder een aantal voorbeelden van veel voorkomende style properties
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 const App = () => {
     return (
         <View>
+            <StatusBar translucent={false}/>
             <Text style={{
                 fontSize: 20,
                 fontWeight: 'bold',
@@ -156,11 +194,12 @@ Het is mogelijk om een `Text` component in een andere `Text` component te nesten
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 const App = () => {
     return (
         <View>
+            <StatusBar translucent={false}/>
             <Text>Hello<Text style={{color: 'blue', fontWeight: 'bold'}}> World</Text></Text>
         </View>
     );
@@ -190,11 +229,12 @@ Je kan ook afbeeldingen van het internet gebruiken. Dit doe je door de `uri` pro
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Image
                 style={{width: 100, height: 100}}
                 source={{
@@ -226,11 +266,12 @@ De volgende waarden zijn mogelijk:
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Image
                 style={{width: 150, height: 200, resizeMode: "center"}}
                 source={{
@@ -249,11 +290,12 @@ De `TextInput` component is een component die gebruikt kan worden om tekst in te
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <TextInput
                 secureTextEntry={false}
                 autoCapitalize="characters"
@@ -278,11 +320,12 @@ Op beide platformen zal de button een native feel hebben en button heeft beperkt
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Button, View} from 'react-native';
+import { StyleSheet, Button, View, StatusBar} from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Button title="Hello World" color="green" disabled={false}/>
         </View>
     )
@@ -298,11 +341,12 @@ Zelfs als je een `Button` component gebruikt, wordt er achter de schermen een `P
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Alert, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Pressable
                 style={{backgroundColor: "red"}}
                 onPress={() => {
@@ -322,11 +366,12 @@ Je kan de stijl van de `Pressable` laten aanpassen afhankelijk hij ingedrukt is 
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Text, View, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Alert, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Pressable
                 style={(style) => (style.pressed) ? {backgroundColor: "red", padding: 10, borderRadius: 5} : {backgroundColor: "blue", padding: 10, borderRadius: 5}}
                 onPress={() => {
@@ -352,11 +397,12 @@ Pas op in html zijn events altijd in lowercase geschreven, in react native zijn 
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, Button, View, Alert } from 'react-native';
+import { StyleSheet, Button, View, Alert, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Button
                 title="Press me"
                 onPress={() => {
@@ -381,11 +427,12 @@ TextInput heeft een aantal event handlers die je kan gebruiken:
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Alert, StatusBar } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <TextInput
                 placeholder="Enter your name"
                 onChangeText={(text) => {
@@ -421,11 +468,12 @@ Pressable heeft een aantal event handlers die je kan gebruiken:
 
 ```typescript expo={}
 import React from 'react';
-import { StyleSheet, View, Pressable, Alert } from 'react-native';
+import { StyleSheet, View, Pressable, Alert, StatusBar, Text } from 'react-native';
 
 const App = () => {
     return (
-        <View style={{marginTop: 40}}>
+        <View>
+            <StatusBar translucent={false}/>
             <Pressable
                 delayLongPress={1000}
                 onPress={() => {
@@ -446,3 +494,6 @@ const App = () => {
         </View>
     )
 }
+
+export default App;
+```

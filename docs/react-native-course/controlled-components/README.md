@@ -18,13 +18,14 @@ Om een TextInput een controlled component te maken, moeten we de `value` propert
 
 ```typescript expo={}
 import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import {View, TextInput, Button, Alert, Text, StatusBar} from 'react-native';
 
 const App = () => {
     const [text, setText] = useState("");
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={text => setText(text)}
@@ -43,13 +44,14 @@ Het is ook mogelijk om meerdere componenten aan 1 state te binden. In dit voorbe
 
 ```typescript expo={}
 import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import {View, TextInput, Button, Alert, Text, StatusBar} from 'react-native';
 
 const App = () => {
     const [text, setText] = useState("");
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                 onChangeText={text => setText(text)}
@@ -75,7 +77,7 @@ De beste manier om dit op te lossen is toch een string als state te gebruiken en
 
 ```typescript expo={}
 import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import {View, TextInput, Button, Alert, Text, StatusBar} from 'react-native';
 
 const App = () => {
     const [number, setNumber] = useState("0");
@@ -90,7 +92,8 @@ const App = () => {
     }
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <TextInput
                 keyboardType="number-pad"
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
@@ -113,13 +116,14 @@ We zullen in het onderstaande voorbeeld een teller tonen die we aan de hand van 
 
 ```typescript expo={}
 import React, {useState} from 'react';
-import {View, Button, Text} from 'react-native';
+import {View, Button, Text, StatusBar} from 'react-native';
 
 const App = () => {
     const [counter, setCounter] = useState(0);
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <Text>Counter: {counter}</Text>
             <Button title="Increase Counter" onPress={() => { setCounter(counter + 1); }}/>
         </View>
@@ -136,13 +140,14 @@ Een `Switch` component heeft een `value` property en een `onValueChange` handler
 ```typescript expo={}
 import React, {useState} from 'react';
 
-import {View, Switch, Text} from 'react-native';
+import {View, Switch, Text, StatusBar} from 'react-native';
 
 const App = () => {
     const [isEnabled, setIsEnabled] = useState(false);
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <Switch
                 onValueChange={() => setIsEnabled(previousState => !previousState)}
                 value={isEnabled}
@@ -162,13 +167,14 @@ We kunnen ook conditioneel renderen in React Native. We gebruiken hier vooral de
 ```typescript expo={}
 import React, {useState} from 'react';
 
-import {View, Switch, Text, Image} from 'react-native';
+import {View, Switch, Text, Image, StatusBar} from 'react-native';
 
 const App = () => {
     const [isEnabled, setIsEnabled] = useState(false);
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <Switch
                 onValueChange={() => setIsEnabled(previousState => !previousState)}
                 value={isEnabled}
@@ -191,7 +197,7 @@ Een `ActivityIndicator` component heeft een `animating` property en een `size` p
 ```typescript expo={}
 import React, {useState} from 'react';
 
-import {View, Button, Text, ActivityIndicator} from 'react-native';
+import {View, Button, Text, ActivityIndicator, StatusBar} from 'react-native';
 
 interface TimezoneInterface {
     datetime: string;
@@ -214,7 +220,8 @@ const App = () => {
     }
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <Button title="Load data" onPress={() => loadData() }/>
             <ActivityIndicator animating={loading}/>
             <Text>{result}</Text>
@@ -232,7 +239,7 @@ Een `FlatList` component heeft een `refreshing` property en een `onRefresh` hand
 ```typescript expo={}
 import React, {useState} from 'react';
 
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList, Text, StatusBar} from 'react-native';
 
 const generateRandomColors = (amount: number) => {
     let colors : string[] = [];
@@ -255,7 +262,8 @@ const App = () => {
     }
 
     return (
-        <View style={{flexDirection: "column", flex: 1, marginTop: 40}}>
+        <View style={{flexDirection: "column", flex: 1}}>
+            <StatusBar translucent={false}/>
             <FlatList
                 data={colors}
                 renderItem={({item}) => <View style={{height: 100, backgroundColor: item}}/>}
