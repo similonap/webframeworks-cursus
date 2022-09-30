@@ -99,7 +99,7 @@ Je kan nog een aantal andere properties aan de `StatusBar` component meegeven:
 - De `hidden` property kan je gebruiken om de statusbar te verbergen.
 
 :::info
-Sommige iPhones hebben een notch. De notch is een stukje scherm dat bovenaan het scherm zit. De notch wordt gebruikt om de camera en de sensoren te huisvesten. Er bestaan manieren om hiermee om te gaan, maar dit is buiten de scope van deze cursus op dit moment. Je kan dit voorlopig oplossen met een margin-top te voorzien op je app.
+Sommige smartphones hebben een notch. De notch is een stukje scherm dat bovenaan het scherm zit. De notch wordt gebruikt om de camera en de sensoren te huisvesten. Er bestaan manieren om hiermee om te gaan, maar dit is buiten de scope van deze cursus op dit moment. Je kan dit voorlopig oplossen met een margin-top te voorzien op je app.
 :::
 
 ## StyleSheet
