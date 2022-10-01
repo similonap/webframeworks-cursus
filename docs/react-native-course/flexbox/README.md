@@ -29,7 +29,7 @@ Als je flexDirection op **column** zet, dan zal de main axis vertikaal zijn. Dit
 By **default** is de flexDirection **column**, maar bij web is dat row. Mobile apps zijn meer verticaal gericht.
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -63,7 +63,7 @@ Meestal zetten we de hoofdcontainer op flex: 1. Dit zorgt ervoor dat de containe
 Hier is een voorbeeld van een container met 3 items. De eerste heeft flex: 1, de tweede heeft flex: 2 en de derde heeft flex: 3. De derde item zal dus 3 keer zo groot zijn als de eerste.
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -92,7 +92,7 @@ De mogelijkheden zijn:
 Default: `flex-start`
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -129,7 +129,7 @@ De mogelijkheden zijn:
 Default: `stretch`
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -157,7 +157,7 @@ export default App;
 Als je een item wilt uitlijnen op een andere manier dan de rest van de items, dan kan je align self gebruiken. 
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -190,7 +190,7 @@ De mogelijkheden zijn:
 Default: `nowrap`
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
@@ -221,7 +221,7 @@ Absolute positioning is een manier om de positie van een element te bepalen. Je 
 Je gebruikt hier de properties `top`, `bottom`, `left` en `right` om de positie van het element te bepalen.
 
 ```typescript expo={}
-import {View} from 'react-native';
+import {View} from "react-native";
 
 const App = () => {
     return (
