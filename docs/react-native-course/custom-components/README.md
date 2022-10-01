@@ -11,7 +11,7 @@ Net zoals in React.js kunnen we ook in React Native onze eigen componenten maken
 We doen dit helemaal hetzelfde als in React.js:
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 interface BoxProps {
     color: string,
@@ -33,7 +33,6 @@ const Box = ({color, size}: BoxProps) => {
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             <Box size={40} color="red"/>
             <Box size={40} color="green"/>
             <Box size={40} color="blue"/>
@@ -49,7 +48,7 @@ export default App;
 We kunnen zelfs ons style object meegeven als property om zo onze componenten nog flexibeler te maken.
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 interface BoxProps {
     boxStyle: StyleProp<ViewStyle>
@@ -66,7 +65,6 @@ const Box = ({boxStyle}: BoxProps) => {
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             <Box boxStyle={{backgroundColor: "red", width: 40, height: 40}}/>
             <Box boxStyle={{backgroundColor: "green", width: 40, height: 40}}/>
             <Box boxStyle={{backgroundColor: "blue", width: 40, height: 40}}/>
@@ -82,7 +80,7 @@ export default App;
 We kunnen ook default styles meegeven aan onze componenten. Dit doen we door een default waarde mee te geven aan onze property.
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 interface BoxProps {
     boxStyle?: StyleProp<ViewStyle>
@@ -99,7 +97,6 @@ const Box = ({boxStyle = {backgroundColor: "red", width: 40, height: 40}}: BoxPr
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             <Box/>
             <Box/>
             <Box/>
@@ -115,7 +112,7 @@ export default App;
 Een heel belangrijke techniek die je in React Native kan toepassen en niet in React.js is het gebruik van een array van styles. De laatste style in de array heeft altijd voorrang. Zo kan je style inheritance toepassen.
 
 ```typescript expo={}
-import {View, StyleSheet, StatusBar} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 interface BoxProps {
     boxStyle?: StyleProp<ViewStyle>
@@ -140,7 +137,6 @@ const Box = ({boxStyle}: BoxProps) => {
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             <Box/>
             <Box boxStyle={{backgroundColor: "green"}}/>
             <Box boxStyle={{backgroundColor: "blue"}}/>

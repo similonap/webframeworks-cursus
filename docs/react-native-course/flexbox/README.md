@@ -29,12 +29,11 @@ Als je flexDirection op **column** zet, dan zal de main axis vertikaal zijn. Dit
 By **default** is de flexDirection **column**, maar bij web is dat row. Mobile apps zijn meer verticaal gericht.
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "row", flex: 1}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue"}}/>
@@ -64,12 +63,11 @@ Meestal zetten we de hoofdcontainer op flex: 1. Dit zorgt ervoor dat de containe
 Hier is een voorbeeld van een container met 3 items. De eerste heeft flex: 1, de tweede heeft flex: 2 en de derde heeft flex: 3. De derde item zal dus 3 keer zo groot zijn als de eerste.
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             <View style={{flex: 1, backgroundColor: "red"}}/>
             <View style={{flex: 2, backgroundColor: "green"}}/>
             <View style={{flex: 3, backgroundColor: "blue"}}/>
@@ -94,12 +92,11 @@ De mogelijkheden zijn:
 Default: `flex-start`
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1, justifyContent: "center"}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue"}}/>
@@ -132,12 +129,11 @@ De mogelijkheden zijn:
 Default: `stretch`
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1, justifyContent: "flex-start", alignItems: "center"}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue"}}/>
@@ -161,12 +157,11 @@ export default App;
 Als je een item wilt uitlijnen op een andere manier dan de rest van de items, dan kan je align self gebruiken. 
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1, justifyContent: "flex-start", alignItems: "center"}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue", alignSelf: "flex-start"}}/>
@@ -195,12 +190,11 @@ De mogelijkheden zijn:
 Default: `nowrap`
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "row", flex: 1, justifyContent: "flex-start", alignItems: "flex-start", flexWrap:"wrap", alignContent: "flex-start"}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green"}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue"}}/>
@@ -227,12 +221,11 @@ Absolute positioning is een manier om de positie van een element te bepalen. Je 
 Je gebruikt hier de properties `top`, `bottom`, `left` en `right` om de positie van het element te bepalen.
 
 ```typescript expo={}
-import {View, StatusBar} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1, justifyContent: "flex-start", alignItems: "center"}}>
-            <StatusBar translucent={false}/>
             <View style={{width: 40, height: 40, backgroundColor: "red", position: "absolute", top: 0, left: 0}}/>
             <View style={{width: 40, height: 40, backgroundColor: "green", position: "absolute", top: 50, right: 50}}/>
             <View style={{width: 40, height: 40, backgroundColor: "blue", position: "absolute", bottom: 10, left: 10}}/>

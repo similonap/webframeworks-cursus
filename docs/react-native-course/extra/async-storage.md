@@ -19,7 +19,7 @@ Om een string op te slaan in AsyncStorage gebruiken we de `setItem` functie. Dez
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
 import React from 'react';
 
-import { View, Text, Button, StatusBar } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const storeData = async () => {
@@ -37,7 +37,6 @@ const getData = async () => {
 const App = () => {
   return (
     <View>
-      <StatusBar translucent={false}/>
       <Text>AsyncStorage</Text>
       <Button title="Store Data" onPress={storeData} />
       <Button title="Load Data" onPress={getData } />
@@ -55,7 +54,7 @@ Wil je een getal rechtstreeks opslagen in AsyncStorage dan moet je eerst de waar
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
 import React from 'react';
 
-import { View, Text, Button, StatusBar } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const storeData = async () => {
@@ -74,7 +73,6 @@ const getData = async () => {
 const App = () => {
   return (
     <View>
-      <StatusBar translucent={false}/>
       <Text>AsyncStorage</Text>
       <Button title="Store Data" onPress={storeData} />
       <Button title="Load Data" onPress={getData } />
@@ -92,7 +90,7 @@ Om een object op te slaan in AsyncStorage moet je eerst het object omzetten naar
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
 import React from 'react';
 
-import { View, Text, Button, StatusBar } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Student {
@@ -120,7 +118,6 @@ const getData = async () => {
 const App = () => {
   return (
     <View>
-      <StatusBar translucent={false}/>
       <Text>AsyncStorage</Text>
       <Button title="Store Data" onPress={storeData} />
       <Button title="Load Data" onPress={getData } />
@@ -139,7 +136,7 @@ We kunnen ook de state van een component opslaan in AsyncStorage. Dit kan handig
 
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StatusBar } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
@@ -164,7 +161,6 @@ const App = () => {
 
   return (
     <View>
-      <StatusBar translucent={false}/>
       <Text>AsyncStorage</Text>
       <Text>Counter: {counter}</Text>
       <Button title="Increment" onPress={() => setCounter(counter + 1)} />

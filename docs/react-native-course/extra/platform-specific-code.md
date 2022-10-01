@@ -10,12 +10,11 @@ De onderstaande code laat zien hoe je alle informatie van het platform kan ophal
 
 ```typescript expo={}
 import React from 'react';
-import { Platform, View, Text, StatusBar } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 
 const App = () => {
 	return (
 		<View>
-      <StatusBar translucent={false}/>
 			<Text>Platform</Text>
 			<Text>OS: {Platform.OS}</Text>
 			<Text>Version: {Platform.Version}</Text>

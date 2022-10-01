@@ -12,12 +12,11 @@ Maak een nieuw project `CoreComponents` aan met expo. Vervang de inhoud van `App
 
 ```typescript expo={}
 import React from "react";
-import { Text, View, StyleSheet, Button, StatusBar } from "react-native";
+import { Text, View, StyleSheet, Button } from "react-native";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <StatusBar translucent={false}>
     </View>
   );
 }

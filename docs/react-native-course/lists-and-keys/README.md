@@ -13,7 +13,7 @@ We kunnen een lijst maken door een for lus te gebruiken. We kunnen dan een array
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text} from 'react-native';
 
 const App = () => {
     const names = ["Andie","Lotte","Liene","Hanna"];
@@ -25,7 +25,6 @@ const App = () => {
 
     return (
         <View style={{flexDirection: "column", flex: 1}}>
-            <StatusBar translucent={false}/>
             {nameTexts}
         </View>
     )
@@ -47,14 +46,13 @@ Hieronder een voorbeeld dat een lijst van kleuren naar gekleurde views mapt. We 
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text} from 'react-native';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>
-            <StatusBar translucent={false}/>
             {colors.map(color => (
                 <View key={color} style={{flex:1 , backgroundColor: color}}/>
             ))}
@@ -70,14 +68,13 @@ Je moet uiteraard niet altijd mappen naar views. Je kan ook mappen naar andere c
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text} from 'react-native';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
         <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>
-            <StatusBar translucent={false}/>
             {colors.map(color => (
                 <Text key={color} style={{flex:1 , backgroundColor: color, textAlign:"center"}}>{color}</Text>
             ))}
@@ -94,13 +91,12 @@ We kunnen een woord opsplitsen naar een array van letters en deze dan apart tone
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text} from 'react-native';
 
 const App = () => {
     const word = "Hello";
     return (
         <View style={{flex: 1, flexDirection: "row"}}>
-            <StatusBar translucent={false}/>
             {word.split("").map((letter, index) => (
                 <Text key={letter + index} style={{flex:1 , fontSize: 20 + index * 10, textAlign:"center"}}>{letter}</Text>
             ))}
@@ -120,14 +116,13 @@ Als we bijvoorbeeld de elementen iets groter maken dan zie je direct het problee
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
+import {View, Text} from 'react-native';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
         <View style={{flex: 1, alignItems: "stretch"}}>
-          <StatusBar translucent={false}/>
           {colors.map(color => (
               <View key={color} style={{height: 200, backgroundColor: color}}/>
           ))}
@@ -143,14 +138,13 @@ We kunnen hier eenvoudig een ScrollView rondzetten om dit probleem op te lossen:
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, ScrollView, StatusBar} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
         <View>
-            <StatusBar translucent={false}/>
             <ScrollView>
                 <View style={{flex: 1, alignItems: "stretch"}}>
                     {colors.map(color => (
@@ -177,7 +171,7 @@ De `FlatList` component heeft een aantal props die we moeten meegeven. De `data`
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, FlatList, StatusBar} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 
 interface Person {
     id: number;
@@ -204,7 +198,6 @@ const PersonComponent = ({item} : {item: Person}) => {
 const App = () => {
     return (
         <View style={{flex: 1, flexDirection: "column"}}>
-            <StatusBar translucent={false}/>
             <FlatList
                 data={persons}
                 renderItem={({item}) => <PersonComponent item={item}/>}
@@ -222,14 +215,13 @@ We herdoen ook nog het voorbeeld van de kleuren maar dan met het `FlatList` comp
 ```typescript expo={}
 import React from 'react';
 
-import {View, Text, FlatList, StatusBar} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>
-            <StatusBar translucent={false}/>
+        <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>       
             <FlatList
                 data={colors}
                 renderItem={({item}) => (

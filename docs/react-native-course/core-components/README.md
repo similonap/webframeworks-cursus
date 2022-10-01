@@ -11,8 +11,10 @@ Zoals we al gezien hebben kan er in React Native geen gebruik gemaakt worden van
 De `View` component is het meest gebruikte component in React Native. Het is een container component die andere componenten kan bevatten. De `View` component is vergelijkbaar met de `div` tag in HTML.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
+
 const App = () => {
     return (
         <View style={styles.container}>
@@ -24,9 +26,10 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
     },
 });
 
@@ -36,7 +39,7 @@ export default App;
 Dezelfde app zou er in React.js als volgt uitzien:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import React from 'react';
+import React from "react";
 
 const App = () => {
     return (
@@ -52,9 +55,9 @@ const styles = {
         flex: 1,
         height: "100vh",
         width: "100vw",
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
     },
 }
 
@@ -63,45 +66,6 @@ export default App;
 
 Je ziet dat deze twee componenten erg veel op elkaar lijken. De `View` component is een container component die andere componenten kan bevatten. De `div` tag in HTML is ook een container component die andere elementen kan bevatten. Een belangrijk verschil is dat alle Views by default flexbox containers zijn. Je hoeft dit niet expliciet aan te geven. In React.js moet je dit wel expliciet aangeven door de `display: flex` property toe te voegen aan de `div` tag.
 
-## StatusBar
-
-De `StatusBar` component is een component die je gebruikt om de statusbar van je app aan te passen. De statusbar is de balk bovenaan je app die de tijd, batterij status en wifi status weergeeft. 
-
-Als je wilt voorkomen dat je app onder de statusbar komt te staan, dan moet je de `StatusBar` component gebruiken. Je moet de `StatusBar` component altijd bovenaan je app plaatsen. 
-
-```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
-const App = () => {
-    return (
-        <View style={styles.container}>
-            <StatusBar translucent={false}/>
-            <Text>Hello World</Text>
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-});
-
-export default App;
-```
-
-Wil je in android voorkomen dat je app onder de statusbar komt te staan, dan moet je de `translucent` property op `false` zetten. 
-
-Je kan nog een aantal andere properties aan de `StatusBar` component meegeven:
-- De `backgroundColor` property kan je gebruiken om de kleur van de statusbar aan te passen. (Enkel android) 
-- De `barStyle` property kan je gebruiken om de kleur van de tekst in de statusbar aan te passen. Deze kan de volgende waarden hebben `default`, `light-content` en `dark-content`.
-- De `hidden` property kan je gebruiken om de statusbar te verbergen.
-
-:::info
-Sommige smartphones hebben een notch. De notch is een stukje scherm dat bovenaan het scherm zit. De notch wordt gebruikt om de camera en de sensoren te huisvesten. Er bestaan manieren om hiermee om te gaan, maar dit is buiten de scope van deze cursus op dit moment. Je kan dit voorlopig oplossen met een margin-top te voorzien op je app. Je kan de exacte hoogte opvragen via de `StatusBar.currentHeight` property.
-:::
-
 ## StyleSheet
 
 Het `StyleSheet` component is een object dat alle styling informatie bevat. In React.js wordt dit meestal gedaan met CSS. In React Native wordt dit gedaan in JavaScript. Het `StyleSheet` component is een object dat alle styling informatie bevat. 
@@ -109,24 +73,27 @@ Het `StyleSheet` component is een object dat alle styling informatie bevat. In R
 Een stylesheet kan je als volgt aanmaken:
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <View style={styles.box}/>
         </View>
     );
 }
 const styles = StyleSheet.create({
+    container: {
+        paddingTop: Constants.statusBarHeight,
+    },
     box: {
         width: 100,
         height: 100,
-        backgroundColor: 'red',
+        backgroundColor: "red",
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: "black",
         borderRadius: 10
     }
 });
@@ -134,7 +101,9 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-We maken hier een vierkant aan met een rode achtergrond. De `borderWidth` property geeft aan hoe dik de rand van het vierkant moet zijn. De `borderColor` property geeft aan welke kleur de rand moet hebben. De `borderRadius` property geeft aan hoeveel de hoeken van het vierkant afgerond moeten worden.
+We maken hier een vierkant aan met een rode achtergrond. De `borderWidth` property geeft aan hoe dik de rand van het vierkant moet zijn. De `borderColor` property geeft aan welke kleur de rand moet hebben. De `borderRadius` property geeft aan hoeveel de hoeken van het vierkant afgerond moeten worden. 
+
+Merk op dat we hier gebruik maken van `Constants.statusBarHeight`. Dit is een variabele die de hoogte van de statusbalk bevat. Zo kunnen we ervoor zorgen dat de app niet onder de statusbalk komt te staan.
 
 Je kan nog meer styling properties toevoegen aan een View. Je kan deze hier vinden: 
 - https://reactnative.dev/docs/view-style-props
@@ -144,14 +113,14 @@ Je kan nog meer styling properties toevoegen aan een View. Je kan deze hier vind
 Het is ook mogelijk rechstreeks in de style property van een View een object mee te geven. Dit is echter niet aan te raden. Het is beter om een stylesheet aan te maken en deze te gebruiken. Dit is beter voor de performance van je app. Inline styles zijn echter wel handig als je snel een style wilt testen.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
-            <View style={{width: 100,height: 100, backgroundColor: 'red',borderWidth: 1,borderColor: 'black',borderRadius: 10}}/>
+        <View style={{paddingTop: Constants.statusBarHeight}}>
+            <View style={{width: 100,height: 100, backgroundColor: "red",borderWidth: 1,borderColor: "black",borderRadius: 10}}/>
         </View>
     );
 }
@@ -167,24 +136,29 @@ De `Text` component is een component die tekst kan weergeven. De `Text` componen
 Hieronder een aantal voorbeelden van veel voorkomende style properties
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
-            <Text style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                fontStyle: 'italic',
-                textDecorationLine: 'underline',
-                textAlign: 'center',
-                color: 'red'
-            }}>Hello World</Text>
+        <View style={styles.container}>
+            <Text style={styles.hello}>Hello World</Text>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight },
+    hello: {
+        fontSize: 20,
+        fontWeight: "bold",
+        fontStyle: "italic",
+        textDecorationLine: "underline",
+        textAlign: "center",
+        color: "red"
+    }
+});
 
 export default App;
 ```
@@ -197,17 +171,22 @@ Meer informatie over de styling props van het `Text` component kan je hier vinde
 Het is mogelijk om een `Text` component in een andere `Text` component te nesten. 
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
-            <Text>Hello<Text style={{color: 'blue', fontWeight: 'bold'}}> World</Text></Text>
+        <View style={styles.container}>
+            <Text>Hello<Text style={styles.world}> World</Text></Text>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight },
+    world: { color: "blue", fontWeight: "bold" }
+});
 
 export default App;
 ```
@@ -232,22 +211,28 @@ De afbeeldingen komen mee in je project directory staan bij de source bestanden.
 Je kan ook afbeeldingen van het internet gebruiken. Dit doe je door de `uri` property te gebruiken. Images van het internet moeten altijd een width en een height style hebben.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Image
-                style={{width: 100, height: 100}}
+                style={styles.image}
                 source={{
-                uri: 'https://reactnative.dev/img/tiny_logo.png',
+                uri: "https://reactnative.dev/img/tiny_logo.png",
             }}
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight },
+    image: { width: 100, height: 100 }
+});
+
 export default App;
 ```
 
@@ -269,22 +254,28 @@ De volgende waarden zijn mogelijk:
 - `stretch` - De afbeelding wordt zo groot mogelijk gemaakt. Er wordt geen rekening gehouden met de aspect ratio van de afbeelding. De afbeelding wordt uitgerekt.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Image
-                style={{width: 150, height: 200, resizeMode: "center"}}
+                style={styles.image}
                 source={{
-                uri: 'https://reactnative.dev/img/tiny_logo.png',
+                uri: "https://reactnative.dev/img/tiny_logo.png",
             }}
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight },
+    image: { width: 150, height: 200, resizeMode: "center" }
+});
+
 export default App;
 ```
 
@@ -293,23 +284,29 @@ export default App;
 De `TextInput` component is een component die gebruikt kan worden om tekst in te voeren. De `TextInput` component is vergelijkbaar met de `input` tag in HTML.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, TextInput } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <TextInput
                 secureTextEntry={false}
                 autoCapitalize="characters"
                 placeholder="Enter your name"
                 keyboardType="default"
-                style={{borderColor: 'red', borderWidth: 1}}
+                style={styles.textinput}
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight},
+    textinput: { borderColor: "red", borderWidth: 1}
+});
+
 export default App;
 ```
 
@@ -323,17 +320,22 @@ De `Button` component is een component die gebruikt kan worden om een button te 
 Op beide platformen zal de button een native feel hebben en button heeft beperkte styling mogelijkheden.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Button, View, StatusBar} from 'react-native';
+import React from "react";
+import { StyleSheet, Button, View} from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Button title="Hello World" color="green" disabled={false}/>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight }
+});
+
 export default App;
 ```
 
@@ -344,15 +346,15 @@ Zoals we hiervoor hebben vermeld is de `Button` component beperkt in styling mog
 Zelfs als je een `Button` component gebruikt, wordt er achter de schermen een `Pressable` component gebruikt om de button te maken. 
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, Pressable, Alert, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Pressable
-                style={{backgroundColor: "red"}}
+                style={styles.pressable}
                 onPress={() => {
                     Alert.alert("Pressed!");
                 }}
@@ -363,30 +365,39 @@ const App = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight},
+    pressable: { backgroundColor: "red" }
+});
+
 export default App;
 ```
 
 Je kan de stijl van de `Pressable` laten aanpassen afhankelijk hij ingedrukt is of niet. Dit doe je door in plaats van een style object mee te geven een functie mee te geven die een style object teruggeeft.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Text, View, Pressable, Alert, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Pressable
-                style={(style) => (style.pressed) ? {backgroundColor: "red", padding: 10, borderRadius: 5} : {backgroundColor: "blue", padding: 10, borderRadius: 5}}
-                onPress={() => {
-                    Alert.alert("Pressed!");
-                }}
+                style={(style) => (style.pressed) ? styles.pressedTrue : styles.pressedFalse}
+                onPress={() => Alert.alert("Pressed!")}
             >
                 <Text style={{color: "white"}}>Press Me</Text>
             </Pressable>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight},
+    pressedTrue: { backgroundColor: "red", padding: 10, borderRadius: 5},
+    pressedFalse: { backgroundColor: "blue", padding: 10, borderRadius: 5}
+});
 
 export default App;
 ```
@@ -400,13 +411,13 @@ Pas op in html zijn events altijd in lowercase geschreven, in react native zijn 
 ### Button
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, Button, View, Alert, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, Button, View, Alert } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Button
                 title="Press me"
                 onPress={() => {
@@ -416,6 +427,10 @@ const App = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
@@ -430,13 +445,13 @@ TextInput heeft een aantal event handlers die je kan gebruiken:
 - onKeyPress: wordt aangeroepen wanneer de gebruiker een toets indrukt. 
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, View, TextInput, Alert, StatusBar } from 'react-native';
+import React from "react";
+import { StyleSheet, View, TextInput, Alert } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <TextInput
                 placeholder="Enter your name"
                 onChangeText={(text) => {
@@ -459,6 +474,10 @@ const App = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight}
+});
+
 export default App;
 ```
 
@@ -471,13 +490,13 @@ Pressable heeft een aantal event handlers die je kan gebruiken:
 - onLongPress: wordt aangeroepen wanneer de gebruiker de button lang ingedrukt houdt. Standaard op 500ms. Kan aangepast worden met de `delayLongPress` prop.
 
 ```typescript expo={}
-import React from 'react';
-import { StyleSheet, View, Pressable, Alert, StatusBar, Text } from 'react-native';
+import React from "react";
+import { StyleSheet, View, Pressable, Alert, Text } from "react-native";
+import Constants from "expo-constants";
 
 const App = () => {
     return (
-        <View>
-            <StatusBar translucent={false}/>
+        <View style={styles.container}>
             <Pressable
                 delayLongPress={1000}
                 onPress={() => {
@@ -498,6 +517,10 @@ const App = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: { paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
