@@ -152,7 +152,7 @@ const Box = ({boxStyle}: BoxProps) => {
 
 const App = () => {
     return (
-        <View style={{flexDirection: "column", flex: 1}}>
+        <View style={styles.container}>
             <Box/>
             <Box boxStyle={{backgroundColor: "green"}}/>
             <Box boxStyle={{backgroundColor: "blue"}}/>

@@ -11,9 +11,9 @@ Net zoals in React.js kunnen we ook in React Native lijsten maken. We kunnen dit
 We kunnen een lijst maken door een for lus te gebruiken. We kunnen dan een array maken en deze opvullen met een for lus. We kunnen dan deze array mappen naar een component. 
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text} from "react-native";
 
 const App = () => {
     const names = ["Andie","Lotte","Liene","Hanna"];
@@ -24,11 +24,15 @@ const App = () => {
     }
 
     return (
-        <View style={{flexDirection: "column", flex: 1}}>
+        <View style={styles.container}>
             {nameTexts}
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {flexDirection: "column", flex: 1, paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
@@ -44,15 +48,15 @@ De map functie is zeer handig om een lijst te maken. We kunnen een lijst maken d
 Hieronder een voorbeeld dat een lijst van kleuren naar gekleurde views mapt. We gebruiken de kleurnamen hier als key maar let goed op dat dit niet altijd de beste keuze is. In dit geval is het wel ok omdat de kleuren uniek zijn.
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text} from "react-native";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>
+        <View style={styles.container}>
             {colors.map(color => (
                 <View key={color} style={{flex:1 , backgroundColor: color}}/>
             ))}
@@ -60,27 +64,35 @@ const App = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {flexDirection: "column", alignItems: "stretch", flex: 1, paddingTop: Constants.statusBarHeight}
+});
+
 export default App;
 ```
 
 Je moet uiteraard niet altijd mappen naar views. Je kan ook mappen naar andere componenten. Hieronder een voorbeeld dat een lijst van kleuren naar `Text` componenten mapt.
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text} from "react-native";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>
+        <View style={styles.container}>
             {colors.map(color => (
                 <Text key={color} style={{flex:1 , backgroundColor: color, textAlign:"center"}}>{color}</Text>
             ))}
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {flexDirection: "column", alignItems: "stretch", flex: 1, paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
@@ -89,20 +101,24 @@ Een extra voorbeeld:
 We kunnen een woord opsplitsen naar een array van letters en deze dan apart tonen. We gebruiken hier de `split` functie om een string te splitsen naar een array van letters. We gebruiken de index van het element om de fontSize te bepalen. We gebruiken een combinatie van de letter en de index als key.
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text} from "react-native";
 
 const App = () => {
     const word = "Hello";
     return (
-        <View style={{flex: 1, flexDirection: "row"}}>
+        <View style={styles.container}>
             {word.split("").map((letter, index) => (
                 <Text key={letter + index} style={{flex:1 , fontSize: 20 + index * 10, textAlign:"center"}}>{letter}</Text>
             ))}
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {flex: 1, flexDirection: "row", paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
@@ -114,15 +130,15 @@ Tot nu toe konden we alleen maar lijsten tonen die in de lengte van het scherm p
 Als we bijvoorbeeld de elementen iets groter maken dan zie je direct het probleem:
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text} from "react-native";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View style={{flex: 1, alignItems: "stretch"}}>
+        <View style={styles.container}>
           {colors.map(color => (
               <View key={color} style={{height: 200, backgroundColor: color}}/>
           ))}
@@ -130,21 +146,25 @@ const App = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {flex: 1, alignItems: "stretch", paddingTop: Constants.statusBarHeight}
+});
+
 export default App;
 ```
 
 We kunnen hier eenvoudig een ScrollView rondzetten om dit probleem op te lossen:
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text, ScrollView} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text, ScrollView} from "react-native";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <ScrollView>
                 <View style={{flex: 1, alignItems: "stretch"}}>
                     {colors.map(color => (
@@ -155,6 +175,10 @@ const App = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```
@@ -169,9 +193,9 @@ FlatList is automatisch scrollable dus hoeft niet in een `ScrollView` gezet te w
 De `FlatList` component heeft een aantal props die we moeten meegeven. De `data` prop is de lijst die we willen tonen. De `renderItem` prop is een functie die een item uit de lijst zal renderen. De `keyExtractor` prop is een functie die een key zal teruggeven voor een item uit de lijst. 
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text, FlatList} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text, FlatList} from "react-native";
 
 interface Person {
     id: number;
@@ -197,7 +221,7 @@ const PersonComponent = ({item} : {item: Person}) => {
 
 const App = () => {
     return (
-        <View style={{flex: 1, flexDirection: "column"}}>
+        <View style={styles.container}>
             <FlatList
                 data={persons}
                 renderItem={({item}) => <PersonComponent item={item}/>}
@@ -207,21 +231,25 @@ const App = () => {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {flex: 1, flexDirection: "column", paddingTop: Constants.statusBarHeight}
+});
+
 export default App;
 ```
 
 We herdoen ook nog het voorbeeld van de kleuren maar dan met het `FlatList` component.
 
 ```typescript expo={}
-import React from 'react';
-
-import {View, Text, FlatList} from 'react-native';
+import React from "react";
+import Constants from "expo-constants";
+import {View, Text, FlatList} from "react-native";
 
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 const App = () => {
     return (
-        <View style={{flexDirection: "column", alignItems: "stretch", flex: 1}}>       
+        <View style={styles.container}>       
             <FlatList
                 data={colors}
                 renderItem={({item}) => (
@@ -232,6 +260,10 @@ const App = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {flexDirection: "column", alignItems: "stretch", flex: 1, paddingTop: Constants.statusBarHeight}
+});
 
 export default App;
 ```

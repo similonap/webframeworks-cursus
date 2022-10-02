@@ -1,6 +1,6 @@
 # Camera
 
-`expo-camera` is een package die je kan gebruiken om foto's te maken met je app. Met Camera kan je ook foto's nemen en filmpjes maken.
+`expo-camera` is een package die je kan gebruiken om foto"s te maken met je app. Met Camera kan je ook foto"s nemen en filmpjes maken.
 
 ## Installatie
 
@@ -17,9 +17,9 @@ npx expo install expo-camera
 Het is belangrijk om te weten dat je de `Camera` component pas kan gebruiken als de gebruiker hiervoor toestemming heeft gegeven. Dit kan je doen met de `requestPermission` functie afkomstig uit de `useCameraPermissions` hook. 
 
 ```typescript expo={"dependencies":"expo-camera"}
-import React, { useState } from 'react';
-import { Camera, CameraType } from 'expo-camera';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from "react";
+import { Camera, CameraType } from "expo-camera";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const App = () => {
     const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -32,7 +32,7 @@ const App = () => {
     if (!permission.granted) {
         return (
             <View style={styles.container}>
-                <Text>You don't have permission to use the camera</Text>
+                <Text>You don"t have permission to use the camera</Text>
                 <Button title="Toestemming vragen" onPress={requestPermission} />
             </View>
         );
@@ -53,9 +53,9 @@ export default App;
 Eenmaal je de permissie hebt gekregen kan je de `Camera` component gebruiken.
 
 ```typescript expo={"dependencies":"expo-camera"}
-import React, { useState } from 'react';
-import { Camera, CameraType } from 'expo-camera';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from "react";
+import { Camera, CameraType } from "expo-camera";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const App = () => {
     const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -68,7 +68,7 @@ const App = () => {
     if (!permission.granted) {
         return (
             <View style={styles.container}>
-                <Text>You don't have permission to use the camera</Text>
+                <Text>You don"t have permission to use the camera</Text>
                 <Button title="Toestemming vragen" onPress={requestPermission} />
             </View>
         );
@@ -103,9 +103,9 @@ Je moet dan ook nog het `Camera` component aanpassen zodat het de `cameraRef` ge
 daarna kunnen we de `takePictureAsync` functie aanroepen op deze `cameraRef`. Deze functie geeft ons een `Photo` object terug. Dit object bevat de `uri` van de foto.
 
 ```typescript expo={"dependencies":"expo-camera"}
-import React, { useState } from 'react';
-import { Camera, CameraType } from 'expo-camera';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from "react";
+import { Camera, CameraType } from "expo-camera";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const App = () => {
     const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -128,7 +128,7 @@ const App = () => {
     if (!permission.granted) {
         return (
             <View style={styles.container}>
-                <Text>You don't have permission to use the camera</Text>
+                <Text>You don"t have permission to use the camera</Text>
                 <Button title="Toestemming vragen" onPress={requestPermission} />
             </View>
         );

@@ -19,14 +19,14 @@ npm install @react-navigation/bottom-tabs
 Om een tab navigation te gebruiken moeten we eerst een `Tab.Navigator` component maken. Dit component bevat de verschillende schermen die we willen tonen in de tab navigation. Deze moet net zoals de `Stack.Navigator` component in de `NavigationContainer` component gezet worden.
 
 ```typescript expo={"dependencies":"@react-navigation/bottom-tabs,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from "react";
+import { Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Home!</Text>
     </View>
   );
@@ -34,7 +34,7 @@ const HomeScreen = () => {
 
 const SettingsScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
     </View>
   );
@@ -62,16 +62,16 @@ Je kan ook icons gebruiken in de tab navigation. Een lijst van alle beschikbare 
 
 ```typescript expo={"dependencies":"@react-navigation/bottom-tabs,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
 //hide-start
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from "react";
+import { Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //hide-end
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 //hide-start
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Home!</Text>
     </View>
   );
@@ -79,7 +79,7 @@ const HomeScreen = () => {
 
 const SettingsScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
     </View>
   );

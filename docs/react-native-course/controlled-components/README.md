@@ -17,8 +17,8 @@ Zorg altijd voor een state voor elk element waar je invoer kan ingeven. Ook al l
 Om een TextInput een controlled component te maken, moeten we de `value` property meegeven aan de `TextInput` component. We moeten ook een `onChangeText` handler meegeven om de state te updaten.
 
 ```typescript expo={}
-import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import React, {useState} from "react";
+import {View, TextInput, Button, Alert, Text} from "react-native";
 
 const App = () => {
     const [text, setText] = useState("");
@@ -26,7 +26,7 @@ const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: "gray", borderWidth: 1}}
                 onChangeText={text => setText(text)}
                 value={text}
             />
@@ -42,8 +42,8 @@ export default App;
 Het is ook mogelijk om meerdere componenten aan 1 state te binden. In dit voorbeeld binden we 2 `TextInput` componenten aan 1 state. Beide zullen up to date blijven bij de huidige waarde van de state.
 
 ```typescript expo={}
-import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import React, {useState} from "react";
+import {View, TextInput, Button, Alert, Text} from "react-native";
 
 const App = () => {
     const [text, setText] = useState("");
@@ -51,12 +51,12 @@ const App = () => {
     return (
         <View style={{flexDirection: "column", flex: 1}}>
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: "gray", borderWidth: 1}}
                 onChangeText={text => setText(text)}
                 value={text}
             />
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: "gray", borderWidth: 1}}
                 onChangeText={text => setText(text)}
                 value={text}
             />
@@ -74,8 +74,8 @@ Als we een `TextInput` component willen gebruiken om getallen in te geven, moete
 De beste manier om dit op te lossen is toch een string als state te gebruiken en deze te converteren naar een numerieke waarde wanneer we deze nodig hebben.
 
 ```typescript expo={}
-import React, {useState} from 'react';
-import {View, TextInput, Button, Alert, Text} from 'react-native';
+import React, {useState} from "react";
+import {View, TextInput, Button, Alert, Text} from "react-native";
 
 const App = () => {
     const [number, setNumber] = useState("0");
@@ -93,7 +93,7 @@ const App = () => {
         <View style={{flexDirection: "column", flex: 1}}>
             <TextInput
                 keyboardType="number-pad"
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={{height: 40, borderColor: "gray", borderWidth: 1}}
                 onChangeText={text => setNumber(text)}
                 value={number}
             />
@@ -112,8 +112,8 @@ We kunnen ook een `Button` component gebruiken om de state te updaten. We kunnen
 We zullen in het onderstaande voorbeeld een teller tonen die we aan de hand van de Button kunnen verhogen.
 
 ```typescript expo={}
-import React, {useState} from 'react';
-import {View, Button, Text} from 'react-native';
+import React, {useState} from "react";
+import {View, Button, Text} from "react-native";
 
 const App = () => {
     const [counter, setCounter] = useState(0);
@@ -134,9 +134,9 @@ export default App;
 Een `Switch` component heeft een `value` property en een `onValueChange` handler. We kunnen deze gebruiken om een `Switch` component te maken die een controlled component is.
 
 ```typescript expo={}
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
-import {View, Switch, Text} from 'react-native';
+import {View, Switch, Text} from "react-native";
 
 const App = () => {
     const [isEnabled, setIsEnabled] = useState(false);
@@ -160,9 +160,9 @@ export default App;
 We kunnen ook conditioneel renderen in React Native. We gebruiken hier vooral de `&&` operator voor of de ternary operator.
 
 ```typescript expo={}
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
-import {View, Switch, Text, Image} from 'react-native';
+import {View, Switch, Text, Image} from "react-native";
 
 const App = () => {
     const [isEnabled, setIsEnabled] = useState(false);
@@ -189,9 +189,9 @@ export default App;
 Een `ActivityIndicator` component heeft een `animating` property en een `size` property. Meestal is de animating property afhankelijk van de waarde van een state. Als we bijvoorbeeld iets willen laden, dan zetten we de `animating` property op `true` en als we klaar zijn met laden, dan zetten we de `animating` property op `false`.
 
 ```typescript expo={}
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
-import {View, Button, Text, ActivityIndicator} from 'react-native';
+import {View, Button, Text, ActivityIndicator} from "react-native";
 
 interface TimezoneInterface {
     datetime: string;
@@ -230,9 +230,9 @@ export default App;
 Een `FlatList` component heeft een `refreshing` property en een `onRefresh` handler. We kunnen deze gebruiken om een `FlatList` component te maken die een pull to refresh heeft. Hiervoor moeten we de refreshing state bijhouden en deze updaten wanneer de gebruiker de lijst heeft gerefreshed.
 
 ```typescript expo={}
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList, Text} from "react-native";
 
 const generateRandomColors = (amount: number) => {
     let colors : string[] = [];

@@ -9,8 +9,8 @@ De `Platform` API is een globale variabele die je kunt importeren vanuit `react-
 De onderstaande code laat zien hoe je alle informatie van het platform kan ophalen:
 
 ```typescript expo={}
-import React from 'react';
-import { Platform, View, Text } from 'react-native';
+import React from "react";
+import { Platform, View, Text } from "react-native";
 
 const App = () => {
 	return (
@@ -19,8 +19,8 @@ const App = () => {
 			<Text>OS: {Platform.OS}</Text>
 			<Text>Version: {Platform.Version}</Text>
 
-			{Platform.OS === 'ios' && <Text>Je werkt op iOS</Text>}
-			{Platform.OS === 'android' && <Text>Je werkt op Android</Text>}
+			{Platform.OS === "ios" && <Text>Je werkt op iOS</Text>}
+			{Platform.OS === "android" && <Text>Je werkt op Android</Text>}
 		</View>
 	);
 };

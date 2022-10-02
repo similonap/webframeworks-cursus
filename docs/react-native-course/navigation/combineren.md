@@ -11,19 +11,19 @@ Wil je bijvoorbeeld een app die bestaat uit twee screens. De eerste pagina is ee
 Om dit te realiseren moeten we een `Stack.Navigator` component maken met daarin twee screens. De eerste screen is de welkomstpagina. De tweede screen is dan een nieuw component dat de tab navigation bevat.
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,@react-navigation/bottom-tabs,react-native-screens,react-native-safe-area-context,@react-navigation/native,react-native-safe-area-context,@react-navigation/native,react-native-gesture-handler,react-native-reanimated"}
-import * as React from 'react';
+import * as React from "react";
 
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Button, Text } from 'react-native';
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Button, Text } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Tab1Screen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Tab 1!</Text>
     </View>
   );
@@ -31,7 +31,7 @@ const Tab1Screen = () => {
 
 const Tab2Screen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Tab 2!</Text>
     </View>
   );

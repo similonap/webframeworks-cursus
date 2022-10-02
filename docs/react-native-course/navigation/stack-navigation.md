@@ -20,14 +20,14 @@ npm install @react-navigation/native-stack
 Hieronder een voorbeeld met 1 `Screen` component:
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
     </View>
   );
@@ -52,14 +52,14 @@ Als we een tweede Screen willen toevoegen moeten we deze er gewoon bijzetten. He
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
 //hide-start
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
     </View>
   );
@@ -67,7 +67,7 @@ const HomeScreen = () => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -96,14 +96,14 @@ De titel van een scherm kan worden veranderd door de `options` property van het 
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
 //hide-start
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
     </View>
   );
@@ -111,7 +111,7 @@ const HomeScreen = () => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -139,14 +139,14 @@ export default App;
 Soms willen we properties doorgeven aan een scherm. We geven dan niet meer de component door als prop maar een functie die een component teruggeeft. Deze functie krijgt als argument de properties die we hebben doorgegeven.
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = ({colors}: {colors: string[]}) => {
   return (
-    <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       {colors.map((color) => <View style={{backgroundColor: color, flex: 1}}></View>)}
     </View>
   );
@@ -154,7 +154,7 @@ const HomeScreen = ({colors}: {colors: string[]}) => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -188,15 +188,15 @@ Hiervoor gebruiken we de `useNavigation` hook. Deze hook geeft ons een object wa
 We kunnen dan de `navigate` functie gebruiken om naar een andere scherm te navigeren. We geven de naam van het scherm mee als argument.
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text, Button } from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   const navigation : any = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       <Button title="Detail" onPress={() => navigation.navigate("Detail")}/>
     </View>
   );
@@ -204,7 +204,7 @@ const HomeScreen = () => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -245,15 +245,15 @@ Er zal geen back knop verschijnen als je een scherm vervangt.
 Als je wilt terug gaan naar het vorige scherm, dan kun je de `goBack` functie gebruiken. Deze functie verwijdert het huidige scherm en plaatst het vorige scherm op de stack.
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text, Button } from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   const navigation : any = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       <Button title="Detail" onPress={() => navigation.navigate("Detail")}/>
     </View>
   );
@@ -261,7 +261,7 @@ const HomeScreen = () => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -290,15 +290,15 @@ Wil je teruggaan naar een specifiek scherm dan gebruik je best gewoon terug `nav
 We kunnen parameters doorgeven aan een scherm. Dit doen we door een object mee te geven aan de `navigate` functie. We kunnen deze parameters dan opvragen in het scherm waar we naartoe navigeren met de `useRoute` hook.
 
 ```typescript {10-12,18,23} expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text, Button } from "react-native";
+import { NavigationContainer, useNavigation, useRoute } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   const navigation : any = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       <Button title="Detail 1" onPress={() => navigation.navigate("Detail", {id: 1})}/>
       <Button title="Detail 2" onPress={() => navigation.navigate("Detail", {id: 2})}/>
       <Button title="Detail 3" onPress={() => navigation.navigate("Detail", {id: 3})}/>
@@ -310,7 +310,7 @@ const DetailScreen = () => {
   const route: RouteProp<any> = useRoute();
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
       <Text>{route.params?.id}</Text>
     </View>
@@ -342,14 +342,14 @@ We kunnen de header van een scherm aanpassen door de `options` property van het 
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
 //hide-start
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
     </View>
   );
@@ -363,11 +363,11 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={{
             headerStyle: {
-                backgroundColor: 'red',
+                backgroundColor: "red",
             },
-            headerTintColor: '#fff',
+            headerTintColor: "#fff",
             headerTitleStyle: {
-                fontWeight: 'bold',
+                fontWeight: "bold",
             }
         }}/>
       </Stack.Navigator>
@@ -383,15 +383,15 @@ Wil je ineens de header van alle schermen aanpassen, dan kan je dat doen door ee
 
 ```typescript expo={"dependencies":"@react-navigation/native-stack,react-native-screens,react-native-safe-area-context,@react-navigation/native"}
 //hide-start
-import * as React from 'react';
-import { View, Text,Button} from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, Text,Button} from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeScreen = () => {
   const navigation : any = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
       <Button title="Details" onPress={() => navigation.navigate("Detail") }/>
     </View>
@@ -400,7 +400,7 @@ const HomeScreen = () => {
 
 const DetailScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Detail Screen</Text>
     </View>
   );
@@ -413,11 +413,11 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: 'red',
+                backgroundColor: "red",
             },
-            headerTintColor: '#fff',
+            headerTintColor: "#fff",
             headerTitleStyle: {
-                fontWeight: 'bold',
+                fontWeight: "bold",
             }
         }}>
         <Stack.Screen name="Home" component={HomeScreen}/>

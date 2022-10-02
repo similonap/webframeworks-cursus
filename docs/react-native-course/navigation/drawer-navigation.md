@@ -25,9 +25,9 @@ npx expo install react-native-gesture-handler react-native-reanimated
 Om een drawer navigation te gebruiken moeten we eerst een `Drawer.Navigator` component maken. Dit component bevat de verschillende schermen die we willen tonen in de drawer. Deze moet net zoals de `Stack.Navigator` component in de `NavigationContainer` component gezet worden.
 
 ```typescript expo={"dependencies":"@react-navigation/drawer,react-native-screens,react-native-safe-area-context,@react-navigation/native,react-native-gesture-handler,react-native-reanimated"}
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
 
@@ -73,16 +73,16 @@ Om de drawer programmatisch te openen of sluiten kan je gebruik maken van de `us
 
 ```typescript {6} expo={"dependencies":"@react-navigation/drawer,react-native-screens,react-native-safe-area-context,@react-navigation/native,react-native-gesture-handler,react-native-reanimated"}
 //hide-start
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer,useNavigation } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { View, Text, Button } from "react-native";
+import { NavigationContainer,useNavigation } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
 //hide-end
 const HomeScreen = () => {
     const navigation : any = useNavigation();
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text>Home</Text>
             <Button onPress={() => navigation.toggleDrawer()} title="Toggle Drawer"/>
         </View>
@@ -91,7 +91,7 @@ const HomeScreen = () => {
 //hide-start
 const SettingsScreen = () => {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text>Settings</Text>
         </View>
     );

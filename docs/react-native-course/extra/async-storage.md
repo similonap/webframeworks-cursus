@@ -17,17 +17,17 @@ npx expo install @react-native-async-storage/async-storage
 Om een string op te slaan in AsyncStorage gebruiken we de `setItem` functie. Deze functie heeft twee parameters: de key en de value. De key is een string die we gebruiken om de value later terug op te halen. De value is de string die we willen opslaan.
 
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
-import React from 'react';
+import React from "react";
 
-import { View, Text, Button } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, Button } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const storeData = async () => {
-  await AsyncStorage.setItem('name', 'John Doe');
+  await AsyncStorage.setItem("name", "John Doe");
 };
 
 const getData = async () => {
-  const value = await AsyncStorage.getItem('name');
+  const value = await AsyncStorage.getItem("name");
   if (value !== null) {
     alert(value);
   } else {
@@ -52,18 +52,18 @@ export default App;
 Wil je een getal rechtstreeks opslagen in AsyncStorage dan moet je eerst de waarde omzetten naar een string. Dit kan je doen met de `toString` functie. Om een getal terug te halen uit AsyncStorage moet je eerst de string omzetten naar een getal. Dit kan je doen met de `parseInt` functie.
 
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
-import React from 'react';
+import React from "react";
 
-import { View, Text, Button } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, Button } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const storeData = async () => {
   let randomNumber : number = Math.floor(Math.random() * 100);
-  await AsyncStorage.setItem('randomNumber', randomNumber.toString());
+  await AsyncStorage.setItem("randomNumber", randomNumber.toString());
 };
 
 const getData = async () => {
-  const value : string = await AsyncStorage.getItem('randomNumber');
+  const value : string = await AsyncStorage.getItem("randomNumber");
   if (value !== null) {
     alert(parseInt(value));
   } else {
@@ -88,10 +88,10 @@ export default App;
 Om een object op te slaan in AsyncStorage moet je eerst het object omzetten naar een string. Dit kan je doen met de `JSON.stringify` functie. Om een object terug te halen uit AsyncStorage moet je eerst de string omzetten naar een object. Dit kan je doen met de `JSON.parse` functie.
 
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
-import React from 'react';
+import React from "react";
 
-import { View, Text, Button } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, Button } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface Student {
   name: string;
@@ -103,11 +103,11 @@ const storeData = async () => {
     name: "John Doe",
     age: Math.floor(Math.random() * 10) + 18
   };
-  await AsyncStorage.setItem('randomStudent', JSON.stringify(student));
+  await AsyncStorage.setItem("randomStudent", JSON.stringify(student));
 };
 
 const getData = async () => {
-  const value : string = await AsyncStorage.getItem('randomStudent');
+  const value : string = await AsyncStorage.getItem("randomStudent");
   if (value !== null) {
     let student : Student = JSON.parse(value);
     alert(student.name + " is " + student.age + " years old");
@@ -135,16 +135,16 @@ Je kan ook een array van objecten opslaan in AsyncStorage. Dit werkt op dezelfde
 We kunnen ook de state van een component opslaan in AsyncStorage. Dit kan handig zijn als we de state willen bijhouden als de gebruiker de applicatie sluit. We moeten er dan voor zorgen dat elke wijziging in state ook opgeslagen wordt in AsyncStorage.
 
 ```typescript expo={"dependencies":"@react-native-async-storage/async-storage"}
-import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from "react";
+import { View, Text, Button } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const App = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
-      const value = await AsyncStorage.getItem('counter');
+      const value = await AsyncStorage.getItem("counter");
       if (value !== null) {
         setCounter(parseInt(value));
       }
@@ -154,7 +154,7 @@ const App = () => {
 
   useEffect(() => {
     const storeData = async () => {
-      await AsyncStorage.setItem('counter', counter.toString());
+      await AsyncStorage.setItem("counter", counter.toString());
     };
     storeData();
   }, [counter]);
