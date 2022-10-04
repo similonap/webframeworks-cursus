@@ -466,7 +466,7 @@ export default App;
 
 Iets gelijkaardigs kunnen we nu doen met een `Checkbox`:
 
-```typescript codesandbox={"template": "react-images", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-assets", "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 
