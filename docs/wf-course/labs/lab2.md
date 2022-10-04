@@ -12,7 +12,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Simpele componenten
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2`.
+Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-component`.
 
 Maak de volgende componenten aan:
 - `Header` met als props `title` en `subtitle`

@@ -106,4 +106,3 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-reac
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
 </div>
-
