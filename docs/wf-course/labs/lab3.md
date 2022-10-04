@@ -2,6 +2,7 @@ import Labo3OmHooglaag from '@site/src/components/LabSolutions/Labo3OmHooglaag';
 import Labo3Kleurkiezer from '@site/src/components/LabSolutions/Labo3Kleurkiezer';
 import Labo3ContactForm from '@site/src/components/LabSolutions/Labo3ContactForm';
 import Labo3InputField from '@site/src/components/LabSolutions/Labo3InputField';
+import Labo3Checkbox from '@site/src/components/LabSolutions/Labo3Checkbox';
 
 # Labo 3
 
@@ -25,7 +26,20 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
     <Labo3InputField/>
 </div>
 
-## 2. Omhoog/Omlaag
+
+## 2. Checkbox
+
+Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-checkbox`.
+
+Maak een component `Checkbox` aan met de volgende functionaliteit:
+
+- Plaats een checkbox in je component met als label `Show/Hide`
+- Als de gebruiker de checkbox aanvinkt moet er een div getoond worden met een image als background.
+- Als de gebruiker de checkbox uitzet moet de div verdwijnen.
+
+<Labo3Checkbox/>
+
+## 3. Omhoog/Omlaag
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-omhooglaag`.
 
@@ -42,7 +56,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
     <Labo3OmHooglaag/>
 </div>
 
-## 3. Kleurkiezer
+## 4. Kleurkiezer
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-kleurkiezer`.
 
@@ -61,7 +75,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <Labo3Kleurkiezer/>
 
-## 4. Contactformulier
+## 5. Contactformulier
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-contactformulier`.
 
