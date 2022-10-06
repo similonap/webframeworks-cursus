@@ -11,7 +11,7 @@ const config = {
   title: 'Webframeworks',
   tagline: 'Webframeworks is cool',
   url: 'https://similonap.github.io/',
-  baseUrl: '/webframeworks-cursus/',
+  baseUrl: process.env.BASE_URL ? process.env.BASE_URL : '/webframeworks-cursus/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
