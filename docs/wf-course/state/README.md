@@ -2,13 +2,50 @@
 sidebar_position: 9
 ---
 
+import GoodsSearch from '@site/src/components/Course/GoodsSearch';
+
 # State
 
-State en Props zijn een van de meest essentiële concepten die je moet begrijpen in React. Props dienen om informatie door een componenten structuur te geven, en state wordt gebruikt om applicaties interactief te maken. State wordt gebruikt om informatie bij te houden en deze aan te passen over de looptijd van je applicatie.
+State en Props zijn een van de meest essentiële concepten die je moet begrijpen in React. Props dienen om informatie door een componenten structuur te geven, en state wordt gebruikt om applicaties interactief te maken. 
+
+Terwijl props worden gebruikt om data van buitenaf te geven aan een component, wordt state gebruikt om data van een component te bewaren. Als deze data verandert, zal de component opnieuw gerenderd worden (en dus ook zijn kinderen). 
+
+Alles wat verandert doorheen de levenscyclus van een component, wordt opgeslagen in de state. Dit kan een waarde zijn van een input veld, een checkbox, een lijst van items, een error, een loading state, ...
+
+## Hoe state herkennen?
+
+Bij elk component moet je de volgende vragen stellen:
+- Werd de data van buitenaf gegeven? Dan is het een prop.
+- Blijft de date hetzelfde doorheen de levenscyclus van het component? Dan is het waarschijnlijk geen state.
+- Is de data afgeleid van andere data in je component? Dan is het waarschijnlijk geen state.
+
+#### We kunnen deze analyse eens uitvoeren op het volgende component:
+
+<div style={{border: "1px solid black", padding: 10}}>
+<GoodsSearch/>
+</div>
+
+#### We kunnen hier de volgende data herkennen:
+
+- De originele lijst van producten
+- De tekst die in de zoekbalk is ingegeven
+- De waarde van de checkbox
+- De lijst van producten die gefilterd is op de zoektekst
+
+#### Als we deze data analyseren, kunnen we de volgende conclusies trekken:
+
+- De originele lijst van producten wordt niet aangepast. Er worden bijvoorbeeld geen producten toegevoegd of verwijderd. Dit is dus geen state.
+- De tekst die in de zoekbalk is ingegeven, wordt aangepast door de gebruiker. Dit is dus state.
+- De waarde van de checkbox wordt aangepast door de gebruiker. Dit is dus state.
+- De gefilterde lijst van producten is afgeleid van de originele lijst en de tekst die in de zoekbalk is ingegeven. Dit is dus geen state.
+
+:::info
+De uitwerking van dit voorbeeld kan je vinden op [Voorbeelden](./voorbeelden.md#zoeken-en-filteren)
+:::
 
 ## useState hook
 
-We zullen dat laatste demonstreren aan de hand van een voorbeeld. We gaan hiervoor terug naar ons `InputView` voorbeeld. Stel dat we elke keer de gebruiker iets intypt in de input box, dat we deze text willen laten tonen ergens anders in de applicatie. Dit is dus informatie die aangepast wordt over de looptijd van de applicatie. 
+We gaan het gebruik van state eens demonstreren aan de hand van een voorbeeld. We gaan hiervoor terug naar ons `InputView` voorbeeld. Stel dat we elke keer de gebruiker iets intypt in de input box, dat we deze text willen laten tonen ergens anders in de applicatie. Dit is dus informatie die aangepast wordt over de looptijd van de applicatie. 
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 const InputView = () => {

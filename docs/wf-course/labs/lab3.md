@@ -3,6 +3,8 @@ import Labo3Kleurkiezer from '@site/src/components/LabSolutions/Labo3Kleurkiezer
 import Labo3ContactForm from '@site/src/components/LabSolutions/Labo3ContactForm';
 import Labo3InputField from '@site/src/components/LabSolutions/Labo3InputField';
 import Labo3Checkbox from '@site/src/components/LabSolutions/Labo3Checkbox';
+import Labo3Goods from '@site/src/components/LabSolutions/Labo3Goods';
+import Labo3Loading from '@site/src/components/LabSolutions/Labo3Loading';
 
 # Labo 3
 
@@ -11,7 +13,13 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 - State
 - Formulieren
 
-## 1. Input veld
+## 1. State herkennen
+
+Identificeer de state in de volgende componenten. Geef aan waar de state zich bevindt en wat de initiële waarde is.
+
+<Labo3Goods/>
+
+## 2. Input veld
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-inputfield`.
 
@@ -26,8 +34,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
     <Labo3InputField/>
 </div>
 
-
-## 2. Checkbox
+## 3. Checkbox
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-checkbox`.
 
@@ -36,10 +43,11 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 - Plaats een checkbox in je component met als label `Show/Hide`
 - Als de gebruiker de checkbox aanvinkt moet er een div getoond worden met een image als background.
 - Als de gebruiker de checkbox uitzet moet de div verdwijnen.
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo3Checkbox/>
+</div>
 
-<Labo3Checkbox/>
-
-## 3. Omhoog/Omlaag
+## 4. Omhoog/Omlaag
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-omhooglaag`.
 
@@ -56,7 +64,30 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
     <Labo3OmHooglaag/>
 </div>
 
-## 4. Kleurkiezer
+## 5. Loading indicator
+
+Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-loading`.
+
+installeer de volgende npm packages:
+
+```
+npm install react-loader-spinner
+```
+
+Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
+- De applicatie bevat een `state` met een property `loading` die een boolean bevat. Deze begint bij `false`.
+- De applicatie bevat een `button` met de tekst `Start loading`. Als je op deze knop klikt, wordt de waarde van `loading` op `true` gezet.
+- Na 3 seconden wordt de waarde van `loading` op `false` gezet.
+- Als de waarde van `loading` `true` is, wordt er een loading indicator getoond. De button verdwijnt.
+- Als de waarde van `loading` `false` is, wordt de loading indicator niet getoond. De button verschijnt terug.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo3Loading/>
+</div>
+
+
+
+## 6. Kleurkiezer
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-kleurkiezer`.
 
@@ -75,7 +106,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <Labo3Kleurkiezer/>
 
-## 5. Contactformulier
+## 7. Contactformulier
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-contactformulier`.
 
