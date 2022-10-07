@@ -2,6 +2,7 @@ import Labo1Exercise1 from '@site/src/components/LabSolutions/Labo1Exercise1';
 import Labo1Exercise2 from '@site/src/components/LabSolutions/Labo1Exercise2';
 import Labo1Exercise3 from '@site/src/components/LabSolutions/Labo1Exercise3';
 import Labo1Exercise4 from '@site/src/components/LabSolutions/Labo1Exercise4';
+import ReactPlayer from 'react-player'
 
 # Labo 1
 
@@ -49,6 +50,10 @@ Toon deze waarde in de browser.
     <Labo1Exercise1/>
 </div>
 
+#### Video
+
+<ReactPlayer controls url='https://youtu.be/wHT0FYsQa6k'/>
+
 ## 2. Slotmachine
 
 Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-app commando. 
@@ -70,6 +75,10 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-ap
     <Labo1Exercise2/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/v-MZWSG5uN0'/>
+
 ## 3. Lijsten
 
 Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app commando.
@@ -90,6 +99,9 @@ Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app co
     <Labo1Exercise3/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/68O9gQZ8Ykk'/>
 
 ## 4. Slot machine met map
 
@@ -106,3 +118,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-reac
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/eqS3Ovt2FYE'/>
