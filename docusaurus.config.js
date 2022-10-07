@@ -9,7 +9,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React.js',
-  tagline: 'Webframeworks is cool',
+  tagline: 'React.js',
   url: 'https://similonap.github.io/',
   baseUrl: process.env.BASE_URL ? process.env.BASE_URL : '/',
   onBrokenLinks: 'throw',
