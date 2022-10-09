@@ -11,8 +11,12 @@ import Labo3RandomNicCage from '@site/src/components/LabSolutions/Labo3RandomNic
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
 - Event Handling
-- State
-- Formulieren
+- State 
+    - Hoe state herkennen?
+    - useState hook
+    - setState met callback
+    - Regels van useState
+    - Select, Checkbox en Radio Buttons
 
 ## 1. State herkennen
 

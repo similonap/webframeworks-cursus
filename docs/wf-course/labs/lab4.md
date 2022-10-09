@@ -4,10 +4,8 @@ import Labo4Slots from '@site/src/components/LabSolutions/Labo4Slots';
 
 # Labo 4
 
-Voor dit labo moet je de volgende theorie bekeken hebben:
 - Event Handling
-- State
-- Formulieren
+- State 
 
 ## 1. Slots
 
