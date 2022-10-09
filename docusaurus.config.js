@@ -59,7 +59,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'wf-course/inleiding/README',
+            docId: 'wf-course/README',
             position: 'left',
             label: 'React.js',
           },
