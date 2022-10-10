@@ -1,5 +1,61 @@
 # Extra voorbeelden
 
+## Language selector
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"} 
+import {useState} from "react";
+
+interface Translation {
+  [language: string]: string
+}
+
+interface Translations {
+  key: string,
+  translations: Translation
+}
+
+let translations : Translations[] = [
+  {
+    key: "welcome",
+    translations: {
+      "NL": "Welkom op de website.",
+      "EN": "Welcome to the website.",
+      "FR": "Bienvenue sur le site."
+    }
+  },
+  {
+    key: "language",
+    translations: {
+      "NL": "Deze website is volledig vertaald in het Nederlands.",
+      "EN": "This website is fully translated into english.",
+      "FR": "Ce site est entièrement traduit en francais."
+    }
+  }
+]
+
+const getTranslation = (language: string, key: string) => {
+  return translations.find(t => t.key === key)?.translations[language];
+}
+
+const App = () => {
+  const [language, setLanguage] = useState("NL");
+
+  return (
+    <div>
+      <div>
+        <button onClick={() => setLanguage("NL")}>NL</button>
+        <button onClick={() => setLanguage("EN")}>EN</button>
+        <button onClick={() => setLanguage("FR")}>FR</button>
+      </div>
+      <h1>{getTranslation(language, "welcome")}</h1>
+      <p>{getTranslation(language, "language")}</p>
+    </div>
+  )
+
+}
+export default App;
+```
+
 ## Zoeken en filteren
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"} 
