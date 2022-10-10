@@ -134,7 +134,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <Labo3ContactForm/>
 
-## 9. Random Cage
+## 8. Random Cage
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-random-cage`.
 
