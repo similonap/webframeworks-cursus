@@ -3,6 +3,7 @@ import Labo4ShoppingList from '@site/src/components/LabSolutions/Labo4ShoppingLi
 import Labo4TicTacToe from '@site/src/components/LabSolutions/Labo4TicTacToe';
 import Labo4Slots from '@site/src/components/LabSolutions/Labo4Slots';
 import Labo4MultiSelect from '@site/src/components/LabSolutions/Labo4MultiSelect';
+import Labo4CounterList from '@site/src/components/LabSolutions/Labo4CounterList';
 
 
 # Labo 4
@@ -46,7 +47,17 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 <Labo4MultiSelect/>
 </div>
 
-## 2. Slots
+## 3. Filtering
+
+Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo4-filtering`.
+
+Maak een component `Filtering` aan met de volgende functionaliteit:
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo4Filtering/>
+</div>
+
+## 4. Slots
 
 Je breidt nu de slots machine uit die je gemaakt hebt in labo 2 uit met een aantal nieuwe functionaliteiten.
 
@@ -62,7 +73,25 @@ Het spel ziet er nu als volgt uit:
 <Labo4Slots/>
 </div>
 
-## 3. Tic Tac Toe
+## 5. Counter list
+
+Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo4-counter-list`.
+
+Maak een component `ButtonList` aan met de volgende functionaliteit:
+- Het component bevat 1 state genaamd `counters`. Deze state bevat een array van getallen. Deze array begint bij een lege array.
+- Het component bevat een button met de tekst "Add counter". Als de gebruiker op deze button klikt, moet er een nieuw getal aan de array toegevoegd worden. Het getal moet 0 zijn.
+- Bij elke counter moet er een button getoond worden met de tekst "Increment" of "Decrement". Als de gebruiker op deze button klikt, moet het getal van de counter verhoogd of verlaagd worden.
+- Onderaan staat de som van alle waarden van de counters.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+<Labo4CounterList/>
+</div>
+
+:::note
+Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit later nog doen.
+:::
+
+## 6. Tic Tac Toe
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-tictactoe`.
 
