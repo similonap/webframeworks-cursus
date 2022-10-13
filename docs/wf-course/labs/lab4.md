@@ -4,7 +4,7 @@ import Labo4TicTacToe from '@site/src/components/LabSolutions/Labo4TicTacToe';
 import Labo4Slots from '@site/src/components/LabSolutions/Labo4Slots';
 import Labo4MultiSelect from '@site/src/components/LabSolutions/Labo4MultiSelect';
 import Labo4CounterList from '@site/src/components/LabSolutions/Labo4CounterList';
-
+import Labo4Filtering from '@site/src/components/LabSolutions/Labo4Filtering';
 
 # Labo 4
 
@@ -37,6 +37,7 @@ Maak een component `ColorSelect` aan met de volgende functionaliteit:
 - Het component bevat een select met de volgende kleuren: `red`, `green`, `blue`, `yellow`, `orange`, `purple`, `black`, `white`. Er kunnen meerdere kleuren geselecteerd worden.
 - Het component bevat een state property `selectedColors` die een array bevat met de geselecteerde kleuren.
 - Het component bevat een button met de tekst "Show colors". Als de gebruiker op deze button klikt moet de gebruiker een lijst zien met de geselecteerde kleuren.
+- Als je op een kleur klikt in de lijst, krijgt de gebruiker een prompt met de vraag om een nieuwe kleur te kiezen. Als de gebruiker op "OK" klikt, moet de kleur in de lijst vervangen worden door de nieuwe kleur. 
 
 :::tip
 Je moet hier twee states gebruiken: `selectedColors` en `colors`. De eerste state bevat de geselecteerde kleuren, de tweede state bevat de kleuren die moeten getoond worden. De tweede state wordt aangepast als de gebruiker op de button klikt. Het is een kopie van de eerste state op de moment dat de gebruiker op de button klikt.
@@ -47,11 +48,16 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 <Labo4MultiSelect/>
 </div>
 
-## 3. Filtering
+## 3. Filtering en sorting
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo4-filtering`.
 
 Maak een component `Filtering` aan met de volgende functionaliteit:
+- Maak een lijst van studenten met de volgende properties: `name`, `age`, `year`.
+- Zorg voor een search input waar de gebruiker kan zoeken op naam.
+- Als de gebruiker in de search input typt, moet de lijst gefilterd worden op de naam van de student. 
+- Als je op de header van de tabel klikt, moet de lijst gesorteerd worden op de property waarop je geklikt hebt.
+- Je hebt hier twee states nodig: `sortField` en `searchText`. De eerste state bevat de property waarop gesorteerd moet worden, de tweede state bevat de tekst die gebruikt wordt om te filteren.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo4Filtering/>
