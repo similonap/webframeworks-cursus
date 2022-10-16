@@ -23,7 +23,7 @@ Je kan je baseren op de volgende screen recording:
 
 ![picture 8](../images/interaction-statemobile.gif)
 
-# Stap 3: Randomize rainbow
+### Stap 3: Randomize rainbow
 
 - Voeg nog een extra knop toe waarmee je de kleuren van de regenboog kan randomizen. (tip: gebruik de `Math.random()` functie)
 - De tekst in de footer mag niet mee gerandomized worden.
