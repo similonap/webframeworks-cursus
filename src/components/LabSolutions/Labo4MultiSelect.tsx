@@ -12,6 +12,14 @@ const MultiSelect = () => {
     const makeFlag = () => {
         setFlag([...selectedColors]);
     }
+
+    const changeColor = (index: number) => {
+        let askColor = prompt("Geef een nieuwe kleur in", flag[index]);
+        if (askColor) {
+            let flagCpy = flag.map((color, i) => i == index ? askColor : color);
+            setFlag(flagCpy);
+        }
+    }
     
     return (
         <div style={{width: "100%"}}>
@@ -27,7 +35,7 @@ const MultiSelect = () => {
             <button style={{display: "block"}} onClick={makeFlag}>Show Colors</button>
 
             {flag.length > 0 && <div style={{display: "flex", flexDirection: "column", width: "100%", height: 200}}>
-                {flag.map((color) => <div key={color} style={{flex: 1, height: 200, backgroundColor: color}}></div>)}
+                {flag.map((color,index) => <div key={index} style={{flex: 1, height: 200, backgroundColor: color}} onClick={() => changeColor(index)}></div>)}
             </div>}
         </div>
     )

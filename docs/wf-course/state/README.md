@@ -351,6 +351,8 @@ const addClicked : React.MouseEventHandler<HTMLButtonElement> = () => {
 
 Dit komt omdat je alle state objecten moet behandelen als readonly. Je mag dus nooit iets rechstreeks aanpassen aan het object.
 
+### Toevoegen aan array
+
 Voor een array moeten we bij elke wijziging een kopie maken van de array en daar het element in toevoegen. Enkel dan kan React weten dat de array opnieuw gerendered moet worden.
 
 Een kopie van een array doe je aan de hand van de spread syntax:
@@ -384,28 +386,24 @@ export default App;
 //hide-end
 ```
 
+### Verwijderen van array
+
 Het verwijderen van elementen kan je doen aan de hand van een filter. We kunnen hier een `removeNumber` functie aanmaken die een `i` (de index) als argument aanvaard. Dit werkt omdat filter altijd een **nieuwe** array teruggeeft.
 
-```typescript {9-11,22} codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript {4-6} codesandbox={"template": "react", "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 //hide-end
 const App = () => {
   const [numbers, setNumbers] = useState<number[]>([0,1,2,3,4]);
-  const [number, setNumber] = useState<number>(0);
-
-  const addClicked : React.MouseEventHandler<HTMLButtonElement> = () => {
-    setNumbers([...numbers, number]);
-  }
 
   const removeNumber = (i : number) => {
-    setNumbers(numbers.filter((number, index) => index !== i));
+    let numbersCpy = numbers.filter((number, index) => index !== i);
+    setNumbers(numbersCpy);
   }
 
   return (
     <>
-      <input type="number" onChange={(event) => setNumber(parseInt(event.target.value))} value={number}/>
-      <button onClick={addClicked}>Add</button>
       <table>
         <tbody>
           {numbers.map((number, index) => 
@@ -423,6 +421,47 @@ const App = () => {
 export default App;
 //hide-end
 ```
+
+### Wijzigen in array
+
+Wil je een element wijzigen dan kan je dit doen door een kopie te maken van de array en het element te vervangen door een nieuw element. We kunnen hiervoor de `map` functie gebruiken. We mappen elk element van de array naar een nieuw element. Als het element dat we willen wijzigen is dan maken we een nieuw element aan, anders laten we het element ongewijzigd.
+
+```typescript {7-9} codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import {useState} from "react";
+//hide-end
+const App = () => {
+  const [numbers, setNumbers] = useState<number[]>([0,1,2,3,4]);
+
+  const modifyNumber = (i : number) => {
+    let promptResult = prompt("Enter new number");
+    if (promptResult) {
+        let newNumber = parseInt(promptResult);
+        let numbersCpy = numbers.map((oldNumber, index) => (index === i) ? newNumber : oldNumber);
+        setNumbers(numbersCpy);
+    }
+  }
+
+  return (
+    <>
+      <table>
+        <tbody>
+          {numbers.map((number, index) => 
+            (<tr key={index}>
+              <td>{number}</td>
+              <td><button onClick={() => { modifyNumber(index); }}>Modify</button></td>
+            </tr>)
+            )}
+        </tbody>
+      </table>
+    </>
+  );
+};
+//hide-start
+export default App;
+//hide-end
+```
+
 
 ## Object als state
 
