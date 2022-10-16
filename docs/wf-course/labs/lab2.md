@@ -1,6 +1,7 @@
 import Labo2Slots from '@site/src/components/LabSolutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
+import ReactPlayer from 'react-player'
 
 # Labo 2
 
@@ -28,6 +29,10 @@ Gebruik deze componenten in de `App` component om de volgende pagina te maken:
     <Labo2BasicComponents/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/V6N5Nt_YNA8'/>
+
 ## 2. Facebook cards
 
 Maak een nieuw project aan met behulp van `create-react-app` en noem deze `labo2-facebook`.
@@ -39,6 +44,10 @@ Neem de volgende code over.
 Teken eerst op papier hoe je deze facebook card zou opdelen in componenten. Splits deze componenten op in aparte componenten. Zorg dat alle content aanpasbaar is via props.
 
 Let er op dat componenten ook kunnen bestaan uit andere componenten. 
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/jAKwAgCFfws'/>
 
 ## 3. Slotmachine
 
@@ -65,56 +74,6 @@ De applicatie moet ongeveer er als volgt uitzien:
     <Labo2Slots/>
 </div>
 
-<details style={{marginTop: 10}}>
-    <summary>Oplossing</summary>
+#### Oplossingsvideo
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import React, { useState } from 'react';
-
-const Header = ({title, subtitle}: {title: string, subtitle: string}) => {
-  return (
-    <header>
-      <h1>{title}</h1>
-      <h2>{subtitle}</h2>
-    </header>
-  );
-}
-
-const ListItem = ({text}: {text: string}) => {
-  return (
-    <li>{text}</li>
-  );
-}
-
-const List = ({items}: {items: string[]}) => {
-  return (
-    <ul>
-      {items.map((item, i) => (
-        <ListItem text={item} key={i} />
-      ))}
-    </ul>
-  );
-}
-
-const Footer = ({copy, year}: {copy: string, year: number}) => {
-  return (
-    <footer>
-      <p>© {copy} ({year})</p>
-    </footer>
-  );
-}
-
-
-const App = () => {
-  return (
-    <>      
-      <Header title="Labo 2" subtitle="Basic components" />
-      <List items={["item 1", "item 2", "item 3"]} />
-      <Footer copy="Andie Similon" year={2021} />
-    </>
-  );
-};
-
-export default App;
-```
-</details>
+<ReactPlayer controls url='https://youtu.be/fRYEQ-NR0aU'/>
