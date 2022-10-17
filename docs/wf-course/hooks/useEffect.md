@@ -152,14 +152,14 @@ const Timer = ({interval} : TimerProps) => {
 
 
 const App = () => {
-    const [interval, setInterval] = useState(1000);
+    const [timerInterval, setTimerInterval] = useState(1000);
     return (
       <>
         <div>
-            <input type="range" min="1" max="2000" value={interval} onChange={(e) => setInterval(parseInt(e.target.value))}/>
+            <input type="range" min="1" max="2000" value={interval} onChange={(e) => setTimerInterval(parseInt(e.target.value))}/>
             <label htmlFor="volume">{interval}</label>
         </div>
-        <Timer interval={interval} />
+        <Timer interval={timerInterval} />
       </>
     );
 }

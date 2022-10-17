@@ -24,7 +24,7 @@ const App = () => {
             setError("Name must not be empty");
             return;
         }
-        setShoppingList([...shoppingList, { name, quantity }]);
+        setShoppingList([...shoppingList, { name: name, quantity: quantity }]);
         setError("");
         setName("");
         setQuantity(0);
@@ -32,8 +32,7 @@ const App = () => {
     };
 
     const removeItem = (index: number) => {
-        const newShoppingList = [...shoppingList];
-        newShoppingList.splice(index, 1);
+        const newShoppingList = shoppingList.filter((item, i) => i !== index);
         setShoppingList(newShoppingList);
         setSuccess("Item removed from shopping list");
     };
