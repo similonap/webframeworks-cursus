@@ -465,6 +465,41 @@ export default App;
 
 ## Object als state
 
+### Object
+
+Een object kan je ook gebruiken als state. Je moet hier net zoals bij een array de spread syntax gebruiken om een kopie te maken van het object. Je kan dan de gewenste eigenschap aanpassen.
+
+```typescript {4-6} codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import {useState} from "react";
+
+interface Person {
+  name: string;
+  age: number;
+}
+
+//hide-end
+const App = () => {
+  const [person, setPerson] = useState<Person>({name: "John", age: 42});
+
+  const changeName = () => {
+
+    setPerson({...person, name: "Jane"});
+  }
+
+  return (
+    <>
+      <p>{person.name} is {person.age} years old</p>
+      <button onClick={changeName}>Change name</button>
+    </>
+  );
+};
+
+export default App;
+```
+
+### Dictionary
+
 In het volgende code voorbeeld plaatsen we een object in een state zodat we dynamisch de keys en values van dit object kunnen aanpassen. Omdat het een object is met een niet op voorhand gedefinieerde interface moeten we een speciale interface gebruiken waar we gewoon aangeven welk type de key heeft en welk type de value (zie dictionary). Dit object mag net zoals een array niet rechtstreeks worden aangepast maar er moet een kopie voorzien worden.
 
 ```typescript {11} codesandbox={"template": "react", "filename": "src/App.tsx"}
