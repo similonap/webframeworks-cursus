@@ -47,3 +47,7 @@ Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem d
 - Plaats een button `New Joke` onderaan de joke. Wanneer de gebruiker op deze button klikt, wordt er een nieuwe joke opgehaald.
 - Plaats een button `Set as favorite` onderaan de joke. Wanneer de gebruiker op deze button klikt, wordt de huidige joke (als string) opgeslagen in de `localStorage` van de browser. 
 - Bij het opstarten van de applicatie, wordt de laatst opgeslagen joke getoond. Gebruik hiervoor de `useEffect` hook.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+<Labo5LocalStorage/>
+</div>

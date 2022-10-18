@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./Labo5LocalStorage.module.css";
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 interface Joke {
     id: string,
@@ -10,7 +11,7 @@ interface Joke {
 
 
 
-const App = () => {
+const Jokes = () => {
     const [joke, setJoke] = useState("");
     const [favoriteJoke, setFavoriteJoke] = useState(localStorage.getItem("favoriteJoke") || "");
     
@@ -59,6 +60,14 @@ const App = () => {
     );
 
 
+}
+
+const App = () => {
+    return (
+        <BrowserOnly>
+            {() => <Jokes/>}
+        </BrowserOnly>
+    )
 }
 
 export default App;
