@@ -1,6 +1,7 @@
 import Labo2Slots from '@site/src/components/LabSolutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
+import ReactPlayer from 'react-player'
 
 # Labo 2
 

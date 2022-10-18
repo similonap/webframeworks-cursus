@@ -13,12 +13,6 @@
 // Gebruik deze component in de `App` component om de volgende pagina te maken:
 import React, {useState} from 'react';
 
-interface FormInfo {
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
 const ContactForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
