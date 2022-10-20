@@ -61,6 +61,7 @@ Herstructureer deze applicatie als volgt:
 - Verplaats de logica van de `App` component naar de nieuwe componenten
 - De state die de Todo's bevat moet in de `App` component blijven. 
 - Je zal dus moeten gebruik maken van `props` om de state door te geven aan de nieuwe componenten. Je zal ook gebruik moeten maken van child-to-parent communicatie om de state te kunnen updaten.
+- Zorg dat elk component in een aparte file staat.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo6Todo/>
