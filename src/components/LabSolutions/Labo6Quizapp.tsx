@@ -8,7 +8,7 @@ export interface Questions {
 }
 
 export interface Question {
-    type:              Type;
+    type:              "boolean" | "multiple";
     question:          string;
     correct_answer:    string;
     incorrect_answers: string[];
@@ -16,10 +16,6 @@ export interface Question {
 
 }
 
-export enum Type {
-    Boolean = "boolean",
-    Multiple = "multiple",
-}
 
 interface TrueOrFalseQuestionProps {
     question: Question,
@@ -55,11 +51,11 @@ const Question = ({question, setUserAnswer, userAnswer} : QuestionProps) => {
         <div style={{backgroundColor: color}}>
             <div>{decode(question.question)}</div>
             {userAnswer === undefined ? (<div>
-                {question.type === Type.Boolean && <TrueOrFalseQuestion question={question} setUserAnswer={setUserAnswer} userAnswer={userAnswer}/>}
-                {question.type === Type.Multiple && <MultipleChoiceQuestion question={question} setUserAnswer={setUserAnswer} userAnswer={userAnswer}  />}
+                {question.type === "boolean" && <TrueOrFalseQuestion question={question} setUserAnswer={setUserAnswer} userAnswer={userAnswer}/>}
+                {question.type === "multiple" && <MultipleChoiceQuestion question={question} setUserAnswer={setUserAnswer} userAnswer={userAnswer}  />}
             </div>) : (
                 <div style={{fontWeight: "bold"}}>
-                    You answered {userAnswer} and the correct answer was {question.correct_answer}
+                    {(userAnswer !== question.correct_answer) ? <p>You answered {userAnswer} and the correct answer was {question.correct_answer}</p> : <p>You answered {userAnswer} which is the correct answer</p>}
                 </div>
             )
             }
@@ -102,6 +98,7 @@ const LoadingIndicator = () => {
 
 const QuizApp = () => {
     const [questions, setQuestions] = useState<Question[]>([]);
+
     const [loading, setLoading] = useState(false);
 
     const loadQuestions = async() => {
