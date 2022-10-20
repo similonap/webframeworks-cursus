@@ -16,7 +16,7 @@ import Labo4Filtering from '@site/src/components/LabSolutions/Labo4Filtering';
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo4-shoppinglist`.
 
 Maak een component `ShoppingList` aan met de volgende functionaliteit:
-- Het component heeft 1 state property `shoppingList` die een array bevat. Deze begint bij een lege array.
+- Het component heeft een state property `shoppingList` die een array bevat. Deze begint bij een lege array.
 - Zorg ervoor dat je een lijst van items kan toevoegen aan de shopping list.
 - Als een element toegevoeg wordt, moet de gebruiker een bevestiging zien dat het item toegevoegd is. Als de gebruiker foutieve hoeveelheid of geen naam ingeeft, moet er een foutmelding getoond worden.
 - Zorg ervoor dat je een lijst van items kan verwijderen van de shopping list.
