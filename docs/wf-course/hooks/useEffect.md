@@ -101,11 +101,22 @@ Een voorbeeldgebruik hiervoor is bijvoorbeeld het inladen van gegevens van een A
 De side-effect wordt enkel uitgevoerd als een van de meegegeven dependencies veranderen.
 
 ```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
-import { useEffect } from "react";
-const App = () => {
+//hide-start
+import { useEffect, useState } from "react";
+//hide-end
+const App = ({}) => {
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
-    console.log("useEffect called only once!");
-  },[]);
+    console.log("useEffect called when count changes");
+  },[count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
 }
 //hide-start
 export default App;
