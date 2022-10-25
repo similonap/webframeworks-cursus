@@ -10,7 +10,10 @@ Je applicatie moet:
 
 - React Navigation gebruiken (je moet meer dan 2 screens hebben).
 - een **FlatList** gebruiken of een **ScrollView**.
-- een externe API aanspreken (minstens GET).Voor inspiratie: https://apilist.fun/https://github.com/public-apis/public-apishttps://portaal-stadantwerpen.opendata.arcgis.com/
+- een externe API aanspreken (minstens GET).Voor inspiratie: 
+	- https://apilist.fun/
+	- https://github.com/public-apis/public-apis
+	- https://portaal-stadantwerpen.opendata.arcgis.com/
 - gebruik maken van **AsyncStorage.**
 - een **expo component naar keuze** bevatten (filesystem, camera, map, notification, imagepicker, location, calendar,...)
 - styles toepassen voor een goede UX aan te bieden.
