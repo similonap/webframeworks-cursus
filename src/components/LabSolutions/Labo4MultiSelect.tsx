@@ -24,12 +24,7 @@ const MultiSelect = () => {
     return (
         <div style={{width: "100%"}}>
             <select multiple onChange={onChange} value={selectedColors}>
-                <option value="red">Red</option>
-                <option value="black">Black</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="yellow">Yellow</option>
-                <option value="orange">Orange</option>
+wid
             </select>
 
             <button style={{display: "block"}} onClick={makeFlag}>Show Colors</button>

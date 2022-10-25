@@ -40,6 +40,10 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
     <Labo3InputField/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/0khJh_Q3nMg'/>
+
 ## 3. Checkbox
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-checkbox`.
@@ -52,6 +56,10 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo3Checkbox/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/FVMpB_rGnBQ'/>
 
 ## 4. Omhoog/Omlaag
 
@@ -69,6 +77,10 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo3OmHooglaag/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/OMa72fFFRUI'/>
 
 ## 5. Loading indicator
 
@@ -91,6 +103,10 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
     <Labo3Loading/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/SSZaOVdY3ls'/>
+
 ## 6. Kleurkiezer
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-kleurkiezer`.
@@ -109,6 +125,10 @@ Maak een component `ColorPicker` aan met de volgende functionaliteit:
 Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <Labo3Kleurkiezer/>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/pBx9IClu9eA'/>
 
 ## 7. Contactformulier
 
@@ -135,6 +155,10 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <Labo3ContactForm/>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/og0BReQkfz8'/>
+
 ## 8. Random Cage
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-random-cage`.
@@ -147,3 +171,7 @@ Maak een component `RandomCage` aan met de volgende functionaliteit:
 - Je mag de volgende afbeelding tonen: https://www.placecage.com/gif/200/200
 
 <Labo3RandomNicCage/>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/nh5lVRHBj0s'/>
