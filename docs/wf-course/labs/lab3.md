@@ -6,7 +6,7 @@ import Labo3Checkbox from '@site/src/components/LabSolutions/Labo3Checkbox';
 import Labo3Goods from '@site/src/components/LabSolutions/Labo3Goods';
 import Labo3Loading from '@site/src/components/LabSolutions/Labo3Loading';
 import Labo3RandomNicCage from '@site/src/components/LabSolutions/Labo3RandomNicCage';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 
 # Labo 3
 
