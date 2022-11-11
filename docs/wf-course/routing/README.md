@@ -38,218 +38,203 @@ Op het moment van schrijven is de recentste versie van React Router versie 6.3.0
 Als versie 7 of hoger verschenen is op het moment dat je deze leerstof raadpleegt, moet je toch versie 6 gebruiken.
 :::
 
-## Pagina's als componenten
+### Voorbeeld
 
-Wanneer we doorheen een applicatie navigeren, blijft de globale layout typisch stabiel, maar wijzigt het gedeelte van de applicatie dat de eigenlijke content bevat. Daarom zorgt React Router ervoor dat het gebruik van een link één bepaald deel van de applicatie rendert. 
-
-Dit gebeurt door per pagina een React component te voorzien. Op elk moment wordt exact één van deze components getoond op een vaste plaats in de globale structuur.
-
-Om React Router toe te passen in een webapplicatie, zet je het element **`BrowserRouter`** rond alle andere componenten die navigatielinks kunnen bevatten. Om één actieve paginacomponent te tonen, zet je ergens in je paginacode een **`Routes`** component. Deze component zal in zijn geheel vervangen worden door de actieve pagina. In deze component staan ook **`Route`** componenten. Deze bevatten een **`path`** property (de URL waarop ze terug te vinden zijn) en een **`element`** property (de component die overeenstemt met de pagina). Om te routeren naar een bepaalde URL, klikt de gebruiker op een **`Link`** component. Deze componenten beschikken over een attribuut **`to`** dat overeenstemt met een routeerbaar pad. Ze mogen afstammen van de `Routes` component, maar ze mogen er ook buiten vallen.
+Om te zien hoe je React Router gebruikt, bekijken we een voorbeeld. Dit voorbeeld heeft een aantal pagina's en een gedeelde layout die op elke pagina getoond wordt. 
 
 ```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Outlet, createBrowserRouter, RouterProvider, Route, NavLink } from "react-router-dom";
+import styles from "./App.module.css";
 
-const HomePage = () => {
-    return (<>
-        Welcome to the home page!
-      </>);
-}
-
-const HelloWorld = () => {
+const Root = () => {
     return (
-        <div>
-            <p>Hello World</p>
-        </div>
-    );
-}
+        <div className={styles.container}>
+            <div className={styles.head}>Header</div>
+            <div className={styles.nav}>
+                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="/" >Home</NavLink>
+                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="page1">Page 1</NavLink>
+                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="page2">Page 2</NavLink>
 
-const GoodbyeWorld = () => {
-    return (
-        <div>
-            <p>Goodbye World</p>
-        </div>
-    );
-}
-
-const App = () => {
-    return (
-        <BrowserRouter>
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="hello">Hello</Link></li>
-                <li><Link to="goodbye">Goodbye</Link></li>
-            </ul>
-        </nav>
-        <Routes>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="hello" element={<HelloWorld />} />
-            <Route path="goodbye" element={<GoodbyeWorld />}/>
-        </Routes>
-        </BrowserRouter>
-    );
-}
-
-export default App;
-```
-
-:::note
-In onze voorbeelden van de cursus plaatsen we al onze componenten in 1 bestand. In de oefeningen dien je altijd gebruik te maken van aparte files per pagina component.
-:::
-
-## Routes nesten
-
-Webapplicaties en hun routes zijn vaak hiërarchisch verdeeld. Zo kan het zijn dat `mijnwebsite.com` leidt naar je website en dat alle URL's die te maken hebben met nieuwsartikels beginnen met `mijnwebsite.com/news`. Bijvoorbeeld `mijnwebsite.com/news/binnenland` en `mijnwebsite.com/news/buitenland`. Delen van de website die hier niet mee te maken hebben, beginnen dan anders, bijvoorbeeld `mijnwebsite.com/contact`.
-
-Routes die dichter bij elkaar liggen, zullen meer inhoud gemeen hebben dan routes die verder uiteen liggen. Bijvoorbeeld binnenlands nieuws en buitenlands nieuws zullen een gelijkaardige layout hebben, maar zullen er misschien volledig anders uitzien dan de pagina met contactinformatie.
-
-React Router ondersteunt deze conventie door middel van geneste routes. Dit zijn routes die voortbouwen op algemenere routes. We kunnen dit bijvoorbeeld gebruiken om dezelfde navigatiestructuur te bewaren over verwante pagina's heen.
-
-Dit vereist een aantal zaken:
-
-1. Een component met de globale structuur die we over meerdere pagina's willen gebruiken. Deze component moet zelf een `<Outlet />` renderen. Dit is een plaatshouder voor de meer specifieke content.
-2. Een route naar deze component met de globale structuur, met een `path` en met als `element` de component waarvan sprake in puntje 1.
-3. Bijkomende `<Route>` componenten , genest in de `<Route>` component waarvan sprake in puntje 2. Hun `element` property bevat de component die de plaats van de `<Outlet />` moet innemen. Hun `path` wordt aan dat van de route in puntje 2 toegevoegd.
-    
-```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
-//hide-start
-import { Outlet, BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import styles from './App.module.css';
-
-const HomePage = () => {
-    return (<>
-        Welcome to the home page!
-      </>);
-}
-
-const HelloWorld = () => {
-    return (
-        <div>
-            <p>Hello World</p>
-        </div>
-    );
-}
-
-const GoodbyeWorld = () => {
-    return (
-        <div>
-            <p>Goodbye World</p>
-        </div>
-    );
-}
-//hide-end
-const SubPages = () => {
-    return (
-        <div>
-            <h1>Sub Pages</h1>
-            <Outlet/>
-        </div>
-    )
-}
-
-const ContactUs = () => {
-    return (
-        <div>
-            <p>Contact Us</p>
-        </div>
-    )
-}
-
-const App = () => {
-    return (
-        <BrowserRouter>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li>Sub</li>
-                        <ul>
-                            <li><Link to="sub/hello">Hello</Link></li>
-                            <li><Link to="sub/goodbye">Goodbye</Link></li>
-                        </ul>
-                        <li><Link to="contact">Contact Us</Link></li>
-                    </ul>
-                </div>
-                <div className={styles.content}>
-                    <Routes>
-                        <Route path="" element={<HomePage />}/>
-                        <Route path="contact" element={<ContactUs/>}/>
-                        <Route path="sub" element={<SubPages />}>
-                            <Route path="hello" element={<HelloWorld />} />
-                            <Route path="goodbye" element={<GoodbyeWorld />}/>
-                        </Route>
-                    </Routes>
-                </div>
             </div>
-        </BrowserRouter>
+            <div className={styles.content}>
+                <Outlet/>
+            </div>
+            <div className={styles.footer}>
+                Footer
+            </div>
+        </div>
     );
 }
-//hide-start
-export default App;
-//hide-end
+
+const Home = () => {
+    return (
+        <div>This is the home page!</div>
+    );
+}
+
+const Page1 = () => {
+    return (
+        <div>Page 1</div>
+    );
+}
+
+const Page2 = () => {
+    return (
+        <div>Page 2</div>
+    );
+}
+
+
+const App = () => {
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Root/>,
+            children: [
+                {
+                    path: "",
+                    element: <Home/>
+                },
+                {
+                    path: "page1",
+                    element: <Page1/>
+                },
+                {
+                    path: "page2",
+                    element: <Page2/>
+                }
+            ]
+        }
+    ]);
+
+    return (
+        <div>
+            <RouterProvider router={router} />
+        </div>
+    )
+}
+
+export default App;  
 ```
 
-Het is ook mogelijk routes te maken die meer dan twee niveaus diep gaan. Dit vereist alleen verdere nesting en meer `<Outlet />` componenten.
+Het eerst ding dat we moeten doen is een Browser Router aanmaken en onze eerste route configureren. Dit zal client-side routering mogelijk maken voor onze webapplicatie.
 
-## Ontbrekende pagina's afhandelen
+Dit doen we aan de hand van de `createBrowserRouter` functie. Deze functie heeft als argument een array van routes. Deze routes zijn van het type `RouteObject`. Deze `RouteObject` heeft een aantal properties:
+- `path`: de URL waarop de route moet reageren
+- `element`: het element dat moet worden gerenderd wanneer de route wordt geactiveerd
+- `children`: een array van `RouteObject` die de subroutes van de huidige route bevat
+- ...
 
-Als de gebruiker een URL gebruikt die niet naar een geldige pagina leidt, wordt er een lege pagina getoond. Dat is niet gebruiksvriendelijk. Het is beter een pagina te voorzien die de gebruiker op de hoogte stelt dat het ingevoerde adres niet bestaat. Dit kan je doen door een route te voorzien met een **wildcard** te voorzien. Als je dan een component genaamd `PageNotFound` hebt, kan je het volgende doen:
+Het object dat teruggegeven wordt door de `createBrowserRouter` functie moeten we meegeven aan de `RouterProvider` component. 
+
+Als je de code bekijkt, zie je dat we een `Root` component hebben gemaakt. Deze component bevat de basis structuur van onze webapplicatie. Deze structuur bestaat uit een header, een navigatiebalk, een content gedeelte en een footer. Deze component bevat ook de `NavLink` componenten. Deze componenten zorgen ervoor dat de gebruiker kan navigeren tussen de verschillende pagina's van onze webapplicatie.
+
+Het `Root` component bevat ook een `Outlet` component. Dit is een component die de inhoud van de pagina zal renderen van de child route die geactiveerd is. Surft de gebruiker naar de "/" route, dan zal de `Home` component gerenderd worden. Surft de gebruiker naar de "/page1" route, dan zal de `Page1` component gerenderd worden, enzovoort.
+
+### Links
+
+Er zijn twee verschillende manieren om links te maken in React Router. De eerste manier is door gebruik te maken van de `Link` component. Deze component heeft als enige property de `to` property. Deze property bevat de URL waar de gebruiker naar toe moet navigeren wanneer hij op de link klikt. 
 
 ```typescript
-<Route path="*" element={<PageNotFound />} />
+<Link to="/page1">Page 1</Link>
+```
+
+Een tweede manier om links te maken is door gebruik te maken van de `NavLink` component. Deze component heeft dezelfde properties als de `Link` component. Daarnaast kan je ook een functie meegeven aan de `className` property. Deze bevat een object met een `isActive` property. Deze property bevat een boolean die aangeeft of de link geactiveerd is of niet. 
+
+```typescript
+<NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="/">Home</NavLink>
+```
+
+### Ontbrekende pagina's afhandelen
+
+Als de gebruiker een URL gebruikt die niet naar een geldige pagina leidt, wordt er een algemene error pagina. Dat is niet gebruiksvriendelijk. Het is beter een pagina te voorzien die de gebruiker op de hoogte stelt dat het ingevoerde adres niet bestaat. Dit kan je doen door een route te voorzien met een **wildcard** te voorzien. Als je dan een component genaamd `PageNotFound` hebt, kan je de volgende route toevoegen:
+
+```typescript
+{
+    path: "*",
+    element: <PageNotFound/>
+}
 ```
 
 Omdat deze route zo algemeen is, zal ze enkel matchen wanneer er geen betere match gevonden wordt.
 
-## URL parameters
+### URL parameters
 
 Tot nu toe hebben we altijd routes gebruikt die exacte paden voorstellen. Soms wil je ook aan de hand van de url bepaalde parameters meegeven. Dat kan bijvoorbeeld een ID zijn: een uniek stukje informatie dat verwijst naar één specifieke user, één bestelling, één event op de kalender,... Als deze zaken voortdurend worden toegevoegd aan het systeem, is het niet mogelijk een route per user, per bestelling of per event te voorzien. Het is echter wel mogelijk een URL zoals `/detail/:id` toe te laten waarbij de `:id` een **parameter** is: een algemene plaatshouder in de URL waaraan een concrete waarde gegeven kan worden. Zo kan bijvoorbeeld `/detail/1` of `/detail/2` gebruikt worden, waarbij in beide gevallen dezelfde component wordt gerenderd, maar met andere data.
 
 Om dit te laten werken, moet de applicatie de precieze waarde kunnen opvragen die de parameter heeft gekregen. Dit kan door middel van de **`useParams`** hook. Deze staat je toe de URL parameters op te vragen die gebruikt zijn om naar de huidige pagina te navigeren.
 
-```typescript {2,18} codesandbox={"template": "react-router", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
+import { useParams,  Outlet, createBrowserRouter, RouterProvider, Route, NavLink,Link } from "react-router-dom";
+import "./App.css";
 //hide-start
-import { useParams, BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
-const HomePage = () => {
-    return (<>
-        Welcome to the home page!
-        <ul>
-        {Array.from(Array(10).keys()).map((i) => {
-            return <li key={`detail${i}`}><Link to={`detail/${i}`}>Detail {i}</Link></li>
-        })}
-        </ul>
-      </>);
-}
-//hide-end
-const DetailPage = () => {
-    let { id } = useParams();
+const Root = () => {
     return (
-        <>
-            <h1>
-                Detail of {id}
-            </h1>
-            <Link to="/">Back</Link>
-        </>
+        <div className="container">
+            <div className="head">Header</div>
+            <div className="nav">
+                <NavLink className={({isActive}) => isActive ? "activeNavLink" : "navLink"} to="/" >Home</NavLink>
+            </div>
+            <div className="content">
+                <Outlet/>
+            </div>
+            <div className="footer">
+                Footer
+            </div>
+        </div>
     );
 }
+//hide-end
+const Home = () => {
+    return (
+        <div>
+            <ul>
+                <li><Link to="/detail/1">Detail 1</Link></li>
+                <li><Link to="/detail/2">Detail 2</Link></li>
+                <li><Link to="/detail/3">Detail 3</Link></li>
+            </ul>
+        </div>
+    );
+}
+
+const Detail = () => {
+    let { id } = useParams();
+
+    return (
+        <div>Detail {id}</div>
+    );
+}
+
 
 const App = () => {
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Root/>,
+            children: [
+                {
+                    path: "",
+                    element: <Home/>
+                },
+                {
+                    path: "detail/:id",
+                    element: <Detail/>
+                }
+            ]
+        }
+    ]);
+
     return (
-        <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="/detail/:id" element={<DetailPage />}/>
-        </Routes>
-        </BrowserRouter>
-    );
+        <div>
+            <RouterProvider router={router} />
+        </div>
+    )
 }
-//hide-start
-export default App;
-//hide-end
+
+export default App; 
 ```
 
 Het object dat je terugkrijgt van `useParams` staat je toe een waarde op te zoeken voor om het even welke key. Er treedt dus geen compilatiefout op als je in TypeScript een parameter probeert te raadplegen die niet voorzien is. Je krijgt gewoon `undefined` terug.
 
 # Meer weten
-- https://reactrouter.com/docs/en/v6
+- https://reactrouter.com/en/6.4.3

@@ -233,7 +233,7 @@ Het komt vaak voor dat data die vanuit een externe API komt moet beschikbaar zij
 ```typescript codesandbox={"template": "react-router-context-api", "filename": "src/App.tsx"}
 //hide-start
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useParams, Link, createBrowserRouter, RouterProvider } from "react-router-dom";
 
 interface RootObject {
     genres: Genre[]
@@ -296,14 +296,20 @@ const App = () => {
         fetchGenres();
     },[]);
 
+    const router = createBrowserRouter([
+        {
+            path: "",
+            element: <HomePage/>
+        },
+        {
+            path: "detail/:id",
+            element: <DetailPage/>
+        }
+    ]);
+
     return (
         <GenreDataContext.Provider value={{genres: genres}}>
-            <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomePage />}/>
-                <Route path="/detail/:id" element={<DetailPage />}/>
-            </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </GenreDataContext.Provider>
     );
 }
