@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { useEffect, useState } from 'react';
 import styles from './App.module.css';
 
 const HomePage = () => {
