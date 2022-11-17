@@ -2,6 +2,8 @@ import React, { createContext, CSSProperties, useContext, useEffect, useState } 
 import { ColorRing } from 'react-loader-spinner';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import oak from './assets/oak.png';
+
 
 export interface Pokedex {
   abilities:                Ability[];
@@ -74,7 +76,7 @@ const PokemonDetail = ({id} : {id: number}) => {
 const Page1 = () => {
   return <div style={{flex: 1, display: "flex", flexDirection: "row", padding: 20}}>
     <div style={{flex: 1}}>
-      <img src="/img/oak.png" style={{width: 100}}/>
+      <img src={oak} style={{width: 100}}/>
     </div>
     <div  style={{flex: 2}}>
       Hello there! Welcome to the world of POKEMON!<br/><br/>My name is OAK! People call me the POKEMON PROF!<br/><br/>This world is inhabited by creatures called POKEMON!<br/><br/>For some people, POKEMON are pets. Others use them for fights. Myself...I study POKEMON as a profession.
@@ -177,7 +179,7 @@ const LoadingIndicator = () => {
 
 
 const App = () => {
-  const [currentRoute, setCurrentRoute] = useState<string>('pokemon');
+  const [currentRoute, setCurrentRoute] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
