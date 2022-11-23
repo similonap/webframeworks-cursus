@@ -1,6 +1,6 @@
 import Labo6Quizapp from '@site/src/components/LabSolutions/Labo6Quizapp';
 import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
-
+import ReactPlayer from 'react-player';
 
 # Labo 6
 
@@ -67,6 +67,10 @@ Herstructureer deze applicatie als volgt:
     <Labo6Todo/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/RNC2X9D3XbI'/>
+
 ## 2. Quizapp
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo5-quizapp`.
@@ -83,3 +87,7 @@ Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem d
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo6Quizapp/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/L00lS5tKMcQ'/>
