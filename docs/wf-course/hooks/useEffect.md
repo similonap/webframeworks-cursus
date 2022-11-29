@@ -30,6 +30,8 @@ export default App;
 Hoe kunnen we nu er voor zorgen dat de side-effect losgekoppeld wordt van de rest van onze rendering code? Hiervoor hebben we de `useEffect()` hook. Aan deze hook kan je code meegeven die los van de rendering code wordt uitgevoerd.
 
 ```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+import { useEffect } from "react";
+
 interface GreetProps {
     name: string
 }
