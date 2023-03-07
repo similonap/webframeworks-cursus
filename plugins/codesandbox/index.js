@@ -23,7 +23,7 @@ module.exports = async function (context, options) {
             fileJson = {...fileJson, ...JSON.parse(fileContent)}
           } else {
             fileJson[file.replace(`./codesandbox/${templateDir}/`, '')] =
-              {content: fileContent, isBinary: false};
+              {code: fileContent, readOnly: false, active: false, hidden: true};
           }
         }
         templates[templateDir] = { files: fileJson };

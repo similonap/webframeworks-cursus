@@ -1,7 +1,3 @@
-import WebContainer from '@site/src/components/WebContainer/WebContainer';
-
-<WebContainer/>
-
 # Basisconcepten
 # Eerste express applicatie
 
@@ -17,8 +13,7 @@ npm install --save-dev @types/express @types/node
 ```
 
 De Hello World applicatie:
-
-```typescript codesandbox={"template": "express", "filename": "src/index.ts"}
+```typescript codesandbox={"template": "node-ts", "templateFiles": "express", "filename": "index.ts","showConsole":true}
 import express, { Express, Request, Response } from "express";
 
 const app: Express = express();

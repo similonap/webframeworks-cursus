@@ -8,7 +8,7 @@ sidebar_position: 8
 
 We gaan nu eens kijken hoe we onze applicatie iets interactiever kunnen maken door de hand van form elementen en event handling. We gaan nu een nieuwe component introduceren genaamd InputView. Deze staat toe een naam en een jaartal in te vullen.
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "App.tsx"}
 //hide-start
 const styles = {
     inputFields: {
@@ -42,7 +42,7 @@ Hier hebben we één tekstveld voor de naam van de film en een numeriek invoerve
 
 Om hier iets mee te doen, maken we een functie om iets te doen wanneer er iets ingetypt wordt in het invoerveld. Dit soort functie is een event listener. Verderop in de code zullen we er voor zorgen dat deze functie loopt zodra een bepaald type gebeurtenis (event) zich voordoet.
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "App.tsx"}
 //hide-start
 const styles = {
     inputFields: {
@@ -83,7 +83,7 @@ We kunnen de gewenste interface van de handleChange functie hierboven te weten k
 
 We kunnen nu de signatuur `handleChange` aanpassen om de waarschuwing van hierboven op te lossen.
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "App.tsx"}
 //hide-start
 const styles = {
     inputFields: {
@@ -120,7 +120,7 @@ export default App;
 
 We kunnen op dezelfde manier een functie maken om een click af te handelen:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "showConsole":true",filename": "App.tsx"}
 //hide-start
 const styles = {
     inputFields: {
@@ -160,7 +160,7 @@ export default App;
 
 Het is ook mogelijk om de event handlers op te geven een anonieme handler functie:
 
-```typescript {6,8,10} codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript {6,8,10} codesandbox={"template": "react", "filename": "App.tsx"}
 //hide-start
 const styles = {
     inputFields: {
@@ -200,7 +200,7 @@ In HTML is er een verschil tussen een input en een change event. Bij React is di
 
 Checkbox werkt zeer gelijkaardig aan de andere input elementen. We gebruiken hier ook een onChange handler.
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "App.tsx"}
 const App = () => {
     return (
       <>
@@ -223,7 +223,7 @@ React.ChangeEventHandler<HTMLInputElement>```
 
 ## Select
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "App.tsx"}
 const App = () => {
     return (
       <>

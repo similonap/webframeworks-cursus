@@ -42,7 +42,7 @@ Als versie 7 of hoger verschenen is op het moment dat je deze leerstof raadpleeg
 
 Om te zien hoe je React Router gebruikt, bekijken we een voorbeeld. Dit voorbeeld heeft een aantal pagina's en een gedeelde layout die op elke pagina getoond wordt. 
 
-```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-router", "dependencies": {"react-router-dom": "6.4.3"}, "filename": "App.tsx"}
 import { Outlet, createBrowserRouter, RouterProvider, Route, NavLink } from "react-router-dom";
 import styles from "./App.module.css";
 
@@ -164,10 +164,9 @@ Tot nu toe hebben we altijd routes gebruikt die exacte paden voorstellen. Soms w
 
 Om dit te laten werken, moet de applicatie de precieze waarde kunnen opvragen die de parameter heeft gekregen. Dit kan door middel van de **`useParams`** hook. Deze staat je toe de URL parameters op te vragen die gebruikt zijn om naar de huidige pagina te navigeren.
 
-```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-router","dependencies": {"react-router-dom": "6.4.3"},"filename": "App.tsx"}
 import { useParams,  Outlet, createBrowserRouter, RouterProvider, Route, NavLink,Link } from "react-router-dom";
-import "./App.css";
-//hide-start
+
 const Root = () => {
     return (
         <div className="container">
@@ -184,7 +183,7 @@ const Root = () => {
         </div>
     );
 }
-//hide-end
+
 const Home = () => {
     return (
         <div>

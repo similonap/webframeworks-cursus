@@ -46,7 +46,8 @@ Alle React applicaties zijn gebouwd uit verschillende React **componenten**. Com
 
 Het eerste component waar je altijd mee in aanraking zal komen kan je vinden in het `src/App.tsx` bestand. Deze zal er een beetje zoals het onderstaand bestand uitzien:
 
-```typescript codesandbox={"template": "react-starter", "filename": "src/App.tsx"}
+
+```typescript codesandbox={"template": "react-ts", "templateFiles": "react-starter", "filename": "src/App.tsx"}
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -81,7 +82,7 @@ Je bestand heet `App`**`.tsx`**, niet `App.ts`. Het bevat geen alledaagse TypeSc
 
 We zullen nu even het component herleiden tot de essentie door wat overbodige boilerplate code weg te halen. Zo bekomen we tot een heel eenvoudige `Hello world` applicatie:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "src/App.tsx"}
 import React from "react";
 
 const App = () => {
@@ -109,7 +110,7 @@ Wanneer React gebruikt wordt met JavaScript, spreekt men over JSX in plaats van 
 
 Omdat de component een functie is, kunnen we in de body van de functie alles doen wat onder normale omstandigheden kan in TypeScript functies. We kunnen bijvoorbeeld, voor we de `return` uitvoeren, variabelen initialiseren en berekeningen uitvoeren:
 
-```typescript codesandbox={"template": "react-starter", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "src/App.tsx"}
 import React from 'react';
 
 const App = () => {

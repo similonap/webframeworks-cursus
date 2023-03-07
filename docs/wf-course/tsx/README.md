@@ -6,7 +6,7 @@ sidebar_position: 3
 
 TSX is eigenlijk TypeScript code. Dus is het mogelijk TypeScript-expressies te integreren in de gegenereerde output. Als we de `title` variabele willen renderen tussen de h1 tags kunnen we deze als volgt toevoegen:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
 
 const App = () => {
@@ -38,7 +38,7 @@ of:
 
 Je kan zelfs functies uitvoeren en het resultaat hiervan laten zien:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
 
 const getGreeting = () => {
@@ -71,7 +71,7 @@ Conditionele rendering in React werkt op dezelfde manier als condities werken in
 
 #### Met een if statement
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -92,7 +92,7 @@ export default App;
 
 Het is perfect mogelijk om JSX toe te kennen aan een variabele en deze dan op een later moment te renderen. 
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -115,7 +115,7 @@ export default App;
 
 Een andere manier om een `If-Else` conditie na te bootsen is met het gebruik van de conditional operator. Dit zal er als volgt uitzien:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -134,7 +134,7 @@ export default App;
 
 Als je enkel iets wil tonen als een bepaalde conditie waar is kan je ook gebruik maken van de `&&` operator. 
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -153,7 +153,7 @@ export default App;
 
 Accolades zijn nodig om te wisselen van de HTML-achtige syntax naar de klassieke TypeScript syntax. Binnenin deze syntax kan weer naar de HTML-achtige syntax gewisseld worden, enzovoort. Dit wordt hier gedemonstreerd:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
 
 const getLuckText = () => "We hebben geluk gehad";
@@ -177,7 +177,7 @@ export default App;
 
 Function components worden verwacht één TSX-expressie terug te geven. Nochtans wordt niet elke component naar exact één HTML-element omgezet in de uiteindelijk geproduceerde pagina. Anders gezegd: **één** component `App` kan niet rechtstreeks omgezet worden naar **twee of meer** HTML-elementen **die siblings zijn** in het Document Object Model. Volgende code is dus niet uitvoerbaar:
 
-```tsx codesandbox={"template": "react", "filename": "src/App.tsx"}
+```tsx codesandbox={"template": "react-ts", "filename": "App.tsx"}
 const App = () => {
   return (
     <h1>Titel van mijn boek</h1>
@@ -191,7 +191,9 @@ Dit gaat niet, omdat er drie TSX-expressies op hetzelfde niveau staan. De `h2`-e
 
 Hoger op deze pagina hebben we het probleem omzeild door elementen in een `div` te plaatsen. Dit soort element is heel algemeen en voegt vaak overbodige ballast toe aan een pagina. Daarom is het beter om het zo spaarzaam mogelijk te gebruiken. Hier is een eenvoudige oplossing voor: de drie expressies in een grotere expressie plaatsen die niet vertaald wordt naar HTML. Een dergelijke expressie heet een **fragment**. Er bestaat een langere notatie en een kortere notatie voor fragments. Met de langere notatie kan bovenstaande code als volgt herschreven worden:
 
-```tsx codesandbox={"template": "react", "filename": "src/App.tsx"}
+```tsx codesandbox={"template": "react-ts", "filename": "App.tsx"}
+import React, { Fragment } from "react";
+
 const App = () => {
   return (
     <Fragment>
@@ -201,11 +203,13 @@ const App = () => {
     </Fragment>
   );
 }
+
+export default App;
 ```
 
 In de korte notatie ziet een fragment er uit als een tag zonder naam:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
 
 const App = () => {

@@ -155,7 +155,7 @@ export default App;
 
 Willen we nu kunnen communiceren vanuit de child componenten naar de parent component dan is dit iets complexer. De eenvoudigste manier om dit te doen is door een functie door tegeven vanuit de parent naar het child component. Het child component kan die functie dan gebruiken om te communiceren met de parent. Dit concept noemen we callback functies
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "showConsole":true, "filename": "src/App.tsx"}
 interface ChildProps {
     callbackFunction: () => void
 }
@@ -319,7 +319,7 @@ interface InputViewProps {
 
 Vervolgens voegen we deze properties toe aan het InputView component. En zorgen we ervoor dat deze wordt aangeroepen als we op de button klikken. Als argument voor `text` gebruiken we hier de waarde van de state.
 
-```typescript {1,10} codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript {1,10} codesandbox={"template": "react", "showConsole":true, "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 
@@ -361,7 +361,7 @@ export default App;
 
 Nu kan je de functie die verantwoordelijk is voor de `onAddClick` af te handelen gewoon doorgeven aan de hand van een property en het argument afprinten op onze console.
 
-```typescript {4} codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript {4} codesandbox={"template": "react", "showConsole":true, "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 
@@ -405,7 +405,7 @@ Uiteraard hadden we deze `console.log` ook kunnen uitvoeren in ons `InputView` c
 
 We voorzien nu een lijst in het App component dat een aantal Todo's zal bijhouden. Dit doen we aan de hand van een state. Het `InputView` component heeft geen toegang tot die state, dus moet het wel via de callback handler van hierboven gebeuren:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "showConsole":true, "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 
@@ -453,7 +453,7 @@ export default App;
 
 Hier bestaat ook nog een andere variant voor die we kunnen gebruiken. We zouden ook de setter van de state en de waarde van de state zelf kunnen doorgeven als properties aan de `InputView` zodat deze toch toegang heeft tot deze functie (en waarde):
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "showConsole":true, "filename": "src/App.tsx"}
 //hide-start
 import {useState} from "react";
 //hide-end

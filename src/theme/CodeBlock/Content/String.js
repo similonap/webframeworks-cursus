@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { useThemeConfig, usePrismTheme } from '@docusaurus/theme-common';
+import { SandpackProvider,UnstyledOpenInCodeSandboxButton, SandpackCodeViewer,SandpackCodeEditor,SandpackPreview,SandpackConsole } from "@codesandbox/sandpack-react";
+import {usePluginData} from '@docusaurus/useGlobalData';
 
 import {
   parseCodeBlockTitle,
@@ -18,7 +20,8 @@ import Container from '@theme/CodeBlock/Container';
 import { parseMetaString } from '../CodeSandboxButton';
 import styles from './styles.module.css';
 
-const NormalCodeBlock = ({ showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
+const NormalCodeBlock = ({ showLineNumbers, lineClassNames, blockClassName, language, prismTheme, partialCode, title, code, allCode, metastring }) => {
+  const wordWrap = useCodeWordWrap();
   return (
     <div>
       <Container
@@ -85,9 +88,9 @@ const NormalCodeBlock = ({ showLineNumbers, lineClassNames, blockClassName, lang
   )
 }
 
-const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
+const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, partialCode, title, code, allCode, metastring }) => {
   const [snackVisible, setSnackVisible] = useState(false);
-
+  const wordWrap = useCodeWordWrap();
   let groups = /expo=({.*})/g.exec(metastring);
 
   let parameters = JSON.parse(groups[1]);
@@ -215,43 +218,22 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
 
 const CodeSandbox = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
   const [sandboxId, setSandboxId] = useState('');
+  const {templates} = usePluginData('codesandbox-plugin');
+
+  let groups = /codesandbox=({.*})/g.exec(metastring);
+
+  let parameters = JSON.parse(groups[1]);
+  
+  let filesJson = templates[parameters.templateFiles];
+  let template = parameters.template;
+  let environment = "";
+  if (template === 'node-ts') {
+    template = "";
+    environment = "node";
+  }
 
   return (
     <div>
-      {sandboxId !== '' && (
-        <div className={styles.codeBlockContent}>
-          <Container
-            as="div"
-            className={clsx(
-              blockClassName,
-              language &&
-              !blockClassName.includes(`language-${language}`) &&
-              `language-${language}`
-            )}
-          >
-            <iframe
-              style={{ width: '100%', height: '500px' }}
-              src={`https://codesandbox.io/embed/${sandboxId}?fontsize=14&hidenavigation=1&theme=light&view=preview&autoresize=1&expanddevtools=1&module=/${filename}`}
-              allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-            ></iframe>
-            <div className={styles.buttonGroup}>
-              <button
-                type="button"
-                title="CodeSandbox"
-                className={clsx('clean-btn')}
-                onClick={() => setSandboxId("")}
-              >
-                <span className={styles.copyButtonIcons} aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" data-testid="CodeIcon" className={styles.copyButtonIcon}><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg>
-                </span>
-              </button>
-            </div>
-          </Container>
-        </div>
-      )}
-
-      <div style={{ display: sandboxId === '' ? 'inherit' : 'none' }}>
         <Container
           as="div"
           className={clsx(
@@ -261,65 +243,61 @@ const CodeSandbox = ({ filename, showLineNumbers, lineClassNames, blockClassName
             `language-${language}`
           )}
         >
-          {title && <div className={styles.codeBlockTitle}>{title}</div>}
-          <div className={styles.codeBlockContent}>
-            <Highlight
-              {...defaultProps}
-              theme={prismTheme}
-              code={partialCode}
-              language={language ?? 'text'}
-            >
-              {({ className, tokens, getLineProps, getTokenProps }) => (
-                <pre
-                  /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
-                  tabIndex={0}
-                  ref={wordWrap.codeBlockRef}
-                  className={clsx(
-                    className,
-                    styles.codeBlock,
-                    'thin-scrollbar'
-                  )}
-                >
-                  <code
-                    className={clsx(
-                      styles.codeBlockLines,
-                      showLineNumbers && styles.codeBlockLinesWithNumbering
-                    )}
-                  >
-                    {tokens.map((line, i) => (
-                      <Line
-                        key={i}
-                        line={line}
-                        getLineProps={getLineProps}
-                        getTokenProps={getTokenProps}
-                        classNames={lineClassNames[i]}
-                        showLineNumbers={showLineNumbers}
-                      />
-                    ))}
-                  </code>
-                </pre>
-              )}
-            </Highlight>
-            <div className={styles.buttonGroup}>
-              {(wordWrap.isEnabled || wordWrap.isCodeScrollable) && (
-                <WordWrapButton
-                  className={styles.codeButton}
-                  onClick={() => wordWrap.toggle()}
-                  isEnabled={wordWrap.isEnabled}
-                />
-              )}
-              <CopyButton className={styles.codeButton} code={code} />
-              <CodeSandboxButton
-                className={styles.codeButton}
-                code={allCode}
-                metastring={metastring}
-                setSandboxId={setSandboxId}
-              />
-            </div>
-          </div>
-        </Container>
+                <SandpackProvider
+                template={template}
+                theme={{
+                  "colors": {
+                    "surface1": "#f4f6f9",
+                    "surface2": "#EFEFEF",
+                    "surface3": "#F3F3F3",
+                    "clickable": "#808080",
+                    "base": "#323232",
+                    "disabled": "#C5C5C5",
+                    "hover": "#4D4D4D",
+                    "accent": "#000000",
+                    "error": "#ff453a",
+                    "errorSurface": "#ffeceb"
+                  },
+                  "syntax": {
+                    "plain": "#151515",
+                    "comment": {
+                      "color": "#999",
+                      "fontStyle": "italic"
+                    },
+                    "keyword": "#0971F1",
+                    "tag": "#d28cf6",
+                    "punctuation": "#3B3B3B",
+                    "definition": "#042d60",
+                    "property": "#0971F1",
+                    "static": "#FF453A",
+                    "string": "#bf5af2"
+                  },
+                  "font": {
+                    "body": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+                    "mono": "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;",
+                    "size": "15.2px",
+                    "lineHeight": "20px"
+                  }
+                }}
+                customSetup={{
+                    dependencies: parameters.dependencies,
+                    entry: "index.tsx",
+                    
+                }}
+                files={{
+                      [parameters.filename]: allCode,
+                      ...filesJson?.files == undefined ? {} : filesJson.files
+                }}
+              >
+                <SandpackCodeEditor showLineNumbers={true}/>
+                <SandpackPreview showOpenNewtab={true}/>
+                {parameters.showConsole && <SandpackConsole maxMessageCount={5} resetOnPreviewRestart={true} />}
+                <UnstyledOpenInCodeSandboxButton>
+      Open in CodeSandbox
+    </UnstyledOpenInCodeSandboxButton>
+              </SandpackProvider>
+        </Container>  
       </div>
-    </div>
   );
 }
 
@@ -339,7 +317,6 @@ export default function CodeBlockString({
   const language =
     languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage;
   const prismTheme = usePrismTheme();
-  const wordWrap = useCodeWordWrap();
   // We still parse the metastring in case we want to support more syntax in the
   // future. Note that MDX doesn't strip quotes when parsing metastring:
   // "title=\"xyz\"" => title: "\"xyz\""
@@ -383,7 +360,6 @@ export default function CodeBlockString({
       blockClassName={blockClassName}
       language={language}
       prismTheme={prismTheme}
-      wordWrap={wordWrap}
       partialCode={partialCode}
       title={title}
       code={code}
@@ -398,7 +374,6 @@ export default function CodeBlockString({
       blockClassName={blockClassName}
       language={language}
       prismTheme={prismTheme}
-      wordWrap={wordWrap}
       partialCode={partialCode}
       title={title}
       code={code}
@@ -412,7 +387,6 @@ export default function CodeBlockString({
       blockClassName={blockClassName}
       language={language}
       prismTheme={prismTheme}
-      wordWrap={wordWrap}
       partialCode={partialCode}
       title={title}
       code={code}

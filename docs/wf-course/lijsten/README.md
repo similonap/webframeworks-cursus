@@ -8,7 +8,7 @@ sidebar_position: 4
 
 Wanneer we in TSX een lijst opnemen in de gegenereerde inhoud, wordt er gewoon een tekstvoorstelling voor die lijst gegenereerd door elk element rechtstreeks in de HTML in te voegen. In de praktijk is dit niet zinvol.&#x20;
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from 'react';
 //hide-end
@@ -26,7 +26,7 @@ Normaal willen we een HTML-tag met eigen inhoud renderen per element van de arra
 
 De `map` functie kan gebruikt worden om informatie uit een lijst van gegevens te extraheren of om te zetten. Ze kan dan ook gebruikt worden om TSX-elementen te vormen. In onderstaande CodePen vertaalt ze elk element van de invoerlijst met games (voorgesteld als `string`) naar een`<li>` element, genest binnen een `<ul>` element:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -56,7 +56,7 @@ Omdat React gebruik maakt van geoptimaliseerde technieken voor het tonen van lij
 
 Onderstaande CodePen toont hetzelfde principe, maar met objecten en complexere structuren:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 //hide-start
 import React from "react";
 //hide-end
@@ -115,10 +115,8 @@ Dit is zowat het enige scenario waarin je de lange notatie voor een `Fragment` m
 
 In de bovenstaande voorbeelden hebben we de naam van het spel gebruikt als key. Dit is een goede keuze, omdat de naam van het spel uniek is. Maar wat als we geen unieke eigenschap hebben om als key te gebruiken? In dat geval kan je de index van het element in de lijst gebruiken. Je kan hier het tweede argument van de `map` functie voor gebruiken. Deze geeft de index van het element in de lijst.
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-//hide-start
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
-//hide-end
 
 const App = () => {
   const numbers: number[] = [1, 2, 3, 4, 5, 1, 3];
@@ -132,6 +130,8 @@ const App = () => {
     </>
   );
 }
+
+export default App;
 ```
 :::caution
 Het gebruiken van de index als de key is niet de beste keuze, omdat het de prestaties van React negatief kan beïnvloeden. React gebruikt de key om te bepalen welke elementen in de lijst veranderd zijn, toegevoegd of verwijderd. Als je de index gebruikt, kan React niet meer bepalen welke elementen veranderd zijn, omdat de index van elk element in de lijst verandert als je een element toevoegt of verwijdert. Probeer dus dit niet te doen, tenzij je echt geen andere keuze hebt.
@@ -141,10 +141,9 @@ Het gebruiken van de index als de key is niet de beste keuze, omdat het de prest
 
 Onderstaande code toont `filter` en `map` in combinatie in een React applicatie:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-//hide-start
+```typescript codesandbox={"template": "react-ts", "filename": "App.tsx"}
 import React from "react";
-//hide-end
+
 interface Game {
   id: number
   name: string,
@@ -187,7 +186,6 @@ const App = () => {
     </>
   );
 }
-//hide-start
+
 export default App;
-//hide-end
 ```
