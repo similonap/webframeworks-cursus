@@ -7,20 +7,14 @@ import ReactPlayer from 'react-player'
 # Labo 1
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
-- Create React App
+- React app aanmaken
 - TSX
 - Statische bestanden
 - Lijsten
 
 ## 1. Expressies
 
-Maak een nieuwe react applicatie aan met het create-react-app commando. 
-
-```bash
-npx create-react-app labo1-expressies --template typescript
-```
-
-en maak het volgende `App.tsx` component aan:
+Maak een nieuwe react applicatie aan en maak het volgende `App.tsx` component aan:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 const App = () => {
@@ -56,7 +50,7 @@ Toon deze waarde in de browser.
 
 ## 2. Slotmachine
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-app commando. 
+Maak een nieuwe react applicatie aan `labo1-slotmachine`.
 
 #### Opdracht
 
@@ -81,7 +75,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-ap
 
 ## 3. Lijsten
 
-Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app commando.
+Maak een nieuwe react applicatie aan `labo1-lijsten`.
 
 #### Opdracht
 
@@ -105,7 +99,7 @@ Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app co
 
 ## 4. Slot machine met map
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-react-app commando. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
+Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
 
 #### Opdracht
 

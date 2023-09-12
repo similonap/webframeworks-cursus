@@ -2,28 +2,31 @@
 sidebar_position: 2
 ---
 
+# React app aanmaken
 
-# Create React App
+## Vite
 
-### Create React App
+Er zijn verschillende manieren om een react applicatie aan te maken. Je kan gebruik maken van een volledig react framework zoals next.js of gatsby.js. Deze frameworks zijn heel krachtig en bieden veel functionaliteit aan. Maar soms is het ook handig om een eenvoudige react applicatie aan te maken zonder al te veel configuratie. 
 
-We gebruiken `create-react-app` om snel een eerste applicatie op te zetten. Dit is een startscript om snel een React applicatie aan te maken. Het vereist geen configuratie en wordt aangeraden voor beginnende React gebruikers.
+In deze cursus gaan we gebruik maken van `vite` om onze eerste react applicatie aan te maken. Vite is een van de snelste build tools voor het aanmaken van een react applicatie. Het is ook heel eenvoudig in gebruik en bevat een development server die automatisch je applicatie herlaadt wanneer je een wijziging maakt aan je code.
 
-Voordat we kunnen werken met de `create-react-app` kijk je best ook nog na of je `npx` hebt geinstalleerd op jouw machine. Normaal wordt dit mee geïnstalleerd met `node` en `npm`.
+## Een react applicatie aanmaken
 
-Je kan dit nakijken door op de command line `npx --version` te typen.
+Om een react applicatie aan te maken met `vite` moeten we enkel het volgende commando uitvoeren:
 
-`npx` laat toe om tooling te gebruiken zonder die eerst te installeren op jouw machine. Zo heb je altijd de laatste nieuwe versie van deze tool. Je zou eventueel deze ook kunnen installeren op jouw machine met `npm install -g`, maar dan zou je zelf verantwoordelijk zijn voor het updaten van deze tool.
-
-Nu we dit klaar hebben staan kunnen we onze eerste React applicatie aanmaken door volgend commando uit te voeren:
-
-```
-npx create-react-app our-first-react-app --template typescript
+```bash
+npm create vite@latest
 ```
 
-:::caution
-Let op dat je het stuk `--template typescript` niet vergeet. We werken in deze cursus met TypeScript. Anders wordt er een React applicatie gemaakt in JavaScript.
-:::
+Je zal hier dan een aantal vragen krijgen over de configuratie van je project. Zorg dat je de volgende opties selecteert:
+
+```bash
+✔ Project name: … our-first-react-app
+✔ Select a framework: › React
+✔ Select a variant: › TypeScript + SWC
+```
+
+`Project name` kies je uiteraard zelf. De andere opties zorgen ervoor dat we een react applicatie aanmaken met typescript. SWC is een snelle JavaScript/TypeScript transpiler die gebruikt wordt door `vite`. 
 
 We kunnen nu de folder `our-first-react-app` openen in Visual Studio Code en naar de inhoud van het project kijken:
 
@@ -31,14 +34,14 @@ We kunnen nu de folder `our-first-react-app` openen in Visual Studio Code en naa
 
 Hier merk je onder andere volgende bestanden en folders in op:
 
-* **node\_modules** deze folder bevat alle packages die werden geïnstalleerd bij het runnen van het `create-react-app` commando. Alle packages die je zelf installeert met `npm install` zullen ook in deze folder terecht komen. **Normaal doe je nooit rechtstreeks aanpassingen in deze folder.**
+* **node\_modules** deze folder bevat alle packages die werden geïnstalleerd bij het runnen van het `vite` commando. Alle packages die je zelf installeert met `npm install` zullen ook in deze folder terecht komen. **Normaal doe je nooit rechtstreeks aanpassingen in deze folder.**
 * **package.json** beschrijft welke packages geïnstalleerd moeten zijn om deze applicatie uit te voeren. We noemen dit ook de **dependencies** van de applicatie. Het `npm install` commando zal deze dependencies dan installeren in de `node_modules` folder.
 * **src** bevat de eigenlijke bestanden die rechtstreeks te maken hebben met react. Hier zal jouw broncode in komen. Het belangrijkste bestand op dit moment is het `App.tsx` bestand. Daar zullen we eerst onze eerste React code schrijven. Later zullen we dit opsplitsen in verschillende bestanden om het overzicht te bewaren.
 * **public** bevat het HTML-bestand waarin de react applicatie zal getoond worden. Hier moet je meestal niets voor aanpassen want alle visuele componenten worden in react zelf gerenderd. Deze folder bevat ook andere dingen zoals het icoontje dat je in het tabblad van je browser ziet.
 
-Je kan de applicatie opstarten door `npm start` uit te voeren in je terminal venster. Als alles in orde is zal je browser automatisch openen op de eerste en enige pagina van jouw webapplicatie:
+Je kan de applicatie opstarten door `npm run dev` uit te voeren in je terminal venster. Als alles in orde is zal je browser automatisch openen op de eerste en enige pagina van jouw webapplicatie:
 
-![De starter applicatie ziet er normaal zo uit in je browser.](img/screenshot-react-starter.png)
+![De starter applicatie ziet er normaal zo uit in je browser.](img/screenshot-react-vite.png)
 
 ### Je eerste component
 
@@ -46,33 +49,42 @@ Alle React applicaties zijn gebouwd uit verschillende React **componenten**. Com
 
 Het eerste component waar je altijd mee in aanraking zal komen kan je vinden in het `src/App.tsx` bestand. Deze zal er een beetje zoals het onderstaand bestand uitzien:
 
-```typescript codesandbox={"template": "react-starter", "filename": "src/App.tsx"}
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+```typescript
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-      </header>
-    </div>
-  );
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 :::info
@@ -81,7 +93,7 @@ Je bestand heet `App`**`.tsx`**, niet `App.ts`. Het bevat geen alledaagse TypeSc
 
 We zullen nu even het component herleiden tot de essentie door wat overbodige boilerplate code weg te halen. Zo bekomen we tot een heel eenvoudige `Hello world` applicatie:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react-starter", "filename": "src/App.tsx"}
 import React from "react";
 
 const App = () => {
