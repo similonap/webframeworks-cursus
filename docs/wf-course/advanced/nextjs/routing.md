@@ -135,6 +135,8 @@ const Home = () => {
 export default Home;
 ```
 
+Interessant om te weten: Next.js zal aan de hand van de links bepaalde pagina's gaan prefetchen. Dit wil zeggen dat de pagina al wordt opgehaald voordat de gebruiker erop klikt. Dit zorgt ervoor dat de pagina sneller zal laden als de gebruiker erop klikt. Dit is standaard ingeschakeld, maar je kan dit uitschakelen door de `prefetch` property op `false` te zetten.
+
 ## Custom App
 
 Als je wil gebruik maken van een `Layout` component die op elke pagina getoond moet worden, dan kan je gebruik maken van de `Custom App` functionaliteit van Next.js. Dit is een component dat je kan aanmaken in `pages/_app.tsx`. Dit component wordt dan gebruikt als de basis van je applicatie. Je kan hier bijvoorbeeld de `Layout` component toevoegen.
@@ -197,6 +199,27 @@ class MyDocument extends Document {
 
 export default MyDocument;
 ```
+
+Je ziet hier dat we gebruik maken van het `Head` component. Deze component zorgt ervoor dat de inhoud van de `head` tag wordt aangepast. Je kan hier bijvoorbeeld de `title` van de pagina aanpassen of een `meta` tag toevoegen. Je kan dit component ook gebruiken op aparte pagina's om een custom `head` toe te voegen voor die pagina.
+
+```jsx
+import Head from 'next/head'
+
+const About = () => {
+  return (
+    <div>
+      <Head>
+        <title>About</title>
+      </Head>
+      <h1>About</h1>
+    </div>
+  )
+}
+
+export default About;
+```
+
+```jsx
 
 ## Custom error pages
 
