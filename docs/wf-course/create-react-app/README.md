@@ -28,6 +28,14 @@ Je zal hier dan een aantal vragen krijgen over de configuratie van je project. Z
 
 `Project name` kies je uiteraard zelf. De andere opties zorgen ervoor dat we een react applicatie aanmaken met typescript. SWC is een snelle JavaScript/TypeScript transpiler die gebruikt wordt door `vite`. 
 
+Je kan ook het commando uitvoeren zonder de vragen te beantwoorden door de volgende opties mee te geven:
+
+```bash
+npm create vite@latest our-first-react-app -- --template react-ts
+```
+
+Let op het extra `--` teken. Dit zorgt ervoor dat de opties niet door `npm` worden geïnterpreteerd, maar door `vite`. Zonder ga je toch nog de interactieve modus te zien krijgen.
+
 We kunnen nu de folder `our-first-react-app` openen in Visual Studio Code en naar de inhoud van het project kijken:
 
 ![create-react-app maakt veel bestanden aan. In het begin zullen we er niet veel aanpassen.](img/react-project-folder-contents.png)
