@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Rendering
 
 ## Client side rendering
@@ -169,7 +173,9 @@ Je ziet hierboven dat alle pagina's buiten de `requestInfo` pagina worden gebuil
 
 Je kan ook statische pagina's maken die gebruik maken van externe data. Het build commando zal dan de externe data tijdens het bouwen verzamelen en hiermee statische html pagina's genereren. Je kan dit doen door gebruik te maken van de `getStaticProps` functie. Deze lijkt heel hard op de `getServerSideProps` functie in de zin dat je ook een object moet returnen met een `props` property. Het verschil is dat deze functie niet wordt uitgevoerd op de server, maar tijdens het builden van de applicatie. 
 
-:::caution Als je de applicatie in development mode runt, dan zal de applicatie niet op voorhand gebuild worden. Alle statische pagina's worden toch opgebouwd tijdens het runnen van de applicatie. Het is alsof het toch gebruik maakt van `getServerSideProps`. :::
+:::caution Als je de applicatie in development mode runt, dan zal de applicatie niet op voorhand gebuild worden. Alle statische pagina's worden toch opgebouwd tijdens het runnen van de applicatie. Het is alsof het toch gebruik maakt van `getServerSideProps`.
+
+:::
 
 We kunnen teruggrijpen naar het Posts voorbeeld van hierboven. We kunnen dit voorbeeld aanpassen zodat we gebruik maken van static generation. 
 

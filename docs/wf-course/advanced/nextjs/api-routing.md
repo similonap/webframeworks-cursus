@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # API Routing
 
 Tot nu toe hebben we altijd gezien we data ophalen uit een externe API met behulp van de `fetch` API. Soms is het niet aangewezen om rechstreeks een externe API aan te roepen vanuit de client. Bijvoorbeeld als je een API hebt die gebruik maakt van een secret key. Deze key wil je niet zomaar blootstellen aan de client. Of bijvoorbeeld als je applicatie moet gebruik maken van een database. De client kan nooit rechtstreeks communiceren met een database. De client moet altijd communiceren met een server die op zijn beurt communiceert met de database.
