@@ -23,11 +23,6 @@ Maak de volgende componenten aan:
     <Labo5Interval/>
 </div>
 
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/QQA4PXp967c'/>
-
-
 ## 2. Pokemon
 
 Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo5-pokemon`.
@@ -41,10 +36,6 @@ Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem d
 <div style={{padding: 10, border: "1px dotted black"}}>
 <Labo5Pokemon/>
 </div>
-
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/Hx1DYSQ6AWM'/>
 
 ## 3. LocalStorage
 
@@ -61,7 +52,3 @@ Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem d
 <div style={{padding: 10, border: "1px dotted black"}}>
 <Labo5LocalStorage/>
 </div>
-
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/-ZCPmx5HGvA'/>
