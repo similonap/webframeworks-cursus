@@ -19,7 +19,9 @@ Je mag op deze moment nog aparte pagina's maken voor de verschillende dieren. Je
 
 ## 2. Animals advanced routing
 
-Pas de vorige oefening aan zodat de lijst van dieren in een json bestand zit. Je kan bijvoorbeeld `json-server` gebruiken om een REST API voor deze data te maken. Je moet dus deze keer gebruik maken van dynamische routes bv. `/animals/[name]`. 
+Pas de vorige oefening aan zodat je gebruik maakt van dynamische routes. Bv. `/animals/[name]`. De lijst van dieren moet komen van een externe API. Je kan bijvoorbeeld `json-server` gebruiken om een REST API voor deze data te maken.
+
+Voorzie een 404 pagina voor als de gebruiker een ongeldige route ingeeft. 
 
 ## 3. API routing
 
