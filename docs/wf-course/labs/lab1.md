@@ -7,20 +7,14 @@ import ReactPlayer from 'react-player'
 # Labo 1
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
-- Create React App
+- React app aanmaken
 - TSX
 - Statische bestanden
 - Lijsten
 
 ## 1. Expressies
 
-Maak een nieuwe react applicatie aan met het create-react-app commando. 
-
-```bash
-npx create-react-app labo1-expressies --template typescript
-```
-
-en maak het volgende `App.tsx` component aan:
+Maak een nieuwe react applicatie aan en maak het volgende `App.tsx` component aan:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 const App = () => {
@@ -50,13 +44,9 @@ Toon deze waarde in de browser.
     <Labo1Exercise1/>
 </div>
 
-#### Video
-
-<ReactPlayer controls url='https://youtu.be/wHT0FYsQa6k'/>
-
 ## 2. Slotmachine
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-app commando. 
+Maak een nieuwe react applicatie aan `labo1-slotmachine`.
 
 #### Opdracht
 
@@ -75,13 +65,9 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine` met het create-react-ap
     <Labo1Exercise2/>
 </div>
 
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/v-MZWSG5uN0'/>
-
 ## 3. Lijsten
 
-Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app commando.
+Maak een nieuwe react applicatie aan `labo1-lijsten`.
 
 #### Opdracht
 
@@ -99,13 +85,9 @@ Maak een nieuwe react applicatie aan `labo1-lijsten` met het create-react-app co
     <Labo1Exercise3/>
 </div>
 
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/68O9gQZ8Ykk'/>
-
 ## 4. Slot machine met map
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-react-app commando. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
+Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
 
 #### Opdracht
 
@@ -118,7 +100,3 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map` met het create-reac
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
 </div>
-
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/eqS3Ovt2FYE'/>
