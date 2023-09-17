@@ -65,13 +65,13 @@ console.log(numbers);
 
 #### **Op een bepaalde index toevoegen:**
 
-Hiervoor heb je de array functie `slice` nodig.&#x20;
+Hiervoor heb je de array functie `slice` nodig.
 
 Willen we een element op index 2 toevoegen (op de 3de plaats) dan doen we dit op de volgende manier:
 
 ```typescript codesandbox={"template": "typescript", "filename": "index.ts" }
 let numbers: readonly string[] = ["een","twee","vier"];
-</strong>numbers = [...numbers.slice(0, 2), "drie", ...numbers.slice(2)];
+numbers = [...numbers.slice(0, 2), "drie", ...numbers.slice(2)];
 console.log(numbers); // ["een","twee","drie","vier"]
 ```
 
