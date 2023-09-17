@@ -21,7 +21,11 @@ Je mag op deze moment nog aparte pagina's maken voor de verschillende dieren. Je
 
 Pas de vorige oefening aan zodat de lijst van dieren in een json bestand zit. Je kan bijvoorbeeld `json-server` gebruiken om een REST API voor deze data te maken. Je moet dus deze keer gebruik maken van dynamische routes bv. `/animals/[name]`. 
 
-## 3. Pokemon app
+## 3. API routing
+
+Pas nu de vorige applicatie aan zodat die gebruik maakt van een API route om de data op te halen. Je hoeft dus niet meer gebruik maken van de json-server. Je kan de data gewoon in een bestand zetten en die importeren in de API route.
+
+## 4. Pokemon app
 
 Maak de pokemon app oefening van labo 7 opnieuw maar gebruik deze keer Next.js om de routing te doen.
 
