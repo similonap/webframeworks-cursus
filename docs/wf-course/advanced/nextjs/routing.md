@@ -223,8 +223,6 @@ const About = () => {
 export default About;
 ```
 
-```jsx
-
 ## Custom error pages
 
 Normaal gezien moet je geen gebruik maken van custom error pages. Next.js zal automatisch de juiste error pagina tonen als er iets mis gaat. Wil je toch gebruik maken van een custom error pagina, dan volstaat het een bestand aan te maken met als naam de status code van de error. Bijvoorbeeld `pages/404.tsx` voor een 404 error. 
