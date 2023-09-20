@@ -39,22 +39,6 @@ const App = () => {
 export default App;
 ```
 
-### Met require keyword
-
-Je kan ook de `require` keyword gebruiken om afbeeldingen te importeren. 
-
-```typescript codesandbox={"template": "react-assets", "filename": "src/App.tsx"}
-import React from "react";
-
-const App = () => {
-  return (
-    <img src={require("./assets/llama3.png")} alt="llama image" />
-  );
-};
-
-export default App;
-```
-
 :::tip
 In dit voorbeeld hebben we alle bestanden in een aparte folder `assets` gezet. Dit mag je zelf kiezen, maar het is wel een goede gewoonte om je assets in een aparte folder te zetten. Hoe je die noemt is niet belangrijk, maar het is wel belangrijk dat je het consequent doet.
 :::
@@ -81,16 +65,15 @@ export default App;
 Je kan ook audio bestanden gebruiken in react. Je kan dit doen door de `<audio>` tag te gebruiken. Je kan de `src` property gebruiken om de audio bestand te kiezen. Je kan ook de `controls` property gebruiken om de audio bestanden te laten afspelen. 
 
 ```typescript codesandbox={"template": "react-assets", "filename": "src/App.tsx"}
-import React from "react";
-import { ReactComponent as Logo } from "./assets/logo.svg";
+import horseSound from "./assets/horse.mp3";
 
 const App = () => {
   return (
     <audio controls autoPlay>
-      <source src={require("./assets/horse.mp3")} type="audio/mpeg"/>
-    </audio>
+    <source src={horseSound} type="audio/mpeg" />
+  </audio>
   );
-};
+}
 
 export default App;
 ```
