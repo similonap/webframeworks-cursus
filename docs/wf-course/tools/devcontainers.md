@@ -46,7 +46,7 @@ Je hebt in feite slechts 2 programma's nodig op je computer:
 
 ### Hoe Maak je een DevContainer?
 
- 1. Ga naar https://gitlab.apstudent.be/ en maak een nieuwe repository. Kopieer de HTTPS link (verborgen in het `Clone` menu)
+ 1. Ga naar github en maak een nieuwe repository (via classrooms invite).
  2. Open VS Code, en installeer het `Remote Development` extension pack. Dit geeft je alle tools die je nodig hebt om een DevContainer te maken en gebruiken.
  3. In VS Code, gebruik de toets-combinatie `CTRL + SHIFT + P` om het `Command Palette` venster te openen.
  4. In het `command palette` window kies je voor de optie:  
@@ -66,3 +66,21 @@ Enkele vreemde zaken om op te merken:
  - Git werkt, zelfs als je Git nooit geinstalleerd hebt op je systeem. 
 
 Vergeet niet je werk te committen en pushen!
+
+### Trouble Shooting
+
+#### WSL versie is niet up-to-date
+
+Als je de DevContainer probeert te openen, maar je krijgt een foutmelding dat je WSL versie niet up-to-date is, dan moet je WSL updaten. Dit kan je doen door het volgende stappenplan te volgen:
+
+- Open Powershell als administrator (rechtermuisknop op het Powershell icoontje, en kies voor `Run as Administrator`)
+- Voer de volgende commando's uit: 
+
+```
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+wsl --set-default-version 2
+wsl --update
+```
+
+- Hierna kan je best je computer herstarten om zeker te zijn dat alles goed werkt.
