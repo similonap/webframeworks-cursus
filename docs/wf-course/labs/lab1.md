@@ -2,6 +2,10 @@ import Labo1Exercise1 from '@site/src/components/LabSolutions/Labo1Exercise1';
 import Labo1Exercise2 from '@site/src/components/LabSolutions/Labo1Exercise2';
 import Labo1Exercise3 from '@site/src/components/LabSolutions/Labo1Exercise3';
 import Labo1Exercise4 from '@site/src/components/LabSolutions/Labo1Exercise4';
+import Labo1AlienAlphabet from '@site/src/components/LabSolutions/Labo1AlienAlphabet';
+import Regenboog from '@site/src/components/LabSolutions/Regenboog';
+import Maaltafels from '@site/src/components/LabSolutions/Maaltafels';
+import ChatMessages from '@site/src/components/LabSolutions/ChatMessages';
 import ReactPlayer from 'react-player'
 
 # Labo 1
@@ -99,4 +103,135 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code va
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
+</div>
+
+## 5. Alien Alphabet
+
+Maak een nieuwe react applicatie aan `alien-alphabet`.
+
+#### Opdracht
+
+We willen in deze opdracht een aanzet geven tot een vertaalprogramma voor een buitenaards alfabet. We hebben een afbeelding voor elke letter van het alfabet. We willen deze afbeeldingen tonen in de browser.
+
+- Maak een array aan met alle letters van het alfabet. Je mag de letters zelf typen, of je kan gebruik maken van de `Array.from` functie. Zoek eens op hoe je aan de hand van de ASCII code een letter kan omzetten naar een string.
+- Maak een array aan met alle afbeeldingen van het alfabet. De afbeelding van de letters kan je vinden op `https://raw.githubusercontent.com/slimmii/alien-alphabet/master/` gevolgd door de letter in hoofdletters en de extensie `.png`. Je kan deze afbeeldingen gebruiken door de `src` property van de `img` tag te zetten op de url van de afbeelding.
+- Gebruik de map-functie om de afbeeldingen weer te geven in de browser. Elk element in de alphabetImages-array moet worden weergegeven als een `<img>` tag binnen een `<button>`-element.
+
+#### Voorbeeldoplossing
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo1AlienAlphabet/>
+</div>
+
+## 6. Maaltafels
+
+Maak een nieuwe react applicatie aan `maaltafels`.
+
+#### Opdracht
+
+Maak een React-component met de naam MultiplicationTable die een tabel genereert met de vermenigvuldigingstabel van getallen van 1 tot 10. Elk cel in de tabel moet het resultaat van de vermenigvuldiging van het rijnummer en het kolomnummer bevatten.
+
+#### Voorbeeldoplossing
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Maaltafels/>
+</div>
+
+## 7. Regenboog
+
+Maak een nieuwe react applicatie aan `regenboog`.
+
+#### Opdracht
+
+Definieer een array met de naam colors om een reeks kleuren te genereren. De array moet 100 verschillende kleuren bevatten, waarbij elke kleur wordt gedefinieerd in het HSL (Hue, Saturation, Lightness) kleurenmodel. Elke kleur in de reeks moet een unieke tint hebben, variërend van 0 graden (rood) tot 360 graden (rood).
+
+Je kan deze array gebruiken om de kleuren te genereren:
+
+```typescript
+const colors = Array.from({length: 100}, (_, i) => `hsl(${i * 360 / 100}, 100%, 50%)`);
+```
+
+Gebruik de map-functie om de kleuren in de array weer te geven als verticale div's op de webpagina. Elke balk moet een unieke kleur hebben, en de breedte van de balk moet 100% zijn, terwijl de hoogte 4 pixels moet zijn.
+
+Je hebt op dit moment nog niet geleerd hoe je css gebruikt. Je kan dit doen aan de hand van inline css:
+
+```typescript
+<div style={{width: "100%", height: "4px", backgroundColor: "red"}}></div>
+```
+
+Dit wordt later nog uitgelegd! Begrijp je hoe dit werkt, kan je ook eens proberen de regenboog in de andere richting te laten gaan! Tip: Twee woorden: flex-direction en flex!
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Regenboog/>
+</div>
+
+## 8. Chat messages
+
+Maak een nieuwe react applicatie aan `chat-messages`.
+
+#### Opdracht
+
+We willen een chat applicatie maken. We hebben een array met chat berichten. Elk bericht heeft een id, een naam, een bericht en een timestamp. We willen deze berichten tonen in de browser aan de hand van een eenvoudige tabel (zonder styling).
+
+De data kan je gewoon in een variabele zetten. Je kan deze data gebruiken:
+
+```typescript
+const messages = [
+    {
+        from: 'Wolverine',
+        content: 'Hey Mags, heard you tried to bend a spoon with your mind again. You need a hand with that?',
+        date: '2023-09-20 10:15 AM'
+    },
+    {
+        from: 'Magneto',
+        content: 'Very funny, Logan. At least I don\'t need metal claws to pick my teeth.',
+        date: '2023-09-20 10:17 AM'
+    },
+    {
+        from: 'Wolverine',
+        content: 'Touché, old man. But I bet you still can\'t beat me at a game of chess.',
+        date: '2023-09-20 10:20 AM'
+    },
+    {
+        from: 'Magneto',
+        content: 'Chess? How pedestrian. I prefer a game of "Move All the Metal Objects Away From Wolverine."',
+        date: '2023-09-20 10:22 AM'
+    },
+    {
+        from: 'Wolverine',
+        content: 'Haha, nice try, metalhead. But I\'ve got my adamantium skeleton to keep me company.',
+        date: '2023-09-20 10:25 AM'
+    },
+    {
+        from: 'Magneto',
+        content: 'True, but it doesn\'t help you with fashion choices. Those sideburns, really, Logan?',
+        date: '2023-09-20 10:27 AM'
+    },
+    {
+        from: 'Wolverine',
+        content: 'What can I say? They help me channel my inner bad boy.',
+        date: '2023-09-20 10:30 AM'
+    },
+    {
+        from: 'Magneto',
+        content: 'Speaking of bad boys, have you seen what Deadpool\'s up to lately?',
+        date: '2023-09-20 10:32 AM'
+    },
+    {
+        from: 'Wolverine',
+        content: 'Oh, don\'t get me started on that guy. He makes me look like a choirboy.',
+        date: '2023-09-20 10:35 AM'
+    },
+    {
+        from: 'Magneto',
+        content: 'Agreed, Logan. Let\'s team up and take him down. It\'s the only way to save our reputation.',
+        date: '2023-09-20 10:37 AM'
+    }
+];
+```
+
+#### Voorbeeldoplossing
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <ChatMessages/>
 </div>
