@@ -110,39 +110,3 @@ src
         ├── ListItem.test.tsx
         └── ListItem.tsx
 ```
-
-## Absolute imports
-
-Je zal al wel opgemerkt hebben tijdens het verplaatsen van alle components dat je structuur van je imports altijd met relatieve paden werken. Je herkent dit door imports zoals
-
-```
-import InputView from '../InputView/InputView';
-import List from '../List/List';
-import { Game } from '../../types';
-```
-
-je ziet dat je doorheen verschillende niveaus moet gaan aan de hand van `../` dit geeft aan dat het bestand een folder niveau hoger staat. Dit is niet zo'n handige manier van werken, zeker als je dingen begint te verplaatsen kan dit nogal onoverzichtelijk worden. Gelukkig is hier een oplossing voor. Open je `tsconfig.json` bestand en voeg de volgende lijn toe aan je compilerOptions
-
-```
-"baseUrl": "src"
-```
-
-je `tsconfig.json` bestand zal er dan ongeveer als volgt uitzien:
-
-```typescript {13} codesandbox={"template": "react-folder-structure", "filename": "tsconfig.json"}
-{
-    "include": [
-        "./src/**/*"
-    ],
-    "compilerOptions": {
-        "strict": true,
-        "esModuleInterop": true,
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "jsx": "react-jsx",
-        "baseUrl": "src"
-    }
-}
-```
