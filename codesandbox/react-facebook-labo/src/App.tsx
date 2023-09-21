@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import styles from "./App.module.css";
 
 const App = () => {
@@ -12,47 +10,44 @@ const App = () => {
           </div>
           <img
             className={styles.co_logo}
-            src="https://www.placecage.com/c/40/40"
+            src="https://loremflickr.com/40/40"
           />
           <div className={styles.co_name}>
-            <a href="#">Nicolas Cage</a>
+            <a href="#">Purrfectly Pawsome</a>
           </div>
           <div className={styles.time}>
-            <a href="#">2hrs</a> · <i className="fa fa-globe"></i>
+            <a href="#">Just 9 lives ago</a> · <i className="fa fa-globe"></i>
           </div>
         </div>
         <div className={styles.content}>
           <p>
-            Height is optional, if no height is specified the image will be a
-            square. Example:&nbsp;
-            <a href="https://www.placecage.com/">https://www.placecage.com/</a> 
+            Do you know why cats are excellent programmers? Because they always purr-fect their code! 😸
           </p>
         </div>
 
         <div className={styles.reference}>
-          <img className={styles.reference_thumb} src="https://www.placecage.com/c/476/250" />
+          <img className={styles.reference_thumb} src="https://loremflickr.com/476/250" />
           <div className={styles.reference_content}>
             <div className={styles.reference_title}>
-              A quick and simple image placeholder service. | PlaceCage
+              The Ultimate Guide to Napping Like a Cat | CatNapTips
             </div>
             <div className={styles.reference_subtitle}>
-              How does it work? Just put your image size after our URL and
-              you'll get a placeholder.
+              Learn the art of napping, feline style! Just follow these simple tips.
             </div>
-            <div className={styles.reference_font}>placecage.com</div>
+            <div className={styles.reference_font}>catnaptips.com</div>
           </div>
         </div>
         <div className={styles.social}>
           <div className={styles.social_content}></div>
           <div className={styles.social_buttons}>
             <span>
-              <i className="fa fa-thumbs-up"></i>Like
+              <i className="fa fa-thumbs-up"></i>Paws Up!
             </span>
             <span>
-              <i className="fa fa-comment"></i>Comment
+              <i className="fa fa-comment"></i>Meow-back
             </span>
             <span>
-              <i className="fa fa-share"></i>Share
+              <i className="fa fa-share"></i>Share the Cat-titude
             </span>
           </div>
         </div>
