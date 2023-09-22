@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 interface Student {
+  id: number;
   naam: string;
   leeftijd: number;
 }
@@ -11,22 +12,27 @@ const App = () => {
   // array of five students
   let fiveUniqueStudents: Student[] = [
     {
+      id: 0,
       naam: 'Jef',
       leeftijd: 20,
     },
     {
+      id: 1,
       naam: 'Jan',
       leeftijd: 21,
     },
     {
+      id: 2,
       naam: 'Joris',
       leeftijd: 22,
     },
     {
+      id: 3,
       naam: 'Andie',
       leeftijd: 23,
     },
     {
+      id: 4,
       naam: 'Senne',
       leeftijd: 24,
     },
@@ -41,19 +47,19 @@ const App = () => {
       <h3>Studentenlijst</h3>
       <ol>
         {fiveUniqueStudents.map((student) => (
-          <li>{student.naam}</li>
+          <li key={student.id}>{student.naam}</li>
         ))}
       </ol>
       <h3>Studentenlijst met J</h3>
       <ol>
         {fiveUniqueStudents.filter(student => student.naam.startsWith("J")).map((student) => (
-          <li>{student.naam}</li>
+          <li key={student.id}>{student.naam}</li>
         ))}
       </ol>
       <h3>Select</h3>
       <select>
         {fiveUniqueStudents.map((student) => (
-          <option>{student.naam}</option>
+          <option key={student.id}>{student.naam}</option>
         ))}
       </select>
       <h3>Table</h3>
@@ -66,7 +72,7 @@ const App = () => {
         </thead>
         <tbody>
             {fiveUniqueStudents.map((student) => (
-                <tr>
+                <tr key={student.id}>
                     <td>{student.naam}</td>
                     <td>{student.leeftijd}</td>
                 </tr>
