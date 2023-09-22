@@ -1,6 +1,7 @@
 import Labo2Slots from '@site/src/components/LabSolutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
+import Maaltafels2 from '@site/src/components/LabSolutions/Maaltafels2';
 import ReactPlayer from 'react-player'
 
 # Labo 2
@@ -64,4 +65,30 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo2Slots/>
+</div>
+
+## 4. Maaltafels component
+
+Maak een kopie van de maaltafels oefening van labo 1 en zorg ervoor dat je de volgende componenten hebt:
+
+- `MultiplicationTable`: deze component bevat de logica om de tabel te tonen. Deze component bevat een property `max` die het maximum getal aangeeft dat getoond moet worden. 
+
+    ```
+    <MultiplicationTable max={5} />
+    ```
+- `MultiplicationRow`: deze component bevat de logica om 1 rij van de tabel te tonen. Deze component bevat een property `factor` die het getal aangeeft waarvan de tafel getoond moet worden. Deze component bevat ook een property `max` die het maximum getal aangeeft dat getoond moet worden. 
+
+    ```
+    <MultiplicationRow factor={2} max={5} />
+    ```
+- `Header`: deze component bevat de logica om de header van de tabel te tonen. Deze component bevat een property `max` die het maximum getal aangeeft dat getoond moet worden. 
+
+    ```
+    <Header max={5} />
+    ```
+
+De applicatie moet ongeveer er als volgt uitzien:
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Maaltafels2/>
 </div>
