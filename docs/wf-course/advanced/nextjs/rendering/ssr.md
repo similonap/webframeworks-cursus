@@ -1,10 +1,10 @@
-## Server side rendering
+# Server side rendering
 
 Om de gebruikerservaring te verbeteren kan je gebruik maken van server side rendering. Dit wil zeggen dat de pagina wordt opgebouwd op de server en dat de volledige pagina wordt doorgestuurd naar de browser. De browser moet dus niet meer wachten tot de volledige applicatie is gedownload. De gebruiker krijgt meteen de pagina te zien. Dit zorgt voor een betere gebruikerservaring.
 
 Een ander voordeel is dat de pagina geïndexeerd kan worden door zoekmachines. De pagina wordt namelijk opgebouwd op de server en wordt dan doorgestuurd naar de browser. De browser krijgt dus meteen de volledige pagina te zien. Dit is ideaal voor zoekmachines.
 
-### getServerSideProps
+## getServerSideProps
 
 Wil je in het voorbeeld van hierboven gebruik maken van server side rendering, dan kan je gebruik maken van de `getServerSideProps` functie. Deze functie wordt uitgevoerd op de server en zorgt ervoor dat je data kan ophalen van een server. Als return value moet je een object teruggeven met een `props` property. Deze property bevat de data die je wil doorgeven aan je component. 
 
@@ -40,7 +40,7 @@ const Posts = ({ posts }: { posts: Post[] }) => {
 export default Posts;
 ```
 
-### GetServerSidePropsContext
+## GetServerSidePropsContext
 
 De `getServerSideProps` functie krijgt een `context` parameter mee. Deze parameter bevat een aantal handige properties. De belangrijkste property is de `req` property. Deze property bevat de request die binnenkomt op de server. Je kan deze gebruiken om bijvoorbeeld de cookies op te halen. In het volgende voorbeeld tonen we een aantal handige properties van de `context` parameter.
 

@@ -1,4 +1,4 @@
-## Client side rendering
+# Client side rendering
 
 Tot nu toe hebben we altijd gebruik gemaakt van client side rendering. Dit wil zeggen dat de applicatie wordt opgebouwd in de browser. De volledige applicatie moet dus eerst gedownload worden door de browser en wordt dan ook volledig uitgevoerd in de browser. Dit heeft als voordeel dat de applicatie heel snel reageert op interacties van de gebruiker. Het nadeel is dat de applicatie pas kan beginnen met laden als de volledige applicatie is gedownload. Dit kan ervoor zorgen dat de gebruiker een lege pagina te zien krijgt als de applicatie nog aan het laden is. Dit is niet ideaal voor de gebruikerservaring. 
 
