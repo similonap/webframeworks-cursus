@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Context
 
 ## Delen van data via context
