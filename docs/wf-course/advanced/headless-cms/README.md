@@ -85,4 +85,11 @@ Voor de author veld moeten we een relatie leggen met het User content type. Dit 
 
 Vervolgens moet je op de `Save` knop klikken om het content type op te slaan. Na het opslaan wordt de server automatisch herstart. Het kan zijn dat je de pagina moet herladen om de wijzigingen te zien.
 
+Nu kunnen we effectief een blog post aanmaken. Je kan dan naar de Content Manager gaan en vervolgens op de `Post` link klikken. Je krijgt dan een overzicht te zien van alle blogposts. Uiteraard is er nog geen blogpost aanwezig. Je kan een blogpost aanmaken door op de `Create an entry` knop te klikken. Je krijgt dan een formulier te zien waar je de blogpost kan aanmaken. De rich text editor heeft support voor Markdown. Als je meer wil weten over Markdown, dan kan je [hier](https://www.markdownguide.org/basic-syntax/) meer informatie vinden.
+
+![Alt text](<Screenshot 2023-09-24 at 22.45.04.png>)
+
+#### REST API
+
+Voor elke collection content type wordt er automatisch een REST API endpoint aangemaakt. Dit endpoint kan je gebruiken om data op te halen van de server of om data te versturen naar de server. 
 
