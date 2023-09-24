@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Static Site Generation
 
 Bij static site generation wordt de pagina opgebouwd tijdens het runnen van het `next build` commando. Na het builden worden alle pagina's opgeslagen als statische HTML bestanden. Deze HTML paginas worden dan doorgestuurd naar de browser. Alle data die je wil gebruiken in je applicatie moet je dus ophalen tijdens het builden van de applicatie en kan in principe niet meer veranderen. Dit zorgt ervoor dat de applicatie heel snel kan laden. Je kan dit soort applicaties ook hosten op een CDN, zo kan je de pagina nog sneller aan de gebruiker tonen. Wel opgelet, als de data verandert, dan moet je de applicatie opnieuw builden.
