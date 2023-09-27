@@ -38,7 +38,7 @@ Let op het extra `--` teken. Dit zorgt ervoor dat de opties niet door `npm` word
 
 We kunnen nu de folder `our-first-react-app` openen in Visual Studio Code en naar de inhoud van het project kijken:
 
-![create-react-app maakt veel bestanden aan. In het begin zullen we er niet veel aanpassen.](img/react-project-folder-contents.png)
+![Het vite commando maakt veel bestanden aan. In het begin zullen we er niet veel aanpassen.](img/react-project-folder-contents.png)
 
 Hier merk je onder andere volgende bestanden en folders in op:
 

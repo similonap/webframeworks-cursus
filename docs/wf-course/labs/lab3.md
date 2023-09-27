@@ -27,7 +27,7 @@ Identificeer de state in de volgende componenten. Geef aan waar de state zich be
 
 ## 2. Input veld
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-inputfield`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-inputfield`.
 
 Maak een component `InputFields` aan met de volgende functionaliteit:
 - Het component heeft 1 state property `inputValue` die een string bevat. Deze begint bij een lege string.
@@ -42,7 +42,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 3. Checkbox
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-checkbox`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-checkbox`.
 
 Maak een component `Checkbox` aan met de volgende functionaliteit:
 
@@ -55,7 +55,7 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 
 ## 4. Omhoog/Omlaag
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-omhooglaag`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-omhooglaag`.
 
 Maak een component `Counter` aan met de volgende functionaliteit:
 - De component bevat een `state` met een property `count` die een getal bevat. Begint bij 0.
@@ -72,7 +72,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 5. Loading indicator
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-loading`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-loading`.
 
 installeer de volgende npm packages:
 
@@ -93,7 +93,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 
 ## 6. Kleurkiezer
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-kleurkiezer`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-kleurkiezer`.
 
 Maak een component `ColorPicker` aan met de volgende functionaliteit:
 - Het component bevat een `state` met een property `color` die een kleur bevat. Begint bij `#000000`.
@@ -112,7 +112,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 7. Contactformulier
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-contactformulier`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-contactformulier`.
 
 Maak een component `ContactForm` aan met de volgende functionaliteit:
 - Het component bevat 3 `input` elementen met de volgende labels:
@@ -137,7 +137,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 8. Random Cage
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo3-random-cage`.
+Maak een nieuwe React applicatie aan en noem deze `labo3-random-cage`.
 
 Maak een component `RandomCage` aan met de volgende functionaliteit:
 - Het component bevat een `button` met de tekst `Random Cage`.

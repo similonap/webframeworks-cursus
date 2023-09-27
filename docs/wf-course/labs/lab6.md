@@ -69,7 +69,7 @@ Herstructureer deze applicatie als volgt:
 
 ## 2. Quizapp
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo5-quizapp`.
+Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 
 - Maak een nieuw component `QuizApp` aan.
 - Maak gebruik van de `https://opentdb.com/api.php?amount=10` om de quizvragen op te halen. Gebruik de `fetch` API om de data op te halen. Gebruik een `useEffect` om deze data op te halen en daarna in een state te plaatsen.

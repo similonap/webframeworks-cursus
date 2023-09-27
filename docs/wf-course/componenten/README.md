@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Componenten
 
-Code die gegenereerd wordt door create-react-app bevat één hoofdfunctie: App. Het is mogelijk alle code onder te brengen in deze functie, maar dan is het niet meer mogelijk (bijvoorbeeld in een later project) een onderdeeltje van de applicatie te herbruiken. Het is beter de applicatie op te splitsen in kleine herbruikbare blokjes. Deze herbruikbare blokjes heten componenten.
+Tot nu toe had je altijd maar 1 functie: de `App` functie. Het is mogelijk alle code onder te brengen in deze functie, maar dan is het niet meer mogelijk (bijvoorbeeld in een later project) een onderdeeltje van de applicatie te herbruiken. Het is beter de applicatie op te splitsen in kleine herbruikbare blokjes. Deze herbruikbare blokjes heten componenten.
 
 We illustreren dit met onderstaande applicatie, die een lijst van games toont:
 

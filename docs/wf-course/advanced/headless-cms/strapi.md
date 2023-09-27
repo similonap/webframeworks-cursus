@@ -86,6 +86,12 @@ Dus in ons geval bij de blog posts:
 | `PUT`    | `/api/posts/:id` | Update a specific blog post   |
 | `DELETE` | `/api/posts/:id` | Delete a specific blog post   |
 
+Strapi biedt een heel gamma van query parameters aan die het mogelijk maken om te filteren, sorteren en pagineren. Deze kan je vinden op de [Strapi documentatie](https://docs.strapi.io/dev-docs/api/rest/parameters).
+
+Je kan ook de [Interactive query builder](https://docs.strapi.io/dev-docs/api/rest/interactive-query-builder) gebruiken om de query parameters te genereren. 
+
+
+
 ### API Token
 
 Vooraleer je gebruik kan maken van deze endpoints moet je een API Token aanmaken en aangeven wat de gebruiker van deze token allemaal mag uitvoeren. Je kan dit doen door naar de `Settings` tab te gaan en vervolgens op API tokens te klikken. Daarna klik je op `Create new API token`.

@@ -14,7 +14,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Simpele componenten
 
-Maak een nieuwe React applicatie aan met behulp van `create-react-app` en noem deze `labo2-component`.
+Maak een nieuwe React applicatie aan en noem deze `labo2-component`.
 
 Maak de volgende componenten aan:
 - `Header` met als props `title` en `subtitle`
@@ -32,7 +32,7 @@ Gebruik deze componenten in de `App` component om de volgende pagina te maken:
 
 ## 2. Facebook cards
 
-Maak een nieuw project aan met behulp van `create-react-app` en noem deze `labo2-facebook`.
+Maak een nieuw project aan en noem deze `labo2-facebook`.
 
 Neem de volgende code over. 
 
