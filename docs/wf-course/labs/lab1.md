@@ -48,6 +48,10 @@ Toon deze waarde in de browser.
     <Labo1Exercise1/>
 </div>
 
+#### Video
+
+<ReactPlayer controls url='https://youtu.be/wHT0FYsQa6k'/>
+
 ## 2. Slotmachine
 
 Maak een nieuwe react applicatie aan `labo1-slotmachine`.
@@ -69,6 +73,10 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine`.
     <Labo1Exercise2/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/v-MZWSG5uN0'/>
+
 ## 3. Lijsten
 
 Maak een nieuwe react applicatie aan `labo1-lijsten`.
@@ -89,6 +97,10 @@ Maak een nieuwe react applicatie aan `labo1-lijsten`.
     <Labo1Exercise3/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/68O9gQZ8Ykk'/>
+
 ## 4. Slot machine met map
 
 Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
@@ -104,6 +116,10 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code va
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo1Exercise4/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/eqS3Ovt2FYE'/>
 
 ## 5. Alien Alphabet
 

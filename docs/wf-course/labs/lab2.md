@@ -30,6 +30,10 @@ Gebruik deze componenten in de `App` component om de volgende pagina te maken:
     <Labo2BasicComponents/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/V6N5Nt_YNA8'/>
+
 ## 2. Facebook cards
 
 Maak een nieuw project aan en noem deze `labo2-facebook`.
@@ -41,6 +45,10 @@ Neem de volgende code over.
 Teken eerst op papier hoe je deze facebook card zou opdelen in componenten. Splits deze componenten op in aparte componenten. Zorg dat alle content aanpasbaar is via props.
 
 Let er op dat componenten ook kunnen bestaan uit andere componenten. 
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/jAKwAgCFfws'/>
 
 ## 3. Slotmachine
 
@@ -66,6 +74,10 @@ De applicatie moet ongeveer er als volgt uitzien:
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo2Slots/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/fRYEQ-NR0aU'/>
 
 ## 4. Maaltafels component
 
