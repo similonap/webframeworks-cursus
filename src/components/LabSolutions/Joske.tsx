@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './Joske.css';
+import styles from './Joske.module.css';
 
 const colors = ["red", "yellow", "blue"];
 
@@ -16,13 +16,13 @@ const ColorSquare = () => {
   }
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <p><b>{name}</b></p>
-      <div className="square" style={{ backgroundColor: colors[color], borderRadius: square ? 0 : 400 }} onClick={changeColor}>
+      <div className={styles.square} style={{ backgroundColor: colors[color], borderRadius: square ? 0 : 400 }} onClick={changeColor}>
         <p style={{userSelect: "none"}}>{emotion}</p>
       </div>
 
-      <div className="row">
+      <div>
         <input type="text" onChange={(e) => setNameField(e.target.value)} value={nameField} />
         <button onClick={() => { setName("Joske"); setNameField("Joske"); }}>Reset Name</button>
         <button onClick={() => setName(nameField)}>Set</button>
