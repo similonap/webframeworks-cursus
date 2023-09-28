@@ -6,6 +6,8 @@ import Labo3Checkbox from '@site/src/components/LabSolutions/Labo3Checkbox';
 import Labo3Goods from '@site/src/components/LabSolutions/Labo3Goods';
 import Labo3Loading from '@site/src/components/LabSolutions/Labo3Loading';
 import Labo3RandomNicCage from '@site/src/components/LabSolutions/Labo3RandomNicCage';
+import Joske from '@site/src/components/LabSolutions/Joske';
+
 import ReactPlayer from 'react-player';
 
 # Labo 3
@@ -147,3 +149,22 @@ Maak een component `RandomCage` aan met de volgende functionaliteit:
 - Je mag de volgende afbeelding tonen: https://www.placecage.com/gif/200/200
 
 <Labo3RandomNicCage/>
+
+## 9. Joske het vierkant
+
+Maak een nieuwe React applicatie aan en noem deze `labo3-joske`.
+
+Je begint met Joske... Het statische vierkant:
+
+<CodeSandbox template="react-joske-labo"/>
+
+- Joske is een rood vierkant. Maar zou ook soms graag blauw zijn! Of zelfs groen! Pas Joske aan zodat als je op hem klikt, hij van kleur verandert. De eerste keer wordt hij blauw, de tweede keer groen, de derde keer rood, de vierde keer blauw, enzovoort.
+- Joske zou graag van naam veranderen en Josje worden. Maak een input veld waarin je de naam van Joske kan aanpassen. Tijdens het aanpassen van de naam wordt de naam van Joske aangepast.
+- Soms wil Josje toch terug Joske zijn. Zorg ervoor dat zijn naam kan gereset worden naar Joske via een knop.
+- Josje is heel de tijd triestig. Zorg voor een dropdown waarin je kan kiezen uit verschillende emoties. Als je een emotie kiest, dan verandert de emotie van Josje. De emoties worden uitgedrukt in smileys.
+- Soms wil Josje helemaal geen vierkant meer zijn. Hij zou graag ook een cirkel zijn. Zorg voor een checkbox om te togglen tussen vierkant en cirkel
+
+Josje is nu een blij cirkeltje!
+
+<Joske/>
+
