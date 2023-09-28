@@ -7,6 +7,7 @@ import Labo3Goods from '@site/src/components/LabSolutions/Labo3Goods';
 import Labo3Loading from '@site/src/components/LabSolutions/Labo3Loading';
 import Labo3RandomNicCage from '@site/src/components/LabSolutions/Labo3RandomNicCage';
 import Joske from '@site/src/components/LabSolutions/Joske';
+import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 
 import ReactPlayer from 'react-player';
 
