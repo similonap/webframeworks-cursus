@@ -1,6 +1,6 @@
 import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
 
-# Labo 8
+# Labo 9
 
 - Server side rendering
 - Static site Generation
@@ -13,6 +13,9 @@ Pas de animals oefening van vorige week aan zodat je gebruik maakt van server si
 
 Pas de animals oefening nu aan zodat je gebruik maakt van static site generation. Elke pagina moet dus op voorhand gegenereerd worden. 
 
-## 3. Pokemon app
+## 3. Regenboog
+
+
+## 4. Pokemon app
 
 Pas de pokemon app oefening van vorige week aan zodat je gebruik maakt van static site generation. Elke pagina moet op voorhand gegenereerd worden.
