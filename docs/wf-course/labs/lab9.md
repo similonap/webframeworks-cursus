@@ -13,11 +13,11 @@ Pas de animals oefening van vorige week aan zodat je gebruik maakt van server si
 
 Pas de animals oefening nu aan zodat je gebruik maakt van static site generation. Elke pagina moet dus op voorhand gegenereerd worden. 
 
-## 4. Pokemon app
+## 3. Pokemon app
 
 Pas de pokemon app oefening van vorige week aan zodat je gebruik maakt van static site generation. Elke pagina moet op voorhand gegenereerd worden.
 
-## 5. Priem getallen
+## 4. Priem getallen
 
 Maak een nieuwe Next.js applicatie aan met de naam "prime-numbers". We willen een pagina maken die het zoeken naar priem getallen demonstreert. 
 

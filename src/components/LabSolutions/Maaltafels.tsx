@@ -1,11 +1,7 @@
 import React from "react";
 
 const App = () => {
-    
-    let numbers = Array.from(Array(10).keys()).map((i) => {
-        return i + 1;
-    });
-
+    let numbers = Array.from(Array(10).keys()).map((i) => i + 1);
     return (
         <>
             {
