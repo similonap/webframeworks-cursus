@@ -17,7 +17,26 @@ Pas de animals oefening nu aan zodat je gebruik maakt van static site generation
 
 Pas de pokemon app oefening van vorige week aan zodat je gebruik maakt van static site generation. Elke pagina moet op voorhand gegenereerd worden.
 
-## 4. Priem getallen
+## 4. Holiday calendar
+
+Maak een nieuwe Next.js applicatie aan met de naam "holiday-calendar". We willen een pagina maken waar we alle feestdagen van een bepaald land kunnen opzoeken. We willen een volledige static generated site genereren.
+
+Je moet gebruik maken van de volgende API: https://date.nager.at/swagger/index.html
+
+Je moet de volgende pagina's voorzien:
+- /holidays -> deze pagina moet een lijst tonen van alle landen waarvoor je feestdagen kan opvragen. 
+- /holidays/[countrycode] -> deze pagina moet een lijst tonen van alle feestdagen voor het land met de gegeven countrycode.
+
+![](../images/holidays_1.png)
+![](../images/holidays_2.png)
+
+Uitbreidingen:
+Pas de paden aan zodat je de volgende urls krijgt:
+- /holidays -> deze pagina moet een lijst tonen van alle landen waarvoor je feestdagen kan opvragen.
+- /holidays/[countrycode] -> toont een aantal jaren waarvoor je feestdagen kan opvragen. Deze mag hardcoded zijn (bv: 2020, 2021, 2022)
+- /holidays/[countrycode]/[year] -> deze pagina moet een lijst tonen van alle feestdagen voor het land met de gegeven countrycode en het gegeven jaar.
+
+## 5. Priem getallen
 
 Maak een nieuwe Next.js applicatie aan met de naam "prime-numbers". We willen een pagina maken die het zoeken naar priem getallen demonstreert. 
 
