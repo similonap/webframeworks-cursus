@@ -35,14 +35,15 @@ export const SlotMachine = ({ slots }: { slots: number }) => {
   const [slotNumbers, setSlotNumbers] = useState(getSlots(slots));
   const [money, setMoney] = useState(100);
 
-  const isWinning = () => {
-    let winning = slotNumbers.every((slot) => slot === slotNumbers[0]);
+  const isWinning = (slots: number[]) => {
+    let winning = slots.every((slot) => slot === slots[0]);
     return winning;
   }
 
   const pullLever : React.MouseEventHandler<HTMLButtonElement> = () => {
-    setSlotNumbers(getSlots(slots));
-    if (isWinning()) {
+    let newSlots = getSlots(slots);
+    setSlotNumbers(newSlots);
+    if (isWinning(newSlots)) {
       setMoney(money + 20);
     } else {
       setMoney(money => money - 1);

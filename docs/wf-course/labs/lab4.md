@@ -104,9 +104,10 @@ Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit lat
 Maak een nieuwe React applicatie aan en noem deze `labo2-tictactoe`.
 
 Maak een component `TicTacToe` aan met de volgende functionaliteit:
-- Het component bevat een `state` met een property `board` die een array bevat met 9 elementen. Elk element is een string met de waarde `''`.
+- Het component bevat een `state` met de naam `board` die een array bevat met 9 elementen. Elk element is een string met de waarde `''`.
+- Het component bevat een `state` met de naam `player` die de waarde `X` of `O` bevat. Dit is de speler die aan de beurt is. De speler begint bij `X`.
 - Gebruik de `map` functie om een array van 9 `div` elementen te maken. Elk `div` element heeft een `onClick` event handler die een functie aanroept die de `board` state verandert. De functie krijgt als parameter de index van het `div` element dat geklikt is.
-- Als je op een `div` element klikt, wordt de waarde van het `div` element veranderd naar `X` of `O`. De speler die aan de beurt is, wordt bepaald door de index van het `div` element. Als de index even is, dan is het `X`, anders is het `O`.
+- Als je op een `div` element klikt, wordt de waarde van het `div` element veranderd naar het symbool van de speler die aan de beurt is.
 
 Het spel ziet er nu als volgt uit:
 
