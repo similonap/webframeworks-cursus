@@ -1,5 +1,5 @@
 import React from 'react'
-import './Maaltafels2.css'
+import styles from './Maaltafels2.module.css'
 
 const MultiplicationRow = ({factor, max} : { factor : number, max: number}) => {
   let numbers = Array.from({length: max}, (_, i) => i+1)
