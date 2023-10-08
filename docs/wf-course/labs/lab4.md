@@ -32,6 +32,10 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 <Labo4ShoppingList/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/48YqueBEB3Q'/>
+
 ## 2. Kleuren Selectie
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-color-select`.
@@ -52,6 +56,10 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 <Labo4MultiSelect/>
 </div>
 
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/w1tdhQ0psNc'/>
+
 ## 3. Filtering en sorting
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-filtering`.
@@ -66,6 +74,10 @@ Maak een component `Filtering` aan met de volgende functionaliteit:
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo4Filtering/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/wvtt_BGSNrc'/>
 
 ## 4. Slots
 
@@ -82,6 +94,10 @@ Het spel ziet er nu als volgt uit:
 <div style={{padding: 10, border: "1px dotted black"}}>
 <Labo4Slots/>
 </div>
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/u1gLw9UwTh0'/>
 
 ## 5. Counter list
 
@@ -100,6 +116,10 @@ Maak een component `ButtonList` aan met de volgende functionaliteit:
 :::note
 Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit later nog doen.
 :::
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/FKcudUHxIc8'/>
 
 ## 6. Tic Tac Toe
 
