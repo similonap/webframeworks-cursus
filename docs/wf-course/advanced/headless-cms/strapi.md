@@ -51,6 +51,7 @@ Vervolgens moeten we de velden van het content type aanmaken. We gaan de volgend
 - title: Text
 - content: Rich Text
 - author: Relation (met het User content type)
+- published_at: DateTime
 
 De keuze van Rich Text is belangrijk. Dit betekent dat we een rich text editor kunnen gebruiken om de inhoud van de blogpost te schrijven. Dit is een editor die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
 
@@ -58,13 +59,15 @@ Voor de author veld moeten we een relatie leggen met het User content type. Dit 
 
 ![Alt text](<Screenshot 2023-09-24 at 22.24.14.png>)
 
+Omdat we ook moeten weten wanneer de blogpost is gepubliceerd, moeten we een `published_at` veld toevoegen. Dit veld is van het type `DateTime`. Dit wil zeggen dat we een datum en een tijd kunnen kiezen.
+
 Vervolgens moet je op de `Save` knop klikken om het content type op te slaan. Na het opslaan wordt de server automatisch herstart. Het kan zijn dat je de pagina moet herladen om de wijzigingen te zien.
 
 Nu kunnen we effectief een blog post aanmaken. Je kan dan naar de Content Manager gaan en vervolgens op de `Post` link klikken. Je krijgt dan een overzicht te zien van alle blogposts. Uiteraard is er nog geen blogpost aanwezig. Je kan een blogpost aanmaken door op de `Create an entry` knop te klikken. Je krijgt dan een formulier te zien waar je de blogpost kan aanmaken. De rich text editor heeft support voor Markdown. Als je meer wil weten over Markdown, dan kan je [hier](https://www.markdownguide.org/basic-syntax/) meer informatie vinden.
 
 ![Alt text](<Screenshot 2023-09-24 at 22.45.04.png>)
 
-### REST API
+## REST API
 
 Voor elke collection content type wordt er automatisch een REST API endpoint aangemaakt. Dit endpoint kan je gebruiken om data op te halen van de server of om data te versturen naar de server. 
 
@@ -90,9 +93,7 @@ Strapi biedt een heel gamma van query parameters aan die het mogelijk maken om t
 
 Je kan ook de [Interactive query builder](https://docs.strapi.io/dev-docs/api/rest/interactive-query-builder) gebruiken om de query parameters te genereren. 
 
-
-
-### API Token
+## API Token
 
 Vooraleer je gebruik kan maken van deze endpoints moet je een API Token aanmaken en aangeven wat de gebruiker van deze token allemaal mag uitvoeren. Je kan dit doen door naar de `Settings` tab te gaan en vervolgens op API tokens te klikken. Daarna klik je op `Create new API token`.
 
@@ -109,7 +110,7 @@ Na het aanmaken van een token krijg je de token te zien. Je kan deze nu meegeven
 Nu zou je bijvoorbeeld met fetch data kunnen ophalen van de server. Je kan bijvoorbeeld de volgende code gebruiken om alle blogposts op te halen:
 
 ```jsx
-const response = await fetch("http://localhost:1337/posts", {
+const response = await fetch("http://localhost:1337/api/posts?populate=*", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -118,3 +119,142 @@ const response = await fetch("http://localhost:1337/posts", {
 const posts = await response.json();
 ```
 
+We voegen hier de `populate=*` parameter toe om de author van de blogpost op te halen. Als je dit niet doet, dan krijg je enkel de id van de author te zien. 
+
+## Image upload
+
+Het is mogelijk ook afbeeldingen te uploaden met strapi. By default worden deze afbeeldingen opgeslagen in een lokale folder. Omdat het niet altijd mogelijk is om afbeeldingen lokaal op te slaan, kan je ook gebruik maken van een externe service zoals Amazon S3 of Cloudinary. 
+
+In deze cursus gaan we gebruik maken van Cloudinary. Dit is een service die het mogelijk maakt om afbeeldingen op te slaan in de cloud. Je kan een gratis account aanmaken op [Cloudinary](https://cloudinary.com/).
+
+In het dashboard kan je de volgende informatie vinden:
+- Cloud name
+- API Key
+- API Secret
+
+Deze informatie heb je later nodig om de afbeeldingen te uploaden naar Cloudinary via Strapi.
+
+### Cloudinary plugin installeren
+
+Het eerste wat je moet doen is de Cloudinary plugin installeren. Dit doe je door het volgende commando uit te voeren:
+
+```bash
+npm install @strapi/provider-upload-cloudinary
+```
+
+Zorg ervoor dat de strapi server niet draait als je dit commando uitvoert.
+
+Daarna moet je een `./config/plugins.js` bestand aanmaken met de volgende inhoud:
+
+```js
+module.exports = ({ env }) => ({
+  upload: {
+    config: {
+      provider: 'cloudinary',
+      providerOptions: {
+        cloud_name: env('CLOUDINARY_NAME'),
+        api_key: env('CLOUDINARY_KEY'),
+        api_secret: env('CLOUDINARY_SECRET'),
+      },
+      actionOptions: {
+        upload: {},
+        delete: {},
+      },
+    },
+  }
+});
+```
+
+Deze plugin maakt gebruik van environment variabelen. Deze variabelen kan je instellen in het `.env` bestand. Je kan dit bestand aanmaken in de root van je project. Je kan de volgende variabelen toevoegen:
+
+```bash
+CLOUDINARY_NAME = cloudinary-name
+CLOUDINARY_KEY = cloudinary-key
+CLOUDINARY_SECRET = cloudinary-secret
+```
+
+Er moet nog een laatste stap worden uitgevoerd om de security policy van strapi aan te passen. Je moet een wijziging maken in `./config/middlewares.js`:
+
+```js
+module.exports = [
+  'strapi::errors',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+  'strapi::cors',
+  'strapi::poweredBy',
+  'strapi::logger',
+  'strapi::query',
+  'strapi::body',
+  'strapi::session',
+  'strapi::favicon',
+  'strapi::public',
+];
+```
+
+Zonder deze wijziging zal je een error krijgen als je een afbeelding wil uploaden.
+
+### Blog post aanpassen
+
+Nu kunnen we de blog post aanpassen zodat we een afbeelding kunnen toevoegen. We gaan een nieuw veld toevoegen aan het blog post content type. Dit veld noemen we `image` en is van het type `Media`. Dit is een speciaal type dat we kunnen gebruiken om afbeeldingen op te slaan.
+
+Nu kunnen we een blog post aanmaken met een afbeelding. Als je de blog post opslaat, dan zal de afbeelding automatisch worden geüpload naar Cloudinary. Je kan dit controleren door naar de Cloudinary website te gaan. Je zal zien dat de afbeelding is geüpload naar Cloudinary.
+
+# Naar productie brengen
+
+## Deployen naar Render
+
+We gaan onze applicatie deployen naar [Render](https://render.com/). Dit is een platform dat het mogelijk maakt om applicaties te deployen. Het is heel eenvoudig om te gebruiken en je kan het gratis gebruiken voor kleine applicaties.
+
+Je moet er eerst voor zorgen dat je applicatie ergens op een github repository staat zodat render deze kan gebruiken voor de deploy. 
+
+Je moet de volgende stappen uitvoeren:
+
+- Je moet een nieuwe web service aanmaken. Je kan dit doen door op de `New` en vervolgens op `Web Service` te klikken.
+- Klik eerst op `Build and deploy from a Git repository` om je github repository te koppelen aan render. Kies de juiste repository.
+- Kies een naam voor je service. Dit is de naam die je zal zien in de url. 
+- Verander de region naar een EU gebaseerde regio. 
+- Kies de juiste branch.
+- Indien je project ergens in een subfolder staat, dan kan je dit aangeven bij `Root Directory`.
+- Zorg ervoor dat je als runtime `Node` kiest. 
+- Bij build command moet je `npm install && npm run build` invullen. Dit is het commando dat render zal uitvoeren om je applicatie te builden.
+- Als `Start Command` moet je `npm start` invullen. Dit is het commando dat render zal uitvoeren om je applicatie te starten.
+- Kies zeker voor `Instance Type` `Free`. Dit is de gratis versie van render. Je kan ook kiezen voor een betalende versie, maar dit is niet nodig voor deze cursus.
+
+Vervolgens open je het `Advanced` tab. Hier is het mogelijk om environment variabelen in te stellen. Je kan hier gebruik maken van een `secret file`. Maak een nieuw `.env` bestand aan (in de editor van render) en kopieer de inhoud van je lokale `.env` bestand naar dit bestand. 
+
+## Database aanpassen
+
+We gaan nu de database aanpassen. We gaan de database veranderen van SQLite naar PostgreSQL. Dit is een database die we kunnen gebruiken in productie. Als we sqlite zouden gebruiken in productie, dan zou de database verloren gaan als de server herstart.
+
+Zorg ervoor dat je eerst een database hebt aangemaakt in PostgreSQL. 
+
+Normaal gezien moet je enkel de volgende environment variabelen aanpassen in het `.env` bestand of de secret file:
+
+```bash
+# Database
+DATABASE_CLIENT=postgres
+DATABASE_HOST=ip-adres
+DATABASE_NAME=naam-database
+DATABASE_USERNAME=username
+DATABASE_PASSWORD=password
+```
+
+Let op dat je deze .env file niet in je git repository plaatst. Deze bevat namelijk gevoelige informatie zoals het wachtwoord van de database. Plaats deze file dus in je `.gitignore` file.
+
+Voordat je kan gebruik maken van postgres in je strapi applicatie moet je nog wel een package installeren. Dit doe je door het volgende commando uit te voeren:
+
+```bash
+npm install pg
+```
