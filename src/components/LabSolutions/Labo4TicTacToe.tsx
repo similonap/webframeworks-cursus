@@ -6,8 +6,9 @@ const TicTacToe = () => {
 
   const play = (index: number) => {
     if (board[index] === '') {
-      board[index] = player;
-      setBoard(board);
+      let newBoard = [...board];
+      newBoard[index] = player;
+      setBoard(newBoard);
       setPlayer(player === 'X' ? 'O' : 'X');
     }
   };
@@ -26,10 +27,17 @@ const TicTacToe = () => {
 
     for (let positions of winPositions) {
       if (board[positions[0]] == board[positions[1]] && board[positions[1]] == board[positions[2]]) {
-        return board[positions[0]]
+        if (board[positions[0]] !== "") {
+          return board[positions[0]]
+
+        }
       }
     }
+
+    console.log("REACHED THIS");
   }
+
+  
 
   return (
     <div
