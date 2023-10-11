@@ -258,3 +258,122 @@ Voordat je kan gebruik maken van postgres in je strapi applicatie moet je nog we
 ```bash
 npm install pg
 ```
+
+# Koppeling next.js en strapi
+
+## Environment variabelen
+
+Omdat we de API token die we zelf hebben aangemaakt ook willen gebruiken in onze next.js applicatie, moeten we deze token opslaan in een environment variabele. Net zoals we dit hebben gedaan bij strapi moeten we ook hier een `.env` bestand aanmaken. Dit bestand moet je aanmaken in de root van je next.js project. Hier kan je een `TOKEN` variabele aanmaken en de token van strapi hierin opslaan. 
+
+We kunnen deze dan op de volgende manier uitlezen in onze next.js applicatie:
+
+```jsx
+const token = process.env.TOKEN;
+```
+
+Let er op je kan deze variabele enkel maar gebruiken in de server code. Je kan deze niet gebruiken in de client code want deze variabele wordt niet meegestuurd naar de client. Dus je kan deze enkel in de `getStaticProps`, `getServerSideProps` functies gebruiken.
+
+## Markdown
+
+Alle rich text velden worden opgeslagen in markdown. Dit is een speciale syntax die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
+
+Hier een voorbeeld van een aantal features van markdown:
+
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+**Bold text**
+*Italic text*
+- List item 1
+- List item 2
+- List item 3
+
+![Alt text](image.png)
+```
+
+We zijn van plan om de inhoud van de blogpost te tonen op de website. We moeten dus de markdown omzetten naar HTML. We gaan dit doen met de `next-mdx-remote` package. Deze package zorgt ervoor dat we markdown kunnen omzetten naar HTML.
+
+```bash
+npm install next-mdx-remote
+```
+
+Nu kan je de serialize functie importeren in je code:
+
+```jsx
+import { serialize } from 'next-mdx-remote';
+```
+
+Je kan deze functie gebruiken om markdown om te zetten naar HTML. Je kan de volgende code gebruiken om de markdown om te zetten naar HTML:
+
+```jsx
+const mdxSource = await serialize(post.attributes.content);
+```
+
+deze kan je in de getStaticProps functie plaatsen. Je kan dan de mdxSource doorgeven aan de props van de pagina. Je kan dan de volgende code gebruiken om de HTML te tonen:
+
+```jsx
+<MDXRemote {...mdxSource} />
+```
+
+Dan bekom je iets zoals dit:
+
+```jsx
+export async function getStaticProps() {
+  const response = await fetch("http://localhost:1337/api/posts?populate=*", {
+    headers: {
+      Authorization: `Bearer ${process.env.TOKEN}`,
+    },
+  });
+
+  const posts : PostResponse = await response.json();
+
+  const serializedPosts: PostShort[] = await Promise.all(
+    posts.data.map(async (post) => {
+      const mdxSource = await serialize(post.attributes.content);
+      return {
+        cover: post.attributes.cover.data.attributes.formats.large.url,
+        title: post.attributes.title,
+        name: post.attributes.author.data.attributes.firstname + " " + post.attributes.author.data.attributes.lastname,
+        content: mdxSource,
+      };
+    })
+  );
+
+  return {
+    props: {
+      posts: serializedPosts,
+    },
+  };
+}
+```
+
+De `PostResponse` interface kan je genereren met behulp van [Quicktype](https://app.quicktype.io/) aan de hand van de JSON data die je krijgt van de server. En de `PostShort` interface kan je als volgt definiëren:
+
+```jsx
+export interface PostShort {
+    title: string;
+    content: MDXRemoteSerializeResult;
+    cover: string;
+    name: string;
+}
+```
+
+Dit is een verkorte versie van de Post interface die we later gaan gebruiken. Deze interface bevat enkel de velden die we nodig hebben om de blog post te tonen op de website.
+
+In je blog post component kan je dan de volgende code gebruiken om de HTML te tonen:
+
+```jsx
+<MDXRemote {...post.content} />
+```
+
+Je kan het uiterlijk per markdown element aanpassen. Je kan bijvoorbeeld de volgende code gebruiken om de headings een andere stijl te geven:
+
+```jsx
+<MDXRemote {...post.content} components={{
+    h1: ({children}) => (<h1 className="text-xl">{children}</h1>),
+    h2: ({children}) => (<h2 className="text-l">{children}</h2>),
+    h3: ({children}) => (<h2 className="text-m">{children}</h2>),
+    p: ({children}) => (<p className="text-m mt-4">{children}</p>)
+}} />
+```
