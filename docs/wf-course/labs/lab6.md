@@ -1,5 +1,6 @@
 import Labo6Quizapp from '@site/src/components/LabSolutions/Labo6Quizapp';
 import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
+import HappyWorkers from '@site/src/components/LabSolutions/HappyWorkers';
 import ReactPlayer from 'react-player';
 
 # Labo 6
@@ -83,3 +84,12 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Labo6Quizapp/>
 </div>
+
+# 3. Happy Workers
+
+Maak een nieuwe React applicatie aan en noem deze labo5-happy.
+
+<HappyWorkers useProductivity={false}/>
+
+<HappyWorkers useProductivity={true}/>
+
