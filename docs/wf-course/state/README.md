@@ -780,3 +780,32 @@ export default App;
 ```
 
 We hebben hier een aparte handler gemaakt voor de onChange listener. Die kijkt na of het element geselecteerd is, zo ja dan voegt hij het element toe aan de lijst en updated de state, anders wordt het element verwijderd uit de lijst.
+
+### State delen tussen componenten
+
+Soms kan de verleiding heel groot zijn om op de volgende manier om een state te delen tussen componenten:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import { useState } from "react";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const Counter = () => {
+    return (<>
+      <button onClick={() => setCount(0)}>Reset</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </>);
+  }
+
+  return (
+    <>
+      Count: {count}
+      <Counter/>
+      <button onClick={() => setCount(0)}>RESET</button>
+    </>
+  );
+}
+
+export default App;
+```

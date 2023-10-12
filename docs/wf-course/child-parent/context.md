@@ -1,12 +1,10 @@
----
-sidebar_position: 1
----
-
 # Context
 
 ## Delen van data via context
 
 In een React applicatie wordt data van het bovenste component doorgegeven naar het onderste component aan de hand van props. Dit is mogelijk in een applicatie waar de component structuur niet heel diep is, maar naar mate de applicatie groeit, groeit meestal ook de diepte van je componenten structuur. Je zal dan vaak een prop verschillende niveau's diep moeten doorgeven. Dit concept heet property drilling, en is in grote applicaties niet wenselijk.
+
+![Alt text](./img/propdrill.png)
 
 Stel dat we een light theme en een dark theme willen ondersteunen in onze applicatie. Elk component heeft deze prop nodig want elk component moet zijn UI aanpassen als de theme light of dark is. 
 
@@ -60,7 +58,9 @@ export default App;
 //hide-end
 ```
 
-Je ziet dat zelfs voor een kleine applicatie, zoals die hierboven, dat we deze theme prop al moeten doorgeven doorheen 3 niveaus van componenten. Bij grotere applicaties gaat dit nog veel erger worden. Daarom heeft React voor de Context API gezorgd. Dit is een manier om data te gaan delen doorheen componenten zonder door heel de structuur te moeten doorgegeven worden.
+Je ziet dat zelfs voor een kleine applicatie, zoals die hierboven, dat we deze theme prop al moeten doorgeven doorheen 3 niveaus van componenten. Bij grotere applicaties gaat dit nog veel erger worden. Daarom heeft React voor de Context API gezorgd. Dit is een manier om data te gaan delen doorheen componenten zonder door heel de structuur te moeten doorgegeven worden. Dit is zeer handig als de tussenliggende lagen geen nood hebben aan deze data. Deze hoeven dan ook niet de context te gebruiken.
+
+![Alt text](./img/context.png)
 
 Het eerste wat we moeten doen is een Context aanmaken aan de hand van de createContext
 
@@ -230,96 +230,179 @@ export default App;
 //hide-end
 ```
 
-## Globale state
+## Data Context
 
-Het komt vaak voor dat data die vanuit een externe API komt moet beschikbaar zijn over verschillende componenten of verschillende paginas. We zouden deze data kunnen doorgeven aan de hand van properties, maar meestal wordt dit gedaan met de `Context` api. Zo bekomen we een grote state die we kunnen delen over de verschillende componenten. 
+Een veel voorkomend patroon is dat je data vanuit een API ophaalt en deze data dan doorgeeft aan verschillende componenten. Dit kan je doen door de data in de state van de bovenste component te plaatsen en deze dan door te geven aan de onderliggende componenten. Je zou dit kunnen doen aan de hand van props, maar dit is niet altijd even handig. Dit wordt meestal gedaan aan de hand van de Context API.
 
-```typescript codesandbox={"template": "react-router-context-api", "filename": "src/App.tsx"}
-//hide-start
-import React, { useContext, useEffect, useState } from "react";
-import { useParams, Link, createBrowserRouter, RouterProvider } from "react-router-dom";
+In dit voorbeeld gaan we gebruik maken van de API op https://jsonplaceholder.typicode.com/posts. Deze API geeft een lijst van posts terug. We maken een interface aan voor een post.
 
-interface RootObject {
-    genres: Genre[]
+```typescript
+export interface Post {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+}
+```
+
+Om onze code wat overzichtelijker te maken gaan we alle code die te maken heeft met de data van de API in een apart bestand plaatsen. We noemen dit bestand `dataContext.tsx`.
+
+```typescript
+import React, { useState, useContext, useEffect } from "react";
+
+export interface DataContext {
+  posts: Post[];
+  loading: boolean;
+  loadData: () => void;
 }
 
-interface Genre {
-    id: string;
-    description: string;
-    count: number;
+export const DataContext = React.createContext<DataContext>({posts: [], loading: false, loadData: () => {}});
+
+export const DataProvider = ({children}: {children: React.ReactNode}) => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const loadData = async () => {
+      setLoading(true);
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const json = await response.json();
+      setPosts(json);
+      setLoading(false);
+  }
+
+  useEffect(() => {
+      loadData();
+  }, []);
+
+  return (
+      <DataContext.Provider value={{posts: posts, loadData: loadData, loading: loading}}>
+          {children}
+      </DataContext.Provider>
+  )
+}
+```
+
+In de `DataProvider` component maken we een state aan voor de posts. We maken ook een functie aan om de data op te halen van de API. Deze functie wordt aangeroepen in de `useEffect` hook zodat de data wordt opgehaald als de component gemount wordt. We geven de posts en de loadData functie mee aan de provider zodat deze beschikbaar zijn in de onderliggende componenten. We voorzien ook een loading property zodat we kunnen zien of de data aan het laden is of niet.
+
+Nu kunnen we de `DataProvider` component gebruiken in onze `App` component. Je kan zien dat het nu zeer eenvoudig is de data te gebruiken in de onderliggende componenten. We moeten enkel de `useContext` hook gebruiken om de data op te halen.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+
+export interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+export interface DataContext {
+  posts: Post[];
+  loading: boolean;
+  loadData: () => void;
+}
+
+export const DataContext = React.createContext<DataContext>({posts: [], loading: false, loadData: () => {}});
+
+export const DataProvider = ({children}: {children: React.ReactNode}) => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const loadData = async () => {
+      setLoading(true);
+      setPosts([]);
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const json = await response.json();
+      setPosts(json);
+      setLoading(false);
+  }
+
+  useEffect(() => {
+      loadData();
+  }, []);
+
+  return (
+      <DataContext.Provider value={{posts: posts, loadData: loadData, loading: loading}}>
+          {children}
+      </DataContext.Provider>
+  )
 }
 //hide-end
-interface IGenreDataContext {
-    genres: Genre[]
+const ReloadButton = () => {
+  const { loadData, loading } = useContext(DataContext);
+  return (
+    <button disabled={loading} onClick={() => loadData()}>reload</button>
+  )
 }
 
-const GenreDataContext = React.createContext<IGenreDataContext>({genres: []});
-
-const HomePage = () => {
-    let {genres} = useContext(GenreDataContext);
-    return (<>
-        Welcome to the home page!
-        <ul>
-        {genres.map((genre) => {
-            return <li key={`detail/${genre.id}`}><Link to={`detail/${genre.id}`}>{genre.description}</Link></li>
-        })}
-        </ul>
-      </>);
-}
-
-const DetailPage = () => {
-    let { id } = useParams();
-    let {genres} = useContext(GenreDataContext);
-
-    let genre : Genre | undefined = genres.find(genre => genre.id === id);
-
-    if (!genre) {
-        return <>Not found!</>
-    }
-    return (
-        <>
-            <h1>
-                {genre.description}
-            </h1>
-            <ul>
-                <li>{genre.description} has {genre.count} games</li>
-            </ul>
-            <Link to="/">Back</Link>
-        </>
-    );
+const PostList = () => {
+  const { posts } = useContext(DataContext);
+  return (
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {posts.map((post, index) => (
+          <li key={index}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 const App = () => {
-    const [genres, setGenres] = useState<Genre[]>([]);
-    useEffect(() => {
-        const fetchGenres = async () => {
-            let result = await fetch("/steam.json");
-            let json : RootObject = await result.json();
-            setGenres(json.genres);
-        }
-        fetchGenres();
-    },[]);
-
-    const router = createBrowserRouter([
-        {
-            path: "",
-            element: <HomePage/>
-        },
-        {
-            path: "detail/:id",
-            element: <DetailPage/>
-        }
-    ]);
-
-    return (
-        <GenreDataContext.Provider value={{genres: genres}}>
-            <RouterProvider router={router} />
-        </GenreDataContext.Provider>
-    );
+  return (
+    <DataProvider>
+      <ReloadButton/>
+      <PostList/>
+    </DataProvider>
+  )
 }
-export default App;
+
+//hide-start
+export default App
+//hide-end
 ```
 
-:::warning
-Een groot nadeel van Context is dat elk component dat deze context gebruikt zal gererendered worden als iets in die context veranderd. Het is daarom aangewezen niet alle data zomaar in 1 context te plaatsen maar verschillende kleine `Context` objecten aan te maken en enkel deze context te gebruiken als je hem echt nodig hebt.
-:::
+Het is ook mogelijk om functies toe te voegen om de data te gaan aanpassen. Zo kan je functies voorzien om posts toe te voegen, te verwijderen of te updaten. Deze functies worden dan ook meegegeven aan de provider zodat deze beschikbaar zijn in de onderliggende componenten. Je kan dit in de array zelf doen of een POST request maken naar een backend.
+
+```typescript
+const createPost = async (post: Post) => {
+  setPosts([...posts, post]);
+  await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify(post),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  });
+}
+```
+
+Vergeet niet om de `createPost` functie mee te geven aan de provider.
+
+```tsx
+<DataContext.Provider value={{posts: posts, loadData: loadData, loading: loading, createPost: createPost}}>
+```
+
+Het volledige voorbeeld kan je hier vinden:
+
+```typescript codesandbox={"template": "react-context", "filename": "src/App.tsx"}
+import { DataProvider } from './dataContext';
+import ReloadButton from './components/ReloadButton';
+import PostForm from './components/PostForm';
+import PostList from './components/PostList';
+
+const App = () => {
+  return (
+    <DataProvider>
+      <PostForm/>
+      <ReloadButton/>
+      <PostList/>
+    </DataProvider>
+  )
+}
+
+export default App
+```

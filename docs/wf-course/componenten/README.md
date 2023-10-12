@@ -126,3 +126,4 @@ export default App;
 Een component is hier geschreven als functie die TSX teruggeeft als returnwaarde. We hebben deze TSX verplaatst van de App component naar de List component.
 
 De component gebruiken in App kan door hem te behandelen als een HTML-tag. Daarom staat er `<List />`.
+

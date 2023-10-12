@@ -2,7 +2,7 @@
 sidebar_position: 16
 ---
 
-# Client-side routering
+# React Router
 
 ## Twee soorten routering
 
