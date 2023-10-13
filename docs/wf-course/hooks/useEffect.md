@@ -308,3 +308,72 @@ const App = () => {
 export default App;
 //hide-end
 ```
+
+### Strict mode
+
+:::warning
+Dit is geavanceerde leerstof. Dit legt uit waarom effects onverwacht twee keer worden uitgevoerd en hoe we dit kunnen oplossen. Begrijp je dit niet? Geen probleem, je kan dit overslaan. Dit zal je geen problemen geven bij het maken van de oefeningen.
+:::
+
+In de vorige voorbeelden hebben we gezegd dat de `useEffect` hook met een lege dependency array maar 1 keer wordt uitgevoerd. Je zult opmerken dat deze useEffect hook toch 2 keer wordt uitgevoerd. Dit komt omdat de `App` component in strict mode staat. Dit is een feature van React die ervoor zorgt dat componenten in development mode altijd een tweede keer worden gerendered. Dit is om te controleren of de rendering van het component geen side-effects heeft. Bijvoorbeeld: dat je useEffect hook een cleanup functie teruggeeft.
+
+Je kan dit uitschakelen door de `React.StrictMode` component te verwijderen uit de `index.tsx` file.
+
+```
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+```
+
+Zonder de `StrictMode` component zal de `useEffect` hook maar 1 keer worden uitgevoerd.
+
+Is het dan best dat je deze afzet? **Nee** want het kan je fouten in je code helpen opsporen. Je zal er dus voor moeten zorgen dat je altijd een `cleanup` functie voorziet voor het opruimen van je vorige effect.
+
+Dit is vaak gemakkelijker gezegd dan gedaan. Want bijvoorbeeld wat doen we dan bij een API call? We kunnen de `fetch` functie niet zomaar stoppen. We moeten dus een manier hebben waar we het resultaat kunnen negeren als de fetch nog bezig is op de moment dat de cleanup functie is aangeroepen.
+
+We gaan in dit voorbeeld een aantal todos inlezen bij het mounten van een component
+
+```typescript
+useEffect(( ) => {
+  let ignore = false;
+  fetch("https://jsonplaceholder.typicode.com/todos")
+    .then(response => response.json())
+    .then(todos =>{
+        if (!ignore) {
+          console.log("SET TODO")
+          setTodos(todos);
+        }
+    });
+  return () => {
+    // cleanup code
+    ignore = true;
+  }
+}, [])
+```
+ 
+met async/await:
+
+```typescript
+useEffect(( ) => {
+  let ignore = false;
+  const fetchFunction = async() => {
+    let result = await fetch("https://jsonplaceholder.typicode.com/todos");
+    let json = await result.json(); 
+    if (!ignore) {
+      console.log("SET TODO")
+      setTodos(json);
+    }
+  }
+  fetchFunction();
+  return () => {
+    // cleanup code
+    ignore = true;
+  }
+}, [])
+```
