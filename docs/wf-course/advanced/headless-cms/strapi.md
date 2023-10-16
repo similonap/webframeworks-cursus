@@ -50,18 +50,21 @@ Je krijgt in het eerste venster ineens te zien welke API endpoints er worden aan
 Vervolgens moeten we de velden van het content type aanmaken. We gaan de volgende velden aanmaken:
 - title: Text
 - content: Rich Text
-- author: Relation (met het User content type)
-- published_at: DateTime
 
 De keuze van Rich Text is belangrijk. Dit betekent dat we een rich text editor kunnen gebruiken om de inhoud van de blogpost te schrijven. Dit is een editor die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
 
-Voor de author veld moeten we een relatie leggen met het User content type. Dit wil zeggen dat we een gebruiker kunnen kiezen als auteur van de blogpost. We kiezen hiervoor de `Many to one` relatie. Dit wil zeggen dat een gebruiker meerdere blogposts kan schrijven, maar dat een blogpost maar 1 auteur kan hebben.
-
-![Alt text](<Screenshot 2023-09-24 at 22.24.14.png>)
-
-Omdat we ook moeten weten wanneer de blogpost is gepubliceerd, moeten we een `published_at` veld toevoegen. Dit veld is van het type `DateTime`. Dit wil zeggen dat we een datum en een tijd kunnen kiezen.
-
 Vervolgens moet je op de `Save` knop klikken om het content type op te slaan. Na het opslaan wordt de server automatisch herstart. Het kan zijn dat je de pagina moet herladen om de wijzigingen te zien.
+
+We zouden ook graag de `Author` van een blog post gaan tonen in onze applicatie. We kunnen dit doen door een nieuwe content type aan te maken. We gaan dit content type `Author` noemen. Dit content type bevat de volgende velden:
+
+- firstname: Text
+- lastname: Text
+- email: Text
+- shortBio: Text
+
+Voor de author veld moeten we een relatie leggen met het Author content type. Dit wil zeggen dat we een gebruiker kunnen kiezen als auteur van de blogpost. We kiezen hiervoor de `Many to one` relatie. Dit wil zeggen dat een gebruiker meerdere blogposts kan schrijven, maar dat een blogpost maar 1 auteur kan hebben.  We moeten dus een aanpassing doen aan onze `Post` content type en het volgende veld toevoegen:
+
+- author: Relation (met Author)
 
 Nu kunnen we effectief een blog post aanmaken. Je kan dan naar de Content Manager gaan en vervolgens op de `Post` link klikken. Je krijgt dan een overzicht te zien van alle blogposts. Uiteraard is er nog geen blogpost aanwezig. Je kan een blogpost aanmaken door op de `Create an entry` knop te klikken. Je krijgt dan een formulier te zien waar je de blogpost kan aanmaken. De rich text editor heeft support voor Markdown. Als je meer wil weten over Markdown, dan kan je [hier](https://www.markdownguide.org/basic-syntax/) meer informatie vinden.
 
