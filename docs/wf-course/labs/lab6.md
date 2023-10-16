@@ -85,7 +85,7 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
     <Labo6Quizapp/>
 </div>
 
-# 3. Happy Workers
+## 3. Happy Workers
 
 Maak een nieuwe React applicatie aan en noem deze labo5-happy.
 

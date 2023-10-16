@@ -309,7 +309,7 @@ export default App;
 //hide-end
 ```
 
-### Strict mode
+## Strict mode
 
 :::warning
 Dit is geavanceerde leerstof. Dit legt uit waarom effects onverwacht twee keer worden uitgevoerd en hoe we dit kunnen oplossen. Begrijp je dit niet? Geen probleem, je kan dit overslaan. Dit zal je geen problemen geven bij het maken van de oefeningen.
