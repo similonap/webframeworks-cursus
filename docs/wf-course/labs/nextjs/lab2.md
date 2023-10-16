@@ -1,6 +1,6 @@
 import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
 
-# Labo 9
+# Labo 2
 
 - Server side rendering
 - Static site Generation
@@ -27,8 +27,8 @@ Je moet de volgende pagina's voorzien:
 - /holidays -> deze pagina moet een lijst tonen van alle landen waarvoor je feestdagen kan opvragen. 
 - /holidays/[countrycode] -> deze pagina moet een lijst tonen van alle feestdagen voor het land met de gegeven countrycode.
 
-![](../images/holidays_1.png)
-![](../images/holidays_2.png)
+![](../../images/holidays_1.png)
+![](../../images/holidays_2.png)
 
 Uitbreidingen:
 Pas de paden aan zodat je de volgende urls krijgt:
@@ -111,6 +111,6 @@ npm run start
 
 De pagina zal er als volgt uitzien: 
 
-![Prime images](../images/prime.png)
+![Prime images](../../images/prime.png)
 
 Vergelijk de verschillende pagina's met elkaar. Wat is het verschil in laadtijd? Wat is het verschil in grootte van de pagina? Wat is het verschil in de netwerk tab? 

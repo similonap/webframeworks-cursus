@@ -1,6 +1,6 @@
 import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
 
-# Labo 8
+# Labo 1
 
 - Next.js routing
 
@@ -29,6 +29,6 @@ Pas nu de vorige applicatie aan zodat die gebruik maakt van een API route om de 
 
 ## 4. Pokemon app
 
-Maak de pokemon app oefening van labo 7 opnieuw maar gebruik deze keer Next.js om de routing te doen.
+Maak de pokemon app oefening van labo 7 (react basics) opnieuw maar gebruik deze keer Next.js om de routing te doen.
 
 <Labo7Pokemon/>
