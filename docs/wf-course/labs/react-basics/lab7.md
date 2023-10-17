@@ -7,7 +7,41 @@ import ReactPlayer from 'react-player';
 - React Router
 - Context API
 
-## 1. Basic context
+## 1. Wake up Neo
+
+Maak een nieuwe React applicatie aan en noem deze `labo7-wake-up-neo`.
+
+Begin van de volgende code:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import { useState } from 'react'
+
+interface LineProps {
+  text: string
+}
+const FourthLine = ({text}: LineProps) => <><p>{text}</p></>;
+const ThirdLine = ({text}: LineProps) => <><p>Follow the white rabbit.</p><FourthLine text={text}/></>;
+const SecondLine = ({text}: LineProps) => <><p>The matrix has you...</p><ThirdLine text={text}/></>;
+const FirstLine = ({text}: LineProps) => <><p>Wake Up, Neo...</p><SecondLine text={text}/></>
+
+const App = () => {
+  const [text, setText] = useState("Knock, Knock, Neo");
+  return (
+    <>
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)}/>
+      <div style={{backgroundColor: "black", color: "#4AF626", display: "flex", flexDirection: "column", padding: 20}}> 
+        <FirstLine text={text}/>
+      </div>
+    </>
+  )
+}
+
+export default App
+```
+
+Pas deze helemaal aan zodat je gebruik maakt van Context. 
+
+## 2. Basic context
 
 Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
 
@@ -25,7 +59,7 @@ Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
 
 <BasicContext/>
 
-## 2. Todo App
+## 3. Todo App
 
 We gaan verder met de Todo app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
 
@@ -33,7 +67,7 @@ Uitbreidingen:
 - Zorg ervoor dat je de todo's uit een API kan ophalen. Je kan hiervoor gebruik maken van de [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API. Deze bevat een endpoint `/todos` die je kan gebruiken om todo's op te halen. 
 - Plaats de Todo's en de code om ze in te lezen in een `TodoContext` zodat je deze kan gebruiken in de verschillende componenten.
 
-## 3. Quiz App
+## 4. Quiz App
 
 We gaan verder met de Quiz app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
   
@@ -41,6 +75,6 @@ Uitbreidingen:
 - Herwerk de Quiz applicatie zodat deze gebruik maakt van een `QuizContext`. De functionaliteit van de applicatie blijft voor de rest volledig hetzelfde.
 - Voorzie een button bovenaan de pagina om te togglen tussen dark en light mode. Zorg ervoor dat alle componenten in de applicatie aanpassen aan de gekozen mode. 
 
-## 4. Pokemon app
+## 5. Pokemon app
 
 <Labo7Pokemon/>
