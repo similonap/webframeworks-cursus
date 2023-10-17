@@ -171,3 +171,112 @@ const response = await fetch(
   )
   let json = await response.json();
   ```
+
+### Client code (met externe libraries)
+
+We gaan in dit voorbeeld gebruik maken van Apollo Client in samenwerking met code generation voor TypeScript types. Ja, je leest dit goed. Het genereren van types in TypeScript voor graphql kan volledig automatisch verlopen. 
+
+Het eerste wat je moet doen is de code generation tools installeren:
+
+```bash
+npm i -S graphql
+npm i -D typescript ts-node @graphql-codegen/cli @graphql-codegen/client-preset
+```
+
+In de root van je project (het niveau boven je src folder) plaats je een bestand genaamd `codegen.ts`. Hierin plaats je de volgende code:
+
+```bash
+import type { CodegenConfig } from '@graphql-codegen/cli'
+ 
+const config: CodegenConfig = {
+   schema: 'https://localhost:1337/graphql',
+   documents: ['src/**/*.tsx'],
+   generates: {
+      './src/gql/': {
+        preset: 'client',
+      }
+   }
+}
+export default config
+```
+
+De url in schema moet linken naar de GraphQL endpoint van je Strapi applicatie. De rest van de code kan je zo laten staan.
+
+Als je nu in de root van je project het volgende commando uitvoert zal je zien dat er een nieuwe folder `gql` is ontstaan. Hier worden alle typescript types voor graphql gegenereerd.
+
+```
+yarn graphql-codegen
+```
+
+Je kan dit commando ook met de `--watch` flag uitvoeren zodat de types elke keer opnieuw worden gegenereerd gebaseerd op de graphql queries dat je schrijft. 
+
+Vervolgens gaan we de apollo client library installeren zodat we nu een echte GraphQL client hebben die we kunnen gebruiken in onze applicatie.
+
+```bash
+npm install @apollo/client graphql
+```
+
+Maak vervolgens een bestand `apollo-client.ts` aan in je `src` folder met de volgende inhoud:
+
+```
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+
+const createApolloClient = () => {
+  return new ApolloClient({
+    link: new HttpLink({
+      uri: 'http://localhost:1337/graphql',
+      headers: {
+        Authorization: `Bearer ${process.env.TOKEN}`
+      }
+    }),
+    cache: new InMemoryCache(),
+  });
+};
+
+export default createApolloClient;
+```
+
+Dit gaat er momenteel vanuit dat je strapi op localhost loopt en dat je de API token in een environment variabele hebt gestoken. Je kan dit ook hardcoden in de headers van de HttpLink.
+
+Maak nu de query aan in het bestand waar je de data wil ophalen. In dit voorbeeld gaan we de data ophalen in de index.tsx van de pages folder.
+
+```typescript
+import { graphql } from "@/gql/index"
+
+const GetAllPostsWithAuthors = graphql(`
+query GetAllPostsWithAuthors {
+  posts {
+    data {
+      attributes {
+        author {
+          data{
+            attributes {
+              username
+              email
+            }
+          }
+        }
+        title
+        content
+        cover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`);
+```
+
+Vervolgens kan je deze query gebruiken in je getStaticProps functie:
+
+```typescript
+const client = createApolloClient();
+const {data} = await client.query({query: GetAllPostsWithAuthors, variables: {}})
+```
+
+Als je nu data gebruikt zal je opmerken dat het automatisch het juiste type heeft en dat je autocompletion hebt. 
