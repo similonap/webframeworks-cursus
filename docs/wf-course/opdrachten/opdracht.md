@@ -1,6 +1,10 @@
 # Web Frameworks Advanced
 
-**Opgelet: Deze opdracht is alleen bedoeld voor de studenten web framework advanced**
+> **Opgelet: Deze opdracht is alleen bedoeld voor de volgende studenten:**
+>  -  web frameworks (dag)
+>  -  web frameworks advanced
+>  -  web framework (dag - uitdovend)
+>  -  CMS (dag - uitdovend)
 
 Het doel van deze opdracht is om een statisch gegenereerde website te maken met behulp van Next.js en het headless CMS Strapi. De website moet gebruikmaken van de gegevens die in het CMS zijn opgeslagen. Uiteindelijk moet de afgewerkte website worden gehost op Vercel.
 
