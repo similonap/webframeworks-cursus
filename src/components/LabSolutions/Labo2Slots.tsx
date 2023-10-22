@@ -28,7 +28,7 @@ export const SlotMachine = ({ slots }: { slots: number }) => {
   let slotNumbers: number[] = Array.from(Array(slots).keys()).map(() =>
     Math.floor(Math.random() * 5)
   );
-  let winning = slotNumbers.find((slot) => slot !== slots[0]) == undefined;
+  let winning = slotNumbers.find((slot) => slot !== slotNumbers[0]) == undefined;
 
   return (
     <div className={styles.slotMachineContainer}>
