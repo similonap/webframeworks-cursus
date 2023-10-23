@@ -78,3 +78,16 @@ Uitbreidingen:
 ## 5. Pokemon app
 
 <Labo7Pokemon/>
+
+## 6. Quiz app met React Router
+
+We gaan verder met de Quiz app uit de vorige oefening. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken. 
+
+Uitbreidingen:
+- Maak gebruik van React Router om de moeilijkheidsniveau te kiezen:
+  - `/` toont de moeilijkheidsniveau's (easy, medium, hard)
+  - `/quiz/:difficulty` toont de quiz met de gekozen moeilijkheidsniveau
+- Zorg voor een simpele navigatiebalk waar je kan kiezen tussen de verschillende moeilijkheidsniveau's.
+- Als je voor een nieuw moeilijkheidsniveau kiest, moet de quiz opnieuw beginnen.
+
+![Alt text](../images/quiz.gif)
