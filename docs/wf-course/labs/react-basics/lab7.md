@@ -79,7 +79,13 @@ Uitbreidingen:
 
 <Labo7Pokemon/>
 
-## 6. Quiz app met React Router
+## 6. Portfolio app
+
+Maak een nieuwe React applicatie aan en noem deze `labo7-portfolio`.
+
+Kies 3 verschillende oefeningen die je hebt gemaakt tijdens de voorgaande labos. Zorg ervoor dat deze oefeningen beschikbaar zijn onder de volgende routes: /oefening1, /oefening2 en /oefening3. Zorg voor een navigatiebalk die je toelaat om tussen de verschillende oefeningen te navigeren.
+
+## 7. Quiz app met React Router
 
 We gaan verder met de Quiz app uit de vorige oefening. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken. 
 
@@ -90,4 +96,4 @@ Uitbreidingen:
 - Zorg voor een simpele navigatiebalk waar je kan kiezen tussen de verschillende moeilijkheidsniveau's.
 - Als je voor een nieuw moeilijkheidsniveau kiest, moet de quiz opnieuw beginnen.
 
-![Alt text](../images/quiz.gif)
+![Alt text](../../images/quiz.gif)
