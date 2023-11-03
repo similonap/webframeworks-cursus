@@ -41,6 +41,10 @@ export default App
 
 Pas deze helemaal aan zodat je gebruik maakt van Context. 
 
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/lde14vFfBZU'/>
+
 ## 2. Basic context
 
 Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
@@ -58,6 +62,10 @@ Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
 6. Zorg er nu voor dat je ook op de `Square` component kan drukken om de kleur te veranderen. 
 
 <BasicContext/>
+
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/owOyNsHt800'/>
 
 ## 3. Todo App
 
