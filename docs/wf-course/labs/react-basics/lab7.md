@@ -87,6 +87,11 @@ Uitbreidingen:
 
 <Labo7Pokemon/>
 
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/sE1_ULJJ81Y'/>
+<ReactPlayer controls url='https://youtu.be/I3kNyxoDCzU'/>
+
 ## 6. Portfolio app
 
 Maak een nieuwe React applicatie aan en noem deze `labo7-portfolio`.
