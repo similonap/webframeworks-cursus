@@ -73,6 +73,23 @@ Om de app te openen:
 Zorg ervoor dat je op hetzelfde netwerk zit als je telefoon of tablet. Als je op een ander netwerk zit, dan zal de bundler niet kunnen verbinden met je telefoon of tablet. Gebruik desnoods een hotspot van je telefoon.
 :::
 
+### Expo gebruiken via een tunnel
+
+Op sommige netwerken kan het zijn dat je geen verbinding kan maken met je telefoon of tablet. In dat geval kan je een tunnel gebruiken. Je kan dit doen met het volgende commando:
+
+```bash
+npx expo start --tunnel
+```
+
+De bundler zal nu een tunnel opzetten en een url genereren. Je kan deze url gebruiken om je app te openen op je smartphone of tablet.
+
+Het kan zijn dat je nog een extra dependency moet installeren. Je kan dit doen met het volgende commando:
+
+```bash
+npm install --save-dev @expo/ngrok@^4.1.1
+npm install --global @expo/ngrok@^4.1.1
+```
+
 ## De app openen in de browser
 
 Als je de app in de browser wil openen, dan kan je het volgende commando gebruiken:
