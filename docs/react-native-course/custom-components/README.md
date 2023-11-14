@@ -10,7 +10,7 @@ Net zoals in React.js kunnen we ook in React Native onze eigen componenten maken
 
 We doen dit helemaal hetzelfde als in React.js:
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import {View, StyleSheet} from "react-native";
 import Constants from "expo-constants";
 
@@ -52,7 +52,7 @@ export default App;
 
 We kunnen zelfs ons style object meegeven als property om zo onze componenten nog flexibeler te maken.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import {View, StyleSheet} from "react-native";
 import Constants from "expo-constants";
 
@@ -89,7 +89,7 @@ export default App;
 
 We kunnen ook default styles meegeven aan onze componenten. Dit doen we door een default waarde mee te geven aan onze property.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import {View, StyleSheet} from "react-native";
 import Constants from "expo-constants";
 
@@ -126,7 +126,7 @@ export default App;
 
 Een heel belangrijke techniek die je in React Native kan toepassen en niet in React.js is het gebruik van een array van styles. De laatste style in de array heeft altijd voorrang. Zo kan je style inheritance toepassen.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import {View, StyleSheet} from "react-native";
 import Constants from "expo-constants";
 

@@ -10,7 +10,7 @@ Net zoals in React.js kunnen we ook in React Native lijsten maken. We kunnen dit
 
 We kunnen een lijst maken door een for lus te gebruiken. We kunnen dan een array maken en deze opvullen met een for lus. We kunnen dan deze array mappen naar een component. 
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text,StyleSheet} from "react-native";
@@ -47,7 +47,7 @@ De map functie is zeer handig om een lijst te maken. We kunnen een lijst maken d
 
 Hieronder een voorbeeld dat een lijst van kleuren naar gekleurde views mapt. We gebruiken de kleurnamen hier als key maar let goed op dat dit niet altijd de beste keuze is. In dit geval is het wel ok omdat de kleuren uniek zijn.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text,StyleSheet} from "react-native";
@@ -73,7 +73,7 @@ export default App;
 
 Je moet uiteraard niet altijd mappen naar views. Je kan ook mappen naar andere componenten. Hieronder een voorbeeld dat een lijst van kleuren naar `Text` componenten mapt.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text,StyleSheet} from "react-native";
@@ -100,7 +100,7 @@ export default App;
 Een extra voorbeeld:
 We kunnen een woord opsplitsen naar een array van letters en deze dan apart tonen. We gebruiken hier de `split` functie om een string te splitsen naar een array van letters. We gebruiken de index van het element om de fontSize te bepalen. We gebruiken een combinatie van de letter en de index als key.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text,StyleSheet} from "react-native";
@@ -129,7 +129,7 @@ Tot nu toe konden we alleen maar lijsten tonen die in de lengte van het scherm p
 
 Als we bijvoorbeeld de elementen iets groter maken dan zie je direct het probleem:
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text,StyleSheet} from "react-native";
@@ -155,7 +155,7 @@ export default App;
 
 We kunnen hier eenvoudig een ScrollView rondzetten om dit probleem op te lossen:
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text, ScrollView,StyleSheet} from "react-native";
@@ -192,7 +192,7 @@ FlatList is automatisch scrollable dus hoeft niet in een `ScrollView` gezet te w
 
 De `FlatList` component heeft een aantal props die we moeten meegeven. De `data` prop is de lijst die we willen tonen. De `renderItem` prop is een functie die een item uit de lijst zal renderen. De `keyExtractor` prop is een functie die een key zal teruggeven voor een item uit de lijst. 
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text, FlatList,StyleSheet} from "react-native";
@@ -240,7 +240,7 @@ export default App;
 
 We herdoen ook nog het voorbeeld van de kleuren maar dan met het `FlatList` component.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import Constants from "expo-constants";
 import {View, Text, FlatList,StyleSheet} from "react-native";
