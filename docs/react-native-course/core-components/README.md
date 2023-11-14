@@ -10,7 +10,7 @@ Zoals we al gezien hebben kan er in React Native geen gebruik gemaakt worden van
 
 De `View` component is het meest gebruikte component in React Native. Het is een container component die andere componenten kan bevatten. De `View` component is vergelijkbaar met de `div` tag in HTML.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
@@ -72,7 +72,7 @@ Het `StyleSheet` component is een object dat alle styling informatie bevat. In R
 
 Een stylesheet kan je als volgt aanmaken:
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
@@ -112,7 +112,7 @@ Je kan nog meer styling properties toevoegen aan een View. Je kan deze hier vind
 
 Het is ook mogelijk rechstreeks in de style property van een View een object mee te geven. Dit is echter niet aan te raden. Het is beter om een stylesheet aan te maken en deze te gebruiken. Dit is beter voor de performance van je app. Inline styles zijn echter wel handig als je snel een style wilt testen.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
@@ -135,7 +135,7 @@ De `Text` component is een component die tekst kan weergeven. De `Text` componen
 
 Hieronder een aantal voorbeelden van veel voorkomende style properties
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
@@ -170,7 +170,7 @@ Meer informatie over de styling props van het `Text` component kan je hier vinde
 
 Het is mogelijk om een `Text` component in een andere `Text` component te nesten. 
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
@@ -210,7 +210,7 @@ De afbeeldingen komen mee in je project directory staan bij de source bestanden.
 
 Je kan ook afbeeldingen van het internet gebruiken. Dit doe je door de `uri` property te gebruiken. Images van het internet moeten altijd een width en een height style hebben.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import Constants from "expo-constants";
@@ -253,7 +253,7 @@ De volgende waarden zijn mogelijk:
 - `center` - De afbeelding wordt niet veranderd van grootte. De afbeelding wordt gecentreerd in de `Image` component.
 - `stretch` - De afbeelding wordt zo groot mogelijk gemaakt. Er wordt geen rekening gehouden met de aspect ratio van de afbeelding. De afbeelding wordt uitgerekt.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import Constants from "expo-constants";
@@ -283,7 +283,7 @@ export default App;
 
 De `TextInput` component is een component die gebruikt kan worden om tekst in te voeren. De `TextInput` component is vergelijkbaar met de `input` tag in HTML.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import Constants from "expo-constants";
@@ -319,7 +319,7 @@ De `Button` component is een component die gebruikt kan worden om een button te 
 
 Op beide platformen zal de button een native feel hebben en button heeft beperkte styling mogelijkheden.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Button, View} from "react-native";
 import Constants from "expo-constants";
@@ -345,7 +345,7 @@ Zoals we hiervoor hebben vermeld is de `Button` component beperkt in styling mog
 
 Zelfs als je een `Button` component gebruikt, wordt er achter de schermen een `Pressable` component gebruikt om de button te maken. 
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
 import Constants from "expo-constants";
@@ -375,7 +375,7 @@ export default App;
 
 Je kan de stijl van de `Pressable` laten aanpassen afhankelijk hij ingedrukt is of niet. Dit doe je door in plaats van een style object mee te geven een functie mee te geven die een style object teruggeeft.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Text, View, Pressable, Alert } from "react-native";
 import Constants from "expo-constants";
@@ -410,7 +410,7 @@ Pas op in html zijn events altijd in lowercase geschreven, in react native zijn 
 
 ### Button
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, Button, View, Alert } from "react-native";
 import Constants from "expo-constants";
@@ -444,7 +444,7 @@ TextInput heeft een aantal event handlers die je kan gebruiken:
 - onFocus: wordt aangeroepen wanneer de gebruiker de input selecteert.
 - onKeyPress: wordt aangeroepen wanneer de gebruiker een toets indrukt. 
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, View, TextInput, Alert } from "react-native";
 import Constants from "expo-constants";
@@ -489,7 +489,7 @@ Pressable heeft een aantal event handlers die je kan gebruiken:
 - onPressOut: wordt aangeroepen wanneer de gebruiker de button loslaat.
 - onLongPress: wordt aangeroepen wanneer de gebruiker de button lang ingedrukt houdt. Standaard op 500ms. Kan aangepast worden met de `delayLongPress` prop.
 
-```typescript expo={}
+```typescript expo={"dependencies":"expo-constants"}
 import React from "react";
 import { StyleSheet, View, Pressable, Alert, Text } from "react-native";
 import Constants from "expo-constants";
