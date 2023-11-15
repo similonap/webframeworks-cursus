@@ -13,6 +13,8 @@ Een ander voordeel is dat de pagina geïndexeerd kan worden door zoekmachines. D
 Wil je in het voorbeeld van hierboven gebruik maken van server side rendering, dan kan je gebruik maken van de `getServerSideProps` functie. Deze functie wordt uitgevoerd op de server en zorgt ervoor dat je data kan ophalen van een server. Als return value moet je een object teruggeven met een `props` property. Deze property bevat de data die je wil doorgeven aan je component. 
 
 ```jsx
+import { GetServerSideProps } from "next";
+
 interface Post {
   id: number; 
   userId: number;
@@ -20,13 +22,17 @@ interface Post {
   body: string;
 };
 
-export const getServerSideProps = async () => {
+interface PostsProps {
+  posts: Post[]
+}
+
+export const getServerSideProps : GetServerSideProps<PostsProps> = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const posts = await response.json();
     
     return {
         props: {
-            posts: posts,
+            posts: posts
         },
     };
 };
@@ -49,20 +55,27 @@ export default Posts;
 De `getServerSideProps` functie krijgt een `context` parameter mee. Deze parameter bevat een aantal handige properties. De belangrijkste property is de `req` property. Deze property bevat de request die binnenkomt op de server. Je kan deze gebruiken om bijvoorbeeld de cookies op te halen. In het volgende voorbeeld tonen we een aantal handige properties van de `context` parameter.
 
 ```jsx
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+interface RequestInfoProps {
+  ipAddress: string; 
+  cookies: string;
+  userAgent: string;
+  query: string
+}
+
+export const getServerSideProps : GetServerSideProps<RequestInfoProps> = async (context) => {
   return {
     props: {
-      ipAddress: context.req.headers['x-forwarded-for'] || context.req.socket.remoteAddress,
+      ipAddress: (context.req.headers['x-forwarded-for'] || context.req.socket.remoteAddress) as string,
       cookies: JSON.stringify(context.req.cookies),
-      userAgent: context.req.headers['user-agent'],
+      userAgent: context.req.headers['user-agent'] as string,
       query: JSON.stringify(context.query),
     },
   };
 };
 
-const RequestInfo = ({ ipAddress, cookies, userAgent, query }: { ipAddress: string, cookies: string, userAgent: string, query: string }) => {
+const RequestInfo = ({ ipAddress, cookies, userAgent, query }: RequestInfoProps) => {
   return (
     <>
       <main>
@@ -75,5 +88,6 @@ const RequestInfo = ({ ipAddress, cookies, userAgent, query }: { ipAddress: stri
   )
 }
 
+export default RequestInfo;
 export default RequestInfo;
 ```
