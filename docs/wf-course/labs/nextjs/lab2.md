@@ -17,6 +17,11 @@ Pas de animals oefening nu aan zodat je gebruik maakt van static site generation
 
 Pas de pokemon app oefening van vorige week aan zodat je gebruik maakt van static site generation. Elke pagina moet op voorhand gegenereerd worden.
 
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/eSIWPAkEIio'/>
+<ReactPlayer controls url='https://youtu.be/8uvegPrBS9c'/>
+
 ## 4. Holiday calendar
 
 Maak een nieuwe Next.js applicatie aan met de naam "holiday-calendar". We willen een pagina maken waar we alle feestdagen van een bepaald land kunnen opzoeken. We willen een volledige static generated site genereren.
