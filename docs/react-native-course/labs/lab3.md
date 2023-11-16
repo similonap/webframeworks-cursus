@@ -1,61 +1,32 @@
 # Labo 3
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
-- Flexbox
-- Custom Components
+- Lijsten
+- Controlled components
 
-### Opdracht: Rainbows
+## Opdracht: Rainbows met state
 
-Maak een nieuw project `Rainbows` aan met expo. Vervang de inhoud van `App.tsx` door de volgende code:
+### Stap 1: Loops
+Zorg dat je colors array 10 waarden bevat. Pas dan jouw Rainbow component aan zodat die over de eerste 6 waarden van de kleuren array loopt. (tip: je vervangt 6 lijnen code door 1 lijn)
 
-```typescript expo={"dependencies": "rainbow-colors-array-ts"}
-import * as React from "react";
-import { rainbow } from "rainbow-colors-array-ts";
-import {View, StyleSheet} from "react-native";
-import Constants from 'expo-constants';
+Doe dit ook voor de Footer component: maak een variabele text aan die het woord Rainbow bevat en loop over de letters van het woord (tip: je vervangt 7 lijnen code door 1 lijn). 
 
-export default function App() {
+Zorg dat het woord dat in Footer getoond wordt **nooit langer kan zijn dan 10 letters** (bv: als je de variabele text de waarde "Hallo ik ben een student van AP" geeft, zie je in de footer alleen "Hallo ik b")
 
-  return (
-    <View style={styles.container}>
-       
-    </View>
-  );
-}
+### Stap 2: State
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    paddingTop: Constants.statusBarHeight,
-  }
-});
-```
+- Voeg een knop toe waarmee je de kleuren van de regenboog kan veranderen van pastel kleuren naar niet pastelkleuren (en omgekeerd)
+- Voeg een input veld toe waar je een tekst kan ingeven. Als je op submit drukt, wordt de tekst in de footer veranderd naar de tekst die je ingegeven hebt. (tip: gebruik de `onSubmitEditing` event handler van een `TextInput` component)
+- Je hebt hier twee state variabelen nodig.
 
-In dit labo gaan jullie spelen met Flexbox en Custom components. Ipv stapsgewijs de oefening op te bouwen, starten we deze keer met een screenshot. Het is de bedoeling dat jullie een React Native app maken die er exact hetzelfde uitziet:
+Je kan je baseren op de volgende screen recording:
 
-![picture 8](../images/labo3rainbow.png)
+![picture 8](../images/interaction-statemobile.gif)
 
-We geven jullie hieronder enkele vereisten en tips:
-#### Vereisten:
-- Zorg dat elke regenboog voorgesteld wordt door 1 custom component Rainbow
-- Gebruik een custom component Footer voor de tekst Rainbow
-- Gebruik een custom component  Letter voor elke letter van de tekst Rainbow
-- Plaats alle custom components in hun eigen bestand
-- Gebruik de npm library `rainbow-colors-array-ts`. Gebruik hier de functie als volgt: rainbow(10, "hex",true); (lees de info op de npm pagina hoe je die gebruikt)
-#### Tips:
-- Geef de style van de de Rainbow component mee als property
-- Het typescript type van deze property is: `StyleProp<ViewStyle>`
-- Geef de array van  kleuren van elk child element van Rainbow (dus elke "blokje" kleur) mee als property
-- Geef de hoogte en breedte van elke child element van Rainbow mee als property (indien je niets meegeeft, zal de style van een element dit negeren)
-- De eerste Rainbow heeft elementen van hoogte 10
-- De tweede Rainbow heeft elementen van breedte 10
-- De derde Rainbow heeft elementen van hoogte 50 en breedte 50
-- De footer heeft een hoogte van 100
-- de lettergrootte van de tekst Rainbow is 30
-- Footer gebruik 7 maal de Letter component
-- De tweede en derde Rainbow zitten samen in 1 View
+### Stap 3: Randomize rainbow
 
-Hier een screenshot met borders aan om een beter idee te krijgen van de layout:
+- Voeg nog een extra knop toe waarmee je de kleuren van de regenboog kan randomizen. (tip: gebruik de `Math.random()` functie)
+- De tekst in de footer mag niet mee gerandomized worden.
+- De pastel knop moet ook nog steeds werken.
 
-![picture 8](../images/labo3views.png)
+![picture 8](../images/interaction-statemobile2.gif)

@@ -1,32 +1,24 @@
 # Labo 4
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
-- Lijsten
-- Controlled components
+- Routing en navigatie
 
-## Opdracht: Rainbows met state
+## Opdracht: Rainbow Navigation
 
-### Stap 1: Loops
-Zorg dat je colors array 10 waarden bevat. Pas dan jouw Rainbow component aan zodat die over de eerste 6 waarden van de kleuren array loopt. (tip: je vervangt 6 lijnen code door 1 lijn)
+Ga verder met de code van labo 4 en kopieer deze naar een nieuw project.
 
-Doe dit ook voor de Footer component: maak een variabele text aan die het woord Rainbow bevat en loop over de letters van het woord (tip: je vervangt 7 lijnen code door 1 lijn). 
+We bouwen de volgende applicatie:
 
-Zorg dat het woord dat in Footer getoond wordt **nooit langer kan zijn dan 10 letters** (bv: als je de variabele text de waarde "Hallo ik ben een student van AP" geeft, zie je in de footer alleen "Hallo ik b")
+![picture 8](../images/rainbows-navigation.gif)
 
-### Stap 2: State
+De applicatie bestaat uit drie schermen:
+- Een simpel "Home" scherm met een knop die naar scherm 3 gaat
+- Een scherm dat de oefening van vorige week bevat
+- Een scherm met een lijst van 200 kleuren verkregen via `rainbow-colors-array-ts`
 
-- Voeg een knop toe waarmee je de kleuren van de regenboog kan veranderen van pastel kleuren naar niet pastelkleuren (en omgekeerd)
-- Voeg een input veld toe waar je een tekst kan ingeven. Als je op submit drukt, wordt de tekst in de footer veranderd naar de tekst die je ingegeven hebt. (tip: gebruik de `onSubmitEditing` event handler van een `TextInput` component)
-- Je hebt hier twee state variabelen nodig.
+Wanneer je op een kleur drukt, krijg je een detail scherm. Dit scherm heeft als achtergrondkleur de geselecteerde kleur en toont de hex waarde in de titel en in het midden van het scherm
 
-Je kan je baseren op de volgende screen recording:
-
-![picture 8](../images/interaction-statemobile.gif)
-
-### Stap 3: Randomize rainbow
-
-- Voeg nog een extra knop toe waarmee je de kleuren van de regenboog kan randomizen. (tip: gebruik de `Math.random()` functie)
-- De tekst in de footer mag niet mee gerandomized worden.
-- De pastel knop moet ook nog steeds werken.
-
-![picture 8](../images/interaction-statemobile2.gif)
+#### Tips:
+- Gebruik const colors = rca(200,"hex",true); voor de 200 kleuren die je toont op het 3e scherm.
+- Je hebt een custom component nodig voor de inhoud van het labo van vorige week.
+- Je hebt hier een combinatie van Stack en Tab navigatie nodig.

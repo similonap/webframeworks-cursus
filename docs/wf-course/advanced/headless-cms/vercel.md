@@ -22,7 +22,7 @@ De Vercel CLI is een command line tool die je kan gebruiken om je applicatie te 
 npm install -g vercel
 ```
 
-## Stap 3: Deploy je applicatie
+### Stap 3: Deploy je applicatie
 
 Om je applicatie te deployen, moet je eerst inloggen met de Vercel CLI. Dit kan je doen met het volgende commando:
 
