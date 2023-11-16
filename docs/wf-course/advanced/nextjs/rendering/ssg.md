@@ -120,9 +120,9 @@ interface PostProps {
   post: Post;
 }
 
-export const getStaticProps : GetStaticProps<PostProps, Paths> = async ({ params }: { params: { id: string } }) => {
+export const getStaticProps : GetStaticProps<PostProps, Paths> = async (context) => {
     const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${params.id}`
+        `https://jsonplaceholder.typicode.com/posts/${context.params?.id}`
     );
     const post = await response.json();
 
