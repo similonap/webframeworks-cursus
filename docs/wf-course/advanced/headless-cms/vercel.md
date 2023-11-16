@@ -66,6 +66,6 @@ Als de build klaar is, kan je je applicatie deployen met het volgende commando:
 
 ```bash
 vercel deploy --prebuilt
-```bash
+```
 
 Als dit gelukt is krijg je een link naar je applicatie. Je kan deze link gebruiken om je applicatie te bekijken.
