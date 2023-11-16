@@ -59,7 +59,11 @@ Je kan ook statische pagina's maken die gebruik maken van externe data. Het buil
 We kunnen teruggrijpen naar het Posts voorbeeld van hierboven. We kunnen dit voorbeeld aanpassen zodat we gebruik maken van static generation. 
 
 ```jsx
-export const getStaticProps = async () => {
+interface PostProps {
+  posts: Post[];
+}
+
+export const getStaticProps : GetStaticProps<PostProps> = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const posts = await response.json();
 
@@ -70,7 +74,7 @@ export const getStaticProps = async () => {
     };
 };
 
-const Posts = ({ posts }: { posts: Post[] }) => {
+const Posts = ({ posts }: PostProps) => {
   return (
     <ul>
       {posts.map((post) => (
@@ -90,7 +94,11 @@ Je kan ook dynamische pagina's maken die gebruik maken van externe data. Het bui
 We kunnen teruggrijpen naar het Posts voorbeeld van hierboven. We kunnen dit voorbeeld aanpassen zodat we gebruik maken van static generation. We maken dan een nieuwe pagina met de naam `[id].tsx`. Deze pagina zal dan de data van een specifieke post tonen. 
 
 ```jsx
-export const getStaticPaths = async () => {
+interface Paths extends ParsedUrlQuery {
+  id: string
+}
+
+export const getStaticPaths : GetStaticPaths<Paths> = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const posts = await response.json();
 
@@ -108,7 +116,11 @@ export const getStaticPaths = async () => {
 Deze pagina heeft ook een `getStaticProps` functie nodig. Deze functie zal de data van de specifieke post ophalen. 
 
 ```jsx
-export const getStaticProps = async ({ params }: { params: { id: string } }) => {
+interface PostProps {
+  post: Post;
+}
+
+export const getStaticProps : GetStaticProps<PostProps, Paths> = async ({ params }: { params: { id: string } }) => {
     const response = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${params.id}`
     );
@@ -125,7 +137,7 @@ export const getStaticProps = async ({ params }: { params: { id: string } }) => 
 en uiteraard de pagina zelf:
 
 ```jsx
-const Post = ({ post }: { post: Post }) => {
+const Post = ({ post }: PostProps) => {
     return (
         <div>
             <h1>{post.title}</h1>
