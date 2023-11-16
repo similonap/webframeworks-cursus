@@ -1,4 +1,5 @@
 import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
+import ReactPlayer from 'react-player';
 
 # Labo 2
 
@@ -40,6 +41,10 @@ Pas de paden aan zodat je de volgende urls krijgt:
 - /holidays -> deze pagina moet een lijst tonen van alle landen waarvoor je feestdagen kan opvragen.
 - /holidays/[countrycode] -> toont een aantal jaren waarvoor je feestdagen kan opvragen. Deze mag hardcoded zijn (bv: 2020, 2021, 2022)
 - /holidays/[countrycode]/[year] -> deze pagina moet een lijst tonen van alle feestdagen voor het land met de gegeven countrycode en het gegeven jaar.
+
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/zC7vvHwLhjY'/>
 
 ## 5. Priem getallen
 
