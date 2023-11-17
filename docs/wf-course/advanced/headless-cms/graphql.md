@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # GraphQL API 
 
 GraphQL is een nieuwe API-standaard die een efficiënter, krachtiger en flexibeler alternatief biedt voor REST. Het is ontwikkeld en open source gemaakt door Facebook en wordt nu onderhouden door een grote gemeenschap van bedrijven en individuen van over de hele wereld.

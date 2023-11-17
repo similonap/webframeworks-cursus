@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Vercel
 
 ## Wat is Vercel?

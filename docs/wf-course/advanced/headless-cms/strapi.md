@@ -214,57 +214,7 @@ Nu kunnen we de blog post aanpassen zodat we een afbeelding kunnen toevoegen. We
 
 Nu kunnen we een blog post aanmaken met een afbeelding. Als je de blog post opslaat, dan zal de afbeelding automatisch worden geüpload naar Cloudinary. Je kan dit controleren door naar de Cloudinary website te gaan. Je zal zien dat de afbeelding is geüpload naar Cloudinary.
 
-# Naar productie brengen
-
-## Deployen naar Render
-
-We gaan onze applicatie deployen naar [Render](https://render.com/). Dit is een platform dat het mogelijk maakt om applicaties te deployen. Het is heel eenvoudig om te gebruiken en je kan het gratis gebruiken voor kleine applicaties.
-
-Je moet er eerst voor zorgen dat je applicatie ergens op een github repository staat zodat render deze kan gebruiken voor de deploy. 
-
-Je moet de volgende stappen uitvoeren:
-
-- Je moet een nieuwe web service aanmaken. Je kan dit doen door op de `New` en vervolgens op `Web Service` te klikken.
-- Klik eerst op `Build and deploy from a Git repository` om je github repository te koppelen aan render. Kies de juiste repository.
-- Kies een naam voor je service. Dit is de naam die je zal zien in de url. 
-- Verander de region naar een EU gebaseerde regio. 
-- Kies de juiste branch.
-- Indien je project ergens in een subfolder staat, dan kan je dit aangeven bij `Root Directory`.
-- Zorg ervoor dat je als runtime `Node` kiest. 
-- Bij build command moet je `npm install && npm run build` invullen. Dit is het commando dat render zal uitvoeren om je applicatie te builden.
-- Als `Start Command` moet je `npm start` invullen. Dit is het commando dat render zal uitvoeren om je applicatie te starten.
-- Kies zeker voor `Instance Type` `Free`. Dit is de gratis versie van render. Je kan ook kiezen voor een betalende versie, maar dit is niet nodig voor deze cursus.
-
-Vervolgens open je het `Advanced` tab. Hier is het mogelijk om environment variabelen in te stellen. Je kan hier gebruik maken van een `secret file`. Maak een nieuw `.env` bestand aan (in de editor van render) en kopieer de inhoud van je lokale `.env` bestand naar dit bestand. 
-
-## Database aanpassen
-
-We gaan nu de database aanpassen. We gaan de database veranderen van SQLite naar PostgreSQL. Dit is een database die we kunnen gebruiken in productie. Als we sqlite zouden gebruiken in productie, dan zou de database verloren gaan als de server herstart.
-
-Zorg ervoor dat je eerst een database hebt aangemaakt in PostgreSQL. 
-
-Normaal gezien moet je enkel de volgende environment variabelen aanpassen in het `.env` bestand of de secret file:
-
-```bash
-# Database
-DATABASE_CLIENT=postgres
-DATABASE_HOST=ip-adres
-DATABASE_NAME=naam-database
-DATABASE_USERNAME=username
-DATABASE_PASSWORD=password
-```
-
-Let op dat je deze .env file niet in je git repository plaatst. Deze bevat namelijk gevoelige informatie zoals het wachtwoord van de database. Plaats deze file dus in je `.gitignore` file.
-
-Voordat je kan gebruik maken van postgres in je strapi applicatie moet je nog wel een package installeren. Dit doe je door het volgende commando uit te voeren:
-
-```bash
-npm install pg
-```
-
-# Koppeling next.js en strapi
-
-## Environment variabelen
+### Environment variabelen
 
 Omdat we de API token die we zelf hebben aangemaakt ook willen gebruiken in onze next.js applicatie, moeten we deze token opslaan in een environment variabele. Net zoals we dit hebben gedaan bij strapi moeten we ook hier een `.env` bestand aanmaken. Dit bestand moet je aanmaken in de root van je next.js project. Hier kan je een `TOKEN` variabele aanmaken en de token van strapi hierin opslaan. 
 
@@ -276,7 +226,7 @@ const token = process.env.TOKEN;
 
 Let er op je kan deze variabele enkel maar gebruiken in de server code. Je kan deze niet gebruiken in de client code want deze variabele wordt niet meegestuurd naar de client. Dus je kan deze enkel in de `getStaticProps`, `getServerSideProps` functies gebruiken.
 
-## Markdown
+### Markdown
 
 Alle rich text velden worden opgeslagen in markdown. Dit is een speciale syntax die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
 
