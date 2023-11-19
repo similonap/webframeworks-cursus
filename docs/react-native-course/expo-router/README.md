@@ -241,3 +241,65 @@ Per default worden routes toegevoegd aan de navigatie stack. Dit betekent dat de
   <Text>About</Text>
 </Link>
 ```
+
+## Layout routes
+
+Normaal gezien vult een route het volledige scherm. Als je tussen schermen navigeert is dit een volledige pagina transitie zonder animatie. In native apps verwachten gebruikers dat gedeelde elementen zoals headers en tab bars behouden blijven tussen pagina's. Deze worden gemaakt met behulp van layout routes.
+
+### Layout route aanmaken
+
+Om een layout route aan te maken maak je een bestand aan met de naam `_layout.js` in de app directory. 
+
+```tsx
+import { Slot } from 'expo-router';
+
+const HomeLayout = () => {
+  return <Slot />;
+}
+
+export default HomeLayout;
+```
+
+In het voorbeeld hierboven zal de `Slot` component de huidige child route renderen. Dit is vergelijkbaar met de `children` prop in React. Deze component kan gewrapt worden met andere componenten om een layout te maken.
+
+```tsx
+import { Slot } from 'expo-router';
+
+const HomeLayout = () => {
+  return (
+    <View>
+      <Text>Header</Text>
+      <Slot />
+      <Text>Footer</Text>
+    </View>
+  );
+}
+
+export default HomeLayout;
+```
+
+Expo Router ondersteunt slechts één layout route per directory. Als je meerdere layout routes wil gebruiken moet je meerdere directories aanmaken. 
+
+```
+- app
+  - _layout.tsx
+  - home
+    - _layout.tsx
+    - index.tsx
+```
+
+Het nadeel hiervan is dat het pad hierdoor "vervuilt" wordt met overbodige directories. Je kan dit probleem oplossen door een deel van de directory structuur te verbergen door een deel van het pad te omringen met ronde haakjes. 
+
+- `app/root/home.tsx` komt overeen met `/root/home`
+- `app/(root)/home.tsx` komt overeen met `/home`
+
+Dit is handig om layouts toe te voegen zonder extra segmenten aan de URL toe te voegen. Je kan zoveel groepen toevoegen als je wil.
+
+### Native layouts
+
+Uiteraard wordt er niet vaak gebruik gemaakt van eigen layouts en wordt er vooral gebruik gemaakt van de ingebouwde native layouts van het platform. Expo Router ondersteunt de volgende native layouts:
+
+- Stack Navigation
+- Tab Navigation
+- Drawer Navigation
+- Modals
