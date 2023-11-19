@@ -395,6 +395,50 @@ Omdat expo router gebaseerd is op React Navigation kan je alle mogelijke opties 
 
 ### Tab Navigation
 
+De werking van een Tab Navigation is vergelijkbaar met een Stack Navigation. Het verschil is dat de schermen niet op elkaar gestapeld worden maar dat er een tab bar wordt toegevoegd.
+
+Om een Tab Navigation te gebruiken moet je het `_layout.tsx` bestand aanpassen en een `Tabs` component gebruiken.
+
+```tsx
+import { Tabs } from 'expo-router';
+
+const HomeLayout = () => {
+  return (
+    <Tabs>
+      <Tabs.Screen
+        // Name of the dynamic route.
+        name="index"
+        options={{
+          title: 'Home',
+        }}
+      />
+      <Tabs.Screen
+        // Name of the dynamic route.
+        name="about"
+        options={{
+          title: 'About',
+        }}
+      />
+    </Tabs>
+  );
+}
+
+export default HomeLayout;
+```
+
+Je kan eventueel ook bepaalde paginas onzichtbaar maken uit de tab bar door de href property op `null` te zetten. 
+
+```tsx
+<Tabs.Screen
+  name="users/[name]"
+  options={{
+    href: null
+  }}
+/>
+```
+
+Je kan deze href property ook gebruiken om een andere route te linken aan de tab. Bv als je deze naar een specifieke user wil linken. 
+
 ### Drawer Navigation
 
 ### Modals
