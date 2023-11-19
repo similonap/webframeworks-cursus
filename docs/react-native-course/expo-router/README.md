@@ -295,7 +295,7 @@ Het nadeel hiervan is dat het pad hierdoor "vervuilt" wordt met overbodige direc
 
 Dit is handig om layouts toe te voegen zonder extra segmenten aan de URL toe te voegen. Je kan zoveel groepen toevoegen als je wil.
 
-### Native layouts
+## Native layouts
 
 Uiteraard wordt er niet vaak gebruik gemaakt van eigen layouts en wordt er vooral gebruik gemaakt van de ingebouwde native layouts van het platform. Expo Router ondersteunt de volgende native layouts:
 
@@ -303,3 +303,98 @@ Uiteraard wordt er niet vaak gebruik gemaakt van eigen layouts en wordt er voora
 - Tab Navigation
 - Drawer Navigation
 - Modals
+
+### Stack Navigation
+
+Stack Navigation is de meest gebruikte layout. Het is een layout waarbij de schermen op elkaar gestapeld worden. Je kan navigeren naar een volgend scherm en terugkeren naar het vorige scherm. 
+
+Om de schermen te stacken moet je het `_layout.tsx` bestand aanpassen en een `Stack` component gebruiken.
+
+```tsx
+import { Stack } from 'expo-router';
+
+const HomeLayout = () => {
+  return (
+    <Stack/>
+  );
+}
+
+export default HomeLayout;
+```
+
+#### Configuratie
+
+Je kan de header van de schermen aanpassen door de `screenOptions` property te gebruiken van het `Stack` component. 
+
+```tsx
+<Stack
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}
+/>
+```
+
+![Alt text](./img/screenOptions.png)
+
+Je kan als children van het `Stack` component de schermen individueel configureren door ze `Stack.Screen` componenten te gebruiken. Dit is handig om bijvoorbeeld de titel van de header aan te passen. 
+
+```tsx
+<Stack
+    screenOptions={{
+    headerStyle: {
+        backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    },
+    }}
+    
+>
+    <Stack.Screen name="index" options={{title: "Home"}}></Stack.Screen>
+    <Stack.Screen name="users/[name]" options={{title: "User"}}></Stack.Screen>
+</Stack>
+```
+
+Hierboven gaan we dus de titel van de header aanpassen voor de home pagina en de mische route. 
+
+Het is ook mogelijk om het `Stack.Screen` component te gebruiken in het component zelf. Dus in plaats van de `Stack` component te gebruiken in het `_layout.tsx` bestand kan je het `Stack.Screen` component gebruiken in het `index.tsx` bestand. 
+
+```tsx
+const App = () => {
+    return (
+        <View style={styles.container}>
+            <Stack.Screen options={{title: "Home"}}></Stack.Screen>
+            <Text>Home Screen</Text>
+        </View>
+    )
+}
+```
+
+Dit maakt het mogelijk om de header iets dynamischer te maken met informatie uit de pagina. Dit is bijvoorbeeld interessant voor pagina's met dynamische routes. 
+
+```tsx
+const User = () => {
+    const { name } = useLocalSearchParams<{name: string}>();
+    return (
+        <View style={styles.container}>
+            <Stack.Screen options={{title: "User: " + name}}></Stack.Screen>
+            <Text>User : { name }</Text>
+        </View>
+    )
+}
+```
+
+Omdat expo router gebaseerd is op React Navigation kan je alle mogelijke opties voor het `Stack.Screen` component kan je [hier](https://reactnavigation.org/docs/native-stack-navigator/#options) terugvinden. 
+
+### Tab Navigation
+
+### Drawer Navigation
+
+### Modals
