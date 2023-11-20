@@ -91,3 +91,27 @@ const RequestInfo = ({ ipAddress, cookies, userAgent, query }: RequestInfoProps)
 export default RequestInfo;
 export default RequestInfo;
 ```
+
+## Not Found
+
+Als je in je getServerSideProps functie een 404 not found wil teruggeven, dan kan je dit doen door een `notFound` property toe te voegen aan het return object. 
+
+```jsx
+export const getServerSideProps : GetServerSideProps<PostsProps> = async (context) => {
+    const id = parseInt(context.params?.id as string);
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    const post = await response.json();
+    
+    if (!post) {
+        return {
+            notFound: true,
+        };
+    } else {
+      return {
+          props: {
+              post
+          },
+      };
+    }
+};
+```
