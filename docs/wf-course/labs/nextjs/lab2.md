@@ -124,3 +124,8 @@ De pagina zal er als volgt uitzien:
 ![Prime images](../../images/prime.png)
 
 Vergelijk de verschillende pagina's met elkaar. Wat is het verschil in laadtijd? Wat is het verschil in grootte van de pagina? Wat is het verschil in de netwerk tab? 
+
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/CDB9M6O8_ug'/>
+
