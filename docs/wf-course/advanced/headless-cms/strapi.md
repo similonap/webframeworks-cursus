@@ -49,7 +49,7 @@ Je krijgt in het eerste venster ineens te zien welke API endpoints er worden aan
 
 Vervolgens moeten we de velden van het content type aanmaken. We gaan de volgende velden aanmaken:
 - title: Text
-- content: Rich Text
+- content: Rich Text (Markdown)
 
 De keuze van Rich Text is belangrijk. Dit betekent dat we een rich text editor kunnen gebruiken om de inhoud van de blogpost te schrijven. Dit is een editor die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
 
