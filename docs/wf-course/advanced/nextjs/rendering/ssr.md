@@ -114,3 +114,20 @@ export const getServerSideProps : GetServerSideProps<PostsProps> = async (contex
     }
 };
 ```
+
+### Redirect
+
+Soms wil je de gebruiker doorsturen naar een andere pagina. Bijvoorbeeld als de gebruiker niet is ingelogd of een andere reden. Dit kan je doen door een `redirect` property toe te voegen aan het return object. 
+
+Als je bijvoorbeeld ook wil directen naar de pagina `/posts` als de post niet gevonden is, dan kan je dit doen:
+
+```jsx
+return {
+  redirect: {
+    destination: "/posts",
+    permanent: false,
+  }
+}
+```
+
+`permanent` geeft aan of het een permanente redirect is. Dit is standaard `false`.
