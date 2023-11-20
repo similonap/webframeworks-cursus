@@ -439,6 +439,38 @@ Je kan eventueel ook bepaalde paginas onzichtbaar maken uit de tab bar door de h
 
 Je kan deze href property ook gebruiken om een andere route te linken aan de tab. Bv als je deze naar een specifieke user wil linken. 
 
+Je kan nog meer opties voor het `Tabs.Screen` component [hier](https://reactnavigation.org/docs/bottom-tab-navigator/#options) terugvinden. Een zeer interessante optie is de `tabBarIcon` property. Hiermee kan je een icoon toevoegen aan de tab bar. 
+
+```tsx
+import { Tabs } from 'expo-router';
+import { FontAwesome } from "@expo/vector-icons";
+
+const HomeLayout = () => {
+  return (
+    <Tabs>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({color, size}) => <FontAwesome name="home" size={size} color={color} />
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: 'About',
+          tabBarIcon: ({color, size}) => <FontAwesome name="adjust" size={size} color={color} />
+        }}
+      />
+    </Tabs>
+  );
+}
+
+export default HomeLayout;
+```
+
+Een lijst van alle beschikbare icons kan je vinden op https://icons.expo.fyi. Je hoeft hier geen aparte package voor te installeren, deze icons zijn al beschikbaar in `@expo/vector-icons``.
+
 ### Drawer Navigation
 
 ### Modals
