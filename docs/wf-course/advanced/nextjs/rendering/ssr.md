@@ -89,7 +89,6 @@ const RequestInfo = ({ ipAddress, cookies, userAgent, query }: RequestInfoProps)
 }
 
 export default RequestInfo;
-export default RequestInfo;
 ```
 
 ## Not Found
