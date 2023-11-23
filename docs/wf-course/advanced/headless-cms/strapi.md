@@ -245,88 +245,48 @@ Hier een voorbeeld van een aantal features van markdown:
 ![Alt text](image.png)
 ```
 
-We zijn van plan om de inhoud van de blogpost te tonen op de website. We moeten dus de markdown omzetten naar HTML. We gaan dit doen met de `next-mdx-remote` package. Deze package zorgt ervoor dat we markdown kunnen omzetten naar HTML.
+We zijn van plan om de inhoud van de blogpost te tonen op de website. We moeten dus de markdown omzetten naar HTML. We gaan dit doen met de `marked` package. Deze package zorgt ervoor dat we markdown kunnen omzetten naar HTML.
 
 ```bash
-npm install next-mdx-remote
+npm install marked
 ```
 
-Nu kan je de serialize functie importeren in je code:
+Nu kan je de Marked library importeren in je code:
 
 ```jsx
-import { serialize } from 'next-mdx-remote';
+import { Marked } from 'marked';
 ```
+
+Vervolgens moet je nog een markdown object aanmaken dat je kan gebruiken om de markdown om te zetten naar HTML:
+
+```jsx
+const marked = new Marked();
+```
+
+Dit kan je globaal doen in je bestand.
 
 Je kan deze functie gebruiken om markdown om te zetten naar HTML. Je kan de volgende code gebruiken om de markdown om te zetten naar HTML:
 
 ```jsx
-const mdxSource = await serialize(post.attributes.content);
+marked.parse(post.attributes.content);
 ```
 
-deze kan je in de getStaticProps functie plaatsen. Je kan dan de mdxSource doorgeven aan de props van de pagina. Je kan dan de volgende code gebruiken om de HTML te tonen:
+Je kan deze functie in je React component gebruiken om de HTML te tonen. Je moet hier wel de `dangerouslySetInnerHTML` gebruiken omdat je HTML gaat renderen. De naam van deze functie ziet er eng uit, maar dit is de enige manier om HTML te renderen in React. De reden dat deze naam zo is gekozen is omdat je HTML kan injecteren in je component. Dit is gevaarlijk omdat je hierdoor kwetsbaar bent voor XSS aanvallen. Je moet dus zeker zijn dat je de HTML vertrouwt die je gaat renderen. In ons geval vertrouwen we de HTML die we gaan renderen omdat we deze zelf hebben gegenereerd.
 
 ```jsx
-<MDXRemote {...mdxSource} />
+<div dangerouslySetInnerHTML={{ __html: marked.parse(post.attributes.content) }} />
 ```
 
-Dan bekom je iets zoals dit:
+Soms wil je de manier waarop de markdown wordt omgezet naar HTML aanpassen. Je kan dit doen door een renderer te gebruiken. Je kan bijvoorbeeld de volgende code gebruiken om een renderer aan te maken:
 
 ```jsx
-export async function getStaticProps() {
-  const response = await fetch("http://localhost:1337/api/posts?populate=*", {
-    headers: {
-      Authorization: `Bearer ${process.env.TOKEN}`,
-    },
-  });
+import { Marked, Renderer } from 'marked';
 
-  const posts : PostResponse = await response.json();
+const renderer = new Renderer();
 
-  const serializedPosts: PostShort[] = await Promise.all(
-    posts.data.map(async (post) => {
-      const mdxSource = await serialize(post.attributes.content);
-      return {
-        cover: post.attributes.cover.data.attributes.formats.large.url,
-        title: post.attributes.title,
-        name: post.attributes.author.data.attributes.firstname + " " + post.attributes.author.data.attributes.lastname,
-        content: mdxSource,
-      };
-    })
-  );
-
-  return {
-    props: {
-      posts: serializedPosts,
-    },
-  };
-}
+renderer.heading = (text, level) => {
+  return `<h${level} class="heading">${text}</h${level}>`;
+};
 ```
 
-De `PostResponse` interface kan je genereren met behulp van [Quicktype](https://app.quicktype.io/) aan de hand van de JSON data die je krijgt van de server. En de `PostShort` interface kan je als volgt definiëren:
-
-```jsx
-export interface PostShort {
-    title: string;
-    content: MDXRemoteSerializeResult;
-    cover: string;
-    name: string;
-}
-```
-
-Dit is een verkorte versie van de Post interface die we later gaan gebruiken. Deze interface bevat enkel de velden die we nodig hebben om de blog post te tonen op de website.
-
-In je blog post component kan je dan de volgende code gebruiken om de HTML te tonen:
-
-```jsx
-<MDXRemote {...post.content} />
-```
-
-Je kan het uiterlijk per markdown element aanpassen. Je kan bijvoorbeeld de volgende code gebruiken om de headings een andere stijl te geven:
-
-```jsx
-<MDXRemote {...post.content} components={{
-    h1: ({children}) => (<h1 className="text-xl">{children}</h1>),
-    h2: ({children}) => (<h2 className="text-l">{children}</h2>),
-    h3: ({children}) => (<h2 className="text-m">{children}</h2>),
-    p: ({children}) => (<p className="text-m mt-4">{children}</p>)
-}} />
-```
+Zo kan je zelf bepalen hoe de markdown wordt omgezet naar HTML. Je kan bijvoorbeeld de headings een bepaalde class geven zodat je deze kan stylen met CSS.
