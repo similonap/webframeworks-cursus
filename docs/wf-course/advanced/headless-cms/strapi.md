@@ -254,7 +254,7 @@ npm install next-mdx-remote
 Nu kan je de serialize functie importeren in je code:
 
 ```jsx
-import { serialize } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
 ```
 
 Je kan deze functie gebruiken om markdown om te zetten naar HTML. Je kan de volgende code gebruiken om de markdown om te zetten naar HTML:
