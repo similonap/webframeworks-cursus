@@ -226,7 +226,7 @@ const token = process.env.TOKEN;
 
 Let er op je kan deze variabele enkel maar gebruiken in de server code. Je kan deze niet gebruiken in de client code want deze variabele wordt niet meegestuurd naar de client. Dus je kan deze enkel in de `getStaticProps`, `getServerSideProps` functies gebruiken.
 
-### Markdown
+## Markdown
 
 Alle rich text velden worden opgeslagen in markdown. Dit is een speciale syntax die je kan gebruiken om tekst op te maken. Je kan bijvoorbeeld tekst vet maken, tekst cursief maken, lijsten maken, afbeeldingen toevoegen, enzovoort.
 
