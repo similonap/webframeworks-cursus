@@ -254,11 +254,7 @@ npm install marked
 Nu kan je de Marked library importeren in je code:
 
 ```jsx
-<<<<<<< HEAD
 import { Marked } from 'marked';
-=======
-import { serialize } from 'next-mdx-remote/serialize';
->>>>>>> 1582ddf843aedc067e370fae8bb6c8a83c6dc290
 ```
 
 Vervolgens moet je nog een markdown object aanmaken dat je kan gebruiken om de markdown om te zetten naar HTML:
