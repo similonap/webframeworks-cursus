@@ -4,6 +4,14 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 - Lijsten
 - Controlled components
 
+## Opdracht: Posts met FlatList
+
+Maak een nieuwe react native app. Bij het opstarten van de app wordt een lijst van posts getoond. De posts worden opgehaald van de volgende url: https://jsonplaceholder.typicode.com/posts. Je moet de data ophalen met een fetch request in een useEffect hook. De posts worden getoond in een FlatList met een refresh control om de data te refreshen. 
+
+De applicatie moet als er als volgt uitzien:
+
+![Alt text](../images/posts.gif)
+
 ## Opdracht: Rainbows met state
 
 ### Stap 1: Loops
