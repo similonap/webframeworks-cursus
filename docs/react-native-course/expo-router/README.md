@@ -473,4 +473,145 @@ Een lijst van alle beschikbare icons kan je vinden op https://icons.expo.fyi. Je
 
 ### Drawer Navigation
 
-### Modals
+Om een Drawer Navigation te gebruiken moet je het `_layout.tsx` bestand aanpassen en een `Drawer` component gebruiken.
+
+```tsx
+import { Drawer } from 'expo-router';
+
+const Layout = () => {
+  return (
+    <Drawer>
+      <Drawer.Screen
+        name="index"
+        options={{
+          title: 'Home',
+        }}
+      />
+      <Drawer.Screen
+        name="about"
+        options={{
+          title: 'About',
+        }}
+      />
+    </Drawer>
+  );
+}
+
+export default Layout;
+```
+
+Je kan nog meer opties voor het `Drawer.Screen` component [hier](https://reactnavigation.org/docs/drawer-navigator/#options) terugvinden.
+
+### Combineren van layouts
+
+Je kan layouts combineren door meerdere layouts te gebruiken in een directory. Bijvoorbeeld een Tab Navigation in combinatie met een Stack Navigation. Stel dat je eerst een pagina hebt zonder tab bar en als je op een bepaalde link klikt krijg je een pagina met een tab bar.
+
+De structuur van de directory ziet er dan als volgt uit:
+
+```
+- app
+  - _layout.tsx
+  - home
+    - _layout.tsx
+    - screen1.tsx
+    - screen2.tsx
+```
+
+De `_layout.tsx` in de `app` directory ziet er dan als volgt uit:
+
+```tsx
+import { Stack } from 'expo-router';
+
+const Layout = () => {
+  return (
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{
+          // Hide the header for all other routes.
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="home"
+        options={{
+          // Set the presentation mode to modal for our modal route.
+          presentation: 'modal',
+          headerShown: false,
+        }}
+      />
+    </Stack>
+  );
+}
+
+export default Layout;
+```
+
+met de `index.tsx`:
+
+```tsx
+import { View, Text, Button } from 'react-native';
+import { Link } from 'expo-router';
+const Home = () => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{fontWeight: "bold", fontSize: 24}}>Welcome to the app</Text>
+      <Text style={{fontWeight: "100", marginBottom: 20}}>This is a dummy text</Text>
+      <Link href="/home" replace asChild>
+        <Button title='Home Screen'/>
+      </Link>
+    </View>
+  );
+}
+
+export default Home;
+```
+
+met de `home/_layout.tsx`:
+
+```tsx
+import { Tabs } from "expo-router"
+import { FontAwesome } from "@expo/vector-icons";
+
+const Layout = () => {
+    return (
+        <Tabs>
+            <Tabs.Screen
+                name="screen1"
+                options={{
+                    // Hide the header for all other routes.
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => <FontAwesome name="home" size={size} color={color} />
+                  }}
+            />
+            <Tabs.Screen
+                name="screen1"
+                options={{
+                    // Hide the header for all other routes.
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => <FontAwesome name="address-card" size={size} color={color} />
+                  }}
+            />
+        </Tabs>
+    )
+}
+
+export default Layout;
+```
+
+met de `home/screen1.tsx`:
+
+```tsx
+import { View, Text } from "react-native";
+
+const Page1 = () => {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontWeight: "bold", fontSize: 24 }}>Welcome to screen 1</Text>
+            <Text style={{ fontWeight: "100", marginBottom: 20 }}>This is screen 1</Text>
+
+        </View>
+    );
+}
+export default Page1;
+```
