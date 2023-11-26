@@ -393,6 +393,29 @@ const User = () => {
 
 Omdat expo router gebaseerd is op React Navigation kan je alle mogelijke opties voor het `Stack.Screen` component kan je [hier](https://reactnavigation.org/docs/native-stack-navigator/#options) terugvinden. 
 
+#### Animation
+
+Je kan de animatie van de transitie tussen schermen aanpassen door de `animation` property mee te geven in het options object van het `Stack.Screen` component. 
+
+```tsx
+<Stack.Screen
+  name="index"
+  options={{
+    animation: 'slide_from_right',
+  }}
+  />
+```
+
+De volgende animaties zijn beschikbaar:
+- `default` : de standaard animatie
+- `fade` : fade in en fade out
+- `slide_from_right` : slide in van rechts en slide out naar rechts
+- `slide_from_left` : slide in van links en slide out naar links
+- `slide_from_bottom` : slide in van onder en slide out naar onder
+- `none`: geen animatie
+- meer animaties zijn beschikbaar in de [documentatie](https://reactnavigation.org/docs/native-stack-navigator#animation)
+
+
 ### Tab Navigation
 
 De werking van een Tab Navigation is vergelijkbaar met een Stack Navigation. Het verschil is dat de schermen niet op elkaar gestapeld worden maar dat er een tab bar wordt toegevoegd.
