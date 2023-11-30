@@ -42,7 +42,7 @@ Pas de `main` property in je `package.json` aan:
 }
 ```
 
-#### App.js aanpassen
+#### App.json aanpassen
 
 Pas je `App.json` aan:
 
