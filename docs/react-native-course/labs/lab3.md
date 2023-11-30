@@ -16,7 +16,7 @@ Je kan dit in een DataProvider component doen en werken met een context.
 
 Vervolgens zorg je dat de tweets in een lijst getoond worden. De lijst moet er als volgt uitzien:
 
-![Alt text](../images/twitter_list.jpg)
+<img  style="max-width: 200px" src="../images/twitter_list.jpg"/>
 
 Zorg er ook voor dat je een filter input veld hebt waarmee je de tweets kan filteren op basis van de naam van de auteur. De filter moet case insensitive zijn.
 
