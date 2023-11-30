@@ -4,13 +4,23 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 - Lijsten
 - Controlled components
 
-## Opdracht: Posts met FlatList
+## Opdracht: Twitter
 
-Maak een nieuwe react native app. Bij het opstarten van de app wordt een lijst van posts getoond. De posts worden opgehaald van de volgende url: https://jsonplaceholder.typicode.com/posts. Je moet de data ophalen met een fetch request in een useEffect hook. De posts worden getoond in een FlatList met een refresh control om de data te refreshen. 
+Maak een nieuwe react native app. 
 
-De applicatie moet als er als volgt uitzien:
+Zorg dat bij het opstarten van de app twee API calls gebeuren:
+- Ophalen van de tweets: https://my-json-server.typicode.com/similonap/twitter-json-server/tweets
+- Ophalen van de profielen: https://my-json-server.typicode.com/similonap/twitter-json-server/profiles
 
-![Alt text](../images/posts.gif)
+Je kan dit in een DataProvider component doen en werken met een context.
+
+Vervolgens zorg je dat de tweets in een lijst getoond worden. De lijst moet er als volgt uitzien:
+
+![Alt text](../images/twitter_list.jpg)
+
+Zorg er ook voor dat je een filter input veld hebt waarmee je de tweets kan filteren op basis van de naam van de auteur. De filter moet case insensitive zijn.
+
+Voorzie een swipe down to refresh functionaliteit.
 
 ## Opdracht: Dark/Light Toggle
 
