@@ -42,9 +42,9 @@ Pas de `main` property in je `package.json` aan:
 }
 ```
 
-#### App.js aanpassen
+#### app.json aanpassen
 
-Pas je `App.js` aan:
+Pas je `app.json` aan:
 
 ```jsx
 {
@@ -414,7 +414,6 @@ De volgende animaties zijn beschikbaar:
 - `slide_from_bottom` : slide in van onder en slide out naar onder
 - `none`: geen animatie
 - meer animaties zijn beschikbaar in de [documentatie](https://reactnavigation.org/docs/native-stack-navigator#animation)
-
 
 ### Tab Navigation
 
