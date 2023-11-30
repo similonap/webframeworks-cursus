@@ -44,9 +44,9 @@ Pas de `main` property in je `package.json` aan:
 
 #### App.js aanpassen
 
-Pas je `App.js` aan:
+Pas je `App.json` aan:
 
-```jsx
+```json
 {
   ...
   "scheme": "your-app-scheme"
