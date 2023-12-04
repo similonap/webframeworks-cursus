@@ -1,3 +1,5 @@
+import ReactPlayer from 'react-player';
+
 ---
 sidebar_position: 1
 ---
@@ -7,6 +9,8 @@ sidebar_position: 1
 In deze cursus gaan we gebruik maken van [Strapi](https://strapi.io/). Dit is een headless CMS dat specifiek gemaakt is om te gebruiken als headless CMS. Het is open source en gratis te gebruiken. Het is ook heel eenvoudig om te gebruiken. Het is volledig geschreven in JavaScript en maakt gebruik van Node.js. Je kan het dus gemakkelijk installeren met behulp van npm. 
 
 Strapi applicaties kunnen op een server worden geïnstalleerd of lokaal worden uitgevoerd. We gaan eerst zien hoe je een strapi applicatie kan installeren op je lokale machine. Vervolgens gaan we deze applicatie deployen naar een server.
+
+<ReactPlayer controls url='https://youtu.be/SlTV2qB4AzE'/>
 
 ## Strapi installeren
 
