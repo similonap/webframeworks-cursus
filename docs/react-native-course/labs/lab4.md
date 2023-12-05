@@ -39,6 +39,6 @@ De applicatie bestaat uit drie schermen:
 Wanneer je op een kleur drukt, krijg je een detail scherm. Dit scherm heeft als achtergrondkleur de geselecteerde kleur en toont de hex waarde in de titel en in het midden van het scherm
 
 #### Tips:
-- Gebruik const colors = rca(200,"hex",true); voor de 200 kleuren die je toont op het 3e scherm.
+- Gebruik const colors = rainbow(200,"hex",true); voor de 200 kleuren die je toont op het 3e scherm.
 - Je hebt een custom component nodig voor de inhoud van het labo van vorige week.
 - Je hebt hier een combinatie van Stack en Tab navigatie nodig.
