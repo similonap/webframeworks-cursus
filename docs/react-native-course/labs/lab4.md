@@ -3,6 +3,26 @@
 Voor dit labo moet je de volgende theorie bekeken hebben:
 - Routing en navigatie
 
+## Opdracht: Twitter
+
+Breidt de Twitter applicatie uit met expo router. De applicatie moet een Stack navigator combineren met een Tab navigator en een Drawer navigator.
+
+De applicatie moet de volgende schermen bevatten:
+- Home: Een scherm met een lijst van tweets (vorige opgave)
+- Profiles: Een scherm met een lijst van alle profielen.
+
+Deze schermen moeten bereikbaar zijn via een tab navigator.
+
+![Alt text](../images/twitter-2-tab-nav.gif)
+
+Als je op een profiel drukt, moet je naar een nieuw scherm gaan met de details van het profiel. Dit scherm moet bereikbaar zijn via een stack navigator (dus niet meer via de tab navigator). Het scherm zal dus boven de tab navigator komen.
+
+![Alt text](../images/twitter-2-stack.gif)
+
+Vervolgens heb je ook een drawer navigator nodig. Deze moet bereikbaar zijn via een hamburger menu in de header van het home scherm. De drawer moet momenteel enkel een settings scherm en het home scherm bevatten. De inhoud zullen we later nog uitbreiden.
+
+![Alt text](../images/twitter-2-drawer.gif)
+
 ## Opdracht: Rainbow Navigation
 
 Ga verder met de code van labo 4 en kopieer deze naar een nieuw project.
