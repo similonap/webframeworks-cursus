@@ -1,3 +1,5 @@
+import ReactPlayer from 'react-player';
+
 # Labo 2
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
@@ -59,3 +61,7 @@ We geven jullie hieronder enkele vereisten en tips:
 Hier een screenshot met borders aan om een beter idee te krijgen van de layout:
 
 ![picture 8](../images/labo3views.png)
+
+#### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/fOlEBWu9_8o'/>
