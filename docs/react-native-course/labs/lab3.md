@@ -1,3 +1,5 @@
+import ReactPlayer from 'react-player';
+
 # Labo 3
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
@@ -54,3 +56,7 @@ Je kan je baseren op de volgende screen recording:
 - De pastel knop moet ook nog steeds werken.
 
 ![picture 8](../images/interaction-statemobile2.gif)
+
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/3EfjoCul3TE'/>

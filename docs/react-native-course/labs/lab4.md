@@ -1,3 +1,5 @@
+import ReactPlayer from 'react-player';
+
 # Labo 4
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
@@ -42,3 +44,8 @@ Wanneer je op een kleur drukt, krijg je een detail scherm. Dit scherm heeft als 
 - Gebruik const colors = rainbow(200,"hex",true); voor de 200 kleuren die je toont op het 3e scherm.
 - Je hebt een custom component nodig voor de inhoud van het labo van vorige week.
 - Je hebt hier een combinatie van Stack en Tab navigatie nodig.
+
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/TndQZTkZ9DM'/>
+<ReactPlayer controls url='https://youtu.be/k4qtrqS7u54'/>

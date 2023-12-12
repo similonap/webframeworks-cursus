@@ -6,7 +6,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 - Flexbox
 - Custom Components
 
-### Opdracht: Rainbows
+## Opdracht: Rainbows
 
 Maak een nieuw project `Rainbows` aan met expo. Vervang de inhoud van `App.tsx` door de volgende code:
 
@@ -39,13 +39,13 @@ In dit labo gaan jullie spelen met Flexbox en Custom components. Ipv stapsgewijs
 ![picture 8](../images/labo3rainbow.png)
 
 We geven jullie hieronder enkele vereisten en tips:
-#### Vereisten:
+### Vereisten:
 - Zorg dat elke regenboog voorgesteld wordt door 1 custom component Rainbow
 - Gebruik een custom component Footer voor de tekst Rainbow
 - Gebruik een custom component  Letter voor elke letter van de tekst Rainbow
 - Plaats alle custom components in hun eigen bestand
 - Gebruik de npm library `rainbow-colors-array-ts`. Gebruik hier de functie als volgt: rainbow(10, "hex",true); (lees de info op de npm pagina hoe je die gebruikt)
-#### Tips:
+### Tips:
 - Geef de style van de de Rainbow component mee als property
 - Het typescript type van deze property is: `StyleProp<ViewStyle>`
 - Geef de array van  kleuren van elk child element van Rainbow (dus elke "blokje" kleur) mee als property
@@ -62,6 +62,6 @@ Hier een screenshot met borders aan om een beter idee te krijgen van de layout:
 
 ![picture 8](../images/labo3views.png)
 
-#### Oplossingsvideo
+### Oplossingsvideo
 
 <ReactPlayer controls url='https://youtu.be/fOlEBWu9_8o'/>
