@@ -77,10 +77,10 @@ module.exports = function (api) {
 ## Schermen toevoegen
 
 Als een bestand wordt aangemaakt in de `app` directory, wordt het automatisch een route in de app. Bijvoorbeeld, de volgende bestanden zullen de volgende routes maken:
-- `app/index.js` komt overeen met `/`
-- `app/home.js` komt overeen met `/home`
-- `app/settings/index.js` komt overeen met `/settings`
-- `app/[user].js` komt overeen met dynamische paden zoals `/expo` of `/joske`
+- `app/index.tsx` komt overeen met `/`
+- `app/home.tsx` komt overeen met `/home`
+- `app/settings/index.tsx` komt overeen met `/settings`
+- `app/[user].tsx` komt overeen met dynamische paden zoals `/expo` of `/joske`
 
 Deze paden kunnen worden gebruikt in de `Link` component om te navigeren naar een bepaald scherm. Als je de applicatie op een webbrowser opent, kan je ook de URL aanpassen om naar een bepaald scherm te navigeren.
 
@@ -248,7 +248,7 @@ Normaal gezien vult een route het volledige scherm. Als je tussen schermen navig
 
 ### Layout route aanmaken
 
-Om een layout route aan te maken maak je een bestand aan met de naam `_layout.js` in de app directory. 
+Om een layout route aan te maken maak je een bestand aan met de naam `_layout.tsx` in de app directory. 
 
 ```tsx
 import { Slot } from 'expo-router';
@@ -498,7 +498,7 @@ Een lijst van alle beschikbare icons kan je vinden op https://icons.expo.fyi. Je
 Om een Drawer Navigation te gebruiken moet je het `_layout.tsx` bestand aanpassen en een `Drawer` component gebruiken.
 
 ```tsx
-import { Drawer } from 'expo-router';
+import { Drawer } from 'expo-router/drawer';
 
 const Layout = () => {
   return (

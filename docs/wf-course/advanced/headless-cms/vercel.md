@@ -61,7 +61,7 @@ Vervolgens moet je de link volgen die je krijgt om in te loggen en moet je de ve
 Als je gebruik maakt van een lokaal gehoste CMS, moet je eerst je applicatie builden en kan je dit niet doen op vercel zelf. Dit moet dus lokaal gebeuren want Vercel heeft geen toegang tot je lokale machine. 
 
 ```bash
-vercel build
+vercel build --prod
 ```
 
 Je krijgt vervolgens een aantal vragen die je moet beantwoorden. Je kan de standaardwaarden gebruiken.
@@ -69,7 +69,7 @@ Je krijgt vervolgens een aantal vragen die je moet beantwoorden. Je kan de stand
 Als de build klaar is, kan je je applicatie deployen met het volgende commando:
 
 ```bash
-vercel deploy --prebuilt
+vercel deploy --prebuilt --prod
 ```
 
 Als dit gelukt is krijg je een link naar je applicatie. Je kan deze link gebruiken om je applicatie te bekijken.
