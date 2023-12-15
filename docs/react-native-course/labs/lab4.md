@@ -25,6 +25,11 @@ Vervolgens heb je ook een drawer navigator nodig. Deze moet bereikbaar zijn via 
 
 ![Alt text](../images/twitter-2-drawer.gif)
 
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/uRG9HQudyhI'/>
+<ReactPlayer controls url='https://youtu.be/BizAB01eoTs'/>
+
 ## Opdracht: Rainbow Navigation
 
 Ga verder met de code van labo 4 en kopieer deze naar een nieuw project.

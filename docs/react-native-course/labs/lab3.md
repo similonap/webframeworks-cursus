@@ -24,6 +24,10 @@ Zorg er ook voor dat je een filter input veld hebt waarmee je de tweets kan filt
 
 Voorzie een swipe down to refresh functionaliteit.
 
+### Oplossingsvideo
+
+<ReactPlayer controls url='https://youtu.be/inSMqbQUz40'/>
+
 ## Opdracht: Dark/Light Toggle
 
 Maak een nieuwe react native app. Plaats twee invoervelden in de app en een switch. ALs je op de switch duwt, veranderd de achtergrond kleur van de app initieel van wit naar zwart en omgekeerd. De invoervelden dienen om de kleur waartussen je kan switchen in te geven. De applicatie moet er als volgt uitzien:
