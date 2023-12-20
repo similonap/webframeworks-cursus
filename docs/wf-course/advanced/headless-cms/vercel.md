@@ -73,3 +73,10 @@ vercel deploy --prebuilt --prod
 ```
 
 Als dit gelukt is krijg je een link naar je applicatie. Je kan deze link gebruiken om je applicatie te bekijken.
+
+### Stap 5: Publiek zetten van je applicatie
+
+By default staan je applicaties op Vercel op privé. Je kan dit aanpassen in de settings van je applicatie in het onderdeel: "Deployment protection". Vervolgens zet je "Vercel Authentication" uit. Dan pas is je applicatie publiek toegankelijk.
+
+![Alt text](./setpublic.gif)
+
