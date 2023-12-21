@@ -267,3 +267,36 @@ const styles = StyleSheet.create({
 
 export default App;
 ```
+
+### ListFooterComponent
+
+De `FlatList` component heeft ook een `ListFooterComponent` prop. Deze prop kan je gebruiken om een component te tonen onderaan de lijst. Dit kan bijvoorbeeld handig zijn om een knop te tonen om meer items te laden. Of om een loading indicator te tonen.
+
+```typescript expo={"dependencies":"expo-constants"}
+import React, {useState} from "react";
+import Constants from "expo-constants";
+import {View, Text, FlatList,StyleSheet, ActivityIndicator} from "react-native";
+
+const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+const App = () => {
+    return (
+        <View style={styles.container}>       
+            <FlatList
+                data={colors}
+                renderItem={({item}) => (
+                    <View style={{height: 200, backgroundColor: item}}/>
+                )}
+                keyExtractor={item => item}
+                ListFooterComponent={<ActivityIndicator animating={true} style={{margin: 10}}/>}
+            />
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {flexDirection: "column", alignItems: "stretch", flex: 1, paddingTop: Constants.statusBarHeight}
+});
+
+export default App;
+```
