@@ -51,6 +51,15 @@ Je kan de applicatie opstarten door `npm run dev` uit te voeren in je terminal v
 
 ![De starter applicatie ziet er normaal zo uit in je browser.](img/screenshot-react-vite.png)
 
+:::info
+Als je problemen hebt met het bereiken van de applicatie vanuit een devcontainer kan je de `package.json` aanpassen. Voeg de volgende regel aanpassen in de `scripts` sectie:
+
+```json
+"dev": "vite --host",
+```
+:::
+
+
 ### Je eerste component
 
 Alle React applicaties zijn gebouwd uit verschillende React **componenten**. Componenten stellen afgebakende stukjes van de applicatie voor. Ze worden in moderne React code uitgedrukt als functies. Ze accepteren invoerwaarden (deze noemen we “props”) en geven een beschrijving terug van wat er in de gegenereerde pagina zou moeten staan. Met componenten splits je de UI in onafhankelijke, herbruikbare delen.
