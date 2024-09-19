@@ -75,7 +75,7 @@ Zorg dat wanneer een gebruiker de Pokemon 3 seconden indrukt, je de naam van de 
 
 ## Opdracht: RandomMoviePosters
 
-Maak een nieuw expo project aan met de naam `RandomMoviePosters`.
+Maak een nieuw expo project aan met de naam `RandomMoviePosters`. Deze app toont 6 posters van films. Je mag zelf kiezen waar je deze filmposters vandaan haalt.
 
 Zorg dat de app
 - de 6 posters onder mekaar toont
