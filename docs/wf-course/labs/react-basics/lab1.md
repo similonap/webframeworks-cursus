@@ -6,6 +6,7 @@ import Labo1AlienAlphabet from '@site/src/components/LabSolutions/Labo1AlienAlph
 import Regenboog from '@site/src/components/LabSolutions/Regenboog';
 import Maaltafels from '@site/src/components/LabSolutions/Maaltafels';
 import ChatMessages from '@site/src/components/LabSolutions/ChatMessages';
+import WhosThatPokemonBasic from '@site/src/components/LabSolutions/WhosThatPokemonBasic';
 import ReactPlayer from 'react-player'
 
 # Labo 1
@@ -255,4 +256,18 @@ const messages = [
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <ChatMessages/>
+</div>
+
+## 9. Who's that Pokémon?
+
+Maak een nieuwe react applicatie aan `whos-that-pokemon`. Maak een array met 150 Pokémon aan. Elke Pokémon heeft een id en een naam. We willen een afbeelding van een willekeurige Pokémon tonen. Onder de afbeelding tonen we 4 knoppen met de namen van 4 willekeurige Pokémon. 
+
+De afbeelding kan gehaald worden op de volgende url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{id}.png`. 
+
+Je kan de identiteit van de pokémon verbergen door `filter: "brightness(0)` te gebruiken op de afbeelding. De knoppen moeten nog niets doen.
+
+#### Voorbeeldoplossing
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <WhosThatPokemonBasic/>
 </div>
