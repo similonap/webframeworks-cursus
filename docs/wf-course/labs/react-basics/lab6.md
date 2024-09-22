@@ -1,117 +1,62 @@
-import Labo6Quizapp from '@site/src/components/LabSolutions/Labo6Quizapp';
-import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
-import HappyWorkers from '@site/src/components/LabSolutions/HappyWorkers';
+import Labo5Interval from '@site/src/components/LabSolutions/Labo5Interval';
+import Labo5Pokemon from '@site/src/components/LabSolutions/Labo5Pokemon';
+import Labo5LocalStorage from '@site/src/components/LabSolutions/Labo5LocalStorage';
 import ReactPlayer from 'react-player';
 
-# Labo 6
+# Labo 5
 
-- Communicatie tussen componenten
+- Hooks
 
-## 1. Todo App
+## 1. Interval
 
-We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen.
+Maak een nieuwe React applicatie aan en noem deze `labo5-interval`.
+<Timer/>
+            
+Maak de volgende componenten aan:
 
-```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import React, {useState} from "react";
-
-interface TodoItem { 
-    name: string;
-    completed: boolean;
-}
-
-const App = () => {
-    const [todos, setTodos] = useState<TodoItem[]>([]);
-    const [todo, setTodo] = useState("");
-
-    const addTodo = (todo: string) => {
-        setTodos([...todos, { name: todo, completed: false }]);
-        setTodo("");
-    };
-
-    const markCompleted = (index: number, completed: boolean) => {
-        setTodos(todos.map((todo, i) => i === index ? {...todo, completed: completed} : todo));
-    };
-
-    return (
-        <div>
-            <div>
-                <input id="todo" type="text" value={todo} onChange={(event) => setTodo(event.target.value)}/>
-                <button onClick={() => addTodo(todo)}>Add</button>
-            </div>
-            <div>
-                {todos.map((todo, index) => (
-                    <div key={index}>
-                        <input type="checkbox" checked={todo.completed} onChange={(event) => markCompleted(index, event.target.checked)}/>
-                        <span style={{textDecoration: todo.completed ? "line-through" : "none"}}>{todo.name}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-
-}
-
-export default App;
-```
-
-Herstructureer deze applicatie als volgt:
-- Maak drie nieuwe componenten aan in een aparte map `components`:
-    - `TodoList` bevat de lijst van taken
-    - `TodoItem` bevat een enkele taak
-    - `TodoInput` bevat het input veld en de knop om een taak toe te voegen
-- Verplaats de logica van de `App` component naar de nieuwe componenten
-- De state die de Todo's bevat moet in de `App` component blijven. 
-- Je zal dus moeten gebruik maken van `props` om de state door te geven aan de nieuwe componenten. Je zal ook gebruik moeten maken van child-to-parent communicatie om de state te kunnen updaten.
-- Zorg dat elk component in een aparte file staat.
+- Het `Timer` component. Dit component toont de tijd in seconden die verstreken is sinds de component is getoond. 
+- Het `CurrentTime` component. Dit component toont de huidige tijd in het formaat `hh:mm:ss`.
+- Het `RandomValue` component. Dit component toont een willekeurig getal tussen `min` en `max`.
+- Alle componenten gebruiken `setInterval` om de tijd te updaten. Gebruik de `useEffect` hook om dit te doen.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo6Todo/>
+    <Labo5Interval/>
 </div>
 
 ### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/RNC2X9D3XbI'/>
+<ReactPlayer controls url='https://youtu.be/QQA4PXp967c'/>
 
-## 2. Quizapp
+## 2. Pokemon
 
-Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
+Maak een nieuwe React applicatie aan en noem deze `labo5-pokemon`.
 
-- Maak een nieuw component `QuizApp` aan.
-- Maak gebruik van de `https://opentdb.com/api.php?amount=10` om de quizvragen op te halen. Gebruik de `fetch` API om de data op te halen. Gebruik een `useEffect` om deze data op te halen en daarna in een state te plaatsen.
-- Er zijn twee soorten vragen: multiple choice en true/false. Maak een component `MultipleChoiceQuestion` en een component `TrueFalseQuestion` aan. Deze componenten worden gebruikt om de vragen te tonen. Maak een component `Question` aan die de juiste vraag component toont op basis van het type vraag.
-- Als de gebruiker op een antwoord klikt wordt er aan de hand van een kleur aangegeven of het antwoord juist of fout is. Daarna wordt het antwoord getoond en kan de gebruiker niet meer van antwoord veranderen.
-- Onderaan staat een button met de tekst 'Load More' die de volgende 10 vragen laadt. De vragen worden opnieuw opgehaald van de API. De vragen die al getoond of beantwoord zijn blijven in de lijst staan.
-- Voorzie een loading indicator die getoond wordt tot de data geladen is (ook bij het laden van de volgende 10 vragen).
-- Alle state moet in de `QuizApp` component zitten. De `Question` componenten mogen **geen** state hebben. De `Question` componenten moeten de state van de `QuizApp` componenten gebruiken via props en callbacks. 
-- Maak gebruik van de `html-entities` package om de html entities te decoderen. Deze worden meegeleverd in de API. Anders krijg je bijvoorbeeld `&quot;` te zien in plaats van `"`.
+- Maak een component `Pokedex` aan met als property `limit` die het aantal pokemon aangeeft dat getoond moet worden. Initieel mag je die property op 151 zetten.
+- Maak gebruik van de `https://pokeapi.co/` om deze pokemon op te halen op het moment dat de component gemounted wordt. Gebruik de `useEffect` hook om dit te doen.
+- Zorg voor een loading indicator die getoond wordt tot de data geladen is.
+- Plaats een invoer veld bovenaan de lijst van pokemon. Deze filtert de lijst van pokemon op naam. De filtering gebeurd op het moment dat de gebruiker een letter intypt. 
+- Plaats een invoerveld onderaan de lijst die aangeeft hoeveel pokemon er getoond mogen worden. Je dient deze filtering aan de hand van de `limit` query parameter te doen van de API. Pas vanaf de gebruiker op de button klikt, wordt de lijst van pokemon opnieuw opgehaald.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo6Quizapp/>
+<Labo5Pokemon/>
+</div>
+
+## 3. LocalStorage
+
+Maak een nieuwe React applicatie aan en noem deze `labo5-localstorage`.
+
+- Maak een nieuw component `DadJoke` aan. 
+- Maak een functie loadJoke die een "awkward dad joke" ophaalt van de API `https://icanhazdadjoke.com/`. Gebruik de `fetch` API om de data op te halen. Plaats het resultaat in een state van het component.
+- Zorg ervoor dat de functie wordt opgeroepen wanneer het component gemounted wordt. Gebruik de `useEffect` hook om dit te doen.
+- Eenmaal de data geladen is, toon je de joke in een `<div>` element. Zorg voor een kaartje waarin de joke getoond wordt.
+- Plaats een button `New Joke` onderaan de joke. Wanneer de gebruiker op deze button klikt, wordt er een nieuwe joke opgehaald.
+- Plaats een button `Set as favorite` onderaan de joke. Wanneer de gebruiker op deze button klikt, wordt de huidige joke (als string) opgeslagen in de `localStorage` van de browser. 
+- Bij het opstarten van de applicatie, wordt de laatst opgeslagen joke getoond. Gebruik hiervoor de `useEffect` hook.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+<Labo5LocalStorage/>
 </div>
 
 ### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/L00lS5tKMcQ'/>
-
-## 3. Happy Workers
-
-Maak een nieuwe React applicatie aan en noem deze labo5-happy.
-
-Plaats in de `App` component een progressbar (van 0 tot 100) en maak een component genaamd `Square`. Het `Square` component aanvaard initieel gewoon een color en een size prop. Later gaan hier nog props bij komen. Zorg ervoor dat je een aantal `Square` componenten toevoegd aan de `App` component met verschillende kleuren. 
-
-Maak een state `work` aan in de `App` component die initieel op 0 staat en de waarde voorstelt die de progressbar moet tonen. 
-
-Zorg ervoor dat als je op een `Square` klikt, de `work` state met 1 verhoogd wordt. Dit zorgt ervoor dat de progressbar met 1% verhoogd wordt.
-
-Als de `work` state kleiner is dan 100 dan moet de `Square` component een 😐 tonen. Als de `work` state 100 is dan moet de `Square` component een 😃 tonen. Let er op: het tonen van de smileys vereist geen nieuwe state. Je kan dit afleiden van de `work` state.
-
-<HappyWorkers useProductivity={false}/>
-
-Uitbreiding:
-- Maak een `state` genaamd `productivity` aan in de Square component die initieel op 1 staat. De `productivity` state stelt voor hoeveel procent de `work` state verhoogd wordt als je op de `Square` klikt. 
-- Dus als de `productivity` 1 is wordt bij elke klik de `work` state met 1 verhoogd. Als de `productivity` 2 is wordt bij elke klik de `work` state met 2 verhoogd.
-- Maak een `state` genaamd `clicked` aan in de Square component die initieel op 0 staat.
-- Als de `clicked` state groter of gelijk is aan 10 dan moet de `productivity` state op 0 gezet worden. Dit zorgt ervoor dat de `Square` component een 😵 toont. Het is dan tijdelijk niet meer mogelijk de `work` state te verhogen met die `Square`.
-- Na 5 seconden moet de `productivity` state terug op 1 gezet worden. Dit zorgt ervoor dat de `Square` component terug een 😐 toont. Ook de `clicked` state wordt terug op 0 gezet.
-
-<HappyWorkers useProductivity={true}/>
+<ReactPlayer controls url='https://youtu.be/-ZCPmx5HGvA'/>

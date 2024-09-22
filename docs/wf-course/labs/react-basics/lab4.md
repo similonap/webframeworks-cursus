@@ -1,168 +1,195 @@
-
-import Labo4ShoppingList from '@site/src/components/LabSolutions/Labo4ShoppingList';
-import Labo4TicTacToe from '@site/src/components/LabSolutions/Labo4TicTacToe';
-import Labo4Slots from '@site/src/components/LabSolutions/Labo4Slots';
-import Labo4MultiSelect from '@site/src/components/LabSolutions/Labo4MultiSelect';
-import Labo4CounterList from '@site/src/components/LabSolutions/Labo4CounterList';
-import Labo4Filtering from '@site/src/components/LabSolutions/Labo4Filtering';
-import AlienAlphabet2 from '@site/src/components/LabSolutions/AlienAlphabet2';
-import GameOfLife1 from '@site/src/components/LabSolutions/GameOfLife1';
+import LaboStateOmHooglaag from '@site/src/components/LabSolutions/LaboStateOmHooglaag';
+import LaboStateKleurkiezer from '@site/src/components/LabSolutions/LaboStateKleurkiezer';
+import LaboStateContactForm from '@site/src/components/LabSolutions/LaboStateContactForm';
+import LaboStateInputField from '@site/src/components/LabSolutions/LaboStateInputField';
+import LaboStateCheckbox from '@site/src/components/LabSolutions/LaboStateCheckbox';
+import LaboStateGoods from '@site/src/components/LabSolutions/LaboStateGoods';
+import LaboStateLoading from '@site/src/components/LabSolutions/LaboStateLoading';
+import LaboStateRandomNicCage from '@site/src/components/LabSolutions/LaboStateRandomNicCage';
+import Joske from '@site/src/components/LabSolutions/Joske';
+import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 
 import ReactPlayer from 'react-player';
 
-# Labo 4
+# Labo 3
 
+Voor dit labo moet je de volgende theorie bekeken hebben:
 - Event Handling
 - State 
+    - Hoe state herkennen?
+    - useState hook
+    - setState met callback
+    - Regels van useState
+    - Select, Checkbox en Radio Buttons
 
-## 1. Shopping List
+## 1. State herkennen
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-shoppinglist`.
+Identificeer de state in de volgende componenten. Geef aan waar de state zich bevindt en wat de initiële waarde is.
 
-Maak een component `ShoppingList` aan met de volgende functionaliteit:
-- Het component heeft een state property `shoppingList` die een array bevat. Deze begint bij een lege array.
-- Zorg ervoor dat je een lijst van items kan toevoegen aan de shopping list.
-- Als een element toegevoeg wordt, moet de gebruiker een bevestiging zien dat het item toegevoegd is. Als de gebruiker foutieve hoeveelheid of geen naam ingeeft, moet er een foutmelding getoond worden.
-- Zorg ervoor dat je een lijst van items kan verwijderen van de shopping list.
-- Als een item verwijderd wordt, moet de gebruiker een bevestiging krijgen dat het item verwijderd wordt.
+<LaboStateGoods/>
 
-Gebruik dit component in de App component om de volgende pagina te maken:
+## 2. Input veld
+
+Maak een nieuwe React applicatie aan en noem deze `labo4-inputfield`.
+
+Maak een component `InputFields` aan met de volgende functionaliteit:
+- Het component heeft 1 state property `inputValue` die een string bevat. Deze begint bij een lege string.
+- Zorg ervoor dat je 5 input velden op je scherm staat die allemaal de waarde van `inputValue` bevatten.
+- Zorg ervoor dat als je iets typt in 1 van de input velden, de waarde van `inputValue` verandert en alle input velden de nieuwe waarde bevatten.
+
+Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4ShoppingList/>
+    <LaboStateInputField/>
+</div>
+
+## 3. Checkbox
+
+Maak een nieuwe React applicatie aan en noem deze `labo4-checkbox`.
+
+Maak een component `Checkbox` aan met de volgende functionaliteit:
+
+- Plaats een checkbox in je component met als label `Show/Hide`
+- Als de gebruiker de checkbox aanvinkt moet er een div getoond worden met een image als background.
+- Als de gebruiker de checkbox uitzet moet de div verdwijnen.
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <LaboStateCheckbox/>
 </div>
 
 #### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/48YqueBEB3Q'/>
+<ReactPlayer controls url='https://youtu.be/FVMpB_rGnBQ'/>
 
-## 2. Kleuren Selectie
+## 4. Omhoog/Omlaag
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-color-select`.
+Maak een nieuwe React applicatie aan en noem deze `labo4-omhooglaag`.
 
-Maak een component `ColorSelect` aan met de volgende functionaliteit:
+Maak een component `Counter` aan met de volgende functionaliteit:
+- De component bevat een `state` met een property `count` die een getal bevat. Begint bij 0.
+- De component bevat een `button` met de tekst `Omhoog`. Als je op deze knop klikt, wordt de waarde van `count` met 1 verhoogd.
+- De component bevat een `button` met de tekst `Omlaag`. Als je op deze knop klikt, wordt de waarde van `count` met 1 verlaagd.
+- De component bevat de tekst `Count: {count}`. Hier wordt de waarde van `count` getoond.
+- Zorg ervoor dat de tekst rood wordt als `count` kleiner is dan 0 en groen wordt als `count` groter is dan 0. Als het gelijk is aan 0, wordt de tekst zwart.
 
-- Het component bevat een select met de volgende kleuren: `red`, `green`, `blue`, `yellow`, `orange`, `purple`, `black`, `white`. Er kunnen meerdere kleuren geselecteerd worden.
-- Het component bevat een state property `selectedColors` die een array bevat met de geselecteerde kleuren.
-- Het component bevat een button met de tekst "Show colors". Als de gebruiker op deze button klikt moet de gebruiker een lijst zien met de geselecteerde kleuren.
-- Als je op een kleur klikt in de lijst, krijgt de gebruiker een prompt met de vraag om een nieuwe kleur te kiezen. Als de gebruiker op "OK" klikt, moet de kleur in de lijst vervangen worden door de nieuwe kleur. 
+Gebruik deze component in de `App` component om de volgende pagina te maken:
 
-:::tip
-Je moet hier twee states gebruiken: `selectedColors` en `colors`. De eerste state bevat de geselecteerde kleuren, de tweede state bevat de kleuren die moeten getoond worden. De tweede state wordt aangepast als de gebruiker op de button klikt. Het is een kopie van de eerste state op de moment dat de gebruiker op de button klikt.
-:::
-
-Gebruik dit component in de App component om de volgende pagina te maken:
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4MultiSelect/>
+    <LaboStateOmHooglaag/>
 </div>
 
 #### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/w1tdhQ0psNc'/>
+<ReactPlayer controls url='https://youtu.be/OMa72fFFRUI'/>
 
-## 3. Filtering en sorting
+## 5. Loading indicator
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-filtering`.
+Maak een nieuwe React applicatie aan en noem deze `labo4-loading`.
 
-Maak een component `Filtering` aan met de volgende functionaliteit:
-- Maak een lijst van studenten met de volgende properties: `name`, `age`, `year`.
-- Zorg voor een search input waar de gebruiker kan zoeken op naam.
-- Als de gebruiker in de search input typt, moet de lijst gefilterd worden op de naam van de student. 
-- Als je op de header van de tabel klikt, moet de lijst gesorteerd worden op de property waarop je geklikt hebt.
-- Je hebt hier twee states nodig: `sortField` en `searchText`. De eerste state bevat de property waarop gesorteerd moet worden, de tweede state bevat de tekst die gebruikt wordt om te filteren.
+installeer de volgende npm packages:
+
+```
+npm install react-loader-spinner
+```
+
+Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
+- De applicatie bevat een `state` met een property `loading` die een boolean bevat. Deze begint bij `false`.
+- De applicatie bevat een `button` met de tekst `Start loading`. Als je op deze knop klikt, wordt de waarde van `loading` op `true` gezet.
+- Na 3 seconden wordt de waarde van `loading` op `false` gezet.
+- Als de waarde van `loading` `true` is, wordt er een loading indicator getoond. De button verdwijnt.
+- Als de waarde van `loading` `false` is, wordt de loading indicator niet getoond. De button verschijnt terug.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo4Filtering/>
+    <LaboStateLoading/>
 </div>
 
 #### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/wvtt_BGSNrc'/>
+<ReactPlayer controls url='https://youtu.be/SSZaOVdY3ls'/>
 
-## 4. Slots
+## 6. Kleurkiezer
 
-Je breidt nu de slots machine uit die je gemaakt hebt in labo 2 uit met een aantal nieuwe functionaliteiten.
+Maak een nieuwe React applicatie aan en noem deze `labo4-kleurkiezer`.
 
-- Zorg voor een state `slots` die de array met slots bevat. Zorg ervoor dat deze initieel met random waarden gevuld is.
-- Zorg voor een state `money` dat het geld van de speler bijhoudt. Zorg ervoor dat deze initieel op 100 staat.
-- Zorg voor een button `Pull lever` die een functie aanroept die de `slots` state verandert naar een nieuwe array met random waarden. Als de speler gewonnen heeft (3 dezelfde symbolen), dan wordt de `money` state verhoogd met 20. Als de speler verloren heeft (3 verschillende symbolen), dan wordt de `money` state verlaagd met 1.
-- Toon bovenaan het saldo van de speler.
-- Als het saldo van de speler 0 is, dan wordt de button `Pull lever` disabled en wordt er een tekst getoond die zegt dat de speler geen geld meer heeft.
+Maak een component `ColorPicker` aan met de volgende functionaliteit:
+- Het component bevat een `state` met een property `color` die een kleur bevat. Begint bij `#000000`.
+- Het component bevat een `input` met type `color`. Als je een andere kleur kiest, wordt de waarde van `color` aangepast.
+- Het component bevat een `div` met een achtergrondkleur die gelijk is aan de waarde van `color`.
+- Het component bevat ook een select met de volgende opties:
+    - `#000000`
+    - `#FF0000`
+    - `#00FF00`
+    - `#0000FF`
+- Als je een optie kiest dan wordt ook de kleur aangepast.
 
-Het spel ziet er nu als volgt uit:
+Gebruik deze component in de `App` component om de volgende pagina te maken:
 
-<div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4Slots/>
-</div>
-
-#### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/u1gLw9UwTh0'/>
-
-## 5. Counter list
-
-Maak een nieuwe React applicatie aan en noem deze `labo4-counter-list`.
-
-Maak een component `ButtonList` aan met de volgende functionaliteit:
-- Het component bevat 1 state genaamd `counters`. Deze state bevat een array van getallen. Deze array begint bij een lege array.
-- Het component bevat een button met de tekst "Add counter". Als de gebruiker op deze button klikt, moet er een nieuw getal aan de array toegevoegd worden. Het getal moet 0 zijn.
-- Bij elke counter moet er een button getoond worden met de tekst "Increment" of "Decrement". Als de gebruiker op deze button klikt, moet het getal van de overeenkomstige counter verhoogd of verlaagd worden.
-- Onderaan staat de som van alle waarden van de counters.
-
-<div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4CounterList/>
-</div>
-
-:::note
-Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit later nog doen.
-:::
+<LaboStateKleurkiezer/>
 
 #### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/FKcudUHxIc8'/>
+<ReactPlayer controls url='https://youtu.be/pBx9IClu9eA'/>
 
-## 6. Tic Tac Toe
+## 7. Contactformulier
 
-Maak een nieuwe React applicatie aan en noem deze `labo2-tictactoe`.
+Maak een nieuwe React applicatie aan en noem deze `labo4-contactformulier`.
 
-Maak een component `TicTacToe` aan met de volgende functionaliteit:
-- Het component bevat een `state` met de naam `board` die een array bevat met 9 elementen. Elk element is een string met de waarde `''`.
-- Het component bevat een `state` met de naam `player` die de waarde `X` of `O` bevat. Dit is de speler die aan de beurt is. De speler begint bij `X`.
-- Gebruik de `map` functie om een array van 9 `div` elementen te maken. Elk `div` element heeft een `onClick` event handler die een functie aanroept die de `board` state verandert. De functie krijgt als parameter de index van het `div` element dat geklikt is.
-- Als je op een `div` element klikt, wordt de waarde van het `div` element veranderd naar het symbool van de speler die aan de beurt is.
+Maak een component `ContactForm` aan met de volgende functionaliteit:
+- Het component bevat 3 `input` elementen met de volgende labels:
+    - First name
+    - Last name
+    - Email
+- Het component bevat een `textarea` met de label `Message`.
+- Het component bevat een `button` met de tekst `Send`.
+- Als je op de knop klikt, wordt de volgende tekst getoond: `Thanks {firstName} {lastName}! We will contact you at {email}.`
+- De velden worden leeggemaakt na het versturen van het formulier.
+- Zorg dat de button disabled is als de velden niet allemaal ingevuld zijn.
+- Je hebt hier 5 states nodig:
+    - `firstName` (bevat de waarde van het `input` element firstName)
+    - `lastName` (bevat de waarde van het `input` element lastName)
+    - `email` (bevat de waarde van het `input` element email)
+    - `message` (bevat de waarde van het `textarea` element)
+    - `confirmationText` (bevat de text die getoond wordt na het versturen van het formulier)
 
-Het spel ziet er nu als volgt uit:
+Gebruik deze component in de `App` component om de volgende pagina te maken:
 
-<div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4TicTacToe/>
-</div>
+<LaboStateContactForm/>
 
-## 7. Alien Alphabet
+#### Oplossingsvideo
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-alien-alphabet`.
+<ReactPlayer controls url='https://youtu.be/og0BReQkfz8'/>
 
-- Maak een array aan die de inhoud van de volgende json bevat. Je mag deze gewoon copy pasten: https://raw.githubusercontent.com/slimmii/alien-alphabet/master/alien.json . Zorg wel dat je de interface juist hebt.
-- Zorg ervoor dat alle images van de letters getoond worden. Je kan dit in een button zetten.
-- Als je op een alien letter klikt moet deze toegevoegt worden aan een array. Je moet het volledige object toevoegen, niet enkel de letter.
-- Toon de letters die je gekozen hebt in een lijst.
-- Voeg een backspace button toe die het laatste element van de array verwijdert.
-- Voeg een clear button toe die de array leeg maakt.
+## 8. Random Cage
 
-<div style={{padding: 10, border: "1px dotted black"}}>
-<AlienAlphabet2/>
-</div>
+Maak een nieuwe React applicatie aan en noem deze `labo4-random-cage`.
 
-## 8. Game of Life (1)
+Maak een component `RandomCage` aan met de volgende functionaliteit:
+- Het component bevat een `button` met de tekst `Random Cage`.
+- Als je op de knop klikt, wordt er een willekeurige locatie op je scherm bepaald.
+- Op die locatie wordt een afbeelding van Nicolas Cage getoond.
+- Als je terug op de knop klikt, wordt de afbeelding op een andere locatie getoond.
+- Je mag de volgende afbeelding tonen: https://www.placecage.com/gif/200/200
 
-In deze opdracht wordt van je verwacht om een React-component te implementeren voor een eenvoudig spelbord van het Game of Life spel. We gaan dit spelbord later gebruiken om een volledige implementatie van het spel te maken.
+<LaboStateRandomNicCage/>
 
-- Maak een React-component genaamd LifeGameBoard.
-- Implementeer een functie initializeGrid(rows, columns) die een tweedimensionale array genereert met rows rijen en columns kolommen, waarbij elke cel een willekeurige waarde heeft van 0 of 1 om de levende en dode cellen te vertegenwoordigen.
-- Voeg twee invoervelden toe voor het aantal rijen en kolommen, en een knop om het bord te vernieuwen.
-- Implementeer een methode setBoard die wordt aangeroepen wanneer de knop wordt ingedrukt om het bord te vernieuwen. Deze methode moet het spelbord opnieuw initialiseren met het opgegeven aantal rijen en kolommen.
-- Implementeer een methode flipElement(x, y) die wordt aangeroepen wanneer een cel op het bord wordt geklikt. Deze methode moet de staat van de cel omkeren (van 0 naar 1 of van 1 naar 0) en de nieuwe staat van het bord weergeven.
-- Zorg ervoor dat het bord wordt weergegeven als een grid, waarbij elke cel wordt weergegeven als een div-element met een achtergrondkleur die overeenkomt met de staat van de cel (0 voor dode cellen, 1 voor levende cellen).
-- Laat de gebruiker de gewenste grootte van het bord opgeven door de waarden in de invoervelden te wijzigen.
-- Zorg ervoor dat de staat van het bord correct wordt bijgewerkt wanneer cellen worden omgedraaid of wanneer het bord wordt vernieuwd.
+#### Oplossingsvideo
 
-<GameOfLife1/>
+<ReactPlayer controls url='https://youtu.be/nh5lVRHBj0s'/>
+
+## 9. Joske het vierkant
+
+Maak een nieuwe React applicatie aan en noem deze `labo4-joske`.
+
+Je begint met Joske... Het statische vierkant:
+
+<CodeSandbox template="react-joske-labo"/>
+
+- Joske is een rood vierkant. Maar zou ook soms graag blauw zijn! Of zelfs groen! Pas Joske aan zodat als je op hem klikt, hij van kleur verandert. De eerste keer wordt hij blauw, de tweede keer groen, de derde keer rood, de vierde keer blauw, enzovoort.
+- Joske zou graag van naam veranderen en Josje worden. Maak een input veld waarin je de naam van Joske kan aanpassen. Tijdens het aanpassen van de naam wordt de naam van Joske aangepast.
+- Soms wil Josje toch terug Joske zijn. Zorg ervoor dat zijn naam kan gereset worden naar Joske via een knop.
+- Josje is heel de tijd triestig. Zorg voor een dropdown waarin je kan kiezen uit verschillende emoties. Als je een emotie kiest, dan verandert de emotie van Josje. De emoties worden uitgedrukt in smileys.
+- Soms wil Josje helemaal geen vierkant meer zijn. Hij zou graag ook een cirkel zijn. Zorg voor een checkbox om te togglen tussen vierkant en cirkel
+
+Josje is nu een blij cirkeltje!
+
+<Joske/>
+

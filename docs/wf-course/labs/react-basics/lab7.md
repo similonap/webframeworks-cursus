@@ -1,112 +1,117 @@
-import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
-import BasicContext from '@site/src/components/LabSolutions/BasicContext';
+import Labo6Quizapp from '@site/src/components/LabSolutions/Labo6Quizapp';
+import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
+import HappyWorkers from '@site/src/components/LabSolutions/HappyWorkers';
 import ReactPlayer from 'react-player';
 
-# Labo 7
+# Labo 6
 
-- React Router
-- Context API
+- Communicatie tussen componenten
 
-## 1. Wake up Neo
+## 1. Todo App
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-wake-up-neo`.
-
-Begin van de volgende code:
+We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen.
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
-import { useState } from 'react'
+import React, {useState} from "react";
 
-interface LineProps {
-  text: string
+interface TodoItem { 
+    name: string;
+    completed: boolean;
 }
-const FourthLine = ({text}: LineProps) => <><p>{text}</p></>;
-const ThirdLine = ({text}: LineProps) => <><p>Follow the white rabbit.</p><FourthLine text={text}/></>;
-const SecondLine = ({text}: LineProps) => <><p>The matrix has you...</p><ThirdLine text={text}/></>;
-const FirstLine = ({text}: LineProps) => <><p>Wake Up, Neo...</p><SecondLine text={text}/></>
 
 const App = () => {
-  const [text, setText] = useState("Knock, Knock, Neo");
-  return (
-    <>
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)}/>
-      <div style={{backgroundColor: "black", color: "#4AF626", display: "flex", flexDirection: "column", padding: 20}}> 
-        <FirstLine text={text}/>
-      </div>
-    </>
-  )
+    const [todos, setTodos] = useState<TodoItem[]>([]);
+    const [todo, setTodo] = useState("");
+
+    const addTodo = (todo: string) => {
+        setTodos([...todos, { name: todo, completed: false }]);
+        setTodo("");
+    };
+
+    const markCompleted = (index: number, completed: boolean) => {
+        setTodos(todos.map((todo, i) => i === index ? {...todo, completed: completed} : todo));
+    };
+
+    return (
+        <div>
+            <div>
+                <input id="todo" type="text" value={todo} onChange={(event) => setTodo(event.target.value)}/>
+                <button onClick={() => addTodo(todo)}>Add</button>
+            </div>
+            <div>
+                {todos.map((todo, index) => (
+                    <div key={index}>
+                        <input type="checkbox" checked={todo.completed} onChange={(event) => markCompleted(index, event.target.checked)}/>
+                        <span style={{textDecoration: todo.completed ? "line-through" : "none"}}>{todo.name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
 }
 
-export default App
+export default App;
 ```
 
-Pas deze helemaal aan zodat je gebruik maakt van Context. 
+Herstructureer deze applicatie als volgt:
+- Maak drie nieuwe componenten aan in een aparte map `components`:
+    - `TodoList` bevat de lijst van taken
+    - `TodoItem` bevat een enkele taak
+    - `TodoInput` bevat het input veld en de knop om een taak toe te voegen
+- Verplaats de logica van de `App` component naar de nieuwe componenten
+- De state die de Todo's bevat moet in de `App` component blijven. 
+- Je zal dus moeten gebruik maken van `props` om de state door te geven aan de nieuwe componenten. Je zal ook gebruik moeten maken van child-to-parent communicatie om de state te kunnen updaten.
+- Zorg dat elk component in een aparte file staat.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo6Todo/>
+</div>
 
 ### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/lde14vFfBZU'/>
+<ReactPlayer controls url='https://youtu.be/RNC2X9D3XbI'/>
 
-## 2. Basic context
+## 2. Quizapp
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
+Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 
-1. Creëer een context genaamd `SettingsContext`. De context moet twee waarden bijhouden: `color` en `setColor`. `color` is een string die een kleur waarde heeft en `setColor` is een functie die `color` kan aanpassen. De startwaarde van `color` moet 'red' zijn.
+- Maak een nieuw component `QuizApp` aan.
+- Maak gebruik van de `https://opentdb.com/api.php?amount=10` om de quizvragen op te halen. Gebruik de `fetch` API om de data op te halen. Gebruik een `useEffect` om deze data op te halen en daarna in een state te plaatsen.
+- Er zijn twee soorten vragen: multiple choice en true/false. Maak een component `MultipleChoiceQuestion` en een component `TrueFalseQuestion` aan. Deze componenten worden gebruikt om de vragen te tonen. Maak een component `Question` aan die de juiste vraag component toont op basis van het type vraag.
+- Als de gebruiker op een antwoord klikt wordt er aan de hand van een kleur aangegeven of het antwoord juist of fout is. Daarna wordt het antwoord getoond en kan de gebruiker niet meer van antwoord veranderen.
+- Onderaan staat een button met de tekst 'Load More' die de volgende 10 vragen laadt. De vragen worden opnieuw opgehaald van de API. De vragen die al getoond of beantwoord zijn blijven in de lijst staan.
+- Voorzie een loading indicator die getoond wordt tot de data geladen is (ook bij het laden van de volgende 10 vragen).
+- Alle state moet in de `QuizApp` component zitten. De `Question` componenten mogen **geen** state hebben. De `Question` componenten moeten de state van de `QuizApp` componenten gebruiken via props en callbacks. 
+- Maak gebruik van de `html-entities` package om de html entities te decoderen. Deze worden meegeleverd in de API. Anders krijg je bijvoorbeeld `&quot;` te zien in plaats van `"`.
 
-2. Maak een component genaamd `Square`. Dit component moet de `color` waarde uit de `SettingsContext` uitlezen en deze waarde gebruiken om de achtergrondkleur van een vierkant blok te bepalen. Het blok moet een breedte en hoogte hebben van 100 pixels met 10 pixels marge. 
-
-3. Creëer een component `SquareRow`. Dit component moet drie `Square` componenten naast elkaar tonen.
-
-4. Maak een component genaamd `SelectionBox`. Dit component moet een selectie box bevatten met de opties 'red', 'blue' en 'green'. De huidige geselecteerde waarde moet de `color` zijn uit de `SettingsContext`. Als de gebruiker een andere kleur selecteert, moet de `setColor` functie van de `SettingsContext` gebruikt worden om de kleur aan te passen.
-
-5. Ook moet je het `App` component aanmaken. In dit component, maakt het gebruik van de `useState` hook om de huidige kleur en de `setColor` functie te bepalen. Dit moet vervolgens in de `SettingsContext` meegegeven worden. Het `App` component moet daarna het `SelectionBox` en `SquareRow` component weergeven, beide omringd door de `SettingsContext.Provider`.
-
-6. Zorg er nu voor dat je ook op de `Square` component kan drukken om de kleur te veranderen. 
-
-<BasicContext/>
-
-### Oplossingsvideo
-
-<ReactPlayer controls url='https://youtu.be/owOyNsHt800'/>
-
-## 3. Todo App
-
-We gaan verder met de Todo app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
-
-Uitbreidingen:
-- Zorg ervoor dat je de todo's uit een API kan ophalen. Je kan hiervoor gebruik maken van de [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API. Deze bevat een endpoint `/todos` die je kan gebruiken om todo's op te halen. 
-- Plaats de Todo's en de code om ze in te lezen in een `TodoContext` zodat je deze kan gebruiken in de verschillende componenten.
-
-## 4. Quiz App
-
-We gaan verder met de Quiz app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
-  
-Uitbreidingen:
-- Herwerk de Quiz applicatie zodat deze gebruik maakt van een `QuizContext`. De functionaliteit van de applicatie blijft voor de rest volledig hetzelfde.
-- Voorzie een button bovenaan de pagina om te togglen tussen dark en light mode. Zorg ervoor dat alle componenten in de applicatie aanpassen aan de gekozen mode. 
-
-## 5. Pokemon app
-
-<Labo7Pokemon/>
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <Labo6Quizapp/>
+</div>
 
 ### Oplossingsvideo
 
-<ReactPlayer controls url='https://youtu.be/sE1_ULJJ81Y'/>
-<ReactPlayer controls url='https://youtu.be/I3kNyxoDCzU'/>
+<ReactPlayer controls url='https://youtu.be/L00lS5tKMcQ'/>
 
-## 6. Portfolio app
+## 3. Happy Workers
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-portfolio`.
+Maak een nieuwe React applicatie aan en noem deze labo5-happy.
 
-Kies 3 verschillende oefeningen die je hebt gemaakt tijdens de voorgaande labos. Zorg ervoor dat deze oefeningen beschikbaar zijn onder de volgende routes: /oefening1, /oefening2 en /oefening3. Zorg voor een navigatiebalk die je toelaat om tussen de verschillende oefeningen te navigeren.
+Plaats in de `App` component een progressbar (van 0 tot 100) en maak een component genaamd `Square`. Het `Square` component aanvaard initieel gewoon een color en een size prop. Later gaan hier nog props bij komen. Zorg ervoor dat je een aantal `Square` componenten toevoegd aan de `App` component met verschillende kleuren. 
 
-## 7. Quiz app met React Router
+Maak een state `work` aan in de `App` component die initieel op 0 staat en de waarde voorstelt die de progressbar moet tonen. 
 
-We gaan verder met de Quiz app uit de vorige oefening. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken. 
+Zorg ervoor dat als je op een `Square` klikt, de `work` state met 1 verhoogd wordt. Dit zorgt ervoor dat de progressbar met 1% verhoogd wordt.
 
-Uitbreidingen:
-- Maak gebruik van React Router om de moeilijkheidsniveau te kiezen:
-  - `/` toont de moeilijkheidsniveau's (easy, medium, hard)
-  - `/quiz/:difficulty` toont de quiz met de gekozen moeilijkheidsniveau
-- Zorg voor een simpele navigatiebalk waar je kan kiezen tussen de verschillende moeilijkheidsniveau's.
-- Als je voor een nieuw moeilijkheidsniveau kiest, moet de quiz opnieuw beginnen.
+Als de `work` state kleiner is dan 100 dan moet de `Square` component een 😐 tonen. Als de `work` state 100 is dan moet de `Square` component een 😃 tonen. Let er op: het tonen van de smileys vereist geen nieuwe state. Je kan dit afleiden van de `work` state.
 
-![Alt text](../../images/quiz.gif)
+<HappyWorkers useProductivity={false}/>
+
+Uitbreiding:
+- Maak een `state` genaamd `productivity` aan in de Square component die initieel op 1 staat. De `productivity` state stelt voor hoeveel procent de `work` state verhoogd wordt als je op de `Square` klikt. 
+- Dus als de `productivity` 1 is wordt bij elke klik de `work` state met 1 verhoogd. Als de `productivity` 2 is wordt bij elke klik de `work` state met 2 verhoogd.
+- Maak een `state` genaamd `clicked` aan in de Square component die initieel op 0 staat.
+- Als de `clicked` state groter of gelijk is aan 10 dan moet de `productivity` state op 0 gezet worden. Dit zorgt ervoor dat de `Square` component een 😵 toont. Het is dan tijdelijk niet meer mogelijk de `work` state te verhogen met die `Square`.
+- Na 5 seconden moet de `productivity` state terug op 1 gezet worden. Dit zorgt ervoor dat de `Square` component terug een 😐 toont. Ook de `clicked` state wordt terug op 0 gezet.
+
+<HappyWorkers useProductivity={true}/>
