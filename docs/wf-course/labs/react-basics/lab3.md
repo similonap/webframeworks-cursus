@@ -1,6 +1,6 @@
 import ReactPlayer from 'react-player';
-import ColorClicker from '@site/src/components/LabSolutions/ColorClicker';
-import CheckBoxGrid from '@site/src/components/LabSolutions/CheckBoxGrid';
+import LaboEventsColorClicker from '@site/src/components/LabSolutions/LaboEventsColorClicker';
+import LaboEventsCheckBoxGrid from '@site/src/components/LabSolutions/LaboEventsCheckBoxGrid';
 
 # Labo 3
 
@@ -21,7 +21,7 @@ Zorg voor een event handler die een alert toont met de kleur van het vierkant al
 
 Maak 10 vierkanten met willekeurige kleuren en toon deze in een rij op het scherm.
 
-<ColorClicker/>
+<LaboEventsColorClicker/>
 
 ## Checkbox Grid
 
@@ -32,4 +32,4 @@ Maak een nieuw component `CheckBox` aan met de volgende properties:
 
 Maak een grid van checkboxes met de grootte die je meekrijgt als property. Als je op een checkbox klikt, toon je een alert met de positie van de checkbox en of deze aangevinkt is of niet. Het grid kan je maken met een array van arrays van booleans (type `boolean[][]`). 
 
-<CheckBoxGrid/>
+<LaboEventsCheckBoxGrid/>
