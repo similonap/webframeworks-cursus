@@ -1,3 +1,4 @@
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import React from "react";
 
 interface CheckBoxProps {
@@ -30,4 +31,12 @@ const CheckBoxGrid = () => {
     return <CheckBox size={15}/>
 }
 
-export default CheckBoxGrid;
+const App = () => {
+    return (
+        <BrowserOnly>
+            {() => <CheckBoxGrid/>}
+        </BrowserOnly>
+    )
+}
+
+export default App;

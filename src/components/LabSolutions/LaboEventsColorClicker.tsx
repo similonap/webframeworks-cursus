@@ -1,3 +1,4 @@
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import React from "react";
 
 interface ColorSquareProps {
@@ -37,4 +38,12 @@ const ColorClicker = () => {
     )
 }
 
-export default ColorClicker;
+const App = () => {
+    return (
+        <BrowserOnly>
+            {() => <ColorClicker/>}
+        </BrowserOnly>
+    )
+}
+
+export default App;
