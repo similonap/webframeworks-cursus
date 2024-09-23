@@ -191,3 +191,88 @@ const App = () => {
 export default App;
 //hide-end
 ```
+
+### For loop in JSX
+
+In JavaScript kan je geen for loop gebruiken in JSX. Je kan wel een for loop simuleren door een array van de gewenste lengte te maken en deze te mappen naar de gewenste output. Onderstaande code toont hoe je dit kan doen:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  let numbers: number[] = [];
+  for (let i = 1; i <= 5; i++) {
+    numbers.push(i);
+  }
+
+  return (
+    <>
+      <h1>Numbers</h1>
+      <ul>
+        {numbers.map((number: number) => <li key={number}>{number}</li>)}
+      </ul>
+    </>
+  );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Je kan deze code ook schrijven met de `Array.from` functie:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  const numbers: number[] = Array.from({length: 5}, (_, index) => index + 1);
+
+  return (
+    <>
+      <h1>Numbers</h1>
+      <ul>
+        {numbers.map((number: number) => <li key={number}>{number}</li>)}
+      </ul>
+    </>
+  );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Je zou op deze manier ook een multidimensionale array kunnen maken. Stel dat we een 2D array willen maken van 3x3 met enkel nullen. Dit kan als volgt:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  const grid: number[][] = Array.from({length: 3}, () => Array.from({length: 3}, () => 0));
+
+  return (
+    <>
+      <h1>Grid</h1>
+      <table>
+        <tbody>
+          {grid.map((row: number[], rowIndex: number) => (
+            <tr key={rowIndex}>
+              {row.map((cell: number, cellIndex: number) => (
+                <td key={cellIndex}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+//hide-start
+export default App;
+//hide-end
+```
