@@ -1,6 +1,7 @@
 import ReactPlayer from 'react-player';
 import LaboEventsColorClicker from '@site/src/components/LabSolutions/LaboEventsColorClicker';
 import LaboEventsCheckBoxGrid from '@site/src/components/LabSolutions/LaboEventsCheckBoxGrid';
+import LaboEventsInput from '@site/src/components/LabSolutions/LaboEventsInput';
 
 # Labo 3
 
@@ -22,6 +23,17 @@ Zorg voor een event handler die een alert toont met de kleur van het vierkant al
 Maak 10 vierkanten met willekeurige kleuren en toon deze in een rij op het scherm.
 
 <LaboEventsColorClicker/>
+
+## TextInput
+
+Maak een nieuwe React applicatie aan en noem deze `labo-text-input`.
+
+Maak een component `TextInput` aan met de volgende properties:
+- `size`: number, het aantal textboxes dat getoond moet worden
+
+Maak een rij van textboxes met de grootte die je meekrijgt als property. Als je een textbox aanpast, toon je een alert met de positie van de textbox en de nieuwe waarde.
+
+<LaboEventsInput/>
 
 ## Checkbox Grid
 
