@@ -51,6 +51,12 @@ Om een nieuwe app aan te maken, kan je het volgende commando gebruiken:
 npx create-expo-app <project-name> --template expo-template-blank-typescript
 ```
 
+of korter:
+
+```bash
+npx create-expo-app -t expo-template-blank-typescript <project-name>
+```
+
 Omdat we typescript gaan gebruiken in deze cursus, gebruiken we het `--template` argument. Als je geen typescript wil gebruiken, kan je het argument weglaten.
 
 ## Development server
