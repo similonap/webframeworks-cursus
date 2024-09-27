@@ -194,7 +194,7 @@ export default App;
 
 ### For loop in JSX
 
-In JavaScript kan je geen for loop gebruiken in JSX. Je kan wel een for loop simuleren door een array van de gewenste lengte te maken en deze te mappen naar de gewenste output. Onderstaande code toont hoe je dit kan doen:
+In JSX kan je niet zomaar een for loop gebruiken. Je kan wel een for loop simuleren door een array van de gewenste lengte te maken en deze te mappen naar de gewenste output. Onderstaande code toont hoe je dit kan doen:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 //hide-start
@@ -276,3 +276,56 @@ const App = () => {
 export default App;
 //hide-end
 ```
+
+## Element herhalen
+
+In React kan je een element herhalen door een array van elementen te maken en deze te renderen. Onderstaande code toont hoe je dit kan doen:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  const elements: JSX.Element[] = [];
+  for (let i = 1; i <= 5; i++) {
+    elements.push(<p key={i}>Element {i}</p>);
+  }
+
+  return (
+    <>
+      {elements}
+    </>
+  );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Je kan deze code ook schrijven met de `Array.from` functie:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+//hide-start
+import React from "react";
+//hide-end
+
+const App = () => {
+  return (
+    <>
+      {
+        Array.from({length: 5}, (_, index) => <p key={index + 1}>Element {index + 1}</p
+      }
+    </>
+  );
+}
+
+//hide-start
+export default App;
+//hide-end
+```
+
+Deze code werkt als volgt in React:
+- De Array.from functie maakt een array van 5 elementen en gebruikt de callback functie om elk element te vullen met een `<p>` element. 
+- De callback functie krijgt twee argumenten: de waarde van het element (die we niet gebruiken) en de index van het element. We gebruiken de index om het nummer van het element te bepalen. Vaak gebruiken we `_` als naam voor de eerste parameter als we deze niet gebruiken. 
+- We geven elk `<p>` element een unieke key door de index van het element te gebruiken.
