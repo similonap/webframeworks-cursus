@@ -5,9 +5,10 @@ import LaboStateInputField from '@site/src/components/LabSolutions/LaboStateInpu
 import LaboStateCheckbox from '@site/src/components/LabSolutions/LaboStateCheckbox';
 import LaboStateGoods from '@site/src/components/LabSolutions/LaboStateGoods';
 import LaboStateLoading from '@site/src/components/LabSolutions/LaboStateLoading';
-import LaboStateRandomNicCage from '@site/src/components/LabSolutions/LaboStateRandomNicCage';
+import LaboStateRandomCat from '@site/src/components/LabSolutions/LaboStateRandomCat';
 import Joske from '@site/src/components/LabSolutions/Joske';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
+import Maaltafels3 from '@site/src/components/LabSolutions/Maaltafels3';
 
 import ReactPlayer from 'react-player';
 
@@ -60,7 +61,17 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 
 <ReactPlayer controls url='https://youtu.be/FVMpB_rGnBQ'/>
 
-## 4. Omhoog/Omlaag
+## 4. Maaltafels State
+
+Maak een kopie van de maaltafels code die je in een van de vorige labo's hebt geschreven en zorg voor de volgende dingen:
+- Zorg voor een input veld waarin je het getal kan ingeven waarvan je de maaltafel wil zien.
+- Als het veld aangepast wordt, moet de maaltafel van dat getal getoond worden. 
+- Je moet een state gebruiken om het getal `max` bij te houden. Dit getal bepaalt tot waar de maaltafel getoond moet worden. 
+- Je kan een maximum van 10 kiezen in het input veld en een minimum van 2.
+
+<Maaltafels3/>
+
+## 5. Omhoog/Omlaag
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-omhooglaag`.
 
@@ -81,7 +92,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/OMa72fFFRUI'/>
 
-## 5. Loading indicator
+## 6. Loading indicator
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-loading`.
 
@@ -106,7 +117,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 
 <ReactPlayer controls url='https://youtu.be/SSZaOVdY3ls'/>
 
-## 6. Kleurkiezer
+## 7. Kleurkiezer
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-kleurkiezer`.
 
@@ -129,7 +140,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/pBx9IClu9eA'/>
 
-## 7. Contactformulier
+## 8. Contactformulier
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-contactformulier`.
 
@@ -158,24 +169,24 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/og0BReQkfz8'/>
 
-## 8. Random Cage
+## 9. Random Cat
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-random-cage`.
+Maak een nieuwe React applicatie aan en noem deze `labo4-random-cat`.
 
-Maak een component `RandomCage` aan met de volgende functionaliteit:
-- Het component bevat een `button` met de tekst `Random Cage`.
+Maak een component `RandomCat` aan met de volgende functionaliteit:
+- Het component bevat een `button` met de tekst `Random Cat`.
 - Als je op de knop klikt, wordt er een willekeurige locatie op je scherm bepaald.
 - Op die locatie wordt een afbeelding van Nicolas Cage getoond.
 - Als je terug op de knop klikt, wordt de afbeelding op een andere locatie getoond.
-- Je mag de volgende afbeelding tonen: https://www.placecage.com/gif/200/200
+- Je mag de volgende afbeelding tonen: `https://cataas.com/cat?width=200&height=200`
 
-<LaboStateRandomNicCage/>
+<LaboStateRandomCat/>
 
 #### Oplossingsvideo
 
 <ReactPlayer controls url='https://youtu.be/nh5lVRHBj0s'/>
 
-## 9. Joske het vierkant
+## 10. Joske het vierkant
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-joske`.
 

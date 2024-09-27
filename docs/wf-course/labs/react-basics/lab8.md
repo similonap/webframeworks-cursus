@@ -2,7 +2,7 @@ import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
 import BasicContext from '@site/src/components/LabSolutions/BasicContext';
 import ReactPlayer from 'react-player';
 
-# Labo 7
+# Labo 8
 
 - React Router
 - Context API

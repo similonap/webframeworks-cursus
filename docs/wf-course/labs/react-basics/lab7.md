@@ -3,7 +3,7 @@ import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
 import HappyWorkers from '@site/src/components/LabSolutions/HappyWorkers';
 import ReactPlayer from 'react-player';
 
-# Labo 6
+# Labo 7
 
 - Communicatie tussen componenten
 

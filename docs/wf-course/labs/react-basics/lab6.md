@@ -3,7 +3,7 @@ import Labo5Pokemon from '@site/src/components/LabSolutions/Labo5Pokemon';
 import Labo5LocalStorage from '@site/src/components/LabSolutions/Labo5LocalStorage';
 import ReactPlayer from 'react-player';
 
-# Labo 5
+# Labo 6
 
 - Hooks
 

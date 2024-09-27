@@ -10,7 +10,7 @@ import GameOfLife1 from '@site/src/components/LabSolutions/GameOfLife1';
 
 import ReactPlayer from 'react-player';
 
-# Labo 4
+# Labo 5
 
 - Event Handling
 - State 
