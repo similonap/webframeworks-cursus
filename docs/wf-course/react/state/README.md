@@ -667,7 +667,7 @@ const App = () => {
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
     const brandChange : React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-      setSelectedBrands([...Array.from(event.target.selectedOptions)].map(option => option.value));
+      setSelectedBrands(Array.from(event.target.selectedOptions, option => option.value));
     }
 
     return (
@@ -692,7 +692,7 @@ export default App;
 Je merkt hier het volgende stuk code op:
 
 ```typescript
-setSelectedBrands([...Array.from(event.target.selectedOptions)].map(option => option.value));
+setSelectedBrands(Array.from(event.target.selectedOptions, option => option.value));
 ```
 
 Dit zorgt ervoor dat we de selectedOptions omzetten naar een array en dan elk element mappen naar zijn waarde. Zo krijgen we een array van strings van de waarden. Vervolgens gebruiken we de setter van de state om de state te updaten naar de nieuwe lijst. 
