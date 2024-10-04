@@ -56,7 +56,7 @@ const App = () => {
 export default App;
 ```
 
-## Zoeken en filteren
+## Zoeken, filteren en sorteren
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"} 
 import React, { useState } from "react";
@@ -68,23 +68,44 @@ interface Item {
 }
 
 const GoodsList = ({goods} : {goods: Item[]}) => {
-    const [searchText, setSearchText] = useState("");
-    const [showOnlyInStock, setShowOnlyInStock] = useState(false);
+    const [searchField, setSearchField] = useState("");
+    const [stockOnly, setStockOnly] = useState(false);
+    const [sortField, setSortField] = useState("name");
 
-    const filteredGoods = goods.filter((item) => {
-        const nameContainsSearchText = item.name.toLowerCase().includes(searchText.toLowerCase());
-        const inStock = item.inStock;
-        return nameContainsSearchText && (!showOnlyInStock || inStock);
+    let filteredGoods = goods.filter((item) => item.name.toUpperCase().startsWith(searchField.toUpperCase()));
+    if (stockOnly) {
+        filteredGoods = filteredGoods.filter((item) => item.inStock);
+    }
+    
+    const sortedGoods = filteredGoods.sort((a, b) => {
+      switch (sortField) {
+        case "price":
+          return a.price - b.price;
+        case "inStock":
+          return Number(a.inStock) - Number(b.inStock);
+        case "name":
+          return a.name.localeCompare(b.name);
+        default:
+          return 0;
+      }
     });
 
     return (
         <div>
             <div>
-                <input placeholder="search" type="text" value={searchText} onChange={(event) => setSearchText(event.target.value)} />
-                <input type="checkbox" checked={showOnlyInStock} onChange={(event) => setShowOnlyInStock(event.target.checked)} /> Show only in stock
+                <input placeholder="search" type="text" value={searchField} onChange={(event) => setSearchField(event.target.value)}  />
+                <input type="checkbox" checked={stockOnly} onChange={(e) => setStockOnly(e.target.checked)}/> Show only in stock
+            </div>
+            <div>
+              <select onChange={(e) => setSortField(e.target.value)} value={sortField}>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+                <option value="inStock">In stock</option>
+              </select>
+
             </div>
             <div style={{display: "grid", gridTemplateColumns: "300px 100px"}}>
-                {filteredGoods.map((item) => (
+                {sortedGoods.map((item) => (
                     <React.Fragment key={item.name}>
                         <span style={{color: item.inStock ? "black" : "red"}}>{item.name}</span>
                         <span>€ {item.price}</span>
