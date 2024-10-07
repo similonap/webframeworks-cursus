@@ -34,7 +34,7 @@ Identificeer de state in de volgende componenten. Geef aan waar de state zich be
 Maak een nieuwe React applicatie aan en noem deze `labo4-inputfield`.
 
 Maak een component `InputFields` aan met de volgende functionaliteit:
-- Het component heeft 1 state property `inputValue` die een string bevat. Deze begint bij een lege string.
+- Het component heeft 1 state `inputValue` die een string bevat. Deze begint bij een lege string.
 - Zorg ervoor dat je 5 input velden op je scherm staat die allemaal de waarde van `inputValue` bevatten.
 - Zorg ervoor dat als je iets typt in 1 van de input velden, de waarde van `inputValue` verandert en alle input velden de nieuwe waarde bevatten.
 
@@ -76,7 +76,7 @@ Maak een kopie van de maaltafels code die je in een van de vorige labo's hebt ge
 Maak een nieuwe React applicatie aan en noem deze `labo4-omhooglaag`.
 
 Maak een component `Counter` aan met de volgende functionaliteit:
-- De component bevat een `state` met een property `count` die een getal bevat. Begint bij 0.
+- De component bevat een `state` met de naam `count` die een getal bevat. Begint bij 0.
 - De component bevat een `button` met de tekst `Omhoog`. Als je op deze knop klikt, wordt de waarde van `count` met 1 verhoogd.
 - De component bevat een `button` met de tekst `Omlaag`. Als je op deze knop klikt, wordt de waarde van `count` met 1 verlaagd.
 - De component bevat de tekst `Count: {count}`. Hier wordt de waarde van `count` getoond.
@@ -103,7 +103,7 @@ npm install react-loader-spinner
 ```
 
 Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
-- De applicatie bevat een `state` met een property `loading` die een boolean bevat. Deze begint bij `false`.
+- De applicatie bevat een `state` met als naam `loading` die een boolean bevat. Deze begint bij `false`.
 - De applicatie bevat een `button` met de tekst `Start loading`. Als je op deze knop klikt, wordt de waarde van `loading` op `true` gezet.
 - Na 3 seconden wordt de waarde van `loading` op `false` gezet.
 - Als de waarde van `loading` `true` is, wordt er een loading indicator getoond. De button verdwijnt.
@@ -122,7 +122,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 Maak een nieuwe React applicatie aan en noem deze `labo4-kleurkiezer`.
 
 Maak een component `ColorPicker` aan met de volgende functionaliteit:
-- Het component bevat een `state` met een property `color` die een kleur bevat. Begint bij `#000000`.
+- Het component bevat een `state` met als naam `color` die een kleur bevat. Begint bij `#000000`.
 - Het component bevat een `input` met type `color`. Als je een andere kleur kiest, wordt de waarde van `color` aangepast.
 - Het component bevat een `div` met een achtergrondkleur die gelijk is aan de waarde van `color`.
 - Het component bevat ook een select met de volgende opties:
