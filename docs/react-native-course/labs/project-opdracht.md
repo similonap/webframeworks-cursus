@@ -1,4 +1,4 @@
-# 💻 PROJECT: SD1 - Project Webframeworks
+# Project Webframeworks
 
 ## 🥅 Overzicht en Leerdoelen
 
