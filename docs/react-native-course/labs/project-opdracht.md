@@ -35,7 +35,8 @@ Je kiest een onderwerp op basis van [de beschikbare APIs](https://sampleapis.ass
 > Je applicatie moet:
 > - [ ] minstens 3 screens bevatten, die je via routing kan bereiken.
 > - [ ] een flatlist of scrollview gebruiken.
-> - [ ] een API aanspreken. Je kan kiezen uit [deze lijst van beschikbare APIs](https://sampleapis.assimilate.be/).
+> - [ ] een API aanspreken met een GET request om data op te halen. Je kan kiezen uit [deze lijst van beschikbare APIs](https://sampleapis.assimilate.be/).
+> - [ ] dezelfde API aanspreken met een POST/PUT request om data toe te voegen of aan te passen.
 > - [ ] gebruik maken van AsyncStorage.
 > - [ ] 2 of meer Expo components gebruiken. (filesystem, camera, map, notification, imagepicker, location, calendar,...)
 > - [ ] styling toepassen waarbij je de nadruk legt op UX.
