@@ -1,13 +1,70 @@
 import Labo6Quizapp from '@site/src/components/LabSolutions/Labo6Quizapp';
 import Labo6Todo from '@site/src/components/LabSolutions/Labo6Todo';
 import HappyWorkers from '@site/src/components/LabSolutions/HappyWorkers';
+import CounterListCallback from '@site/src/components/LabSolutions/CounterListCallback';
 import ReactPlayer from 'react-player';
 
 # Labo 7
 
 - Communicatie tussen componenten
 
-## 1. Todo App
+## 1. Counter List
+
+We beginnen in deze oefening van de volgende code:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+const CounterList = () => {
+    const [counters, setCounters] = useState<number[]>([]);
+
+    const addCounter = () => {
+        setCounters([...counters, 0]);
+    }
+
+    const increaseCounter = (index: number) => {
+        setCounters(counterCpy => counterCpy.map((counter, i) => (i === index) ? counter + 1 : counter));
+    }
+
+    const decreaseCounter = (index: number) => {
+        setCounters(counterCpy => counterCpy.map((counter, i) => (i === index) ? counter - 1 : counter));
+    }
+
+    return (
+        <>
+            {counters.map((counter, index) => {
+                let color = "black";
+                if (counter > 0) {
+                    color = "green";
+                } else if (counter < 0) {
+                    color = "red";
+                }
+                return (
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                        <button onClick={() => decreaseCounter(index)}>Omlaag</button>
+                        <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", color: color }}>Count: {counter}</div>
+                        <button onClick={() => increaseCounter(index)}>Omhoog</button>
+                    </div>
+                )
+            })}
+            <p>Som van de tellers: {counters.reduce((prev, curr) => prev + curr, 0)}</p>
+            <button onClick={addCounter}>Voeg teller toe</button>
+        </>
+    )
+}
+```
+
+Dit is een implementatie van de `CounterList` component dat je in een voorgaande oefening hebt gemaakt. Hier was het nog niet de bedoeling om een aparte component te maken voor de `Counter` component. We gaan dit nu wel doen.
+
+Maak een nieuwe component `Counter` aan. Deze component bevat een teller die je kan verhogen en verlagen. De `Counter` component bevat de volgende properties:
+- `value`: de waarde van de teller
+- `onIncrease`: een callback functie die opgeroepen wordt als de teller verhoogd wordt
+- `onDecrease`: een callback functie die opgeroepen wordt als de teller verlaagd wordt
+- `index`: de index van de teller in de lijst van tellers
+
+Zorg er nu voor dat de `CounterList` component de `Counter` component gebruikt. De `CounterList` component bevat nog steeds de state van de tellers. De `Counter` component bevat geen state. De `Counter` component gebruikt de properties om de teller te tonen en de callbacks op te roepen.
+
+<CounterListCallback/>
+
+## 2. Todo App
 
 We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen.
 
@@ -72,7 +129,7 @@ Herstructureer deze applicatie als volgt:
 
 <ReactPlayer controls url='https://youtu.be/RNC2X9D3XbI'/>
 
-## 2. Quizapp
+## 3. Quizapp
 
 Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 
@@ -93,7 +150,7 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 
 <ReactPlayer controls url='https://youtu.be/L00lS5tKMcQ'/>
 
-## 3. Happy Workers
+## 4. Happy Workers
 
 Maak een nieuwe React applicatie aan en noem deze labo5-happy.
 
@@ -115,3 +172,4 @@ Uitbreiding:
 - Na 5 seconden moet de `productivity` state terug op 1 gezet worden. Dit zorgt ervoor dat de `Square` component terug een 😐 toont. Ook de `clicked` state wordt terug op 0 gezet.
 
 <HappyWorkers useProductivity={true}/>
+

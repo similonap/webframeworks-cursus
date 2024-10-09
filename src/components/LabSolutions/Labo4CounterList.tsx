@@ -1,20 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const CounterList = () => {
     const [counters, setCounters] = useState<number[]>([]);
-    
+
     const addCounter = () => {
         setCounters([...counters, 0]);
     }
 
     const increaseCounter = (index: number) => {
-        let counterCpy = [...counters.slice(0, index), counters[index] + 1, ...counters.slice(index + 1)];
-        setCounters(counterCpy);
+        setCounters(counterCpy => counterCpy.map((counter, i) => (i === index) ? counter + 1 : counter));
     }
 
     const decreaseCounter = (index: number) => {
-        let counterCpy = [...counters.slice(0, index), counters[index] - 1, ...counters.slice(index + 1)];
-        setCounters(counterCpy);
+        setCounters(counterCpy => counterCpy.map((counter, i) => (i === index) ? counter - 1 : counter));
     }
 
     return (
@@ -27,18 +25,17 @@ const CounterList = () => {
                     color = 'red';
                 }
                 return (
-                    <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                         <button onClick={() => decreaseCounter(index)}>Omlaag</button>
-                        <div style={{flex: 1, display: "flex", justifyContent: "center", alignItems:"center", color: color}}>Count: {counter}</div>
+                        <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", color: color }}>Count: {counter}</div>
                         <button onClick={() => increaseCounter(index)}>Omhoog</button>
-                    </div>    
+                    </div>
                 )
             })}
             <p>Som van de tellers: {counters.reduce((prev, curr) => prev + curr, 0)}</p>
             <button onClick={addCounter}>Voeg teller toe</button>
         </>
     )
-
 }
 
 const App = () => {
