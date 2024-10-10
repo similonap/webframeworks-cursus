@@ -16,9 +16,9 @@ const Counter = ({ counter, index, onIncrease, onDecrease }: CounterProps) => {
     }
     return (
         <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
-            <button onClick={onIncrease}>Omlaag</button>
+            <button onClick={onDecrease}>Omlaag</button>
             <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", color: color }}>Count: {counter}</div>
-            <button onClick={onDecrease}>Omhoog</button>
+            <button onClick={onIncrease}>Omhoog</button>
         </div>
     )
 }
