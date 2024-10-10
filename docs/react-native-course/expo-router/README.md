@@ -17,7 +17,11 @@ Als je expo-router wil gebruiken in je project moet je eerst enkele packages ins
 Als je nog geen project hebt kan je een nieuw project aanmaken met een template en hoef je geen ingewikkelde installatie te doen. 
 
 ```bash
-npx create-expo-app my-project --template expo-template-typescript-router
+npx create-expo-app <my-project> --template expo-template-typescript-router
+```
+of korter:
+```bash
+npx create-expo-app -t expo-template-typescript-router <my-project>
 ```
 
 Je moet nog wel de `scheme` property aanpassen in je `app.json` (zie verder).
