@@ -96,6 +96,14 @@ npm install --save-dev @expo/ngrok@^4.1.1
 npm install --global @expo/ngrok@^4.1.1
 ```
 
+Ook kan het gebeuren dat het `npx create-expo-app` command niet de nieuwste versie van expo installeert. De volgende commando's verhelpen dit probleem:
+
+```bash
+npm install expo@latest
+npx expo install --fix
+```
+In het bestand `babel.config.json` moet je dan vervolgens de plugin `expo-router/babel` verwijderen.
+
 ## De app openen in de browser
 
 Als je de app in de browser wil openen, dan kan je het volgende commando gebruiken:
