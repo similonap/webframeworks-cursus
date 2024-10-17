@@ -236,5 +236,22 @@ export default App;
 
 Het object dat je terugkrijgt van `useParams` staat je toe een waarde op te zoeken voor om het even welke key. Er treedt dus geen compilatiefout op als je in TypeScript een parameter probeert te raadplegen die niet voorzien is. Je krijgt gewoon `undefined` terug.
 
+# useNavigate
+
+De `useNavigate` hook is een hook die je toelaat te navigeren naar een andere pagina in je applicatie aan de hand van JavaScript code. Dit kan handig zijn als
+
+```typescript codesandbox={"template": "react-router", "filename": "src/App.tsx"}
+const Home = () => {
+    const navigate = useNavigate();
+
+    return (
+        <div>
+            <button onClick={() => navigate("/detail/1")}>Detail 1</button>
+            <button onClick={() => navigate("/detail/2")}>Detail 2</button>
+            <button onClick={() => navigate("/detail/3")}>Detail 3</button>
+        </div>
+    );
+}
+
 # Meer weten
 - https://reactrouter.com/en/6.4.3
