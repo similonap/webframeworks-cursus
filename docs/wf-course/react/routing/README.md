@@ -51,10 +51,9 @@ const Root = () => {
         <div className={styles.container}>
             <div className={styles.head}>Header</div>
             <div className={styles.nav}>
-                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="/" >Home</NavLink>
-                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="page1">Page 1</NavLink>
-                <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="page2">Page 2</NavLink>
-
+                <NavLink to="/" >Home</NavLink>
+                <NavLink to="page1">Page 1</NavLink>
+                <NavLink to="page2">Page 2</NavLink>
             </div>
             <div className={styles.content}>
                 <Outlet/>
@@ -139,7 +138,15 @@ Er zijn twee verschillende manieren om links te maken in React Router. De eerste
 <Link to="/page1">Page 1</Link>
 ```
 
-Een tweede manier om links te maken is door gebruik te maken van de `NavLink` component. Deze component heeft dezelfde properties als de `Link` component. Daarnaast kan je ook een functie meegeven aan de `className` property. Deze bevat een object met een `isActive` property. Deze property bevat een boolean die aangeeft of de link geactiveerd is of niet. 
+Een tweede manier om links te maken is door gebruik te maken van de `NavLink` component. Deze component heeft dezelfde properties als de `Link` component. Het voordeel hier is dat je de link kan stylen aan de hand van CSS. Er wordt altijd automatisch een `active` class toegevoegd aan de link wanneer de link geactiveerd is. Je kan die class gebruiken om de link te stylen.
+
+```css
+.active {
+    color: red;
+}
+```
+
+Je kan ook een functie meegeven aan de `className` property. Deze functie bevat een object met een `isActive` property. Deze property bevat een boolean die aangeeft of de link geactiveerd is of niet. 
 
 ```typescript
 <NavLink className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink} to="/">Home</NavLink>
@@ -173,7 +180,7 @@ const Root = () => {
         <div className="container">
             <div className="head">Header</div>
             <div className="nav">
-                <NavLink className={({isActive}) => isActive ? "activeNavLink" : "navLink"} to="/" >Home</NavLink>
+                <NavLink to="/" >Home</NavLink>
             </div>
             <div className="content">
                 <Outlet/>
