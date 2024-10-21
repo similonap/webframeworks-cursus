@@ -117,22 +117,19 @@ of je kan de w toets indrukken in de terminal als je opgestart bent met `npx exp
 Het kan zijn dat je de volgende foutmelding krijgt:
 
 ```bash
-CommandError: It looks like you're trying to use web support but don't have the required dependencies
-installed.
+CommandError: It looks like you're trying to use web support but don't have the required
+dependencies installed.
 
-Please install react-native-web@~0.19.6, react-dom@18.2.0, @expo/webpack-config@^19.0.0 by
-running:
+Please install react-native-web@~0.19.10, react-dom@18.2.0,
+@expo/metro-runtime@~3.2.3 by running:
 
-npx expo install react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config@^19.0.0
+npx expo install react-native-web react-dom @expo/metro-runtime
+
+If you're not using web, please ensure you remove the "web" string from the platforms
+array in the project Expo config.
 ```
 
-Dan moet je de Expo CLI afsluiten en eerst het volgende commando uitvoeren:
-
-```bash
-npx expo install react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config@^19.0.0
-```
-
-Als je daarna opnieuw `npx expo start --web` uitvoert, dan zou het moeten werken.
+Zoals de instructies zeggen moet je zelf deze dependencies installeren. Als je daarna opnieuw `npx expo start --web` uitvoert, dan zou het moeten werken.
 
 ## Eerste wijziging aanbrengen
 
