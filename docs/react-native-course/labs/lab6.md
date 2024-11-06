@@ -4,6 +4,11 @@
 
 Maak de volgende app zo goed mogelijk na. De afbeeldingen tonen de verschillende schermen in de app. In de beschrijving onder elk scherm kan je de verschillende functies terugvinden van elk scherm.
 
+Gebruik de volgende APIs om de data in te vullen en aan te passen:
+- https://sampleapis.assimilate.be/bpost/verzenden
+- https://sampleapis.assimilate.be/bpost/ontvangen
+- https://sampleapis.assimilate.be/bpost/profile
+
 **!LET OP!** Knoppen die niet staan opgelijst in de functies hieronder, moet je niet implementeren of weergeven.  
 Bv.: de rode icoontjes (3 puntjes, bewerk-icoontje, ...)
 
