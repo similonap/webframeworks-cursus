@@ -26,7 +26,7 @@ const handler = (
   res.status(200).json({ message: 'Hello from Next.js!' })
 }
 
-export handler;
+export default handler;
 ```
 
 Deze code zorgt ervoor dat je een API hebt die je kan bereiken op `http://localhost:3000/api/hello`. Deze geeft een status code `200` terug en een JSON object met een `message` property. 

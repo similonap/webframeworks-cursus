@@ -234,3 +234,38 @@ const Custom404 = () => {
 
 export default Custom404;
 ```
+## router.isReady
+
+Als je gebruik maakt van de `useRouter` hook en je wil de router gebruiken in een `useEffect` hook, dan kan het zijn dat de router nog niet klaar is. Dit kan je oplossen door gebruik te maken van de `router.isReady` property. Deze property geeft aan of de router klaar is of niet. 
+
+```jsx 
+import { useRouter } from "next/router"
+
+const Home = () => {
+  const router = useRouter()
+  useEffect(() => {
+    if (router.isReady) {
+      // Do something with the router
+    }
+  }, [router.isReady])
+  return <div>Home</div>
+}
+```
+
+Bijvoorbeeld als je een API call wil doen die afhankelijk is van een query parameter kan je dit oplossen door te wachten tot de router klaar is.
+
+```jsx
+import { useRouter } from "next/router"
+
+const Posts = () => {
+  const router = useRouter()
+  useEffect(() => {
+    if (router.isReady) {
+      fetch(`https://api.example.com/posts/${router.query.id}`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+    }
+  }, [router.isReady, router.query.id])
+  return <div>Posts</div>
+}
+```
