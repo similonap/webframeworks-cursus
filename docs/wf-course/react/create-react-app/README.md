@@ -21,9 +21,15 @@ npm create vite@latest
 Je zal hier dan een aantal vragen krijgen over de configuratie van je project. Zorg dat je de volgende opties selecteert:
 
 ```bash
-✔ Project name: … our-first-react-app
-✔ Select a framework: › React
-✔ Select a variant: › TypeScript + SWC
+│
+◇  Project name:
+│  our-first-react-app
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  TypeScript + SWC
 ```
 
 `Project name` kies je uiteraard zelf. De andere opties zorgen ervoor dat we een react applicatie aanmaken met typescript. SWC is een snelle JavaScript/TypeScript transpiler die gebruikt wordt door `vite`. 
@@ -78,7 +84,7 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
