@@ -176,7 +176,7 @@ const App = () => {
             <button>{randomPokemon().name}</button>
             <button>{randomPokemon().name}</button>
             <button>{randomPokemon().name}</button>
-            <button>{randomPokemon().name}</button>
+            <button>{pokemon.name}</button>
         </div>
     )
 }
