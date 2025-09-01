@@ -22,20 +22,22 @@ Omdat client-side routering geen extra netwerkverkeer vereist, kan deze vorm ook
 
 Om client-side routering toe te passen, moet de app zelf over de nodige logica beschikken om URL's om te zetten naar pagina's. Deze logica hoef je als applicatieprogrammeur zelf niet te verzinnen. In plaats daarvan kan je gebruik maken van de bibliotheek **React Router**. Deze ondersteunt alle gebruikelijke manieren om URL's te vertalen naar pagina's.
 
+We gebruiken de laatste versie van React Router (versie 7). Deze versie heeft een aantal grote wijzigingen ondergaan ten opzichte van de vorige versies. Er zijn namelijk nieuwe manieren van definiëren van routes toegevoegd. Wij gebruiken in deze cursus de **declaratieve manier** van routes definiëren. Dus als je documentatie opzoekt, let er dan op dat je de juiste versie van de documentatie bekijkt.
+
 ### Installatie
 
 Omdat React Router een externe bibliotheek is, moet je deze eerst installeren. Hiervoor gebruik je in de root directory van je React project volgend commando:
 
 ```
-npm  install --save react-router-dom@6
+npm  install --save react-router-dom@7
 ```
 
 Ondersteuning voor TypeScript is in deze versie ingebouwd, dus de types hoef je niet apart te installeren.
 
-Op het moment van schrijven is de recentste versie van React Router versie 6.3.0. Nieuwere versies die ook beginnen met het cijfer 6 zouden zonder problemen moeten werken. Daarom eindigt bovenstaand commando op `@6`. 
+Op het moment van schrijven is de recentste versie van React Router versie 7.8.2. Nieuwere versies die ook beginnen met het cijfer 7 zouden zonder problemen moeten werken. Daarom eindigt bovenstaand commando op `@7`. 
 
 :::warning
-Als versie 7 of hoger verschenen is op het moment dat je deze leerstof raadpleegt, moet je toch versie 6 gebruiken.
+Als versie 8 of hoger verschenen is op het moment dat je deze leerstof raadpleegt, moet je toch versie 7 gebruiken.
 :::
 
 ### Voorbeeld
@@ -205,7 +207,7 @@ const Home = () => {
 }
 
 const Detail = () => {
-    let { id } = useParams();
+    const { id } = useParams();
 
     return (
         <div>Detail {id}</div>

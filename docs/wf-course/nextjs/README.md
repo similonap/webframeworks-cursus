@@ -22,17 +22,17 @@ npx create-next-app@latest
 Je zal hier dan een aantal vragen krijgen over de configuratie van je project. 
 
 ```bash
-What is your project named? my-app
-Would you like to use TypeScript? Yes
-Would you like to use ESLint? No
-Would you like to use Tailwind CSS? No
-Would you like to use `src/` directory? Yes
-Would you like to use App Router? (recommended) No
-Would you like to customize the default import alias? No
-What import alias would you like configured? @/*
+✔ What is your project named? › my-app
+✔ Would you like to use TypeScript? … No / Yes
+✔ Which linter would you like to use? › ESLint
+✔ Would you like to use Tailwind CSS? … No / Yes
+✔ Would you like your code inside a `src/` directory? … No / Yes
+✔ Would you like to use App Router? (recommended) … No / Yes
+✔ Would you like to use Turbopack? (recommended) … No / Yes
+✔ Would you like to customize the import alias (`@/*` by default)? … No / Yes
 ````
 
-Let goed op dat je gebruik maakt van `TypeScript` en dat je de `App Router` niet gebruikt. We gaan in deze cursus gebruik maken van de `Pages Router`. Deze is eenvoudiger in gebruik en is voldoende voor de meeste applicaties. Ook wordt de `App Router` nog niet aanbevolen door de officiele React documentatie. De andere opties kan je zelf kiezen, maar voor te beginnen is het aan te raden om de bovenstaande opties te gebruiken. 
+Let goed op dat je gebruik maakt van `TypeScript` en dat je de `App Router` router gebruikt. Next.js heeft twee verschillende routing systemen en als je de laatste nieuwe features van React 19 zoals server components wil gebruiken dan moet je deze router gebruiken.
 
 Je kan vervolgens het project voor de eerste keer opstarten met het volgende commando:
 
@@ -40,6 +40,24 @@ Je kan vervolgens het project voor de eerste keer opstarten met het volgende com
 npm run dev
 ```
 
-Dit start de development server op en opent de applicatie in je browser. Je kan nu beginnen met het aanpassen van de applicatie. Pas bijvoorbeeld de tekst aan in `pages/index.tsx` en bekijk het resultaat in je browser. Je kan eventueel een van de voorgaande oefeningen opnieuw maken in Next.js. Je gaat zien dat dit heel gelijkaardig is aan het maken van een React applicatie met `vite`.
+Dit start de development server op en opent de applicatie in je browser. Je kan nu beginnen met het aanpassen van de applicatie. Pas bijvoorbeeld de tekst aan in `app/page.tsx` en bekijk het resultaat in je browser. Je kan eventueel een van de voorgaande oefeningen opnieuw maken in Next.js. Je gaat zien dat dit heel gelijkaardig is aan het maken van een React applicatie met `vite`. 
+
+Opgelet je moet wel aangeven dat een component een client component is door bovenaan het bestand `use client` te zetten. Dit is nodig omdat Next.js standaard server components gebruikt en anders kan bijvoorbeeld geen state of effects gebruiken in je componenten.
+
+```typescript codesandbox={"template": "next-js", "filename": "app/page.tsx"}
+"use client"
+
+import styles from "./page.module.css";
+import { useState } from "react";
+
+export default function Home() {
+  const [counter, setCounter] = useState(0);
 
 
+  return (
+    <div>
+       <button onClick={() => setCounter(counter => counter + 1)}>{counter}</button>
+    </div>
+  );
+}
+```
