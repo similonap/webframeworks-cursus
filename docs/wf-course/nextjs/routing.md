@@ -1,271 +1,211 @@
----
-sidebar_position: 1
----
-
 # Routing
 
 Tot nu toe bestonden onze applicaties uit één enkele pagina. Dit is niet erg handig als je een volledige website wil maken. Daarom is er een manier nodig om meerdere pagina's te maken. Dit kan met behulp van een router. Een router is een stukje code dat bepaalt welke pagina getoond moet worden op basis van de URL. 
 
-Next.js biedt twee verschillende routers aan: de `Pages Router` en de `App Router`. In deze cursus gaan we enkel gebruik maken van de `Pages Router`. Deze is eenvoudiger in gebruik en is voldoende voor de meeste applicaties. Ook wordt de `App Router` nog niet aanbevolen door de officiele React documentatie.
+In het onderdeel React.js hebben we gebruik gemaakt van een declaratieve manier om routes te definiëren met behulp van de bibliotheek React Router. Je beschrijft dan in je code welke componenten bij welke URL's horen. Dit is een goede manier om routes te definiëren, maar het heeft als nadeel dat je aanzienlijke hoeveelheid code moet schrijven om de router te configureren. 
 
 ## File-system based router
 
-Next.js maakt gebruik van een zogenaamde "file-system based" router. Dit betekend dat we geen extra code moeten schrijven om de router te configureren. We moeten enkel een aantal bestanden en directories aanmaken en de router zal automatisch de juiste pagina tonen op basis van het pad.
+Next.js maakt gebruik van een zogenaamde "file-system based" router. Dit betekend dat we geen extra code moeten schrijven om de router te configureren. We moeten enkel een aantal bestanden en directories aanmaken en de router zal automatisch de juiste pagina tonen op basis van het pad. 
 
-Als je een nieuw `tsx` bestand aanmaakt in de `pages` directory zal dit automatisch een nieuwe pagina worden. Als je bijvoorbeeld een bestand `pages/about.tsx` aanmaakt, dan zal dit bestand getoond worden als je naar `http://localhost:3000/about` surft.
+Als je een nieuw Next.js project aanmaakt met `npx create-next-app@latest` dan zal er automatisch een `app` directory aangemaakt worden. In deze directory kan je nieuwe bestanden en directories aanmaken om nieuwe routes te maken. Er wordt ook al een `page.tsx` bestand aangemaakt in de `app` directory. 
 
-```jsx
-const About = () => {
-  return <div>About</div>;
-}
+### Nieuwe routes maken
 
-export default About;
-```
-
-### Index route
-
-Je kan ook gebruik maken van de `index.tsx` bestanden om de index route te configureren. Als je bijvoorbeeld de volgende bestanden aanmaakt dan krijg je ook de bijbehorende routes:
+Als je bijvoorbeeld een pagina wilt aanbieden op het pad `/about`, dan kan je een nieuwe directory `about` aanmaken in de `app` directory en daar een nieuw bestand `page.tsx` aanmaken. Je kan hier zo diep gaan als je zelf wil. Wil je bijvoorbeeld een pagina aanbieden op het pad `/dashboard/settings`, dan kan je een directory `dashboard` aanmaken in de `app` directory en daar een nieuwe directory `settings` aanmaken. In deze directory kan je dan een nieuw bestand `page.tsx` aanmaken. 
 
 ```
-pages/index.tsx → /
-pages/blog/index.tsx → /blog
+src/app/about/page.tsx → /about
+src/app/dashboard/settings/page.tsx → /dashboard/settings
 ```
 
-Je kan zelfs geneste routes maken:
+### Link component
+
+Om te navigeren tussen de verschillende pagina's kan je gebruik maken van het `Link` component dat meegeleverd wordt met Next.js. Dit component zorgt ervoor dat de navigatie gebeurt zonder dat de pagina volledig herladen wordt. Dit zorgt voor een betere gebruikerservaring. Als je gewoon een `<a>` element gebruikt, dan zal de pagina volledig herladen worden. 
+
+Als we bijvoorbeeld een navigatiebalk willen maken die op de root pagina getoond wordt, dan kunnen we een nieuwe component `NavBar` maken en deze toevoegen aan de `layout.tsx` bestand in de `app` directory. 
+
+```typescript
+import Link from "next/link";
+
+const NavBar = () => {
+  return (
+    <nav>
+      <Link href="/">Home</Link>
+      <Link href="/about">About</Link>
+      <Link href="/dashboard/settings">Settings</Link>
+    </nav>
+  );
+};
+```
+
+Let op als je een nieuw component aanmaakt dat je deze niet in de `app` directory mag plaatsen. De `app` directory is enkel bedoeld voor pagina's en layouts. Je kan een nieuwe directory `components` aanmaken in de `src` directory van je project en daar je componenten in plaatsen. 
+
+### Layouts maken
+
+Je kan ook gebruik maken van layouts om gedeelde componenten te maken die op meerdere pagina's gebruikt worden. Dit is handig als je bijvoorbeeld een navigatiebalk of een footer wil maken die op alle pagina's getoond wordt. Je kan dit doen door een nieuw bestand `layout.tsx` aan te maken in de directory waar je de layout wil gebruiken. Dus als je een layout wil maken die op alle pagina's gebruikt wordt, dan kan je een nieuw bestand `layout.tsx` aanmaken in de `app` directory. 
 
 ```
-pages/blog/first-post.tsx → /blog/first-post
-pages/dashboard/settings/username.tsx → /dashboard/settings/username
+app/layout.tsx → layout voor alle pagina's
+``` 
+
+Elke nieuwe next applicatie die je aanmaakt met `npx create-next-app@latest` heeft al een `layout.tsx` bestand in de `app` directory. Vereenvoudigd ziet dit bestand er als volgt uit:
+
+```typescript
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+};
+
+export default RootLayout;
 ```
+
+Je ziet hier dat de layout een component is die een `children` prop verwacht. Deze prop bevat de inhoud van de pagina die getoond moet worden. In dit geval wordt de inhoud van de pagina in de `body` van het HTML document geplaatst.
+
+Wil je bijvoorbeeld op elke pagina een navigatiebalk tonen, dan kan je dit doen door de navigatiebalk component toe te voegen aan de layout:
+
+```typescript
+import NavBar from "@/components/NavBar";
+
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <html lang="en">
+      <body>
+        <NavBar />
+        {children}
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
+```
+
+![One layout](../images/layouts_0.png)
+
+Je kan ook geneste layouts maken. Dit is handig als je bijvoorbeeld een layout wil maken die alleen op bepaalde pagina's gebruikt wordt. Wil je bijvoorbeeld een layout maken die alleen op de dashboard pagina's gebruikt wordt, dan kan je een nieuw bestand `layout.tsx` aanmaken in de `app/dashboard` directory. 
+
+```
+app/dashboard/layout.tsx → layout voor alle dashboard pagina's
+```
+
+Stel u voor dat we een speciale layout willen maken voor alle dashboard pagina's. Deze layout kan er als volgt uitzien:
+
+```typescript
+import SideBar from "@/components/SideBar";
+
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div style={{ display: "flex" }}>
+      <SideBar />
+      <div>
+        {children}
+       </div>
+    </div>
+  );
+};
+
+export default DashboardLayout;
+```
+
+Merk hierbij op dat eerst de Layout in de `app` directory wordt toegepast en daarna de layout in de `app/dashboard` directory. Dit betekend dat de `NavBar` component altijd getoond wordt, ook op de dashboard pagina's.
+
+Als je naar /dashboard/settings navigeert, dan zal de volgende structuur getoond worden:
+
+![Geneste Layouts](../images/layouts_1.png)
 
 ### Dynamische routes
 
-Wil je gebruik maken van dynamische routes. Bijvoorbeeld als je een blog wil maken waarbij de URL van de blogpost de titel of id van de blogpost bevat. Dan kan je gebruik maken van dynamische routes. Je kan dit doen door een bestand aan te maken met de naam van de route tussen vierkante haken. 
+Je kan ook dynamische routes maken. Dit is handig als je bijvoorbeeld een pagina wil maken die de details van een bepaald item toont. Stel je voor dat we een pagina hebben die een lijst van producten toont. Als je op een product klikt, wil je naar een pagina navigeren die de details van dat product toont. 
 
-```jsx
-pages/posts/[id].jsx → /posts/1, /posts/2, ...
-pages/posts/[id]/index.jsx → /posts/1, /posts/2, ...
-```
+Stel dat we een lijst van producten hebben zoals hieronder:
 
-Wil je dan in je component gebruik maken van de id, dan kan je dit doen door gebruik te maken van de `useRouter` hook. Deze hook geeft je toegang tot de router en de parameters die je hebt meegegeven in de URL.
-
-```jsx
-import { useRouter } from "next/router";
- 
-const Posts = () => {
-  const router = useRouter()
-  return <p>Post: {router.query.id}</p>
+```typescript
+interface Product {
+  id: number;
+  name: string;
 }
 
-export default Posts;
+const products : Product[] = [
+  { id: 1, name: "Product 1" },
+  { id: 2, name: "Product 2" },
+  { id: 3, name: "Product 3" },
+];
+
+export default products;
 ```
 
-### Linking and Navigating
+We kunnen dan een nieuwe pagina maken die de lijst van producten toont. Dit kan in het bestand `src/app/products/page.tsx`:
 
-Om te navigeren tussen de verschillende pagina's kan je gebruik maken van de `Link` component. Deze component zorgt ervoor dat de pagina niet opnieuw moet laden als je naar een andere pagina navigeert. Dit zorgt voor een betere gebruikerservaring. 
+```typescript
+import Link from "next/link";
+import products from "@/data/products";
 
-```jsx
-import Link from "next/link"
-
-const Home = () => {
+const ProductsPage = () => {
   return (
     <div>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </div>
-  )
-}
-
-export default Home;
-```
-
-Je kan bij de `Link` component ook gebruik maken van dynamische routes. Hier gebruik je meestal string interpolation om de juiste URL te genereren.
-
-```jsx  
-import Link from "next/link"
-
-const Home = () => {
-  let pages : string[] = [1,2,3,4,5];
-  return (
-    <div>
-        {pages.map((page) => (
-            <Link href={`/posts/${page}`} key={page}>
-                {page}
-            </Link>
+      <h1>Products</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link href={`/products/${product.id}`}>{product.name}</Link>
+          </li>
         ))}
-    </div>
-  )
-}
-
-export default Home;
-```
-
-of je kan ook gebruik maken van een object om de URL te genereren.
-
-```jsx
-import Link from "next/link"
-
-const Home = () => {
-  let pages : string[] = [1,2,3,4,5];
-  return (
-    <div>
-        {pages.map((page) => (
-            <Link href={{ pathname: '/posts/[id]', query: { id: page } }} key={page}>
-                {page}
-            </Link>
-        ))}
-    </div>
-  )
-}
-
-export default Home;
-```
-
-via de `useRouter` hook kan je ook navigeren naar een andere pagina zonder gebruik te maken van de `Link` component. Dit is handig als je bijvoorbeeld wil navigeren op basis van een event.
-
-```jsx
-import { useRouter } from "next/router"
-
-const Home = () => {
-  const router = useRouter()
-  return (
-    <div>
-      <button onClick={() => router.push('/about')}>About</button>
-    </div>
-  )
-}
-
-export default Home;
-```
-
-Interessant om te weten: Next.js zal aan de hand van de links bepaalde pagina's gaan prefetchen. Dit wil zeggen dat de pagina al wordt opgehaald voordat de gebruiker erop klikt. Dit zorgt ervoor dat de pagina sneller zal laden als de gebruiker erop klikt. Dit is standaard ingeschakeld, maar je kan dit uitschakelen door de `prefetch` property op `false` te zetten.
-
-## Custom App
-
-Als je wil gebruik maken van een `Layout` component die op elke pagina getoond moet worden, dan kan je gebruik maken van de `Custom App` functionaliteit van Next.js. Dit is een component dat je kan aanmaken in `pages/_app.tsx`. Dit component wordt dan gebruikt als de basis van je applicatie. Je kan hier bijvoorbeeld de `Layout` component toevoegen.
-
-```jsx
-import type { AppProps } from 'next/app';
-import Layout from '../components/Layout';
- 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  return (
-    <Layout>
-        <Component {...pageProps} />
-    <Layout>
-  );
-}
-
-export default MyApp;
-```
-
-met als bijbehorende `Layout` component:
-
-```jsx
-const Layout = ({ children } : {children: ReactElement}) => {
-  return (
-    <div>
-      <h1>Header</h1>
-      {children}
-      <h1>Footer</h1>
+      </ul>
     </div>
   );
-}
+};
 
-export default Layout;
+export default Products;
 ```
 
-Deze code zorgt ervoor dat alle pagina's worden omgeven door de `Layout` component. 
+We gaan hier uiteraard geen drie aparte pagina's maken voor elk product. In plaats daarvan gaan we een dynamische route maken. Dit kan door een nieuwe directory aan te maken in de `app/products` directory met de naam `[id]`. De naam tussen de vierkante haken geeft aan dat dit een dynamische parameter is. In deze directory kunnen we dan een nieuw bestand `page.tsx` aanmaken. 
 
-## Custom Document
+```typescript
+const ProductsDetail = async(props: PageProps<"/products/[id]">) => {
+    const { id } = await props.params;
 
-Als je wil gebruik maken van een custom `Document` dan kan je dit doen door een bestand `pages/_document.tsx` aan te maken. Dit bestand wordt gebruikt om de HTML te genereren. Wil je bijvoorbeeld een custom `head` toevoegen aan je applicatie, dan kan je dit doen door het volgende bestand aan te maken. Je kan hier ook externe CSS of javascript bestanden toevoegen (bv voor fontawesome).
-
-```jsx
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-
-class MyDocument extends Document {
-  render() {
     return (
-      <Html lang="en">
-        <Head>
-          <meta name="description" content="My custom description" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+        <div className="p-4">
+            <h1 className="text-2xl font-bold mb-4">Product Detail for ID: {id}</h1>
+            <p className="text-lg">This is the detail page for product with ID {id}.</p>
+        </div>
+    );
 }
 
-export default MyDocument;
+export default ProductsDetail;
 ```
 
-Je ziet hier dat we gebruik maken van het `Head` component. Deze component zorgt ervoor dat de inhoud van de `head` tag wordt aangepast. Je kan hier bijvoorbeeld de `title` van de pagina aanpassen of een `meta` tag toevoegen. Je kan dit component ook gebruiken op aparte pagina's om een custom `head` toe te voegen voor die pagina.
+Merk op dat we hier een speciaal type `PageProps` gebruiken om de props van de pagina te typeren. Dit type wordt meegeleverd door Next.js en zorgt ervoor dat we toegang hebben tot de dynamische parameters in de URL. In dit geval is er één parameter `id` die we kunnen gebruiken om de details van het product op te halen. Omdat het ophalen van parameters in Next.js asynchroon is, maken we de component `async` en gebruiken we `await` om de parameters op te halen.
 
-```jsx
-import Head from 'next/head'
+### Search parameters
 
-const About = () => {
-  return (
-    <div>
-      <Head>
-        <title>About</title>
-      </Head>
-      <h1>About</h1>
-    </div>
-  )
+In een server component (zoals een pagina of layout) kan je ook gebruik maken van search parameters (of query parameters). Dit zijn de parameters die in de URL staan na het vraagteken (`?`). Stel dat we een pagina hebben die een lijst van producten toont en we willen deze lijst filteren op basis van een zoekterm. We kunnen dan de zoekterm als een search parameter in de URL meegeven, bijvoorbeeld `/products?q=shirt`.
+
+```typescript
+const ProductsPage = async(props: PageProps<"/products">) => {
+    const searchParams = await props.searchParams;
+    const q = typeof searchParams.q === "string" ? searchParams.q : "";
+    const filteredProducts = products.filter(product => product.name.startsWith(q));
+
+    return (
+      <div>
+        <h1>Products</h1>
+        <ul>
+          {filteredProducts.map((product) => (
+            <li key={product.id}>
+              <Link href={`/products/${product.id}`}>{product.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
 }
 
-export default About;
+export default ProductsPage;
 ```
 
-## Custom error pages
-
-Normaal gezien moet je geen gebruik maken van custom error pages. Next.js zal automatisch de juiste error pagina tonen als er iets mis gaat. Wil je toch gebruik maken van een custom error pagina, dan volstaat het een bestand aan te maken met als naam de status code van de error. Bijvoorbeeld `pages/404.tsx` voor een 404 error. 
-
-```jsx
-const Custom404 = () => {
-  return <h1>404 - Page Not Found</h1>
-}
-
-export default Custom404;
-```
-## router.isReady
-
-Als je gebruik maakt van de `useRouter` hook en je wil de router gebruiken in een `useEffect` hook, dan kan het zijn dat de router nog niet klaar is. Dit kan je oplossen door gebruik te maken van de `router.isReady` property. Deze property geeft aan of de router klaar is of niet. 
-
-```jsx 
-import { useRouter } from "next/router"
-
-const Home = () => {
-  const router = useRouter()
-  useEffect(() => {
-    if (router.isReady) {
-      // Do something with the router
-    }
-  }, [router.isReady])
-  return <div>Home</div>
-}
-```
-
-Bijvoorbeeld als je een API call wil doen die afhankelijk is van een query parameter kan je dit oplossen door te wachten tot de router klaar is.
-
-```jsx
-import { useRouter } from "next/router"
-
-const Posts = () => {
-  const router = useRouter()
-  useEffect(() => {
-    if (router.isReady) {
-      fetch(`https://api.example.com/posts/${router.query.id}`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-    }
-  }, [router.isReady, router.query.id])
-  return <div>Posts</div>
-}
-```
+Opgelet deze dingen zijn enkel mogelijk in server componenten. Je hebt in client componenten ook een andere manier om aan de search parameters te geraken maar die gaan we hier niet bespreken.
