@@ -132,6 +132,21 @@ Je ziet hier dat het component `Home` nu een `async` functie is. Dit is mogelijk
 
 Opgelet: dit is alleen mogelijk in server components. In client components kan je geen `async` functies gebruiken voor het component zelf.
 
+### loading.tsx
+
+Een handige feature van Next.js is dat je een `loading.tsx` bestand kan maken in een directory om een loading indicator te tonen terwijl een server component aan het laden is. Je plaatst deze file in dezelfde directory als waar je loading pagina wil.
+
+```typescript
+const Loading = () => {
+    return (
+        <div className="p-4">
+            <h1 className="text-2xl font-bold mb-4">Loading...</h1>
+        </div>
+    )
+}
+export default Loading;
+```
+
 ### Combineren van Server en Client Components
 
 Het is perfect mogelijk om server en client components te combineren in een Next.js applicatie. Een goede vuistregel is om zoveel mogelijk server components te gebruiken en alleen client components te maken als het echt nodig is. Dit zorgt ervoor dat je applicatie snel laadt en dat de hoeveelheid JavaScript die naar de browser gestuurd wordt minimaal is.
@@ -213,3 +228,58 @@ export default UserCard;
 ```
 
 De `Home` component blijft een server component die de data ophaalt en de `UserCard` component is een client component die de interactiviteit afhandelt.
+
+## Use case: MongoDB
+
+Een veel voorkomende use case voor server components is het ophalen van data uit een database. We hebben in vorige cursus gezien dat als we data uit een database willen ophalen, dat we daar een backend server voor nodig hebben zoals Express.js. In Next.js is dit niet nodig omdat we server components kunnen gebruiken om direct data uit een database op te halen. Dit kan bijvoorbeeld met MongoDB. 
+
+Stel dat je de volgende `database.ts` file hebt die de connectie met MongoDB afhandelt:
+
+```typescript
+import { Collection, MongoClient } from "mongodb";
+import { Joke } from "./types";
+
+const client = new MongoClient("mongodb+srv://Webontwikkeling:Webontwikkeling@webontwikkling.n0nvawd.mongodb.net/?retryWrites=true&w=majority");
+
+export const jokesCollection: Collection<Joke> = client.db("jokes").collection<Joke>("joke");
+
+export const getJokes = async() => {
+    await jokesCollection.deleteMany({});
+    if (await jokesCollection.countDocuments() === 0) {
+        const response = await fetch("https://sampleapis.assimilate.be/jokes/goodJokes");
+        const json : Joke[] = await response.json();
+        await jokesCollection.insertMany(json);
+    }
+
+    const jokes = await jokesCollection.find().toArray();
+
+    return jokes;
+}
+```
+
+We kunnen deze functie `getJokes` nu gebruiken in een server component om de data op te halen en te tonen:
+
+```typescript
+import { getJokes } from "@/database";
+
+const JokesPage = async() => {
+    const jokes = await getJokes();
+
+    return (
+        <div className="p-4">
+            <h1 className="text-2xl font-bold mb-4">Jokes Page</h1>
+            <ul className="space-y-4">
+                {jokes.map((joke) => (
+                    <li key={joke.id} className="border p-4 rounded shadow">
+                        <h2 className="text-xl font-semibold">{joke.setup}</h2>
+                        <p className="mt-2 text-gray-700">{joke.punchline}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+export default JokesPage;
+```
+
