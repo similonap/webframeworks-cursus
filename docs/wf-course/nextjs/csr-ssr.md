@@ -62,6 +62,12 @@ Zoals al eerder vermeld, zijn server components componenten die op de server ger
 - De hoeveelheid JavaScript die naar de browser gestuurd wordt wil verminderen
 - De First Contentful Paint (FCP) wil verbeteren. Dit is de tijd die het duurt voordat de gebruiker iets op het scherm ziet.
 
+By default zijn Next.js applicaties gebaseerd op React Server Components. Het ophalen van data met Server Components is een relatief nieuwe aanpak en er zijn een paar voordelen aan het gebruik ervan:
+- Server Components ondersteunen JavaScript Promises, wat een oplossing biedt voor asynchrone taken zoals het ophalen van data. Je kan de async/await syntax gebruiken zonder dat je useEffect, useState of andere data fetching libraries nodig hebt.
+- Server Components draaien op de server, dus je kan zware data fetches en logica op de server houden en alleen het resultaat naar de client sturen.
+- Omdat Server Components op de server draaien, kan je rechtstreeks de database bevragen zonder een extra API laag. Dit bespaart je het schrijven en onderhouden van extra code.
+
+
 ### Data Fetching in Server Components
 
 Stel je hebt het volgende client component dat data ophaalt van een API:

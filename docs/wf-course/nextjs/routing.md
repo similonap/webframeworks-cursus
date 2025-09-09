@@ -12,12 +12,9 @@ Als je een nieuw Next.js project aanmaakt met `npx create-next-app@latest` dan z
 
 ### Nieuwe routes maken
 
-Als je bijvoorbeeld een pagina wilt aanbieden op het pad `/about`, dan kan je een nieuwe directory `about` aanmaken in de `app` directory en daar een nieuw bestand `page.tsx` aanmaken. Je kan hier zo diep gaan als je zelf wil. Wil je bijvoorbeeld een pagina aanbieden op het pad `/dashboard/settings`, dan kan je een directory `dashboard` aanmaken in de `app` directory en daar een nieuwe directory `settings` aanmaken. In deze directory kan je dan een nieuw bestand `page.tsx` aanmaken. 
+Als je bijvoorbeeld een pagina wilt aanbieden op het pad `/about`, dan kan je een nieuwe directory `about` aanmaken in de `app` directory en daar een nieuw bestand `page.tsx` aanmaken. Je kan hier zo diep gaan als je zelf wil. Wil je bijvoorbeeld een pagina aanbieden op het pad `/dashboard/invoices`, dan kan je een directory `dashboard` aanmaken in de `app` directory en daar een nieuwe directory `invoices` aanmaken. In deze directory kan je dan een nieuw bestand `page.tsx` aanmaken. 
 
-```
-src/app/about/page.tsx → /about
-src/app/dashboard/settings/page.tsx → /dashboard/settings
-```
+![alt text](router-1.png)
 
 ### Link component
 
@@ -33,13 +30,50 @@ const NavBar = () => {
     <nav>
       <Link href="/">Home</Link>
       <Link href="/about">About</Link>
-      <Link href="/dashboard/settings">Settings</Link>
+      <Link href="/dashboard/invoices">Invoices</Link>
     </nav>
   );
 };
 ```
 
-Let op als je een nieuw component aanmaakt dat je deze niet in de `app` directory mag plaatsen. De `app` directory is enkel bedoeld voor pagina's en layouts. Je kan een nieuwe directory `components` aanmaken in de `src` directory van je project en daar je componenten in plaatsen. 
+Je kan in principe zelf kiezen waar je de `NavBar` component aanmaakt in de directory structuur van je project. Je kan deze bijvoorbeeld in de `src/components` directory plaatsen. Er wordt ook vaak gekozen om de componenten bij de pagina's te plaatsen waar ze gebruikt worden. In dit geval zou je de `NavBar` component in de `app` directory kunnen plaatsen.
+
+#### Active links
+
+Om aan te geven welke link actief is, kan je gebruik maken van de `usePathname` hook die meegeleverd wordt met Next.js. Deze hook geeft de huidige pathname terug. Je kan deze gebruiken om te bepalen welke link actief is en deze een andere stijl te geven. Deze werkt enkel in client componenten dus meestal zijn navigatiebalken client componenten.
+
+```typescript
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+interface NavLinkProps {
+  href: string;
+  label: string;
+}
+
+const NavLink = ({href, label} : NavLinkProps) => {
+  const pathname = usePathname();
+  return (
+    <Link href={href} className={`px-3 py-2 rounded-md text-sm font-medium ${pathname === href ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-200 hover:text-black"}`}>
+        {label}
+    </Link>
+  )
+}
+
+const NavBar = () => {
+  return (
+    <nav>
+      <NavLink href="/" label="Home" />
+      <NavLink href="/about" label="About" />
+      <NavLink href="/dashboard/invoices" label="Invoices" />
+    </nav>
+  );
+};
+
+export default NavBar;
+```
 
 ### Layouts maken
 
@@ -92,7 +126,7 @@ Je kan ook geneste layouts maken. Dit is handig als je bijvoorbeeld een layout w
 app/dashboard/layout.tsx → layout voor alle dashboard pagina's
 ```
 
-Stel u voor dat we een speciale layout willen maken voor alle dashboard pagina's. Deze layout kan er als volgt uitzien:
+Stel je voor dat we een speciale layout willen maken voor alle dashboard pagina's. Deze layout kan er als volgt uitzien:
 
 ```typescript
 import SideBar from "@/components/SideBar";
@@ -113,7 +147,7 @@ export default DashboardLayout;
 
 Merk hierbij op dat eerst de Layout in de `app` directory wordt toegepast en daarna de layout in de `app/dashboard` directory. Dit betekend dat de `NavBar` component altijd getoond wordt, ook op de dashboard pagina's.
 
-Als je naar /dashboard/settings navigeert, dan zal de volgende structuur getoond worden:
+Als je naar /dashboard/invoices navigeert, dan zal de volgende structuur getoond worden:
 
 ![Geneste Layouts](../images/layouts_1.png)
 
