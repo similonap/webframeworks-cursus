@@ -112,7 +112,7 @@ Het alternatief in Next.js is om een server component te maken dat de data ophaa
 import { User } from "@/types";
 
 const fetchUsers = async() => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const response = await fetch("https://jsonplaceholder.typicode.com/users", { cache: "no-store" });
     const data : User[] = await response.json();
     return data;
 }
@@ -137,6 +137,31 @@ export default Home;
 Je ziet hier dat het component `Home` nu een `async` functie is. Dit is mogelijk omdat het een server component is. We kunnen dus gewoon `await` gebruiken om de data op te halen. Dit zorgt ervoor dat de data al opgehaald is voordat de HTML naar de browser gestuurd wordt. De gebruiker ziet dus meteen de volledige lijst zonder dat hij moet wachten.
 
 Opgelet: dit is alleen mogelijk in server components. In client components kan je geen `async` functies gebruiken voor het component zelf.
+
+### Dynamic vs static rendering
+
+In Next.js wordt standaard caching toegepast bij fetch in server components. Dat betekent dat als je meerdere keren dezelfde request doet, de data uit de cache gehaald wordt in plaats van opnieuw opgehaald. Dit maakt je app sneller, maar kan er ook voor zorgen dat je verouderde data toont.
+
+Als je altijd de meest recente data wil, gebruik je:
+
+```
+fetch(url, { cache: "no-store" })
+```
+
+Zo wordt de data telkens opnieuw opgehaald.
+
+Daarnaast werkt Next.js vaak met static rendering. Hierbij wordt de HTML van je pagina al tijdens het builden klaargezet. 
+
+Voordelen:
+
+- je pagina’s laden supersnel, want de server hoeft niets meer te berekenen bij een request
+
+- dit is ideaal voor data die bijna nooit verandert (bv. blogartikels, productlijsten)
+
+Nadelen: 
+- de data wordt niet automatisch vernieuwd. Pas na een nieuwe build krijg je een update te zien.
+
+Als je hier `{ cache: "no-store" }` niet vermeld bij je fetch, dan zal de pagina statisch gerenderd worden.
 
 ### loading.tsx
 
@@ -164,7 +189,7 @@ import { User } from "@/types";
 import UserCard from "@/components/UserCard";
 
 const fetchUsers = async() => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const response = await fetch("https://jsonplaceholder.typicode.com/users", { cache: "no-store" }););
     const data : User[] = await response.json();
     return data;
 }
