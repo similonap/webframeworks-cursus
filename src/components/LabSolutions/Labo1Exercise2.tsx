@@ -47,4 +47,4 @@ const App = () => {
     );
 }
 
-export default () => <Refreshable><App/></Refreshable>;
+export default () => <App/>;

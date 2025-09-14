@@ -67,7 +67,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine`.
 
 #### Opdracht
 
-- Toon alle mogelijke afbeeldingen van de slotmachine in de browser.
+- Toon alle mogelijke afbeeldingen van de slotmachine in de browser. Je kan de afbeeldingen hier onderaan gewoon downloaden vanuit het voorbeeld.
 - Maak 3 variabelen met de namen `slot1`, `slot2` en `slot3` aan. Zorg ervoor dat deze variabele een willekeurige waarde krijgt tussen 0 en 4 (met 4 inbregrepen)
 - Toon de tekst "Je hebt gewonnen" als `slot1`,`slot2` en `slot3` dezelfde waarde heeft. Toon de tekst "Je hebt verloren" als `slot1`,`slot2` en `slot3` een andere waarde hebben.
 - Zorg ervoor dat er 3 afbeeldingen worden getoond afhankelijk van de waarde van slot1, slot2 en slot3.
