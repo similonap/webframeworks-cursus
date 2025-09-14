@@ -74,7 +74,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine`.
     - Als de slot 0 is toon je een kers
     - Als de slot 1 is toon je een citroen
     - ...
-- Probeer de afbeeldingen te tonen met behulp van import, require en een url (public folder)
+- Probeer de afbeeldingen te tonen met behulp van import en een url uit de public folder.
 
 #### Voorbeeldoplossing
 
