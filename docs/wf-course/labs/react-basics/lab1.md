@@ -34,14 +34,14 @@ export default App;
 ```
 
 #### Opdracht
+
 - Maak een variabele aan met de naam `random` en geef deze de waarde van `Math.random()`. Toon deze waarde in de browser. 
 - Maak een variabele aan met de naam `getal1` en geef deze een waarde tussen 0 en 10. Toon deze waarde in de browser.
 - Maak een variabele aan met de naam `getal2` en geef deze een waarde tussen 0 en 10.
 Toon deze waarde in de browser.
-- Maak een functie som aan die 2 parameters heeft en deze optelt. Gebruik deze functie om de som van `getal1` en `getal2` te berekenen en deze te tonen in de browser. 
-- Maak een functie vermenigvuldiging aan die 2 parameters heeft en deze vermenigvuldigt. Gebruik deze functie om de vermenigvuldiging van `getal1` en `getal2` te berekenen en deze te tonen in de browser.
+- Maak een functie `add` die twee getallen optelt en een functie `multiply` die twee getallen vermenigvuldigd. 
 - Vervang de div tags met een fragment tag.
-- Gebruik conditionele rendering om een boodschap te tonen in de browser afhankelijk van de waarde van `random`. Als `random` groter is dan 0.5 dan tonen we de vermenivuldiging van de twee getallen, anders tonen we de som van de twee getallen.
+- Toon de som van de twee getallen als de variable random kleiner is als 0.5 en toon de vermenigvuldiging van de twee getallen als de variabele groter is als 0.5
 
 #### Voorbeeldoplossing
 

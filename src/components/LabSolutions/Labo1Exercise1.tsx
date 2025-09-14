@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
-const som = (a: number, b: number) => {
+const add = (a: number, b: number) => {
     return a + b;
 }
 
-const vermenigvuldiging = (a: number, b: number) => {
+const multiply = (a: number, b: number) => {
     return a * b;
 }
 
@@ -18,7 +18,7 @@ const App = () => {
             <p>Random: {random}</p>
             <p>Getal 1: {getal1}</p>
             <p>Getal 2: {getal2}</p>
-            {random > 0.5 ? <p>{getal1} * {getal2}: {vermenigvuldiging(getal1, getal2)}</p> : <p>{getal1} + {getal2}: {som(getal1, getal2)}</p>}
+            {random > 0.5 ? <p>{getal1} * {getal2}: {multiply(getal1, getal2)}</p> : <p>{getal1} + {getal2}: {add(getal1, getal2)}</p>}
         </>
     );
 }
