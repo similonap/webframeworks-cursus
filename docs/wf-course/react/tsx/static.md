@@ -43,23 +43,6 @@ export default App;
 In dit voorbeeld hebben we alle bestanden in een aparte folder `assets` gezet. Dit mag je zelf kiezen, maar het is wel een goede gewoonte om je assets in een aparte folder te zetten. Hoe je die noemt is niet belangrijk, maar het is wel belangrijk dat je het consequent doet.
 :::
 
-Je kan ook naar de public folder verwijzen met deze methode op de volgende manier:
-
-```typescript codesandbox={"template": "react-assets", "filename": "src/App.tsx"}
-import React from "react";
-import logo from "/llama.png";
-
-const App = () => {
-  return (
-    <img src={logo} alt="llama image" />
-  );
-};
-
-export default App;
-```
-
-Je ziet hier dat we hier geen `./` of `../` gebruiken omdat we naar de public folder verwijzen.
-
 ## Audio bestanden
 
 Je kan ook audio bestanden gebruiken in react. Je kan dit doen door de `<audio>` tag te gebruiken. Je kan de `src` property gebruiken om de audio bestand te kiezen. Je kan ook de `controls` property gebruiken om de audio bestanden te laten afspelen. 
