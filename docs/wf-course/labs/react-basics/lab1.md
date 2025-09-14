@@ -75,6 +75,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine`.
     - Als de slot 1 is toon je een citroen
     - ...
 - Probeer de afbeeldingen te tonen met behulp van import en een url uit de public folder.
+- Er hoeft geen refresh knop te zijn. Elke keer dat je de pagina refresh zie je een nieuwe combinatie.
 
 #### Voorbeeldoplossing
 
