@@ -43,22 +43,22 @@ export default App;
 In dit voorbeeld hebben we alle bestanden in een aparte folder `assets` gezet. Dit mag je zelf kiezen, maar het is wel een goede gewoonte om je assets in een aparte folder te zetten. Hoe je die noemt is niet belangrijk, maar het is wel belangrijk dat je het consequent doet.
 :::
 
-### Als SVG componenten
-
-Je kan ook SVG afbeeldingen importeren als SVG componenten. Dit doe je door de `ReactComponent` suffix toe te voegen aan de import statement. 
+Je kan ook naar de public folder verwijzen met deze methode op de volgende manier:
 
 ```typescript codesandbox={"template": "react-assets", "filename": "src/App.tsx"}
 import React from "react";
-import { ReactComponent as Logo } from "./assets/logo.svg";
+import logo from "/llama.png";
 
 const App = () => {
   return (
-    <Logo />
+    <img src={logo} alt="llama image" />
   );
 };
 
 export default App;
 ```
+
+Je ziet hier dat we hier geen `./` of `../` gebruiken omdat we naar de public folder verwijzen.
 
 ## Audio bestanden
 

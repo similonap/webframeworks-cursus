@@ -215,7 +215,30 @@ export default ProductsDetail;
 
 Merk op dat we hier een speciaal type `PageProps` gebruiken om de props van de pagina te typeren. Dit type wordt meegeleverd door Next.js en zorgt ervoor dat we toegang hebben tot de dynamische parameters in de URL. In dit geval is er één parameter `id` die we kunnen gebruiken om de details van het product op te halen. Omdat het ophalen van parameters in Next.js asynchroon is, maken we de component `async` en gebruiken we `await` om de parameters op te halen.
 
+Als je deze wil uitlezen in een client component, dan kan je gebruik maken van de `useParams` hook die meegeleverd wordt met Next.js. Deze hook geeft een object terug met de dynamische parameters.
+
+```typescript
+"use client";
+
+import { useParams } from "next/navigation";
+
+const ProductDetailClient = () => {
+  const params = useParams();
+  const { id } = params;
+
+  return (
+    <div>
+      <h1>Product Detail for ID: {id}</h1>
+      <p>This is the detail page for product with ID {id}.</p>
+    </div>
+  );
+};
+export default ProductDetailClient;
+```
+
 ### Search parameters
+
+#### Server component
 
 In een server component (zoals een pagina of layout) kan je ook gebruik maken van search parameters (of query parameters). Dit zijn de parameters die in de URL staan na het vraagteken (`?`). Stel dat we een pagina hebben die een lijst van producten toont en we willen deze lijst filteren op basis van een zoekterm. We kunnen dan de zoekterm als een search parameter in de URL meegeven, bijvoorbeeld `/products?q=shirt`.
 
@@ -242,4 +265,44 @@ const ProductsPage = async(props: PageProps<"/products">) => {
 export default ProductsPage;
 ```
 
-Opgelet deze dingen zijn enkel mogelijk in server componenten. Je hebt in client componenten ook een andere manier om aan de search parameters te geraken maar die gaan we hier niet bespreken.
+Opgelet deze dingen zijn enkel mogelijk in server componenten. 
+
+#### Search parameters in client componenten
+
+Om de search parameters te gebruiken in een client component, kan je gebruik maken van de `useSearchParams` hook die meegeleverd wordt met Next.js. Deze hook geeft een `URLSearchParams` object terug dat je kan gebruiken om de search parameters op te halen.
+
+```typescript
+"use client";
+
+import { useSearchParams, useRouter } from "next/navigation";
+
+const SearchBox = () => {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  
+  const q = searchParams.get("q") || "";
+
+  const onChange : React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const newQ = e.target.value;
+    const params = new URLSearchParams(searchParams.toString());
+    if (newQ) {
+      params.set("q", newQ);
+    } else {
+      params.delete("q");
+    }
+    replace(`?${params.toString()}`);
+  };
+
+  return (
+    <input
+      type="text"
+      value={q}
+      onChange={onChange}
+      defaultValue={searchParams.get('query')?.toString()}
+      placeholder="Search..."
+    />
+  );
+};
+
+export default SearchBox;
+```
