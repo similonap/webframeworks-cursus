@@ -10,7 +10,7 @@ const App = () => {
           </div>
           <img
             className={styles.co_logo}
-            src="https://loremflickr.com/40/40"
+            src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/images/social-cat.png"
           />
           <div className={styles.co_name}>
             <a href="#">Purrfectly Pawsome</a>
@@ -26,7 +26,7 @@ const App = () => {
         </div>
 
         <div className={styles.reference}>
-          <img className={styles.reference_thumb} src="https://loremflickr.com/476/250" />
+          <img className={styles.reference_thumb} src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/images/social-hammock.png" />
           <div className={styles.reference_content}>
             <div className={styles.reference_title}>
               The Ultimate Guide to Napping Like a Cat | CatNapTips
