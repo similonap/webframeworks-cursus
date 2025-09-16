@@ -6,6 +6,8 @@ interface CodeBlockWrapperContextProps {
     setMetadata: (metadata: any) => void;
     sandboxId: string;
     setSandboxId: (id: string) => void;
+    expoSnackVisible: boolean;
+    setExpoSnackVisible: (visible: boolean) => void;
 }
 
 const CodeBlockWrapperContext = React.createContext<CodeBlockWrapperContextProps>({} as CodeBlockWrapperContextProps);
@@ -13,9 +15,10 @@ const CodeBlockWrapperContext = React.createContext<CodeBlockWrapperContextProps
 const CodeBlockExtraContext = ({children}: {children: ReactNode}) => {
     const [metadata, setMetadata] = React.useState<any>(null);
     const [sandboxId, setSandboxId] = useState('');
+    const [expoSnackVisible, setExpoSnackVisible] = useState(false);
 
     return (
-        <CodeBlockWrapperContext.Provider value={{metadata,setMetadata, sandboxId, setSandboxId}}>
+        <CodeBlockWrapperContext.Provider value={{expoSnackVisible, setExpoSnackVisible, metadata,setMetadata, sandboxId, setSandboxId}}>
             {children}
         </CodeBlockWrapperContext.Provider>
     );

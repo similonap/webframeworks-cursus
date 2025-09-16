@@ -9,6 +9,7 @@ import type { Props } from '@theme/CodeBlock/Buttons';
 import styles from './styles.module.css';
 import CodeSandboxButton from "./CodeSandboxButton";
 import { useCodeBlockWrapperContext } from "../CodeBlockWrapperContextProvider";
+import ExpoSnackButton from "./ExpoSnackButton";
 
 // Code block buttons are not server-rendered on purpose
 // Adding them to the initial HTML is useless and expensive (due to JSX SVG)
@@ -27,6 +28,9 @@ export default function CodeBlockButtons({ className }: Props): ReactNode {
                     {sandboxId === "" && <CopyButton />}
                     {metadata.hasCodeSandbox && (
                         <CodeSandboxButton/>
+                    )}
+                    {metadata.hasExpoSnack && (
+                        <ExpoSnackButton/>
                     )}
                 </div>
             )}

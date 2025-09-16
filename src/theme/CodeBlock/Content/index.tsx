@@ -51,7 +51,7 @@ function Code(props: ComponentProps<'code'>) {
 }
 
 const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
-  const [snackVisible, setSnackVisible] = useState(false);
+  const {expoSnackVisible, setExpoSnackVisible} = useCodeBlockWrapperContext();
 
   let groups = /expo=({.*})/g.exec(metastring);
 
@@ -67,7 +67,7 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
 
   return (
     <div>
-      {snackVisible && (
+      {expoSnackVisible && (
         <div className={styles.codeBlockContent}>
           <Container
             as="div"
@@ -84,24 +84,11 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
               allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
               sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
             ></iframe>
-          
-            <div className={styles.buttonGroup}>
-              <button
-                type="button"
-                title="CodeSandbox"
-                className={clsx('clean-btn')}
-                onClick={() => setSnackVisible(false)}
-              >
-                <span className={styles.copyButtonIcons} aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" data-testid="CodeIcon" className={styles.copyButtonIcon}><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg>
-                </span>
-              </button>
-            </div>
           </Container>
         </div>
       )}
 
-      <div style={{ display: !snackVisible ? 'inherit' : 'none' }}>
+      <div style={{ display: !expoSnackVisible ? 'inherit' : 'none' }}>
         <Container
           as="div"
           className={clsx(
