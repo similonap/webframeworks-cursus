@@ -1,4 +1,4 @@
-import { useSandbox } from '@site/src/theme/CodeBlock/CodeSandboxButton';
+import { useSandbox } from '@site/src/theme/CodeBlock_2/CodeSandboxButton';
 import React, { useEffect } from 'react';
 
 const CodeSandBox = ({template} : {template: string}) => {
