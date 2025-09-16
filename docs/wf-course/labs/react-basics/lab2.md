@@ -2,6 +2,7 @@ import Labo2Slots from '@site/src/components/LabSolutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
 import Maaltafels2 from '@site/src/components/LabSolutions/Maaltafels2';
+import WhosThatPokemonComponent from '@site/src/components/LabSolutions/WhosThatPokemonComponent';
 import ReactPlayer from 'react-player'
 
 # Labo 2
@@ -103,4 +104,19 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <Maaltafels2/>
+</div>
+
+## 5. Who's that pokemon? (Componenten)
+
+Maak een nieuw project aan en noem deze `alien-alphabet-component`
+
+Maak een nieuw component `PokemonImage` dat de afbeelding van een pokemon toont. Deze component aanvaardt de volgende properties:
+- `id`: het id van de pokemon (1 = Bulbasaur, 2 = Ivysaur, ...)
+- `visible`: boolean die aangeeft of de pokemon zichtbaar is of niet. Indien deze false is, moet de afbeelding zwart gemaakt worden (gebruik hiervoor de CSS filter `brightness(0)`)
+- `size`: de grootte van de afbeelding in pixels (standaard 200)
+
+Toon in de `App` component twee keer de `PokemonImage` component. Eén keer met `visible` op false en één keer met `visible` op true. 
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <WhosThatPokemonComponent/>
 </div>

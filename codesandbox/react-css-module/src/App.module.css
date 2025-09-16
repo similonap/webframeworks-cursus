@@ -9,3 +9,7 @@
 .upper {
     text-transform: uppercase
 }
+
+.highlighted {
+    background-color: yellow;
+}

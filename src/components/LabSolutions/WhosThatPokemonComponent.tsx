@@ -1,7 +1,5 @@
 import React from "react";
 
-import useIsBrowser from "@docusaurus/useIsBrowser";
-
 interface Pokemon {
     id: number;
     name: string;
@@ -161,27 +159,26 @@ const pokemons : Pokemon[] = [
     {id: 151, name: "mew"}
 ];
 
-const App = () => {
-    const isBrowser = useIsBrowser();
-    const random = Math.floor(Math.random() * 150);
-    const pokemon: Pokemon = pokemons[random];
-    if (!isBrowser) {
-        return <div>Loading</div>;
-    }
-    const randomPokemon = () => {
-        const random = Math.floor(Math.random() * 150);
-        const pokemon: Pokemon = pokemons[random];
-        return pokemon;
-    }
+interface PokemonImageProps {
+    id: number;
+    visible: boolean;
+    size?: number;
+}
 
+const PokemonImage = ({id, visible, size = 200}: PokemonImageProps) => {
+    const filterConditionalStyle = visible ? {} : {filter: "brightness(0)"};
+    return (
+        <img style={{width: size, height: size, ...filterConditionalStyle}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} alt="Pokemon" className="pokemon-image obscured" id="pokemonImage"/>
+    );
+}
+
+const App = () => {
+    const random = Math.floor(Math.random() * 150);
     return (
         <div>
-            <img style={{filter: "brightness(0)"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt="Pokemon" className="pokemon-image obscured" id="pokemonImage"/>
-            <br/>
-            <button>{randomPokemon().name}</button>
-            <button>{randomPokemon().name}</button>
-            <button>{randomPokemon().name}</button>
-            <button>{pokemon.name}</button>
+            <PokemonImage visible={false} id={random} size={200}/>
+            <PokemonImage visible={true} id={random} size={200} />
+            
         </div>
     )
 }

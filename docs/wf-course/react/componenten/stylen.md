@@ -138,81 +138,100 @@ export default App;
 //hide-end
 ```
 
-## Styled components
+## Conditionele styling
 
-Niet alle dingen die je kan gebruiken in CSS kan je in CSS-in-JS gebruiken. Dingen zoals animaties zijn hierdoor niet eenvoudig te implementeren. Daarom wordt er vaak voor CSS-in-JS gebruik gemaakt van de library styled-components.
+Soms wil je een bepaalde stijl toepassen op basis van een bepaalde conditie. Bijvoorbeeld afhankelijk van een bepaalde property. Als we bijvoorbeeld een property toevoegen die aangeeft of we de tekst in hoofdletters willen tonen of niet, kunnen we dit als volgt doen:
 
-Je kan deze eenvoudigweg installeren door volgende commando's uit te voeren:
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+interface HeaderProps {
+  uppercase?: boolean
+}
 
-```
-npm install styled-components
-npm install @types/styled-components
-```
-
-Deze functionaliteit kan je dan importeren op de volgende manier:
-
-```
-import styled from "styled-components"
-```
-
-Zo kunnen we onze header component ook als volgt stylen:
-
-```typescript codesandbox={"template": "react-styled-components", "filename": "src/App.tsx"}
-import styled from "styled-components"
-
-// merk op: backticks
-const TitleHeader = styled.div`
-  font-size: 22pt;
-  border-bottom: 2px solid black;
-  text-transform: uppercase;
-`;
-
-const Header = () => {
+const Header = ({uppercase = true}: HeaderProps) => {
   return (
-    <TitleHeader>Welcome to the H2O Game shop</TitleHeader>
+    <h1 style={{fontSize: '22pt', borderBottom: '2px solid black', textTransform: uppercase ? 'uppercase' : ''}}>Welcome to the H2O Game shop</h1>
   );
 }
 
-export default Header;
-```
-
-Je merkt op dat we hier wel de standaard CSS properties kunnen gebruiken. Door middel van styled-components kunnen we zelfs meer geavanceerde functionaliteit gebruiken, zoals animaties:
-
-```typescript codesandbox={"template": "react-styled-components", "filename": "src/App.tsx"}
-import styled, { keyframes } from 'styled-components'
-
-const fadeIn = keyframes`
-  0% {
-    transform: translate(-300px, 0);
-    opacity: 0;
-  }
-  
-  20%, 80% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-`;
-
-const TitleHeader = styled.div`
-  font-size: 22pt;
-  text-transform: uppercase;
-  animation: 1s ${fadeIn} ease-out;
-`;
-
-const Border = styled.div`
-  border-bottom: 2px solid black;
-`;
-
-const Header = () => {
+const App = () => {
   return (
-    <Border>
-        <TitleHeader>Welcome to the H2O Game shop</TitleHeader>
-    </Border>
+    <>
+        <Header/>
+        <Header uppercase={false}/>
+    </>
   );
 }
 
-export default Header;
+//hide-start
+export default App;
+//hide-end
 ```
+
+Je kan ook aan de hand van een bepaalde conditie een bepaalde style toevoegen aan een bestaand style object. Dit kan je doen door gebruik te maken van de spread operator.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import { CSSProperties } from 'react';
+
+interface HeaderProps {
+    uppercase?: boolean
+    highlighted?: boolean
+}
+
+const Header = ({uppercase = true, highlighted = false}: HeaderProps) => {
+    const highlightedStyle : CSSProperties = highlighted ? {backgroundColor: 'yellow'} : {};
+    const uppercaseStyle : CSSProperties = uppercase ? {textTransform: 'uppercase'} : {};
+    return (
+        <h1 style={{fontSize: '22pt', borderBottom: '2px solid black', ...uppercaseStyle, ...highlightedStyle}}>Welcome to the H2O Game shop</h1>
+    );
+}
+
+const App = () => {
+    return (
+        <>
+            <Header/>
+            <Header uppercase={false}/>
+            <Header highlighted={false}/>
+            <Header uppercase={false} highlighted={true}/>
+        </>
+    );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Dit kan je ook doen met CSS modules. Je kan dan conditioneel bepaalde classes toevoegen aan de className property.
+
+```typescript codesandbox={"template": "react-css-module", "filename": "src/App.tsx"}
+import styles from './App.module.css';
+
+interface HeaderProps {
+    uppercase?: boolean
+    highlighted?: boolean
+}
+
+const Header = ({uppercase = true, highlighted = false}: HeaderProps) => {
+    return (
+        <h1 className={`${styles.header} ${uppercase ? styles.upper : ''} ${highlighted ? styles.highlighted : ''}`}>Welcome to the H2O Game shop</h1>
+    );
+}
+
+const App = () => {
+    return (
+        <>
+            <Header/>
+            <Header uppercase={false}/>
+            <Header highlighted={false}/>
+            <Header uppercase={false} highlighted={true}/>
+        </>
+    );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Dit werkt ook gelijkaardig bij het gebruik van gewone CSS bestanden zonder modules.
 
 ## UI Frameworks
 Er zijn een tal van frameworks die het gebruik van zelf CSS schrijven minimaliseren. Je maakt daar gebruik van herbruikbare componenten die allemaal al voor jou geschreven zijn. De meest bekende zijn:
