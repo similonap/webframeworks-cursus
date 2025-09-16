@@ -5,4 +5,4 @@ Je dient een basis van TypeScript te hebben om deze cursus te kunnen volgen.
 - [React.js](wf-course)
 - [React Native](react-native-course)
 
-<img src="img/assimilatelogo.png"/>
+<img src="img/catwalker.png"/>
