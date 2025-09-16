@@ -103,7 +103,8 @@ const config = {
         }),
     plugins: [
         path.resolve(__dirname, 'plugins', 'codesandbox'),
-        path.resolve(__dirname, 'plugins', 'expo')
+        path.resolve(__dirname, 'plugins', 'expo'),
+        require.resolve('docusaurus-lunr-search')
     ],
 };
 

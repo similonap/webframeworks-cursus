@@ -17,9 +17,11 @@
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
+    "@docusaurus/theme-mermaid": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^1.2.1",
     "codesandbox": "^2.2.3",
+    "docusaurus-lunr-search": "^3.6.0",
     "glob": "^8.0.3",
     "html-entities": "^2.3.3",
     "istextorbinary": "^6.0.0",
@@ -28,21 +30,28 @@
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^5.3.4",
     "react-player": "^2.11.0",
-    "react-router-dom": "^6.4.3",
-    "@docusaurus/theme-mermaid": "^3.8.1"
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/types": "^3.8.1",
     "@docusaurus/tsconfig": "^3.8.1",
+    "@docusaurus/types": "^3.8.1",
     "typescript": "^5.2.0"
   },
   "overrides": {
     "@docusaurus/*": "^3.8.1"
   },
   "browserslist": {
-    "production": [">0.5%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "engines": {
     "node": ">=18.17"
