@@ -10,7 +10,6 @@ import ReactPlayer from 'react-player';
 ## 1. Interval
 
 Maak een nieuwe React applicatie aan en noem deze `labo5-interval`.
-<Timer/>
             
 Maak de volgende componenten aan:
 
