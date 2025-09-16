@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebframeworks_cursus=self.webpackChunkwebframeworks_cursus||[]).push([[4504],{34504:(e,s,r)=>{r.d(s,{createTreemapServices:()=>u.d});var u=r(43758);r(58198)}}]);

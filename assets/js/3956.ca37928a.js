@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebframeworks_cursus=self.webpackChunkwebframeworks_cursus||[]).push([[3956],{73956:(e,s,r)=>{r.d(s,{createRadarServices:()=>a.f});var a=r(2852);r(58198)}}]);
