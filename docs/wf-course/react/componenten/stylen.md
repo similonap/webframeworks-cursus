@@ -233,10 +233,43 @@ export default App;
 
 Dit werkt ook gelijkaardig bij het gebruik van gewone CSS bestanden zonder modules.
 
-## UI Frameworks
-Er zijn een tal van frameworks die het gebruik van zelf CSS schrijven minimaliseren. Je maakt daar gebruik van herbruikbare componenten die allemaal al voor jou geschreven zijn. De meest bekende zijn:
- - https://material-ui.com/
- - https://react-bootstrap.github.io/
- - https://tailwindcss.com/
- 
-Deze vereenvoudigen het ontwikkelproces drastisch en zorgen ervoor dat er een bepaald design systeem wordt gebruikt. Dit zorgt ervoor dat het ontwikkelen van webapplicaties drastisch kan versneld worden. 
+## Tailwind CSS
+
+Tailwind CSS is een utility-first CSS framework dat je toelaat om snel en efficiënt stijlen toe te passen op je HTML-elementen door middel van vooraf gedefinieerde klassen. In plaats van aangepaste CSS te schrijven, gebruik je Tailwind's klassen om je elementen te stylen. De laatste jaren is Tailwind CSS enorm populair geworden in de react community vanwege de flexibiliteit en snelheid die het biedt bij het ontwikkelen van gebruikersinterfaces.
+
+De instructies om Tailwind CSS te installeren in een React project kan je vinden op de officiële Tailwind CSS website: https://tailwindcss.com/docs/installation/using-vite
+
+### Voorbeeld
+
+Hier is een eenvoudig voorbeeld van hoe je Tailwind CSS kunt gebruiken in een React component:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+const App = () => {
+    return (
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+                <h1 className="text-2xl font-bold mb-4 text-center">Welcome to the H2O Game shop</h1>
+                <p className="text-gray-700 mb-6 text-center">Find the best games here!</p>
+                <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Shop Now</button>
+            </div>
+        </div>
+    );
+}
+//hide-start
+export default App;
+//hide-end  
+```
+
+### shadcn UI
+
+shadcn UI is een verzameling van herbruikbare, toegankelijke en aanpasbare componenten gebouwd met Tailwind CSS. Het biedt een snelle manier om mooie en functionele gebruikersinterfaces te creëren zonder dat je alles van nul hoeft op te bouwen. De componenten zijn ontworpen om goed samen te werken met Tailwind CSS, waardoor je gemakkelijk je eigen stijlen kunt toevoegen of aanpassen.
+
+De installatie instructies voor shadcn UI (met vite) kan je vinden op de officiële shadcn UI website: https://ui.shadcn.com/docs/installation/vite
+
+Als je snel aan de slag wilt met deze UI componenten kan ook gebruik maken van een starter template:
+
+```
+npx degit similonap/vite-template-react-shadcn react-vite-shadcn
+```
+
+Dit commando maakt een nieuwe map `react-vite-shadcn` aan met daarin een basis Vite + React project waarin shadcn UI (en tailwindcss) reeds is geïnstalleerd. Je kan dan meteen starten met het bouwen van je applicatie.

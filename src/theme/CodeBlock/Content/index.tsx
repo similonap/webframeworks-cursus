@@ -1,4 +1,4 @@
-import React, { useState, type ComponentProps, type ReactNode } from 'react';
+import React, { JSX, useState, type ComponentProps, type ReactNode } from 'react';
 import clsx from 'clsx';
 import { useCodeBlockContext } from '@docusaurus/theme-common/internal';
 import { usePrismTheme } from '@docusaurus/theme-common';
@@ -12,6 +12,35 @@ import Container from "../Container";
 import CopyButton from "../Buttons/CopyButton";
 import WordWrapButton from "../Buttons/WordWrapButton";
 import { useCodeBlockWrapperContext } from "../CodeBlockWrapperContextProvider";
+
+interface CodeBlockComponentProps {
+  filename: string;
+  showLineNumbers: boolean;
+  lineClassNames: string[][];
+  blockClassName: string;
+  language: string;
+  prismTheme: any;
+  wordWrap: any;
+  title?: string;
+  code: string;
+  metastring: string;
+}
+
+interface ExpoSnackProps extends CodeBlockComponentProps {
+  partialCode: string;
+  allCode: string;
+}
+
+interface CodeSandboxProps extends CodeBlockComponentProps {}
+
+interface ExpoSnackConfig {
+  dependencies?: string;
+}
+
+interface ExpoSnackFile {
+  type: string;
+  contents: string;
+}
 
 // TODO Docusaurus v4: remove useless forwardRef
 const Pre = React.forwardRef<HTMLPreElement, ComponentProps<'pre'>>(
@@ -50,14 +79,22 @@ function Code(props: ComponentProps<'code'>) {
     );
 }
 
-const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }) => {
+const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, partialCode, title, code, allCode, metastring }: ExpoSnackProps): JSX.Element => {
   const {expoSnackVisible, setExpoSnackVisible} = useCodeBlockWrapperContext();
 
-  let groups = /expo=({.*})/g.exec(metastring);
+  let parameters: ExpoSnackConfig;
+  try {
+    const groups = /expo=({.*})/g.exec(metastring);
+    if (!groups || !groups[1]) {
+      throw new Error('Invalid expo metastring format');
+    }
+    parameters = JSON.parse(groups[1]) as ExpoSnackConfig;
+  } catch (error) {
+    console.error('Error parsing expo metastring:', error);
+    parameters = {};
+  }
 
-  let parameters = JSON.parse(groups[1]);
-
-  const files = {
+  const files: Record<string, ExpoSnackFile> = {
     // Inlined code
     'App.tsx': {
       type: 'CODE',
@@ -144,7 +181,7 @@ const ExpoSnack = ({ filename, showLineNumbers, lineClassNames, blockClassName, 
   );
 }
 
-const CodeSandbox = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, title, code, metastring }) => {
+const CodeSandbox = ({ filename, showLineNumbers, lineClassNames, blockClassName, language, prismTheme, wordWrap, title, code, metastring }: CodeSandboxProps): JSX.Element => {
     const { setSandboxId, sandboxId } = useCodeBlockWrapperContext();
     const codeBlockContext = useCodeBlockContext();
     const { allCode, partialCode } = codeBlockContext.metadata;
@@ -275,8 +312,6 @@ export default function CodeBlockContent({
             showLineNumbers={lineNumbersStart !== undefined}
             lineClassNames={lineClassNames}
         />
-    } else {
-
     }
 
     return (<Highlight theme={prismTheme} code={code} language={language}>
