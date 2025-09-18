@@ -55,8 +55,8 @@ Let er op dat componenten ook kunnen bestaan uit andere componenten.
 
 ## 3. Penguins
 
-Maak een nieuw project aan en noem deze `labo2-penguins`. 
-- Download het bestand <a href="/assets/penguins.json" download>penguins.json</a> in je `src` folder.
+Maak een nieuw project aan en noem deze `labo2-penguins`
+[Penguins.json](https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/penguins.json) in je `src` folder.
 - importeer dit bestand in je project aan de hand van `import penguins from './penguins.json';`
 - Maak een component `PenguinCard` dat een penguin toont. Dit component aanvaard een property `penguin` met het type van een penguin uit het json bestand.
 - Filter de pinguïns zodat je enkel de vrouwelijke pinguïns toont (property `gender` is "Female").
