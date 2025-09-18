@@ -3,6 +3,8 @@ import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
 import Maaltafels2 from '@site/src/components/LabSolutions/Maaltafels2';
 import WhosThatPokemonComponent from '@site/src/components/LabSolutions/WhosThatPokemonComponent';
+import RegenboogProps from '@site/src/components/LabSolutions/RegenboogProps';
+import PenguinList from '@site/src/components/LabSolutions/PenguinList';
 import ReactPlayer from 'react-player'
 
 # Labo 2
@@ -51,7 +53,20 @@ Let er op dat componenten ook kunnen bestaan uit andere componenten.
 
 <ReactPlayer controls url='https://youtu.be/jAKwAgCFfws'/>
 
-## 3. Slotmachine
+## 3. Penguins
+
+Maak een nieuw project aan en noem deze `labo2-penguins`. 
+- Download het bestand <a href="/assets/penguins.json" download>penguins.json</a> in je `src` folder.
+- importeer dit bestand in je project aan de hand van `import penguins from './penguins.json';`
+- Maak een component `PenguinCard` dat een penguin toont. Dit component aanvaard een property `penguin` met het type van een penguin uit het json bestand.
+- Filter de pinguïns zodat je enkel de vrouwelijke pinguïns toont (property `gender` is "Female").
+- Toon alle vrouwelijke pinguïns in een grid met 3 kolommen. Gebruik hiervoor css modules.
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <PenguinList/  >
+</div>
+
+## 4. Slotmachine
 
 Gebruik de slotmachine code die je in labo 1 hebt geschreven en zorg voor de volgende dingen:
 
@@ -80,7 +95,7 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 <ReactPlayer controls url='https://youtu.be/fRYEQ-NR0aU'/>
 
-## 4. Maaltafels component
+## 5. Maaltafels component
 
 Maak een kopie van de maaltafels oefening van labo 1 en zorg ervoor dat je de volgende componenten hebt:
 
@@ -106,9 +121,9 @@ De applicatie moet ongeveer er als volgt uitzien:
     <Maaltafels2/>
 </div>
 
-## 5. Who's that pokemon? (Componenten)
+## 6. Who's that pokemon?
 
-Maak een nieuw project aan en noem deze `alien-alphabet-component`
+Kopieer het `whos-that-pokemon` project van labo 1 naar een nieuw project.
 
 Maak een nieuw component `PokemonImage` dat de afbeelding van een pokemon toont. Deze component aanvaardt de volgende properties:
 - `id`: het id van de pokemon (1 = Bulbasaur, 2 = Ivysaur, ...)
@@ -119,4 +134,23 @@ Toon in de `App` component twee keer de `PokemonImage` component. Eén keer met 
 
 <div style={{padding: 10, border: "1px dotted black"}}>
     <WhosThatPokemonComponent/>
+</div>
+
+## 7. Rainbow Props
+
+Maak een kopie van de regenboog oefening van labo 1 en zorg ervoor dat je de volgende componenten hebt:
+- `Rainbow`: Heeft een property `amount` die het aantal kleuren aangeeft. Heeft ook een property `direction` die de richting van de kleuren aangeeft. Deze kan ofwel "horizontal" ofwel "vertical" zijn. Je kan de richting van de regenboog bepalen door de `flexDirection` van de container aan te passen.
+- `RainbowLine`: Heeft een property `color` die de kleur van de lijn aangeeft. Heeft ook een property `direction` die de richting van de lijn aangeeft. Deze kan ofwel "horizontal" ofwel "vertical" zijn. De hoogte van de lijn is 4px indien de richting "horizontal" is, anders is de hoogte 100px.
+
+Je kan dus bijvoorbeeld de volgende code gebruiken om een horizontale en een verticale regenboog te tonen:
+
+```
+<Rainbow amount={10} direction="horizontal"/>
+<Rainbow amount={20} direction="vertical"/>
+```
+
+Dit zal de volgende output geven:
+
+<div style={{padding: 10, border: "1px dotted black"}}>
+    <RegenboogProps/>
 </div>
