@@ -9,6 +9,7 @@ import LaboStateRandomCat from '@site/src/components/LabSolutions/LaboStateRando
 import Joske from '@site/src/components/LabSolutions/Joske';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Maaltafels3 from '@site/src/components/LabSolutions/Maaltafels3';
+import PenguinListState from '@site/src/components/LabSolutions/PenguinListState';
 
 import ReactPlayer from 'react-player';
 
@@ -71,7 +72,18 @@ Maak een kopie van de maaltafels code die je in een van de vorige labo's hebt ge
 
 <Maaltafels3/>
 
-## 5. Omhoog/Omlaag
+## 5. Penguins met state
+
+Maak een kopie van de `penguins` oefening van labo 2 en zorg ervoor dat je de volgende functionaliteiten toevoegt:
+- Als je op een penguin klikt, wordt deze geselecteerd. De achtergrondkleur van de penguin verandert.
+- Als je nog eens op dezelfde penguin klikt, wordt deze terug gedeselecteerd.
+- Je kan meerdere penguins selecteren.
+
+Tip: Je hebt een state nodig in de `PenguinCard` component om bij te houden of de penguin geselecteerd is of niet.
+
+<PenguinListState/>
+
+## 6. Omhoog/Omlaag
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-omhooglaag`.
 
@@ -92,7 +104,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/OMa72fFFRUI'/>
 
-## 6. Loading indicator
+## 7. Loading indicator
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-loading`.
 
@@ -117,7 +129,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 
 <ReactPlayer controls url='https://youtu.be/SSZaOVdY3ls'/>
 
-## 7. Kleurkiezer
+## 8. Kleurkiezer
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-kleurkiezer`.
 
@@ -140,7 +152,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/pBx9IClu9eA'/>
 
-## 8. Contactformulier
+## 9. Contactformulier
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-contactformulier`.
 
@@ -169,7 +181,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <ReactPlayer controls url='https://youtu.be/og0BReQkfz8'/>
 
-## 9. Random Cat
+## 10. Random Cat
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-random-cat`.
 
@@ -186,7 +198,7 @@ Maak een component `RandomCat` aan met de volgende functionaliteit:
 
 <ReactPlayer controls url='https://youtu.be/nh5lVRHBj0s'/>
 
-## 10. Joske het vierkant
+## 11. Joske het vierkant
 
 Maak een nieuwe React applicatie aan en noem deze `labo4-joske`.
 
@@ -203,4 +215,3 @@ Je begint met Joske... Het statische vierkant:
 Josje is nu een blij cirkeltje!
 
 <Joske/>
-

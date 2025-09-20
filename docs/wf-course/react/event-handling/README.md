@@ -243,3 +243,105 @@ export default App;
 
 Deze handler heeft het type ```React.ChangeEventHandler<HTMLSelectElement>```
 
+## Textarea
+
+Eigenlijk is een textarea gewoon een input element met een ander type. Het werkt dus op dezelfde manier.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+const App = () => {
+    const handleChange : React.ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+      console.log(event.target.value);
+    }
+    return (
+      <>
+        <label htmlFor="story">Story:</label>
+        <textarea id="story" name="story"
+          rows={5} cols={33}
+          onChange={handleChange}>
+        </textarea>
+      </>
+    )
+}
+export default App;
+```
+
+## Form
+
+Je kan een formulier ook afhandelen met een onSubmit event. Dit event wordt getriggerd als je op enter drukt in een input veld of als je op een button met type submit klikt. Je kan dan aan de hand van het FormData object de verschillende velden van het formulier uitlezen.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import { FormEvent } from "react";
+//hide-start
+const styles = {
+    formStyle: {
+        maxWidth: "300px",
+        margin: "1rem auto",
+        padding: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.5rem",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+    },
+    inputStyle: {
+        padding: "0.5rem",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+    },
+    buttonStyle: {
+        padding: "0.5rem",
+        backgroundColor: "#007BFF",
+        color: "white",
+        border: "none",
+        borderRadius: "4px",
+        cursor: "pointer",
+    }
+}
+//hide-end
+
+const MyForm = () => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const name = formData.get("name");
+    const year = formData.get("year");
+
+    console.log("Name:", name);
+    console.log("Year:", year);
+  };
+  return (
+    <form onSubmit={handleSubmit} style={styles.formStyle}>
+      <label htmlFor="name">Name:</label>
+      <input type="text" id="name" name="name" style={styles.inputStyle} />
+
+      <label htmlFor="year">Year:</label>
+      <input
+        type="number"
+        id="year"
+        name="year"
+        min="1900"
+        max="2021"
+        style={styles.inputStyle}
+      />
+
+      <button type="submit" style={styles.buttonStyle}>
+        Submit
+      </button>
+    </form>
+  );
+};
+
+export default MyForm;
+```
+
+Even een overzicht van wat hierboven allemaal gebeurt:
+- We maken een functie `handleSubmit` die een event van type `FormEvent<HTMLFormElement>` aanneemt.
+- We roepen de referentie van het formulier op via `event.currentTarget`.
+- We roepen `event.preventDefault()` aan om te voorkomen dat de pagina herlaadt bij het versturen van het formulier.
+- We halen het formulier element op via `event.currentTarget
+- We maken een nieuw `FormData` object aan met het formulier element.
+- We halen de waarden van de velden op met `formData.get("veldnaam")
+- We loggen de waarden naar de console.

@@ -51,3 +51,7 @@ p {
 p strong {
   color: #222;
 }
+
+.selected {
+    background-color: #d5e9ff;
+}
