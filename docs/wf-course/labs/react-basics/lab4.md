@@ -10,6 +10,7 @@ import Joske from '@site/src/components/LabSolutions/Joske';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
 import Maaltafels3 from '@site/src/components/LabSolutions/Maaltafels3';
 import PenguinListState from '@site/src/components/LabSolutions/PenguinListState';
+import SimpleQuiz from '@site/src/components/LabSolutions/SimpleQuiz';
 
 import ReactPlayer from 'react-player';
 
@@ -215,3 +216,39 @@ Je begint met Joske... Het statische vierkant:
 Josje is nu een blij cirkeltje!
 
 <Joske/>
+
+## 12. Simple Quiz
+
+Maak een nieuwe React-applicatie aan en noem deze `labo4-simple-quiz`.
+
+### Opdracht
+- Maak een component **`Question`** met props:
+  - `question: string`  
+  - `options: string[]`  
+  - `correctAnswer: string`  
+  - `finished?: boolean`  
+- In `Question`:
+  - Hou lokaal de gekozen optie bij met `useState`.
+  - Toon de opties als **radio buttons** (zelfde `name`, unieke `id` + `label`).
+  - Als `finished = true`:  
+    - disable de radio’s  
+    - markeer de juiste optie met een CSS-klasse `.correct`.  
+
+- Maak een component **`SimpleQuiz`**:
+  - State `finished` (`false` bij start).
+  - Toon minstens **4** vragen via `Question`.
+  - Voorzie een **Finish**-knop die `finished` op `true` zet.
+
+### Data
+Gebruik o.a. deze vragen:
+1. What is the answer to life, the universe and everything? (42)  
+2. Which planet is known as the Red Planet? (Mars)  
+3. Which programming language is known for "write once, run anywhere"? (Java)  
+4. Which animal is the largest mammal on Earth? (Blue Whale)  
+
+### CSS
+- Maak een `SimpleQuiz.module.css`.  
+- Voorzie een klasse `.correct` die het juiste antwoord markeert.  
+
+<SimpleQuiz/>
+
