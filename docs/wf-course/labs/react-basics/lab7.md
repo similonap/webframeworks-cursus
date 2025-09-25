@@ -10,6 +10,9 @@ import ReactPlayer from 'react-player';
 
 ## 1. Counter List
 
+> 📂 **Naam project:** `lab-communication-counter-list`  
+> 🔗 **Basis project:** n/a
+
 We beginnen in deze oefening van de volgende code. Kopieer deze in een nieuw project en noem deze `lab-communication-counter-list`.
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
@@ -65,6 +68,9 @@ Zorg er nu voor dat de `CounterList` component de `Counter` component gebruikt. 
 <CounterListCallback/>
 
 ## 2. Todo App
+
+> 📂 **Naam project:** `lab-communication-todo-app`  
+> 🔗 **Basis project:** n/a
 
 We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen. Kopieer deze code in een nieuw project en noem deze `lab-communication-todo-app`.
 
@@ -131,6 +137,9 @@ Herstructureer deze applicatie als volgt:
 
 ## 3. Quizapp
 
+> 📂 **Naam project:** `lab-communication-quiz-app`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-communication-quiz-app`.
 
 - Maak een nieuw component `QuizApp` aan.
@@ -152,6 +161,9 @@ Maak een nieuwe React applicatie aan en noem deze `lab-communication-quiz-app`.
 
 ## 4. Happy Workers
 
+> 📂 **Naam project:** `lab-communication-happy-workers`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze lab-communication-happy-workers.
 
 Plaats in de `App` component een progressbar (van 0 tot 100) en maak een component genaamd `Square`. Het `Square` component aanvaard initieel gewoon een color en een size prop. Later gaan hier nog props bij komen. Zorg ervoor dat je een aantal `Square` componenten toevoegd aan de `App` component met verschillende kleuren. 
@@ -172,4 +184,3 @@ Uitbreiding:
 - Na 5 seconden moet de `productivity` state terug op 1 gezet worden. Dit zorgt ervoor dat de `Square` component terug een 😐 toont. Ook de `clicked` state wordt terug op 0 gezet.
 
 <HappyWorkers useProductivity={true}/>
-

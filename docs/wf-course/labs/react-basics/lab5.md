@@ -17,6 +17,9 @@ import ReactPlayer from 'react-player';
 
 ## 1. Shopping List
 
+> 📂 **Naam project:** `lab-state-shopping-list`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-shopping-list`.
 
 Maak een component `ShoppingList` aan met de volgende functionaliteit:
@@ -37,6 +40,9 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 <ReactPlayer controls url='https://youtu.be/48YqueBEB3Q'/>
 
 ## 2. Kleuren Selectie
+
+> 📂 **Naam project:** `lab-state-color-select`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-color-select`.
 
@@ -62,6 +68,9 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 
 ## 3. Filtering en sorting
 
+> 📂 **Naam project:** `lab-state-filtering`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-filtering`.
 
 Maak een component `Filtering` aan met de volgende functionaliteit:
@@ -80,6 +89,9 @@ Maak een component `Filtering` aan met de volgende functionaliteit:
 <ReactPlayer controls url='https://youtu.be/wvtt_BGSNrc'/>
 
 ## 4. Slots
+
+> 📂 **Naam project:** `lab-state-slot-machine`  
+> 🔗 **Basis project:** [`lab-components-slot-machine`](lab2.md#4-slotmachine)
 
 Je breidt nu de slots machine uit die je gemaakt hebt in labo 2 uit met een aantal nieuwe functionaliteiten.
 
@@ -100,6 +112,9 @@ Het spel ziet er nu als volgt uit:
 <ReactPlayer controls url='https://youtu.be/u1gLw9UwTh0'/>
 
 ## 5. Counter list
+
+> 📂 **Naam project:** `lab-state-counter-list`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-counter-list`.
 
@@ -123,6 +138,9 @@ Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit lat
 
 ## 6. Tic Tac Toe
 
+> 📂 **Naam project:** `lab-state-tic-tac-toe`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-tic-tac-toe`.
 
 Maak een component `TicTacToe` aan met de volgende functionaliteit:
@@ -139,6 +157,9 @@ Het spel ziet er nu als volgt uit:
 
 ## 7. Alien Alphabet
 
+> 📂 **Naam project:** `lab-state-alien-alphabet`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-alien-alphabet`.
 
 - Maak een array aan die de inhoud van de volgende json bevat. Je mag deze gewoon copy pasten: https://raw.githubusercontent.com/slimmii/alien-alphabet/master/alien.json . Zorg wel dat je de interface juist hebt.
@@ -153,6 +174,9 @@ Maak een nieuwe React applicatie aan en noem deze `lab-state-alien-alphabet`.
 </div>
 
 ## 8. Game of Life (1)
+
+> 📂 **Naam project:** `lab-state-game-of-life`  
+> 🔗 **Basis project:** n/a
 
 In deze opdracht wordt van je verwacht om een React-component te implementeren voor een eenvoudig spelbord van het Game of Life spel. We gaan dit spelbord later gebruiken om een volledige implementatie van het spel te maken.
 

@@ -9,6 +9,9 @@ import ReactPlayer from 'react-player';
 
 ## 1. Interval
 
+> 📂 **Naam project:** `lab-hooks-interval`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-hooks-interval`.
             
 Maak de volgende componenten aan:
@@ -28,6 +31,9 @@ Maak de volgende componenten aan:
 
 ## 2. Pokemon
 
+> 📂 **Naam project:** `lab-hooks-pokemon-pokedex`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-hooks-pokemon-pokedex`.
 
 - Maak een component `Pokedex` aan met als property `limit` die het aantal pokemon aangeeft dat getoond moet worden. Initieel mag je die property op 151 zetten.
@@ -41,6 +47,9 @@ Maak een nieuwe React applicatie aan en noem deze `lab-hooks-pokemon-pokedex`.
 </div>
 
 ## 3. LocalStorage
+
+> 📂 **Naam project:** `lab-hooks-local-storage`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-hooks-local-storage`.
 

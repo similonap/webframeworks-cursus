@@ -9,6 +9,9 @@ import ReactPlayer from 'react-player';
 
 ## 1. Wake up Neo
 
+> 📂 **Naam project:** `lab-context-wake-up-neo`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-context-wake-up-neo`.
 
 Begin van de volgende code:
@@ -47,6 +50,9 @@ Pas deze helemaal aan zodat je gebruik maakt van Context.
 
 ## 2. Basic context
 
+> 📂 **Naam project:** `lab-context-settings`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-context-settings`.
 
 1. Creëer een context genaamd `SettingsContext`. De context moet twee waarden bijhouden: `color` en `setColor`. `color` is een string die een kleur waarde heeft en `setColor` is een functie die `color` kan aanpassen. De startwaarde van `color` moet 'red' zijn.
@@ -69,6 +75,9 @@ Maak een nieuwe React applicatie aan en noem deze `lab-context-settings`.
 
 ## 3. Todo App
 
+> 📂 **Naam project:** `lab-context-todo-app`  
+> 🔗 **Basis project:** [`lab-communication-todo-app`](lab7.md#2-todo-app)
+
 Maak een kopie van de Todo app van het vorige labo (lab-communication-todo-app) naar een nieuw project en noem deze `lab-context-todo-app`. En zorg voor de volgende uitbreidingen.
 
 Uitbreidingen:
@@ -77,6 +86,9 @@ Uitbreidingen:
 
 ## 4. Quiz App
 
+> 📂 **Naam project:** `lab-context-quiz-app`  
+> 🔗 **Basis project:** [`lab-communication-quiz-app`](lab7.md#3-quizapp)
+
 Maak een kopie van de Quiz app van het vorige labo (lab-communication-quiz-app) naar een nieuw project. Noem deze `lab-context-quiz-app`. We gaan hier nog wat uitbreidingen op maken.
   
 Uitbreidingen:
@@ -84,6 +96,9 @@ Uitbreidingen:
 - Voorzie een button bovenaan de pagina om te togglen tussen dark en light mode. Zorg ervoor dat alle componenten in de applicatie aanpassen aan de gekozen mode. 
 
 ## 5. Pokemon app
+
+> 📂 **Naam project:** n/a  
+> 🔗 **Basis project:** n/a
 
 <Labo7Pokemon/>
 
@@ -94,11 +109,17 @@ Uitbreidingen:
 
 ## 6. Portfolio app
 
+> 📂 **Naam project:** `lab-router-portfolio`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-router-portfolio`.
 
 Kies 3 verschillende oefeningen die je hebt gemaakt tijdens de voorgaande labos. Zorg ervoor dat deze oefeningen beschikbaar zijn onder de volgende routes: /oefening1, /oefening2 en /oefening3. Zorg voor een navigatiebalk die je toelaat om tussen de verschillende oefeningen te navigeren.
 
 ## 7. Quiz app met React Router
+
+> 📂 **Naam project:** n/a  
+> 🔗 **Basis project:** [`lab-context-quiz-app`](lab8.md#4-quiz-app)
 
 We gaan verder met de Quiz app uit de vorige oefening. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken. 
 

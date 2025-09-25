@@ -17,6 +17,9 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Simpele componenten
 
+> 📂 **Naam project:** `lab-components-basics`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-components-basics`.
 
 Maak de volgende componenten aan:
@@ -39,6 +42,9 @@ Gebruik deze componenten in de `App` component om de volgende pagina te maken:
 
 ## 2. Facebook cards
 
+> 📂 **Naam project:** `lab-components-facebook-card`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuw project aan en noem deze `lab-components-facebook-card`.
 
 Neem de volgende code over. 
@@ -55,6 +61,9 @@ Let er op dat componenten ook kunnen bestaan uit andere componenten.
 
 ## 3. Penguins
 
+> 📂 **Naam project:** `lab-components-penguin-gallery`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuw project aan en noem deze `lab-components-penguin-gallery`
 [Penguins.json](https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/penguins.json) in je `src` folder.
 - importeer dit bestand in je project aan de hand van `import penguins from './penguins.json';`
@@ -67,6 +76,9 @@ Maak een nieuw project aan en noem deze `lab-components-penguin-gallery`
 </div>
 
 ## 4. Slotmachine
+
+> 📂 **Naam project:** `lab-components-slot-machine`  
+> 🔗 **Basis project:** [`lab-basics-slot-machine`](lab1.md#2-slotmachine)
 
 Kopieer de slotmachine code van labo 1 en noem deze nieuwe applicatie `lab-components-slot-machine` en zorg voor de volgende dingen:
 
@@ -97,6 +109,9 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 ## 5. Maaltafels component
 
+> 📂 **Naam project:** `lab-components-maaltafels`  
+> 🔗 **Basis project:** [`lab-basics-multiplication-tables`](lab1.md#6-maaltafels)
+
 Kopieer de maaltafels code van labo 1 naar een nieuw project en noem deze `lab-components-maaltafels` en zorg voor de volgende componenten:
 
 - `MultiplicationTable`: deze component bevat de logica om de tabel te tonen. Deze component bevat een property `max` die het maximum getal aangeeft dat getoond moet worden. 
@@ -123,6 +138,9 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 ## 6. Who's that pokemon?
 
+> 📂 **Naam project:** n/a  
+> 🔗 **Basis project:** [`lab-basics-whos-that-pokemon`](lab1.md#9-who-s-that-pokemon)
+
 Kopieer het `lab-basics-whos-that-pokemon` project van labo 1 naar een nieuw project.
 
 Maak een nieuw component `PokemonImage` dat de afbeelding van een pokemon toont. Deze component aanvaardt de volgende properties:
@@ -137,6 +155,9 @@ Toon in de `App` component twee keer de `PokemonImage` component. Eén keer met 
 </div>
 
 ## 7. Rainbow Props
+
+> 📂 **Naam project:** `lab-components-rainbow-props`  
+> 🔗 **Basis project:** [`lab-basics-rainbow`](lab1.md#7-regenboog)
 
 Maak een kopie van de `lab-basics-rainbow` applicatie van labo 1 naar een nieuw project en noem deze `lab-components-rainbow-props`. En zorg voor de volgende componenten:
 

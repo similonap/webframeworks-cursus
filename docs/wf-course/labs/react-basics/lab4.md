@@ -27,11 +27,17 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. State herkennen
 
+> 📂 **Naam project:** n/a  
+> 🔗 **Basis project:** n/a
+
 Identificeer de state in de volgende componenten. Geef aan waar de state zich bevindt en wat de initiële waarde is.
 
 <LaboStateGoods/>
 
 ## 2. Input veld
+
+> 📂 **Naam project:** `lab-state-shared-inputs`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-shared-inputs`.
 
@@ -47,6 +53,9 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 </div>
 
 ## 3. Checkbox
+
+> 📂 **Naam project:** `lab-state-visibility-toggle`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-visibility-toggle`.
 
@@ -65,6 +74,9 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 
 ## 4. Maaltafels State
 
+> 📂 **Naam project:** `lab-state-maaltafels`  
+> 🔗 **Basis project:** [`lab-components-maaltafels`](lab2.md#5-maaltafels-component)
+
 Maak een kopie van de maaltafels code van labo 2 naar een nieuw project en noem deze `lab-state-maaltafels`. Zorg ervoor dat je de volgende functionaliteiten toevoegt:
 
 - Zorg voor een input veld waarin je het getal kan ingeven waarvan je de maaltafel wil zien.
@@ -75,6 +87,9 @@ Maak een kopie van de maaltafels code van labo 2 naar een nieuw project en noem 
 <Maaltafels3/>
 
 ## 5. Penguins met state
+
+> 📂 **Naam project:** `lab-state-penguin-gallery`  
+> 🔗 **Basis project:** [`lab-components-penguin-gallery`](lab2.md#3-penguins)
 
 Maak een kopie van de `penguins` oefening van labo 2 en zorg ervoor dat je de volgende functionaliteiten toevoegt:
 
@@ -89,6 +104,9 @@ Tip: Je hebt een state nodig in de `PenguinCard` component om bij te houden of d
 <PenguinListState/>
 
 ## 6. Omhoog/Omlaag
+
+> 📂 **Naam project:** `lab-state-counter`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-counter`.
 
@@ -110,6 +128,9 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 <ReactPlayer controls url='https://youtu.be/OMa72fFFRUI'/>
 
 ## 7. Loading indicator
+
+> 📂 **Naam project:** `lab-state-loading-indicator`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-loading-indicator`.
 
@@ -136,6 +157,9 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 
 ## 8. Kleurkiezer
 
+> 📂 **Naam project:** `lab-state-color-picker`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-color-picker`.
 
 Maak een component `ColorPicker` aan met de volgende functionaliteit:
@@ -158,6 +182,9 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 <ReactPlayer controls url='https://youtu.be/pBx9IClu9eA'/>
 
 ## 9. Contactformulier
+
+> 📂 **Naam project:** `lab-state-contact-form`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-contact-form`.
 
@@ -188,6 +215,9 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 10. Random Cat
 
+> 📂 **Naam project:** `lab-state-random-cat`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe React applicatie aan en noem deze `lab-state-random-cat`.
 
 Maak een component `RandomCat` aan met de volgende functionaliteit:
@@ -204,6 +234,9 @@ Maak een component `RandomCat` aan met de volgende functionaliteit:
 <ReactPlayer controls url='https://youtu.be/nh5lVRHBj0s'/>
 
 ## 11. Joske het vierkant
+
+> 📂 **Naam project:** `lab-state-joske`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React applicatie aan en noem deze `lab-state-joske`.
 
@@ -222,6 +255,9 @@ Josje is nu een blij cirkeltje!
 <Joske/>
 
 ## 12. Simple Quiz
+
+> 📂 **Naam project:** `lab-state-simple-quiz`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe React-applicatie aan en noem deze `lab-state-simple-quiz`.
 
@@ -255,4 +291,3 @@ Gebruik o.a. deze vragen:
 - Voorzie een klasse `.correct` die het juiste antwoord markeert.  
 
 <SimpleQuiz/>
-

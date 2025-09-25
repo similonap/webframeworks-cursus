@@ -19,6 +19,9 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Expressies
 
+> 📂 **Naam project:** `lab-basics-expressies`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe react applicatie aan met de naam `lab-basics-expressies` en maak het volgende `App.tsx` component aan:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
@@ -63,6 +66,9 @@ export default App;
 
 ## 2. Slotmachine
 
+> 📂 **Naam project:** `lab-basics-slot-machine`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe react applicatie aan `lab-basics-slot-machine`.
 
 #### Opdracht
@@ -89,6 +95,9 @@ Maak een nieuwe react applicatie aan `lab-basics-slot-machine`.
 
 ## 3. Lijsten
 
+> 📂 **Naam project:** `lab-basics-lists`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe react applicatie aan `lab-basics-lists`.
 
 #### Opdracht
@@ -113,6 +122,9 @@ Maak een nieuwe react applicatie aan `lab-basics-lists`.
 
 ## 4. Slot machine met map
 
+> 📂 **Naam project:** `lab-basics-slot-machine-map`  
+> 🔗 **Basis project:** [`lab-basics-slot-machine`](lab1.md#2-slotmachine)
+
 Maak een nieuwe react applicatie aan `lab-basics-slot-machine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
 
 #### Opdracht
@@ -132,6 +144,9 @@ Maak een nieuwe react applicatie aan `lab-basics-slot-machine-map`. Kopieer je c
 <ReactPlayer controls url='https://youtu.be/eqS3Ovt2FYE'/>
 
 ## 5. Alien Alphabet
+
+> 📂 **Naam project:** `lab-basics-alien-alphabet`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe react applicatie aan `lab-basics-alien-alphabet`.
 
@@ -156,6 +171,9 @@ We willen in deze opdracht een aanzet geven tot een vertaalprogramma voor een bu
 
 ## 6. Maaltafels
 
+> 📂 **Naam project:** `lab-basics-multiplication-tables`  
+> 🔗 **Basis project:** n/a
+
 Maak een nieuwe react applicatie aan `lab-basics-multiplication-tables`.
 
 #### Opdracht
@@ -169,6 +187,9 @@ Maak een React-component met de naam MultiplicationTable die een tabel genereert
 </div>
 
 ## 7. Regenboog
+
+> 📂 **Naam project:** `lab-basics-rainbow`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe react applicatie aan `lab-basics-rainbow`.
 
@@ -197,6 +218,9 @@ Dit wordt later nog uitgelegd! Begrijp je hoe dit werkt, kan je ook eens probere
 </div>
 
 ## 8. Chat messages
+
+> 📂 **Naam project:** `lab-basics-chat-messages`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe react applicatie aan `lab-basics-chat-messages`.
 
@@ -268,6 +292,9 @@ const messages = [
 </div>
 
 ## 9. Who's that Pokémon?
+
+> 📂 **Naam project:** `lab-basics-whos-that-pokemon`  
+> 🔗 **Basis project:** n/a
 
 Maak een nieuwe react applicatie aan `lab-basics-whos-that-pokemon`. Maak een array met 150 Pokémon aan. Elke Pokémon heeft een id en een naam. We willen een afbeelding van een willekeurige Pokémon tonen. Onder de afbeelding tonen we 4 knoppen met de namen van 4 willekeurige Pokémon. 
 
