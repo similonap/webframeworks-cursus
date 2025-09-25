@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">Labo 4 | React.js</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/lab4"><meta data-rh="true" property="og:locale" content="nl_BE"><meta data-rh="true" name="docusaurus_locale" content="nl-BE"><meta data-rh="true" name="docsearch:language" content="nl-BE"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Labo 4 | React.js"><meta data-rh="true" name="description" content="Voor dit labo moet je de volgende theorie bekeken hebben:"><meta data-rh="true" property="og:description" content="Voor dit labo moet je de volgende theorie bekeken hebben:"><link data-rh="true" rel="icon" href="/webframeworks-cursus/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/lab4"><link data-rh="true" rel="alternate" href="https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/lab4" hreflang="nl-BE"><link data-rh="true" rel="alternate" href="https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/lab4" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Labo's","item":"https://similonap.github.io/webframeworks-cursus/wf-course/labs/"},{"@type":"ListItem","position":2,"name":"React Basics","item":"https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/"},{"@type":"ListItem","position":3,"name":"Labo 4","item":"https://similonap.github.io/webframeworks-cursus/wf-course/labs/react-basics/lab4"}]}</script><link rel="stylesheet" href="/webframeworks-cursus/assets/css/styles.670290e6.css">
-<script src="/webframeworks-cursus/assets/js/runtime~main.facc5caa.js" defer="defer"></script>
-<script src="/webframeworks-cursus/assets/js/main.e9340d18.js" defer="defer"></script>
+<script src="/webframeworks-cursus/assets/js/runtime~main.08138680.js" defer="defer"></script>
+<script src="/webframeworks-cursus/assets/js/main.504f90e5.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -29,7 +29,7 @@
 <p>Identificeer de state in de volgende componenten. Geef aan waar de state zich bevindt en wat de initiële waarde is.</p>
 <div><div><form style="display:grid;grid-template-columns:200px 200px"><label>Product name: </label><input placeholder="product name" type="text" value=""><label>Price: </label><input placeholder="price" type="number" value="500"><label>In stock? </label><input type="checkbox"><input type="submit" style="grid-column-start:1;grid-column-end:span 2" value="Add product"></form></div><div style="display:grid;grid-template-columns:300px 100px"><span style="color:red">iPhone 12</span><span>€ <!-- -->699</span><span style="color:black">iPhone 12 Pro</span><span>€ <!-- -->999</span><span style="color:black">iPhone 12 Pro Max</span><span>€ <!-- -->1099</span><span style="color:black">Samsung Galaxy S20</span><span>€ <!-- -->799</span><span style="color:red">Samsung Galaxy S10</span><span>€ <!-- -->699</span><span style="color:black">Samsung Galaxy S20 Ultra</span><span>€ <!-- -->999</span><span style="color:black">Huawei P30</span><span>€ <!-- -->499</span><span style="color:black">Huawei P40</span><span>€ <!-- -->599</span><span style="color:red">Nokia 3310</span><span>€ <!-- -->399</span></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-input-veld">2. Input veld<a href="#2-input-veld" class="hash-link" aria-label="Direct link naar 2. Input veld" title="Direct link naar 2. Input veld">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-inputfield</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-shared-inputs</code>.</p>
 <p>Maak een component <code>InputFields</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>Het component heeft 1 state <code>inputValue</code> die een string bevat. Deze begint bij een lege string.</li>
@@ -39,7 +39,7 @@
 <p>Gebruik deze component in de <code>App</code> component om de volgende pagina te maken:</p>
 <div style="padding:10px;border:1px dotted black"><input type="text" value=""><input type="text" value=""><input type="text" value=""><input type="text" value=""><input type="text" value=""></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-checkbox">3. Checkbox<a href="#3-checkbox" class="hash-link" aria-label="Direct link naar 3. Checkbox" title="Direct link naar 3. Checkbox">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-checkbox</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-visibility-toggle</code>.</p>
 <p>Maak een component <code>Checkbox</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>Plaats een checkbox in je component met als label <code>Show/Hide</code></li>
@@ -50,7 +50,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo">Oplossingsvideo<a href="#oplossingsvideo" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-maaltafels-state">4. Maaltafels State<a href="#4-maaltafels-state" class="hash-link" aria-label="Direct link naar 4. Maaltafels State" title="Direct link naar 4. Maaltafels State">​</a></h2>
-<p>Maak een kopie van de maaltafels code die je in een van de vorige labo&#x27;s hebt geschreven en zorg voor de volgende dingen:</p>
+<p>Maak een kopie van de maaltafels code van labo 2 naar een nieuw project en noem deze <code>lab-state-maaltafels</code>. Zorg ervoor dat je de volgende functionaliteiten toevoegt:</p>
 <ul>
 <li>Zorg voor een input veld waarin je het getal kan ingeven waarvan je de maaltafel wil zien.</li>
 <li>Als het veld aangepast wordt, moet de maaltafel van dat getal getoond worden.</li>
@@ -60,6 +60,7 @@
 <div><input type="number" max="10" min="2" value="5"><table><tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>2</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr><tr><td>3</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td></tr><tr><td>4</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td></tr><tr><td>5</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td></tr></table></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="5-penguins-met-state">5. Penguins met state<a href="#5-penguins-met-state" class="hash-link" aria-label="Direct link naar 5. Penguins met state" title="Direct link naar 5. Penguins met state">​</a></h2>
 <p>Maak een kopie van de <code>penguins</code> oefening van labo 2 en zorg ervoor dat je de volgende functionaliteiten toevoegt:</p>
+<p>Maak een kopie van de <code>lab-components-penguin-gallery</code> applicatie van labo 2 naar een nieuw project en noem deze <code>lab-state-penguin-gallery</code>. En zorg voor de volgende functionaliteiten:</p>
 <ul>
 <li>Als je op een penguin klikt, wordt deze geselecteerd. De achtergrondkleur van de penguin verandert.</li>
 <li>Als je nog eens op dezelfde penguin klikt, wordt deze terug gedeselecteerd.</li>
@@ -68,7 +69,7 @@
 <p>Tip: Je hebt een state nodig in de <code>PenguinCard</code> component om bij te houden of de penguin geselecteerd is of niet.</p>
 <div><h1>Female Penguins</h1><div class="penguinGrid_MWgE"><div class="penguinCard_ubkx"><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/images/1747835243822-pe875j.jpg" alt="Pip" class="penguinImage_a6nw"><h2>Pip</h2><p><strong>Species ID:</strong> <!-- -->1</p><p><strong>Description:</strong> <!-- -->A playful young penguin fond of swimming.</p><p><strong>Island:</strong> <!-- -->Macquarie Island</p></div><div class="penguinCard_ubkx"><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/images/1747835243822-swhm58.jpg" alt="Waddle" class="penguinImage_a6nw"><h2>Waddle</h2><p><strong>Species ID:</strong> <!-- -->1</p><p><strong>Description:</strong> <!-- -->Leader of the rookery, very energetic.</p><p><strong>Island:</strong> <!-- -->Macquarie Island</p></div><div class="penguinCard_ubkx"><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/images/1747835243822-fmyok.jpg" alt="Pebble" class="penguinImage_a6nw"><h2>Pebble</h2><p><strong>Species ID:</strong> <!-- -->4</p><p><strong>Description:</strong> <!-- -->Collects colorful pebbles, gentle disposition.</p><p><strong>Island:</strong> <!-- -->Antipodes Island</p></div><div class="penguinCard_ubkx"><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/images/1747835243822-wkfyeb.jpg" alt="Splash" class="penguinImage_a6nw"><h2>Splash</h2><p><strong>Species ID:</strong> <!-- -->1</p><p><strong>Description:</strong> <!-- -->Loves water sports, always active.</p><p><strong>Island:</strong> <!-- -->Macquarie Island</p></div><div class="penguinCard_ubkx"><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/images/1747835243822-xs9g4.jpg" alt="Chilly" class="penguinImage_a6nw"><h2>Chilly</h2><p><strong>Species ID:</strong> <!-- -->2</p><p><strong>Description:</strong> <!-- -->Enjoys sliding on ice with friends.</p><p><strong>Island:</strong> <!-- -->South Georgia</p></div></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="6-omhoogomlaag">6. Omhoog/Omlaag<a href="#6-omhoogomlaag" class="hash-link" aria-label="Direct link naar 6. Omhoog/Omlaag" title="Direct link naar 6. Omhoog/Omlaag">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-omhooglaag</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-counter</code>.</p>
 <p>Maak een component <code>Counter</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>De component bevat een <code>state</code> met de naam <code>count</code> die een getal bevat. Begint bij 0.</li>
@@ -82,7 +83,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo-1">Oplossingsvideo<a href="#oplossingsvideo-1" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="7-loading-indicator">7. Loading indicator<a href="#7-loading-indicator" class="hash-link" aria-label="Direct link naar 7. Loading indicator" title="Direct link naar 7. Loading indicator">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-loading</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-loading-indicator</code>.</p>
 <p>installeer de volgende npm packages:</p>
 <div class="language-text codeBlockContainer_APcc theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_bxn0"><pre tabindex="0" class="prism-code language-text codeBlock_qGQc thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_p187"><span class="token-line" style="color:#393A34"><span class="token plain">npm install react-loader-spinner</span><br></span></code></pre></div></div>
 <p>Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:</p>
@@ -97,7 +98,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo-2">Oplossingsvideo<a href="#oplossingsvideo-2" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="8-kleurkiezer">8. Kleurkiezer<a href="#8-kleurkiezer" class="hash-link" aria-label="Direct link naar 8. Kleurkiezer" title="Direct link naar 8. Kleurkiezer">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-kleurkiezer</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-color-picker</code>.</p>
 <p>Maak een component <code>ColorPicker</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>Het component bevat een <code>state</code> met als naam <code>color</code> die een kleur bevat. Begint bij <code>#000000</code>.</li>
@@ -118,7 +119,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo-3">Oplossingsvideo<a href="#oplossingsvideo-3" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="9-contactformulier">9. Contactformulier<a href="#9-contactformulier" class="hash-link" aria-label="Direct link naar 9. Contactformulier" title="Direct link naar 9. Contactformulier">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-contactformulier</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-contact-form</code>.</p>
 <p>Maak een component <code>ContactForm</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>Het component bevat 3 <code>input</code> elementen met de volgende labels:<!-- -->
@@ -148,7 +149,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo-4">Oplossingsvideo<a href="#oplossingsvideo-4" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="10-random-cat">10. Random Cat<a href="#10-random-cat" class="hash-link" aria-label="Direct link naar 10. Random Cat" title="Direct link naar 10. Random Cat">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-random-cat</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-random-cat</code>.</p>
 <p>Maak een component <code>RandomCat</code> aan met de volgende functionaliteit:</p>
 <ul>
 <li>Het component bevat een <code>button</code> met de tekst <code>Random Cat</code>.</li>
@@ -161,7 +162,7 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="oplossingsvideo-5">Oplossingsvideo<a href="#oplossingsvideo-5" class="hash-link" aria-label="Direct link naar Oplossingsvideo" title="Direct link naar Oplossingsvideo">​</a></h4>
 <div style="width:640px;height:360px"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="11-joske-het-vierkant">11. Joske het vierkant<a href="#11-joske-het-vierkant" class="hash-link" aria-label="Direct link naar 11. Joske het vierkant" title="Direct link naar 11. Joske het vierkant">​</a></h2>
-<p>Maak een nieuwe React applicatie aan en noem deze <code>labo4-joske</code>.</p>
+<p>Maak een nieuwe React applicatie aan en noem deze <code>lab-state-joske</code>.</p>
 <p>Je begint met Joske... Het statische vierkant:</p>
 <!-- -->
 <ul>
@@ -174,7 +175,7 @@
 <p>Josje is nu een blij cirkeltje!</p>
 <div class="container_XVFF"><p><b>joske</b></p><div class="square_eOOF" style="background-color:red;border-radius:0"><p style="user-select:none">:)</p></div><div><input type="text" value="joske"><button>Reset Name</button><button>Set</button></div><select><option value=":)" selected="">:)</option><option value=":(">:(</option><option value=":|">:|</option></select><div><input type="checkbox" checked=""><label for="squareCheckbox">Square</label></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="12-simple-quiz">12. Simple Quiz<a href="#12-simple-quiz" class="hash-link" aria-label="Direct link naar 12. Simple Quiz" title="Direct link naar 12. Simple Quiz">​</a></h2>
-<p>Maak een nieuwe React-applicatie aan en noem deze <code>labo4-simple-quiz</code>.</p>
+<p>Maak een nieuwe React-applicatie aan en noem deze <code>lab-state-simple-quiz</code>.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="opdracht">Opdracht<a href="#opdracht" class="hash-link" aria-label="Direct link naar Opdracht" title="Direct link naar Opdracht">​</a></h3>
 <ul>
 <li>
