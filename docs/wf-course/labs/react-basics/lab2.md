@@ -17,7 +17,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Simpele componenten
 
-Maak een nieuwe React applicatie aan en noem deze `labo2-component`.
+Maak een nieuwe React applicatie aan en noem deze `lab-components-basics`.
 
 Maak de volgende componenten aan:
 - `Header` met als props `title` en `subtitle`
@@ -39,7 +39,7 @@ Gebruik deze componenten in de `App` component om de volgende pagina te maken:
 
 ## 2. Facebook cards
 
-Maak een nieuw project aan en noem deze `labo2-facebook`.
+Maak een nieuw project aan en noem deze `lab-components-facebook-card`.
 
 Neem de volgende code over. 
 
@@ -55,7 +55,7 @@ Let er op dat componenten ook kunnen bestaan uit andere componenten.
 
 ## 3. Penguins
 
-Maak een nieuw project aan en noem deze `labo2-penguins`
+Maak een nieuw project aan en noem deze `lab-components-penguin-gallery`
 [Penguins.json](https://raw.githubusercontent.com/similonap/json/refs/heads/master/penguins/penguins.json) in je `src` folder.
 - importeer dit bestand in je project aan de hand van `import penguins from './penguins.json';`
 - Maak een component `PenguinCard` dat een penguin toont. Dit component aanvaard een property `penguin` met het type van een penguin uit het json bestand.

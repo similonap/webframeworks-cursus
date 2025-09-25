@@ -9,7 +9,7 @@ import ReactPlayer from 'react-player';
 
 ## 1. Interval
 
-Maak een nieuwe React applicatie aan en noem deze `labo5-interval`.
+Maak een nieuwe React applicatie aan en noem deze `lab-hooks-interval`.
             
 Maak de volgende componenten aan:
 
@@ -28,7 +28,7 @@ Maak de volgende componenten aan:
 
 ## 2. Pokemon
 
-Maak een nieuwe React applicatie aan en noem deze `labo5-pokemon`.
+Maak een nieuwe React applicatie aan en noem deze `lab-hooks-pokemon-pokedex`.
 
 - Maak een component `Pokedex` aan met als property `limit` die het aantal pokemon aangeeft dat getoond moet worden. Initieel mag je die property op 151 zetten.
 - Maak gebruik van de `https://pokeapi.co/` om deze pokemon op te halen op het moment dat de component gemounted wordt. Gebruik de `useEffect` hook om dit te doen.
@@ -42,7 +42,7 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-pokemon`.
 
 ## 3. LocalStorage
 
-Maak een nieuwe React applicatie aan en noem deze `labo5-localstorage`.
+Maak een nieuwe React applicatie aan en noem deze `lab-hooks-local-storage`.
 
 - Maak een nieuw component `DadJoke` aan. 
 - Maak een functie loadJoke die een "awkward dad joke" ophaalt van de API `https://icanhazdadjoke.com/`. Gebruik de `fetch` API om de data op te halen. Plaats het resultaat in een state van het component.
@@ -59,3 +59,5 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-localstorage`.
 ### Oplossingsvideo
 
 <ReactPlayer controls url='https://youtu.be/-ZCPmx5HGvA'/>
+
+## 4. Game of Life (2)

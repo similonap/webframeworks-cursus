@@ -63,7 +63,7 @@ export default App;
 
 ## 2. Slotmachine
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine`.
+Maak een nieuwe react applicatie aan `lab-basics-slot-machine`.
 
 #### Opdracht
 
@@ -89,7 +89,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine`.
 
 ## 3. Lijsten
 
-Maak een nieuwe react applicatie aan `labo1-lijsten`.
+Maak een nieuwe react applicatie aan `lab-basics-lists`.
 
 #### Opdracht
 
@@ -113,7 +113,7 @@ Maak een nieuwe react applicatie aan `labo1-lijsten`.
 
 ## 4. Slot machine met map
 
-Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
+Maak een nieuwe react applicatie aan `lab-basics-slot-machine-map`. Kopieer je code van de vorige opdracht naar deze nieuwe applicatie.
 
 #### Opdracht
 
@@ -133,7 +133,7 @@ Maak een nieuwe react applicatie aan `labo1-slotmachine-map`. Kopieer je code va
 
 ## 5. Alien Alphabet
 
-Maak een nieuwe react applicatie aan `alien-alphabet`.
+Maak een nieuwe react applicatie aan `lab-basics-alien-alphabet`.
 
 #### Opdracht
 
@@ -156,7 +156,7 @@ We willen in deze opdracht een aanzet geven tot een vertaalprogramma voor een bu
 
 ## 6. Maaltafels
 
-Maak een nieuwe react applicatie aan `maaltafels`.
+Maak een nieuwe react applicatie aan `lab-basics-multiplication-tables`.
 
 #### Opdracht
 
@@ -170,7 +170,7 @@ Maak een React-component met de naam MultiplicationTable die een tabel genereert
 
 ## 7. Regenboog
 
-Maak een nieuwe react applicatie aan `regenboog`.
+Maak een nieuwe react applicatie aan `lab-basics-rainbow`.
 
 #### Opdracht
 
@@ -198,7 +198,7 @@ Dit wordt later nog uitgelegd! Begrijp je hoe dit werkt, kan je ook eens probere
 
 ## 8. Chat messages
 
-Maak een nieuwe react applicatie aan `chat-messages`.
+Maak een nieuwe react applicatie aan `lab-basics-chat-messages`.
 
 #### Opdracht
 

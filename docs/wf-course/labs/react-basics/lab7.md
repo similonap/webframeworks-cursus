@@ -131,7 +131,7 @@ Herstructureer deze applicatie als volgt:
 
 ## 3. Quizapp
 
-Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
+Maak een nieuwe React applicatie aan en noem deze `lab-communication-quiz-app`.
 
 - Maak een nieuw component `QuizApp` aan.
 - Maak gebruik van de `https://opentdb.com/api.php?amount=10` om de quizvragen op te halen. Gebruik de `fetch` API om de data op te halen. Gebruik een `useEffect` om deze data op te halen en daarna in een state te plaatsen.
@@ -152,7 +152,7 @@ Maak een nieuwe React applicatie aan en noem deze `labo5-quizapp`.
 
 ## 4. Happy Workers
 
-Maak een nieuwe React applicatie aan en noem deze labo5-happy.
+Maak een nieuwe React applicatie aan en noem deze lab-communication-happy-workers.
 
 Plaats in de `App` component een progressbar (van 0 tot 100) en maak een component genaamd `Square`. Het `Square` component aanvaard initieel gewoon een color en een size prop. Later gaan hier nog props bij komen. Zorg ervoor dat je een aantal `Square` componenten toevoegd aan de `App` component met verschillende kleuren. 
 

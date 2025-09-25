@@ -10,7 +10,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## Color Clicker
 
-Maak een nieuwe React applicatie aan en noem deze `labo-color-clicker`.
+Maak een nieuwe React applicatie aan en noem deze `lab-events-color-clicker`.
 
 Maak een component `ColorSquare` aan met de volgende properties:
 - `color`: string, de kleur van de vierkant
@@ -26,7 +26,7 @@ Maak 10 vierkanten met willekeurige kleuren en toon deze in een rij op het scher
 
 ## TextInput
 
-Maak een nieuwe React applicatie aan en noem deze `labo-text-input`.
+Maak een nieuwe React applicatie aan en noem deze `lab-events-text-input`.
 
 Maak een component `TextInput` aan met de volgende properties:
 - `size`: number, het aantal textboxes dat getoond moet worden
@@ -37,7 +37,7 @@ Maak een rij van textboxes met de grootte die je meekrijgt als property. Als je 
 
 ## Checkbox Grid
 
-Maak een nieuwe React applicatie aan en noem deze `labo-checkbox-grid`.
+Maak een nieuwe React applicatie aan en noem deze `lab-events-checkbox-grid`.
 
 Maak een nieuw component `CheckBox` aan met de volgende properties:
 - `size`: number, de grootte van de grid

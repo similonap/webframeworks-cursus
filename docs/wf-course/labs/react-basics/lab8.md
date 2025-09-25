@@ -9,7 +9,7 @@ import ReactPlayer from 'react-player';
 
 ## 1. Wake up Neo
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-wake-up-neo`.
+Maak een nieuwe React applicatie aan en noem deze `lab-context-wake-up-neo`.
 
 Begin van de volgende code:
 
@@ -47,7 +47,7 @@ Pas deze helemaal aan zodat je gebruik maakt van Context.
 
 ## 2. Basic context
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-basic-context`.
+Maak een nieuwe React applicatie aan en noem deze `lab-context-settings`.
 
 1. Creëer een context genaamd `SettingsContext`. De context moet twee waarden bijhouden: `color` en `setColor`. `color` is een string die een kleur waarde heeft en `setColor` is een functie die `color` kan aanpassen. De startwaarde van `color` moet 'red' zijn.
 
@@ -94,7 +94,7 @@ Uitbreidingen:
 
 ## 6. Portfolio app
 
-Maak een nieuwe React applicatie aan en noem deze `labo7-portfolio`.
+Maak een nieuwe React applicatie aan en noem deze `lab-router-portfolio`.
 
 Kies 3 verschillende oefeningen die je hebt gemaakt tijdens de voorgaande labos. Zorg ervoor dat deze oefeningen beschikbaar zijn onder de volgende routes: /oefening1, /oefening2 en /oefening3. Zorg voor een navigatiebalk die je toelaat om tussen de verschillende oefeningen te navigeren.
 

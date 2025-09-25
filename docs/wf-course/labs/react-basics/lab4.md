@@ -33,7 +33,7 @@ Identificeer de state in de volgende componenten. Geef aan waar de state zich be
 
 ## 2. Input veld
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-inputfield`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-shared-inputs`.
 
 Maak een component `InputFields` aan met de volgende functionaliteit:
 - Het component heeft 1 state `inputValue` die een string bevat. Deze begint bij een lege string.
@@ -48,7 +48,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 3. Checkbox
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-checkbox`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-visibility-toggle`.
 
 Maak een component `Checkbox` aan met de volgende functionaliteit:
 
@@ -86,7 +86,7 @@ Tip: Je hebt een state nodig in de `PenguinCard` component om bij te houden of d
 
 ## 6. Omhoog/Omlaag
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-omhooglaag`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-counter`.
 
 Maak een component `Counter` aan met de volgende functionaliteit:
 - De component bevat een `state` met de naam `count` die een getal bevat. Begint bij 0.
@@ -107,7 +107,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 7. Loading indicator
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-loading`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-loading-indicator`.
 
 installeer de volgende npm packages:
 
@@ -132,7 +132,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 
 ## 8. Kleurkiezer
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-kleurkiezer`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-color-picker`.
 
 Maak een component `ColorPicker` aan met de volgende functionaliteit:
 - Het component bevat een `state` met als naam `color` die een kleur bevat. Begint bij `#000000`.
@@ -155,7 +155,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 9. Contactformulier
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-contactformulier`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-contact-form`.
 
 Maak een component `ContactForm` aan met de volgende functionaliteit:
 - Het component bevat 3 `input` elementen met de volgende labels:
@@ -184,7 +184,7 @@ Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 ## 10. Random Cat
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-random-cat`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-random-cat`.
 
 Maak een component `RandomCat` aan met de volgende functionaliteit:
 - Het component bevat een `button` met de tekst `Random Cat`.
@@ -201,7 +201,7 @@ Maak een component `RandomCat` aan met de volgende functionaliteit:
 
 ## 11. Joske het vierkant
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-joske`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-joske`.
 
 Je begint met Joske... Het statische vierkant:
 
@@ -219,7 +219,7 @@ Josje is nu een blij cirkeltje!
 
 ## 12. Simple Quiz
 
-Maak een nieuwe React-applicatie aan en noem deze `labo4-simple-quiz`.
+Maak een nieuwe React-applicatie aan en noem deze `lab-state-simple-quiz`.
 
 ### Opdracht
 - Maak een component **`Question`** met props:

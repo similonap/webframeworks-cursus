@@ -17,7 +17,7 @@ import ReactPlayer from 'react-player';
 
 ## 1. Shopping List
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-shoppinglist`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-shopping-list`.
 
 Maak een component `ShoppingList` aan met de volgende functionaliteit:
 - Het component heeft een state property `shoppingList` die een array bevat. Deze begint bij een lege array.
@@ -38,7 +38,7 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 
 ## 2. Kleuren Selectie
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-color-select`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-color-select`.
 
 Maak een component `ColorSelect` aan met de volgende functionaliteit:
 
@@ -62,7 +62,7 @@ Gebruik dit component in de App component om de volgende pagina te maken:
 
 ## 3. Filtering en sorting
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-filtering`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-filtering`.
 
 Maak een component `Filtering` aan met de volgende functionaliteit:
 - Maak een lijst van studenten met de volgende properties: `name`, `age`, `year`.
@@ -101,7 +101,7 @@ Het spel ziet er nu als volgt uit:
 
 ## 5. Counter list
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-counter-list`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-counter-list`.
 
 Maak een component `ButtonList` aan met de volgende functionaliteit:
 - Het component bevat 1 state genaamd `counters`. Deze state bevat een array van getallen. Deze array begint bij een lege array.
@@ -123,7 +123,7 @@ Je hoeft nog niet elke counter in een apart component te zetten. Je gaat dit lat
 
 ## 6. Tic Tac Toe
 
-Maak een nieuwe React applicatie aan en noem deze `labo2-tictactoe`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-tic-tac-toe`.
 
 Maak een component `TicTacToe` aan met de volgende functionaliteit:
 - Het component bevat een `state` met de naam `board` die een array bevat met 9 elementen. Elk element is een string met de waarde `''`.
@@ -139,7 +139,7 @@ Het spel ziet er nu als volgt uit:
 
 ## 7. Alien Alphabet
 
-Maak een nieuwe React applicatie aan en noem deze `labo4-alien-alphabet`.
+Maak een nieuwe React applicatie aan en noem deze `lab-state-alien-alphabet`.
 
 - Maak een array aan die de inhoud van de volgende json bevat. Je mag deze gewoon copy pasten: https://raw.githubusercontent.com/slimmii/alien-alphabet/master/alien.json . Zorg wel dat je de interface juist hebt.
 - Zorg ervoor dat alle images van de letters getoond worden. Je kan dit in een button zetten.
