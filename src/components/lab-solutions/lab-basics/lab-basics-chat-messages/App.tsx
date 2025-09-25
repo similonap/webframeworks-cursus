@@ -6,7 +6,7 @@ interface Message {
     date: string;
 }
 
-const messages = [
+const messages: Message[] = [
     {
         from: 'Wolverine',
         content: 'Hey Mags, heard you tried to bend a spoon with your mind again. You need a hand with that?',
@@ -61,24 +61,25 @@ const messages = [
 
 
 const App = () => {
-    
-
     return (
-        <>
-            <table>
-            {
-                messages.map((message: Message) => {
-                  return (
-                    <tr key={message.date.toString()}>
+        <table>
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>Message</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {messages.map((message) => (
+                    <tr key={`${message.from}-${message.date}`}>
                         <td>{message.from}</td>
                         <td>{message.content}</td>
                         <td>{message.date}</td>
                     </tr>
-                  )  
-                })
-            }
-            </table>
-        </>
+                ))}
+            </tbody>
+        </table>
     );
 }
 

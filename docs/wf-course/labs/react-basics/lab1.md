@@ -1,12 +1,12 @@
-import Labo1Exercise1 from '@site/src/components/LabSolutions/Labo1Exercise1';
-import Labo1Exercise2 from '@site/src/components/LabSolutions/Labo1Exercise2';
-import Labo1Exercise3 from '@site/src/components/LabSolutions/Labo1Exercise3';
-import Labo1Exercise4 from '@site/src/components/LabSolutions/Labo1Exercise4';
-import Labo1AlienAlphabet from '@site/src/components/LabSolutions/Labo1AlienAlphabet';
-import Regenboog from '@site/src/components/LabSolutions/Regenboog';
-import Maaltafels from '@site/src/components/LabSolutions/Maaltafels';
-import ChatMessages from '@site/src/components/LabSolutions/ChatMessages';
-import WhosThatPokemonBasic from '@site/src/components/LabSolutions/WhosThatPokemonBasic';
+import LabBasicsExpressies from '@site/src/components/lab-solutions/lab-basics/lab-basics-expressies/App';
+import LabBasicsSlotMachine from '@site/src/components/lab-solutions/lab-basics/lab-basics-slot-machine/App';
+import LabBasicsLists from '@site/src/components/lab-solutions/lab-basics/lab-basics-lists/App';
+import LabBasicsSlotMachineMap from '@site/src/components/lab-solutions/lab-basics/lab-basics-slot-machine-map/App';
+import LabBasicsAlienAlphabet from '@site/src/components/lab-solutions/lab-basics/lab-basics-alien-alphabet/App';
+import LabBasicsMultiplicationTables from '@site/src/components/lab-solutions/lab-basics/lab-basics-multiplication-tables/App';
+import LabBasicsRainbow from '@site/src/components/lab-solutions/lab-basics/lab-basics-rainbow/App';
+import LabBasicsChatMessages from '@site/src/components/lab-solutions/lab-basics/lab-basics-chat-messages/App';
+import LabBasicsWhosThatPokemon from '@site/src/components/lab-solutions/lab-basics/lab-basics-whos-that-pokemon/App';
 import ReactPlayer from 'react-player'
 
 # Labo 1
@@ -57,7 +57,7 @@ export default App;
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo1Exercise1/>
+    <LabBasicsExpressies/>
 </div>
 
 #### Video
@@ -86,7 +86,7 @@ Maak een nieuwe react applicatie aan `lab-basics-slot-machine`.
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo1Exercise2/>
+    <LabBasicsSlotMachine/>
 </div>
 
 #### Oplossingsvideo
@@ -113,7 +113,7 @@ Maak een nieuwe react applicatie aan `lab-basics-lists`.
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo1Exercise3/>
+    <LabBasicsLists/>
 </div>
 
 #### Oplossingsvideo
@@ -136,7 +136,7 @@ Maak een nieuwe react applicatie aan `lab-basics-slot-machine-map`. Kopieer je c
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo1Exercise4/>
+    <LabBasicsSlotMachineMap/>
 </div>
 
 #### Oplossingsvideo
@@ -166,7 +166,7 @@ We willen in deze opdracht een aanzet geven tot een vertaalprogramma voor een bu
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo1AlienAlphabet/>
+    <LabBasicsAlienAlphabet/>
 </div>
 
 ## 6. Maaltafels
@@ -183,7 +183,7 @@ Maak een React-component met de naam MultiplicationTable die een tabel genereert
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Maaltafels/>
+    <LabBasicsMultiplicationTables/>
 </div>
 
 ## 7. Regenboog
@@ -214,7 +214,7 @@ Je hebt op dit moment nog niet geleerd hoe je css gebruikt. Je kan dit doen aan 
 Dit wordt later nog uitgelegd! Begrijp je hoe dit werkt, kan je ook eens proberen de regenboog in de andere richting te laten gaan! Tip: Twee woorden: flex-direction en flex!
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Regenboog/>
+    <LabBasicsRainbow/>
 </div>
 
 ## 8. Chat messages
@@ -288,7 +288,7 @@ const messages = [
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <ChatMessages/>
+    <LabBasicsChatMessages/>
 </div>
 
 ## 9. Who's that Pokémon?
@@ -348,5 +348,5 @@ const pokemons: Pokemon[] = [
 #### Voorbeeldoplossing
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <WhosThatPokemonBasic/>
+    <LabBasicsWhosThatPokemon/>
 </div>

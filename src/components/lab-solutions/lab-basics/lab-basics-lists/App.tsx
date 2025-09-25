@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Student {
   id: number;
@@ -7,10 +7,10 @@ interface Student {
 }
 
 const App = () => {
-  let numbers: number[] = [1,2,3,4,5,4,3];
-  
+  const numbers: number[] = [1, 2, 3, 4, 5, 4, 3];
+
   // array of five students
-  let fiveUniqueStudents: Student[] = [
+  const fiveUniqueStudents: Student[] = [
     {
       id: 0,
       naam: 'Jef',
@@ -52,9 +52,11 @@ const App = () => {
       </ol>
       <h3>Studentenlijst met J</h3>
       <ol>
-        {fiveUniqueStudents.filter(student => student.naam.startsWith("J")).map((student) => (
-          <li key={student.id}>{student.naam}</li>
-        ))}
+        {fiveUniqueStudents
+          .filter((student) => student.naam.startsWith("J"))
+          .map((student) => (
+            <li key={student.id}>{student.naam}</li>
+          ))}
       </ol>
       <h3>Select</h3>
       <select>

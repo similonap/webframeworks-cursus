@@ -5,37 +5,36 @@ import slotMelon from './assets/slot-melon.png';
 import slotPrune from './assets/slot-prune.png';
 import slotSeven from './assets/slot-seven.png';
 
+const slotImages = [slotCherry, slotLemon, slotMelon, slotPrune, slotSeven];
+
 export const Slot = ({ value }: { value: number }) => {
-  return (
-    <>
-      {value == 0 && <img src={slotCherry} height="64" width="64" />}
-      {value == 1 && <img src={slotLemon} height="64" width="64" />}
-      {value == 2 && <img src={slotMelon} height="64" width="64" />}
-      {value == 3 && <img src={slotPrune} height="64" width="64" />}
-      {value == 4 && <img src={slotSeven} height="64" width="64" />}
-    </>
-  );
+  const image = slotImages[value];
+  if (!image) {
+    return null;
+  }
+
+  return <img src={image} height="64" width="64" />;
 };
 
 export const SlotMachine = ({ slots }: { slots: number }) => {
-  let slotNumbers: number[] = Array.from(Array(slots).keys()).map(() =>
-    Math.floor(Math.random() * 5)
+  const slotNumbers: number[] = Array.from({ length: slots }, () =>
+    Math.floor(Math.random() * slotImages.length)
   );
-  let winning = slotNumbers.find((slot) => slot !== slots[0]) == undefined;
+  const winning = slotNumbers.every((slot) => slot === slotNumbers[0]);
 
   return (
     <>
       {winning ? <p>Je hebt gewonnen</p> : <p>Je hebt verloren</p>}
 
-      {slotNumbers.map((slot, i) => (
-        <Slot value={slot} key={i} />
+      {slotNumbers.map((slot, index) => (
+        <Slot value={slot} key={index} />
       ))}
     </>
   );
 };
 
 const App = () => {
-  const [refresh, setRefresh] = useState(0);
+  const [, setRefresh] = useState(0);
 
   return (
     <>

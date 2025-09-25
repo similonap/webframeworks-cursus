@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player';
-import LaboEventsColorClicker from '@site/src/components/LabSolutions/LaboEventsColorClicker';
-import LaboEventsCheckBoxGrid from '@site/src/components/LabSolutions/LaboEventsCheckBoxGrid';
-import LaboEventsInput from '@site/src/components/LabSolutions/LaboEventsInput';
+import LaboEventsColorClicker from '@site/src/components/lab-solutions/LaboEventsColorClicker';
+import LaboEventsCheckBoxGrid from '@site/src/components/lab-solutions/LaboEventsCheckBoxGrid';
+import LaboEventsInput from '@site/src/components/lab-solutions/LaboEventsInput';
 
 # Labo 3
 

@@ -1,5 +1,5 @@
-import Labo7Pokemon from '@site/src/components/LabSolutions/Pokemon/App';
-import BasicContext from '@site/src/components/LabSolutions/BasicContext';
+import Labo7Pokemon from '@site/src/components/lab-solutions/Pokemon/App';
+import BasicContext from '@site/src/components/lab-solutions/BasicContext';
 import ReactPlayer from 'react-player';
 
 # Labo 8

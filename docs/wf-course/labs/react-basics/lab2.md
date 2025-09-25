@@ -1,10 +1,10 @@
-import Labo2Slots from '@site/src/components/LabSolutions/Labo2Slots';
+import Labo2Slots from '@site/src/components/lab-solutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
-import Labo2BasicComponents from '@site/src/components/LabSolutions/Labo2BasicComponents';
-import Maaltafels2 from '@site/src/components/LabSolutions/Maaltafels2';
-import WhosThatPokemonComponent from '@site/src/components/LabSolutions/WhosThatPokemonComponent';
-import RegenboogProps from '@site/src/components/LabSolutions/RegenboogProps';
-import PenguinList from '@site/src/components/LabSolutions/PenguinList';
+import Labo2BasicComponents from '@site/src/components/lab-solutions/Labo2BasicComponents';
+import Maaltafels2 from '@site/src/components/lab-solutions/Maaltafels2';
+import WhosThatPokemonComponent from '@site/src/components/lab-solutions/WhosThatPokemonComponent';
+import RegenboogProps from '@site/src/components/lab-solutions/RegenboogProps';
+import PenguinList from '@site/src/components/lab-solutions/PenguinList';
 import ReactPlayer from 'react-player'
 
 # Labo 2

@@ -1,6 +1,6 @@
-import Labo5Interval from '@site/src/components/LabSolutions/Labo5Interval';
-import Labo5Pokemon from '@site/src/components/LabSolutions/Labo5Pokemon';
-import Labo5LocalStorage from '@site/src/components/LabSolutions/Labo5LocalStorage';
+import Labo5Interval from '@site/src/components/lab-solutions/Labo5Interval';
+import Labo5Pokemon from '@site/src/components/lab-solutions/Labo5Pokemon';
+import Labo5LocalStorage from '@site/src/components/lab-solutions/Labo5LocalStorage';
 import ReactPlayer from 'react-player';
 
 # Labo 6
