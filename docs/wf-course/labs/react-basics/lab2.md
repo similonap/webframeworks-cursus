@@ -68,7 +68,7 @@ Maak een nieuw project aan en noem deze `lab-components-penguin-gallery`
 
 ## 4. Slotmachine
 
-Gebruik de slotmachine code die je in labo 1 hebt geschreven en zorg voor de volgende dingen:
+Kopieer de slotmachine code van labo 1 en noem deze nieuwe applicatie `lab-components-slot-machine` en zorg voor de volgende dingen:
 
 - `SlotMachine`: aanvaard een property `slots` die het aantal slots aangeeft. Deze component bevat de logica om de slots te genereren en te tonen. Je kan deze component ook gebruiken om de logica te schrijven om te bepalen of de speler gewonnen heeft of verloren heeft.
 
@@ -97,7 +97,7 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 ## 5. Maaltafels component
 
-Maak een kopie van de maaltafels oefening van labo 1 en zorg ervoor dat je de volgende componenten hebt:
+Kopieer de maaltafels code van labo 1 naar een nieuw project en noem deze `lab-components-maaltafels` en zorg voor de volgende componenten:
 
 - `MultiplicationTable`: deze component bevat de logica om de tabel te tonen. Deze component bevat een property `max` die het maximum getal aangeeft dat getoond moet worden. 
 
@@ -123,7 +123,7 @@ De applicatie moet ongeveer er als volgt uitzien:
 
 ## 6. Who's that pokemon?
 
-Kopieer het `whos-that-pokemon` project van labo 1 naar een nieuw project.
+Kopieer het `lab-basics-whos-that-pokemon` project van labo 1 naar een nieuw project.
 
 Maak een nieuw component `PokemonImage` dat de afbeelding van een pokemon toont. Deze component aanvaardt de volgende properties:
 - `id`: het id van de pokemon (1 = Bulbasaur, 2 = Ivysaur, ...)
@@ -138,7 +138,8 @@ Toon in de `App` component twee keer de `PokemonImage` component. Eén keer met 
 
 ## 7. Rainbow Props
 
-Maak een kopie van de regenboog oefening van labo 1 en zorg ervoor dat je de volgende componenten hebt:
+Maak een kopie van de `lab-basics-rainbow` applicatie van labo 1 naar een nieuw project en noem deze `lab-components-rainbow-props`. En zorg voor de volgende componenten:
+
 - `Rainbow`: Heeft een property `amount` die het aantal kleuren aangeeft. Heeft ook een property `direction` die de richting van de kleuren aangeeft. Deze kan ofwel "horizontal" ofwel "vertical" zijn. Je kan de richting van de regenboog bepalen door de `flexDirection` van de container aan te passen.
 - `RainbowLine`: Heeft een property `color` die de kleur van de lijn aangeeft. Heeft ook een property `direction` die de richting van de lijn aangeeft. Deze kan ofwel "horizontal" ofwel "vertical" zijn. De hoogte van de lijn is 4px indien de richting "horizontal" is, anders is de hoogte 100px.
 

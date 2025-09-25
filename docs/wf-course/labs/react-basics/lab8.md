@@ -69,7 +69,7 @@ Maak een nieuwe React applicatie aan en noem deze `lab-context-settings`.
 
 ## 3. Todo App
 
-We gaan verder met de Todo app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
+Maak een kopie van de Todo app van het vorige labo (lab-communication-todo-app) naar een nieuw project en noem deze `lab-context-todo-app`. En zorg voor de volgende uitbreidingen.
 
 Uitbreidingen:
 - Zorg ervoor dat je de todo's uit een API kan ophalen. Je kan hiervoor gebruik maken van de [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API. Deze bevat een endpoint `/todos` die je kan gebruiken om todo's op te halen. 
@@ -77,7 +77,7 @@ Uitbreidingen:
 
 ## 4. Quiz App
 
-We gaan verder met de Quiz app uit het vorige labo. Maak hier een kopie van zodat je de originele code nog hebt. Want we gaan hier nog wat uitbreidingen op maken.
+Maak een kopie van de Quiz app van het vorige labo (lab-communication-quiz-app) naar een nieuw project. Noem deze `lab-context-quiz-app`. We gaan hier nog wat uitbreidingen op maken.
   
 Uitbreidingen:
 - Herwerk de Quiz applicatie zodat deze gebruik maakt van een `QuizContext`. De functionaliteit van de applicatie blijft voor de rest volledig hetzelfde.

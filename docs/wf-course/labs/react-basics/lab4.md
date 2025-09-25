@@ -65,7 +65,8 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 
 ## 4. Maaltafels State
 
-Maak een kopie van de maaltafels code die je in een van de vorige labo's hebt geschreven en zorg voor de volgende dingen:
+Maak een kopie van de maaltafels code van labo 2 naar een nieuw project en noem deze `lab-state-maaltafels`. Zorg ervoor dat je de volgende functionaliteiten toevoegt:
+
 - Zorg voor een input veld waarin je het getal kan ingeven waarvan je de maaltafel wil zien.
 - Als het veld aangepast wordt, moet de maaltafel van dat getal getoond worden. 
 - Je moet een state gebruiken om het getal `max` bij te houden. Dit getal bepaalt tot waar de maaltafel getoond moet worden. 
@@ -76,6 +77,9 @@ Maak een kopie van de maaltafels code die je in een van de vorige labo's hebt ge
 ## 5. Penguins met state
 
 Maak een kopie van de `penguins` oefening van labo 2 en zorg ervoor dat je de volgende functionaliteiten toevoegt:
+
+Maak een kopie van de `lab-components-penguin-gallery` applicatie van labo 2 naar een nieuw project en noem deze `lab-state-penguin-gallery`. En zorg voor de volgende functionaliteiten:
+
 - Als je op een penguin klikt, wordt deze geselecteerd. De achtergrondkleur van de penguin verandert.
 - Als je nog eens op dezelfde penguin klikt, wordt deze terug gedeselecteerd.
 - Je kan meerdere penguins selecteren.

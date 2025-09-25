@@ -10,7 +10,7 @@ import ReactPlayer from 'react-player';
 
 ## 1. Counter List
 
-We beginnen in deze oefening van de volgende code:
+We beginnen in deze oefening van de volgende code. Kopieer deze in een nieuw project en noem deze `lab-communication-counter-list`.
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 const CounterList = () => {
@@ -66,7 +66,7 @@ Zorg er nu voor dat de `CounterList` component de `Counter` component gebruikt. 
 
 ## 2. Todo App
 
-We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen.
+We beginnen van een voorgemaakte Todo app. Deze app bevat een lijst van taken die je kan toevoegen en verwijderen. De app bevat ook een input veld waar je een nieuwe taak kan toevoegen. Kopieer deze code in een nieuw project en noem deze `lab-communication-todo-app`.
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import React, {useState} from "react";

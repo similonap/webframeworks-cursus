@@ -19,7 +19,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Expressies
 
-Maak een nieuwe react applicatie aan en maak het volgende `App.tsx` component aan:
+Maak een nieuwe react applicatie aan met de naam `lab-basics-expressies` en maak het volgende `App.tsx` component aan:
 
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 const App = () => {
@@ -269,7 +269,7 @@ const messages = [
 
 ## 9. Who's that Pokémon?
 
-Maak een nieuwe react applicatie aan `whos-that-pokemon`. Maak een array met 150 Pokémon aan. Elke Pokémon heeft een id en een naam. We willen een afbeelding van een willekeurige Pokémon tonen. Onder de afbeelding tonen we 4 knoppen met de namen van 4 willekeurige Pokémon. 
+Maak een nieuwe react applicatie aan `lab-basics-whos-that-pokemon`. Maak een array met 150 Pokémon aan. Elke Pokémon heeft een id en een naam. We willen een afbeelding van een willekeurige Pokémon tonen. Onder de afbeelding tonen we 4 knoppen met de namen van 4 willekeurige Pokémon. 
 
 De afbeelding kan gehaald worden op de volgende url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{id}.png`. 
 
