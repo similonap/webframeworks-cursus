@@ -1,16 +1,16 @@
-import LaboStateOmHooglaag from '@site/src/components/lab-solutions/LaboStateOmHooglaag';
-import LaboStateKleurkiezer from '@site/src/components/lab-solutions/LaboStateKleurkiezer';
-import LaboStateContactForm from '@site/src/components/lab-solutions/LaboStateContactForm';
-import LaboStateInputField from '@site/src/components/lab-solutions/LaboStateInputField';
-import LaboStateCheckbox from '@site/src/components/lab-solutions/LaboStateCheckbox';
-import LaboStateGoods from '@site/src/components/lab-solutions/LaboStateGoods';
-import LaboStateLoading from '@site/src/components/lab-solutions/LaboStateLoading';
-import LaboStateRandomCat from '@site/src/components/lab-solutions/LaboStateRandomCat';
-import Joske from '@site/src/components/lab-solutions/Joske';
+import LabStateBasicsCounter from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-counter/App';
+import LabStateBasicsColorPicker from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-color-picker/App';
+import LabStateBasicsContactForm from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-contact-form/App';
+import LabStateBasicsSharedInputs from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-shared-inputs/App';
+import LabStateBasicsVisibilityToggle from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-visibility-toggle/App';
+import LabStateBasicsGoods from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-goods/App';
+import LabStateBasicsLoadingIndicator from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-loading-indicator/App';
+import LabStateBasicsRandomCat from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-random-cat/App';
+import LabStateBasicsJoske from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-joske/App';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
-import Maaltafels3 from '@site/src/components/lab-solutions/Maaltafels3';
-import PenguinListState from '@site/src/components/lab-solutions/PenguinListState';
-import SimpleQuiz from '@site/src/components/lab-solutions/SimpleQuiz';
+import LabStateBasicsMultiplicationTables from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-maaltafels/App';
+import LabStateBasicsPenguinGallery from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-penguin-gallery/App';
+import LabStateBasicsSimpleQuiz from '@site/src/components/lab-solutions/lab-state-basics/lab-state-basics-simple-quiz/App';
 
 import ReactPlayer from 'react-player';
 
@@ -32,7 +32,7 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 Identificeer de state in de volgende componenten. Geef aan waar de state zich bevindt en wat de initiële waarde is.
 
-<LaboStateGoods/>
+<LabStateBasicsGoods/>
 
 ## 2. Input veld
 
@@ -49,7 +49,7 @@ Maak een component `InputFields` aan met de volgende functionaliteit:
 Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LaboStateInputField/>
+    <LabStateBasicsSharedInputs/>
 </div>
 
 ## 3. Checkbox
@@ -65,7 +65,7 @@ Maak een component `Checkbox` aan met de volgende functionaliteit:
 - Als de gebruiker de checkbox aanvinkt moet er een div getoond worden met een image als background.
 - Als de gebruiker de checkbox uitzet moet de div verdwijnen.
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LaboStateCheckbox/>
+    <LabStateBasicsVisibilityToggle/>
 </div>
 
 #### Oplossingsvideo
@@ -84,7 +84,7 @@ Maak een kopie van de maaltafels code van labo 2 naar een nieuw project en noem 
 - Je moet een state gebruiken om het getal `max` bij te houden. Dit getal bepaalt tot waar de maaltafel getoond moet worden. 
 - Je kan een maximum van 10 kiezen in het input veld en een minimum van 2.
 
-<Maaltafels3/>
+<LabStateBasicsMultiplicationTables/>
 
 ## 5. Penguins met state
 
@@ -101,7 +101,7 @@ Maak een kopie van de `lab-components-penguin-gallery` applicatie van labo 2 naa
 
 Tip: Je hebt een state nodig in de `PenguinCard` component om bij te houden of de penguin geselecteerd is of niet.
 
-<PenguinListState/>
+<LabStateBasicsPenguinGallery/>
 
 ## 6. Omhoog/Omlaag
 
@@ -120,7 +120,7 @@ Maak een component `Counter` aan met de volgende functionaliteit:
 Gebruik deze component in de `App` component om de volgende pagina te maken:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LaboStateOmHooglaag/>
+    <LabStateBasicsCounter/>
 </div>
 
 #### Oplossingsvideo
@@ -148,7 +148,7 @@ Zorg er nu voor dat de applicatie de volgende functionaliteiten heeft:
 - Als de waarde van `loading` `false` is, wordt de loading indicator niet getoond. De button verschijnt terug.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LaboStateLoading/>
+    <LabStateBasicsLoadingIndicator/>
 </div>
 
 #### Oplossingsvideo
@@ -175,7 +175,7 @@ Maak een component `ColorPicker` aan met de volgende functionaliteit:
 
 Gebruik deze component in de `App` component om de volgende pagina te maken:
 
-<LaboStateKleurkiezer/>
+<LabStateBasicsColorPicker/>
 
 #### Oplossingsvideo
 
@@ -207,7 +207,7 @@ Maak een component `ContactForm` aan met de volgende functionaliteit:
 
 Gebruik deze component in de `App` component om de volgende pagina te maken:
 
-<LaboStateContactForm/>
+<LabStateBasicsContactForm/>
 
 #### Oplossingsvideo
 
@@ -227,7 +227,7 @@ Maak een component `RandomCat` aan met de volgende functionaliteit:
 - Als je terug op de knop klikt, wordt de afbeelding op een andere locatie getoond.
 - Je mag de volgende afbeelding tonen: `https://cataas.com/cat?width=200&height=200`
 
-<LaboStateRandomCat/>
+<LabStateBasicsRandomCat/>
 
 #### Oplossingsvideo
 
@@ -252,7 +252,7 @@ Je begint met Joske... Het statische vierkant:
 
 Josje is nu een blij cirkeltje!
 
-<Joske/>
+<LabStateBasicsJoske/>
 
 ## 12. Simple Quiz
 
@@ -290,4 +290,4 @@ Gebruik o.a. deze vragen:
 - Maak een `SimpleQuiz.module.css`.  
 - Voorzie een klasse `.correct` die het juiste antwoord markeert.  
 
-<SimpleQuiz/>
+<LabStateBasicsSimpleQuiz/>

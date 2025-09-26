@@ -14,7 +14,7 @@ const Question = ({question, options, correctAnswer, finished} : QuestionProps) 
     
     return (
         <div>
-            <p>What is the answer to life, the universe and everything?</p>
+            <p>{question}</p>
             {options.map((option, index) => (
                 <div key={index} className={`${finished ? ((option === correctAnswer) ? styles.correct : "") : "" }`}>
                     <input 
