@@ -9,7 +9,7 @@ This is a Docusaurus 2 based educational website for React.js and React Native c
 - **Documentation site**: Built with Docusaurus 2, serving React.js and React Native course materials
 - **CodeSandbox examples**: Interactive React examples in the `codesandbox/` directory
 - **Course content**: Comprehensive course materials in `docs/` covering React fundamentals, Next.js, TypeScript, and React Native
-- **Lab solutions**: Complete implementations in `src/components/LabSolutions/`
+- **Lab solutions**: Complete implementations in `src/components/lab-solutions/`
 
 ## Development Commands
 
