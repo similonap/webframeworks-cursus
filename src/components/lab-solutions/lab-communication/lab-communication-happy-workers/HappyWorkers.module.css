@@ -1,0 +1,20 @@
+.joske {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2em 0;
+    border: 1px solid black;
+    user-select: none;
+}
+
+.joske p {
+    font-size: 30pt;
+}
+
+.squareRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
