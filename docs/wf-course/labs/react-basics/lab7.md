@@ -1,7 +1,7 @@
-import Labo6Quizapp from '@site/src/components/lab-solutions/lab-communication/lab-communication-quiz-app/App';
-import Labo6Todo from '@site/src/components/lab-solutions/lab-communication/lab-communication-todo-app/App';
-import HappyWorkers from '@site/src/components/lab-solutions/lab-communication/lab-communication-happy-workers/App';
-import CounterListCallback from '@site/src/components/lab-solutions/lab-communication/lab-communication-counter-list/App';
+import Labo6Quizapp from '@site/src/components/lab-solutions/Labo6Quizapp';
+import Labo6Todo from '@site/src/components/lab-solutions/Labo6Todo';
+import HappyWorkers from '@site/src/components/lab-solutions/HappyWorkers';
+import CounterListCallback from '@site/src/components/lab-solutions/CounterListCallback';
 import ReactPlayer from 'react-player';
 
 # Labo 7

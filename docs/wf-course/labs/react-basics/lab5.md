@@ -1,12 +1,12 @@
 
-import Labo4ShoppingList from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-shopping-list/App';
-import Labo4TicTacToe from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-tic-tac-toe/App';
-import Labo4Slots from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-slot-machine/App';
-import Labo4MultiSelect from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-color-select/App';
-import Labo4CounterList from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-counter-list/App';
-import Labo4Filtering from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-filtering/App';
-import AlienAlphabet2 from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-alien-alphabet/App';
-import GameOfLife1 from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-game-of-life/App';
+import Labo4ShoppingList from '@site/src/components/lab-solutions/Labo4ShoppingList';
+import Labo4TicTacToe from '@site/src/components/lab-solutions/Labo4TicTacToe';
+import Labo4Slots from '@site/src/components/lab-solutions/Labo4Slots';
+import Labo4MultiSelect from '@site/src/components/lab-solutions/Labo4MultiSelect';
+import Labo4CounterList from '@site/src/components/lab-solutions/Labo4CounterList';
+import Labo4Filtering from '@site/src/components/lab-solutions/Labo4Filtering';
+import AlienAlphabet2 from '@site/src/components/lab-solutions/AlienAlphabet2';
+import GameOfLife1 from '@site/src/components/lab-solutions/GameOfLife1';
 
 import ReactPlayer from 'react-player';
 

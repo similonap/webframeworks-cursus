@@ -1,10 +1,10 @@
+import Labo2Slots from '@site/src/components/lab-solutions/Labo2Slots';
 import CodeSandbox from '@site/src/components/CodeSandbox/CodeSandbox';
-import LabComponentsBasics from '@site/src/components/lab-solutions/lab-components/lab-components-basics/App';
-import LabComponentsSlotMachine from '@site/src/components/lab-solutions/lab-components/lab-components-slot-machine/App';
-import LabComponentsMultiplicationTables from '@site/src/components/lab-solutions/lab-components/lab-components-maaltafels/App';
-import LabComponentsWhosThatPokemon from '@site/src/components/lab-solutions/lab-components/lab-components-whos-that-pokemon/App';
-import LabComponentsRainbowProps from '@site/src/components/lab-solutions/lab-components/lab-components-rainbow-props/App';
-import LabComponentsPenguinGallery from '@site/src/components/lab-solutions/lab-components/lab-components-penguin-gallery/App';
+import Labo2BasicComponents from '@site/src/components/lab-solutions/Labo2BasicComponents';
+import Maaltafels2 from '@site/src/components/lab-solutions/Maaltafels2';
+import WhosThatPokemonComponent from '@site/src/components/lab-solutions/WhosThatPokemonComponent';
+import RegenboogProps from '@site/src/components/lab-solutions/RegenboogProps';
+import PenguinList from '@site/src/components/lab-solutions/PenguinList';
 import ReactPlayer from 'react-player'
 
 # Labo 2
@@ -33,7 +33,7 @@ Maak de volgende componenten aan:
 Gebruik deze componenten in de `App` component om de volgende pagina te maken:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsBasics/>
+    <Labo2BasicComponents/>
 </div>
 
 #### Oplossingsvideo
@@ -72,7 +72,7 @@ Maak een nieuw project aan en noem deze `lab-components-penguin-gallery`
 - Toon alle vrouwelijke pinguïns in een grid met 3 kolommen. Gebruik hiervoor css modules.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsPenguinGallery/>
+    <PenguinList/  >
 </div>
 
 ## 4. Slotmachine
@@ -100,7 +100,7 @@ Kopieer de slotmachine code van labo 1 en noem deze nieuwe applicatie `lab-compo
 De applicatie moet ongeveer er als volgt uitzien:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsSlotMachine/>
+    <Labo2Slots/>
 </div>
 
 #### Oplossingsvideo
@@ -133,7 +133,7 @@ Kopieer de maaltafels code van labo 1 naar een nieuw project en noem deze `lab-c
 De applicatie moet ongeveer er als volgt uitzien:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsMultiplicationTables/>
+    <Maaltafels2/>
 </div>
 
 ## 6. Who's that pokemon?
@@ -151,7 +151,7 @@ Maak een nieuw component `PokemonImage` dat de afbeelding van een pokemon toont.
 Toon in de `App` component twee keer de `PokemonImage` component. Eén keer met `visible` op false en één keer met `visible` op true. 
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsWhosThatPokemon/>
+    <WhosThatPokemonComponent/>
 </div>
 
 ## 7. Rainbow Props
@@ -174,5 +174,5 @@ Je kan dus bijvoorbeeld de volgende code gebruiken om een horizontale en een ver
 Dit zal de volgende output geven:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <LabComponentsRainbowProps/>
+    <RegenboogProps/>
 </div>

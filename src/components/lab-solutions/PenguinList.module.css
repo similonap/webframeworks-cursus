@@ -1,0 +1,57 @@
+.penguinGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+.penguinCard {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.penguinCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.penguinImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+p {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+  color: #444;
+}
+
+p strong {
+  color: #222;
+}
+
+.selected {
+    background-color: #d5e9ff;
+}
