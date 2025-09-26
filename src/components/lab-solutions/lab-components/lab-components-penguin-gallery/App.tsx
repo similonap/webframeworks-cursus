@@ -1,4 +1,4 @@
-import penguinsJson from "../../assets/penguins.json";
+import penguinsJson from "./assets/penguins.json";
 import styles from "./PenguinList.module.css";
 
 export interface Penguin {

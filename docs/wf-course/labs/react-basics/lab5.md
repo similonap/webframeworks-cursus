@@ -1,12 +1,12 @@
 
-import Labo4ShoppingList from '@site/src/components/lab-solutions/Labo4ShoppingList';
-import Labo4TicTacToe from '@site/src/components/lab-solutions/Labo4TicTacToe';
-import Labo4Slots from '@site/src/components/lab-solutions/Labo4Slots';
-import Labo4MultiSelect from '@site/src/components/lab-solutions/Labo4MultiSelect';
-import Labo4CounterList from '@site/src/components/lab-solutions/Labo4CounterList';
-import Labo4Filtering from '@site/src/components/lab-solutions/Labo4Filtering';
-import AlienAlphabet2 from '@site/src/components/lab-solutions/AlienAlphabet2';
-import GameOfLife1 from '@site/src/components/lab-solutions/GameOfLife1';
+import LabStateArrayShoppingList from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-shopping-list/App';
+import LabStateArrayTicTacToe from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-tic-tac-toe/App';
+import LabStateArraySlotMachine from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-slot-machine/App';
+import LabStateArrayColorSelect from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-color-select/App';
+import LabStateArrayCounterList from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-counter-list/App';
+import LabStateArrayFiltering from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-filtering/App';
+import LabStateArrayAlienAlphabet from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-alien-alphabet/App';
+import LabStateArrayGameOfLife from '@site/src/components/lab-solutions/lab-state-array/lab-state-array-game-of-life/App';
 
 import ReactPlayer from 'react-player';
 
@@ -32,7 +32,7 @@ Maak een component `ShoppingList` aan met de volgende functionaliteit:
 Gebruik dit component in de App component om de volgende pagina te maken:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4ShoppingList/>
+<LabStateArrayShoppingList/>
 </div>
 
 #### Oplossingsvideo
@@ -59,7 +59,7 @@ Je moet hier twee states gebruiken: `selectedColors` en `colors`. De eerste stat
 
 Gebruik dit component in de App component om de volgende pagina te maken:
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4MultiSelect/>
+<LabStateArrayColorSelect/>
 </div>
 
 #### Oplossingsvideo
@@ -81,7 +81,7 @@ Maak een component `Filtering` aan met de volgende functionaliteit:
 - Je hebt hier twee states nodig: `sortField` en `searchText`. De eerste state bevat de property waarop gesorteerd moet worden, de tweede state bevat de tekst die gebruikt wordt om te filteren.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo4Filtering/>
+    <LabStateArrayFiltering/>
 </div>
 
 #### Oplossingsvideo
@@ -104,7 +104,7 @@ Je breidt nu de slots machine uit die je gemaakt hebt in labo 2 uit met een aant
 Het spel ziet er nu als volgt uit:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4Slots/>
+<LabStateArraySlotMachine/>
 </div>
 
 #### Oplossingsvideo
@@ -125,7 +125,7 @@ Maak een component `ButtonList` aan met de volgende functionaliteit:
 - Onderaan staat de som van alle waarden van de counters.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4CounterList/>
+<LabStateArrayCounterList/>
 </div>
 
 :::note
@@ -152,7 +152,7 @@ Maak een component `TicTacToe` aan met de volgende functionaliteit:
 Het spel ziet er nu als volgt uit:
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo4TicTacToe/>
+<LabStateArrayTicTacToe/>
 </div>
 
 ## 7. Alien Alphabet
@@ -170,7 +170,7 @@ Maak een nieuwe React applicatie aan en noem deze `lab-state-alien-alphabet`.
 - Voeg een clear button toe die de array leeg maakt.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<AlienAlphabet2/>
+<LabStateArrayAlienAlphabet/>
 </div>
 
 ## 8. Game of Life (1)
@@ -189,4 +189,4 @@ In deze opdracht wordt van je verwacht om een React-component te implementeren v
 - Laat de gebruiker de gewenste grootte van het bord opgeven door de waarden in de invoervelden te wijzigen.
 - Zorg ervoor dat de staat van het bord correct wordt bijgewerkt wanneer cellen worden omgedraaid of wanneer het bord wordt vernieuwd.
 
-<GameOfLife1/>
+<LabStateArrayGameOfLife/>

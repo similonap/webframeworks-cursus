@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from "./Labo4ShoppingList.module.css";
+import styles from "../lab-state-array-shopping-list/Labo4ShoppingList.module.css";
 
 const MultiSelect = () => {
     let [selectedColors, setSelectedColors] = useState<string[]>([])
