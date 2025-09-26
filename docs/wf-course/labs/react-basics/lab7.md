@@ -1,7 +1,7 @@
-import Labo6Quizapp from '@site/src/components/lab-solutions/Labo6Quizapp';
-import Labo6Todo from '@site/src/components/lab-solutions/Labo6Todo';
-import HappyWorkers from '@site/src/components/lab-solutions/HappyWorkers';
-import CounterListCallback from '@site/src/components/lab-solutions/CounterListCallback';
+import LabCommunicationQuizApp from '@site/src/components/lab-solutions/lab-communication/lab-communication-quiz-app/App';
+import LabCommunicationTodoApp from '@site/src/components/lab-solutions/lab-communication/lab-communication-todo-app/App';
+import LabCommunicationHappyWorkers from '@site/src/components/lab-solutions/lab-communication/lab-communication-happy-workers/App';
+import LabCommunicationCounterList from '@site/src/components/lab-solutions/lab-communication/lab-communication-counter-list/App';
 import ReactPlayer from 'react-player';
 
 # Labo 7
@@ -65,7 +65,7 @@ Maak een nieuwe component `Counter` aan. Deze component bevat een teller die je 
 
 Zorg er nu voor dat de `CounterList` component de `Counter` component gebruikt. De `CounterList` component bevat nog steeds de state van de tellers. De `Counter` component bevat geen state. De `Counter` component gebruikt de properties om de teller te tonen en de callbacks op te roepen.
 
-<CounterListCallback/>
+<LabCommunicationCounterList/>
 
 ## 2. Todo App
 
@@ -128,7 +128,7 @@ Herstructureer deze applicatie als volgt:
 - Zorg dat elk component in een aparte file staat.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo6Todo/>
+    <LabCommunicationTodoApp/>
 </div>
 
 ### Oplossingsvideo
@@ -152,7 +152,7 @@ Maak een nieuwe React applicatie aan en noem deze `lab-communication-quiz-app`.
 - Maak gebruik van de `html-entities` package om de html entities te decoderen. Deze worden meegeleverd in de API. Anders krijg je bijvoorbeeld `&quot;` te zien in plaats van `"`.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo6Quizapp/>
+<LabCommunicationQuizApp/>
 </div>
 
 ### Oplossingsvideo
@@ -174,7 +174,7 @@ Zorg ervoor dat als je op een `Square` klikt, de `work` state met 1 verhoogd wor
 
 Als de `work` state kleiner is dan 100 dan moet de `Square` component een 😐 tonen. Als de `work` state 100 is dan moet de `Square` component een 😃 tonen. Let er op: het tonen van de smileys vereist geen nieuwe state. Je kan dit afleiden van de `work` state.
 
-<HappyWorkers useProductivity={false}/>
+<LabCommunicationHappyWorkers useProductivity={false}/>
 
 Uitbreiding:
 - Maak een `state` genaamd `productivity` aan in de Square component die initieel op 1 staat. De `productivity` state stelt voor hoeveel procent de `work` state verhoogd wordt als je op de `Square` klikt. 
@@ -183,4 +183,4 @@ Uitbreiding:
 - Als de `clicked` state groter of gelijk is aan 10 dan moet de `productivity` state op 0 gezet worden. Dit zorgt ervoor dat de `Square` component een 😵 toont. Het is dan tijdelijk niet meer mogelijk de `work` state te verhogen met die `Square`.
 - Na 5 seconden moet de `productivity` state terug op 1 gezet worden. Dit zorgt ervoor dat de `Square` component terug een 😐 toont. Ook de `clicked` state wordt terug op 0 gezet.
 
-<HappyWorkers useProductivity={true}/>
+<LabCommunicationHappyWorkers useProductivity={true}/>

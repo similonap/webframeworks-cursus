@@ -1,6 +1,6 @@
-import Labo5Interval from '@site/src/components/lab-solutions/Labo5Interval';
-import Labo5Pokemon from '@site/src/components/lab-solutions/Labo5Pokemon';
-import Labo5LocalStorage from '@site/src/components/lab-solutions/Labo5LocalStorage';
+import LabHooksInterval from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-interval/App';
+import LabHooksPokemonPokedex from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-pokemon-pokedex/App';
+import LabHooksLocalStorage from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-local-storage/App';
 import ReactPlayer from 'react-player';
 
 # Labo 6
@@ -22,7 +22,7 @@ Maak de volgende componenten aan:
 - Alle componenten gebruiken `setInterval` om de tijd te updaten. Gebruik de `useEffect` hook om dit te doen.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-    <Labo5Interval/>
+    <LabHooksInterval/>
 </div>
 
 ### Oplossingsvideo
@@ -43,7 +43,7 @@ Maak een nieuwe React applicatie aan en noem deze `lab-hooks-pokemon-pokedex`.
 - Plaats een invoerveld onderaan de lijst die aangeeft hoeveel pokemon er getoond mogen worden. Je dient deze filtering aan de hand van de `limit` query parameter te doen van de API. Pas vanaf de gebruiker op de button klikt, wordt de lijst van pokemon opnieuw opgehaald.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo5Pokemon/>
+<LabHooksPokemonPokedex/>
 </div>
 
 ## 3. LocalStorage
@@ -62,7 +62,7 @@ Maak een nieuwe React applicatie aan en noem deze `lab-hooks-local-storage`.
 - Bij het opstarten van de applicatie, wordt de laatst opgeslagen joke getoond. Gebruik hiervoor de `useEffect` hook.
 
 <div style={{padding: 10, border: "1px dotted black"}}>
-<Labo5LocalStorage/>
+<LabHooksLocalStorage/>
 </div>
 
 ### Oplossingsvideo
