@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import slotCherry from './assets/slot-cherry.png';
-import slotLemon from './assets/slot-lemon.png';
-import slotMelon from './assets/slot-melon.png';
-import slotPrune from './assets/slot-prune.png';
-import slotSeven from './assets/slot-seven.png';
+import slotCherry from '../../assets/slot-cherry.png';
+import slotLemon from '../../assets/slot-lemon.png';
+import slotMelon from '../../assets/slot-melon.png';
+import slotPrune from '../../assets/slot-prune.png';
+import slotSeven from '../../assets/slot-seven.png';
 
 import styles from './Labo2Slots.module.css';
-import Refreshable from './Refreshable';
+import Refreshable from '../../Refreshable';
 
 export const Slot = ({ value }: { value: number }) => {
   let img = slotCherry;

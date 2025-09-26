@@ -1,6 +1,6 @@
 import { useState } from "react";
 import penguinsJson from "./assets/penguins.json";
-import styles from "./PenguinList.module.css";
+import styles from "./lab-components/lab-components-penguin-gallery/PenguinList.module.css";
 
 export interface Penguin {
     id: number;
