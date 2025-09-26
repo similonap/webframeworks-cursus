@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player';
-import LaboEventsColorClicker from '@site/src/components/lab-solutions/LaboEventsColorClicker';
-import LaboEventsCheckBoxGrid from '@site/src/components/lab-solutions/LaboEventsCheckBoxGrid';
-import LaboEventsInput from '@site/src/components/lab-solutions/LaboEventsInput';
+import LabEventsColorClicker from '@site/src/components/lab-solutions/lab-events/lab-events-color-clicker/App';
+import LabEventsCheckBoxGrid from '@site/src/components/lab-solutions/lab-events/lab-events-checkbox-grid/App';
+import LabEventsInput from '@site/src/components/lab-solutions/lab-events/lab-events-text-input/App';
 
 # Labo 3
 
@@ -25,7 +25,7 @@ Zorg voor een event handler die een alert toont met de kleur van het vierkant al
 
 Maak 10 vierkanten met willekeurige kleuren en toon deze in een rij op het scherm.
 
-<LaboEventsColorClicker/>
+<LabEventsColorClicker/>
 
 ## TextInput
 
@@ -39,7 +39,7 @@ Maak een component `TextInput` aan met de volgende properties:
 
 Maak een rij van textboxes met de grootte die je meekrijgt als property. Als je een textbox aanpast, toon je een alert met de positie van de textbox en de nieuwe waarde.
 
-<LaboEventsInput/>
+<LabEventsInput/>
 
 ## Checkbox Grid
 
@@ -53,4 +53,4 @@ Maak een nieuw component `CheckBox` aan met de volgende properties:
 
 Maak een grid van checkboxes met de grootte die je meekrijgt als property. Als je op een checkbox klikt, toon je een alert met de positie van de checkbox en of deze aangevinkt is of niet. Het grid kan je maken met een array van arrays van booleans (type `boolean[][]`). 
 
-<LaboEventsCheckBoxGrid/>
+<LabEventsCheckBoxGrid/>
