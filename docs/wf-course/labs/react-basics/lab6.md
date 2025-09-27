@@ -2,6 +2,7 @@ import LabHooksInterval from '@site/src/components/lab-solutions/lab-hooks/lab-h
 import LabHooksPokemonPokedex from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-pokemon-pokedex/App';
 import LabHooksLocalStorage from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-local-storage/App';
 import ReactPlayer from 'react-player';
+import LabHooksGameOfLife from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-game-of-life/App';
 
 # Labo 6
 
@@ -70,3 +71,22 @@ Maak een nieuwe React applicatie aan en noem deze `lab-hooks-local-storage`.
 <ReactPlayer controls url='https://youtu.be/-ZCPmx5HGvA'/>
 
 ## 4. Game of Life (2)
+
+> 📂 **Naam project:** `lab-hooks-game-of-life`  
+> 🔗 **Basis project:**  [`lab-state-array-game-of-life`](lab5.md#8-game-of-life-1)
+
+Maak een kopie van de Game of Life van het vorige labo (lab-state-array-game-of-life) naar een nieuw project en noem deze `lab-hooks-game-of-life`.
+
+Voeg een functie `step` toe die 1 stap van de Game Of Life uitvoert. Deze functie wordt aangeroepen telkens als de gebruiker op een `STEP` button klikt.
+
+De regels van de Game of Life zijn als volgt:
+- Rule 1: Een levende cel met minder dan 2 levende buren sterft (onderbevolking).
+- Rule 2: Een levende cel met 2 of 3 levende buren blijft leven.
+- Rule 3: Een levende cel met meer dan 3 levende buren sterft (overbevolking).
+- Een dode cel met precies 3 levende buren wordt een levende cel (reproductie).
+
+![alt text](./images/gameofliferules.png)
+
+Maak ook een `PLAY` button die de `step` functie elke seconde aanroept. Maak ook een `STOP` button die dit stopt.
+
+<LabHooksGameOfLife/>

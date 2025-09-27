@@ -1,5 +1,5 @@
-import Labo7Pokemon from '@site/src/components/lab-solutions/Pokemon/App';
-import BasicContext from '@site/src/components/lab-solutions/BasicContext';
+import LabContextPokemon from '@site/src/components/lab-solutions/lab-context/lab-context-pokemon/App';
+import BasicContext from '@site/src/components/lab-solutions/lab-context/lab-context-settings/App';
 import ReactPlayer from 'react-player';
 
 # Labo 8
@@ -100,7 +100,7 @@ Uitbreidingen:
 > 📂 **Naam project:** n/a  
 > 🔗 **Basis project:** n/a
 
-<Labo7Pokemon/>
+<LabContextPokemon/>
 
 ### Oplossingsvideo
 
