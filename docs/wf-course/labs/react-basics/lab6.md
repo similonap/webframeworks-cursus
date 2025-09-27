@@ -3,6 +3,7 @@ import LabHooksPokemonPokedex from '@site/src/components/lab-solutions/lab-hooks
 import LabHooksLocalStorage from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-local-storage/App';
 import ReactPlayer from 'react-player';
 import LabHooksGameOfLife from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-game-of-life/App';
+import LabHooksUseInterval from '@site/src/components/lab-solutions/lab-hooks/lab-hooks-use-interval/App';
 
 # Labo 6
 
@@ -70,7 +71,24 @@ Maak een nieuwe React applicatie aan en noem deze `lab-hooks-local-storage`.
 
 <ReactPlayer controls url='https://youtu.be/-ZCPmx5HGvA'/>
 
-## 4. Game of Life (2)
+## 4. useInterval hook
+
+> 📂 **Naam project:** `lab-hooks-use-interval`  
+> 🔗 **Basis project:** n/a
+
+Maak een nieuw React project aan en noem deze `lab-hooks-use-timeout`. Schrijf een `useInterval` hook die een functie aanroept elke `delay` milliseconden. De hook moet de volgende parameters aanvaarden:
+- `callback`: de functie die aangeroepen wordt elke `delay` milliseconden
+- `delay`: het aantal milliseconden tussen elke aanroep van de `callback`
+
+Je moet het interval kunnen aan- en uitzetten door een `running` state te gebruiken. Wanneer `running` op `true` staat, wordt de `callback` elke `delay` milliseconden aangeroepen. Wanneer `running` op `false` staat, wordt de `callback` niet aangeroepen.
+
+Het moet ook mogelijk zijn om de `delay` te veranderen. Wanneer de `delay` verandert, moet het interval opnieuw ingesteld worden met de nieuwe `delay`.
+
+Schrijf een eenvoudig webapplicatie die de `useInterval` hook gebruikt om een teller te maken die elke seconde verhoogd wordt. De applicatie moet ook een button hebben om het interval aan- en uit te zetten. En een invoerveld om de `delay` te veranderen.
+
+<LabHooksUseInterval/>
+
+## 5. Game of Life (2)
 
 > 📂 **Naam project:** `lab-hooks-game-of-life`  
 > 🔗 **Basis project:**  [`lab-state-array-game-of-life`](lab5.md#8-game-of-life-1)
@@ -90,3 +108,4 @@ De regels van de Game of Life zijn als volgt:
 Maak ook een `PLAY` button die de `step` functie elke seconde aanroept. Maak ook een `STOP` button die dit stopt.
 
 <LabHooksGameOfLife/>
+
