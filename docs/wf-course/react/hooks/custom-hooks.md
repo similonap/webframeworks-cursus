@@ -16,7 +16,7 @@ Custom hooks helpen vooral wanneer je dezelfde logica meerdere keren nodig hebt,
 
 Stel dat je de volgende component hebt met een useEffect die een interval instelt die elke seconde iets doet:
 
-```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
 const App = () => {
@@ -44,7 +44,7 @@ export default App;
 
 Stel dat je deze functionaliteit vaker nodig hebt. Bijvoorbeeld een ander component gebruikt de timer voor een klok te laten zien:
 
-```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
 const App = () => {
@@ -72,7 +72,7 @@ export default App;
 
 Eigenlijk is grotendeel van de code hetzelfde. We kunnen deze logica in een custom hook stoppen:
 
-```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
 type TimeoutCallback = () => void;
@@ -113,7 +113,7 @@ Op deze manier wordt deze hook herbruikbaar in meerdere componenten zonder code 
 
 Je zou deze hook ook kunnen uitbreiden met extra functionaliteit, zoals het pauzeren of hervatten van de timer. Dan moet de functie ook een functie teruggeven die de timer stil zet (en terug start)
 
-```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
 type TimeoutCallback = () => void;
@@ -162,7 +162,7 @@ Een heel interessante hook om te schrijven is een `useFetch` hook die data ophaa
 
 De onderstaande hook illustreert dit:
 
-```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
 type FetchState<T> = {
@@ -239,3 +239,40 @@ export default App;
 ```
 
 Er zijn verschillende libraries die gelijkaardige hooks aanbieden die veel uitgebreider zijn. Een voorbeeld hiervan is [React Query](https://tanstack.com/query/v3/) die een heleboel functionaliteit aanbiedt rond data fetching, caching, synchronisatie en updates in React applicaties. Of [SWR](https://swr.vercel.app/) van Vercel. 
+
+Met `useSWR` zou je bovenstaande voorbeeld als volgt kunnen herschrijven:
+
+```typescript codesandbox={"template": "react-swr", "filename": "src/App.tsx"}
+import useSWR from 'swr';
+import React from 'react';
+
+const fetcher = (url: string) => fetch(url).then(res => res.json());
+
+interface Post {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+}
+
+const App = () => {
+    const { data, error, mutate } = useSWR<Post[]>('https://jsonplaceholder.typicode.com/posts', fetcher);
+
+    if (!data) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    return (
+        <div>
+            <button onClick={() => mutate()}>Refetch</button>
+            <ul>
+                {data.map(post => (
+                    <li key={post.id}>{post.title}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+export default App;
+```
+
+Deze hooks zijn veel krachtiger en bieden veel meer functionaliteit dan onze eenvoudige `useFetch` hook, maar het idee is hetzelfde: herbruikbare logica in een hook stoppen. 
