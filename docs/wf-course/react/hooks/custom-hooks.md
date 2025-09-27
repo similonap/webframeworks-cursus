@@ -118,7 +118,12 @@ import { useState, useEffect } from 'react';
 
 type TimeoutCallback = () => void;
 
-const useTimeout = (d: number, callback: TimeoutCallback) => {
+interface UseTimeoutReturn {
+    pause: () => void;
+    resume: () => void;
+}
+
+const useTimeout = (d: number, callback: TimeoutCallback): UseTimeoutReturn => {
     const [delay, setDelay] = useState(d);
     const [running, setRunning] = useState(true);
 
@@ -150,3 +155,87 @@ Je kan deze ook hernoemen naar iets anders op de volgende manier, zodat je meerd
 const { pause: pauseCounter, resume: resumeCounter } = useTimeout(1000, () => setCounter((prev) => prev + 1));
 const { pause: pauseTime, resume: resumeTime } = useTimeout(1000, () => setTime(new Date()));
 ```
+
+### useFetch hook
+
+Een heel interessante hook om te schrijven is een `useFetch` hook die data ophaalt van een API en deze in de state plaatst. Deze hook kan ook loading en error states bijhouden.
+
+De onderstaande hook illustreert dit:
+
+```typescript codesandbox={"template": "react-non-strict", "filename": "src/App.tsx"}
+import { useState, useEffect } from 'react';
+
+type FetchState<T> = {
+    data: T | null;
+    loading: boolean;
+    error: Error | null;
+}
+
+const useFetch = <T,>(url: string): FetchState<T> => {
+    const [data, setData] = useState<T | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<Error | null>(null);
+    const [trigger, setTrigger] = useState(0); 
+
+    const refetch = () => setTrigger(t => t + 1); 
+
+    useEffect(() => {
+        let cancelled = false;
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                if (cancelled) return;
+                setData(result);
+            } catch (err) {
+                setError(err as Error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+
+        return () => {
+            cancelled = true;
+        }
+    }, [url, trigger]);
+
+    return { data, loading, error, refetch };
+}
+
+//hide-start
+interface Post {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+}
+
+const App = () => {
+    const { data, loading, error, refetch } = useFetch<Post[]>('https://jsonplaceholder.typicode.com/posts');
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    return (
+        <div>
+            <button onClick={refetch}>Refetch</button>
+            <ul>
+                {data?.map(post => (
+                    <li key={post.id}>{post.title}</li>
+                ))}
+            </ul>
+        </div>
+    )
+}   
+
+export default App;
+//hide-end
+```
+
+Er zijn verschillende libraries die gelijkaardige hooks aanbieden die veel uitgebreider zijn. Een voorbeeld hiervan is [React Query](https://tanstack.com/query/v3/) die een heleboel functionaliteit aanbiedt rond data fetching, caching, synchronisatie en updates in React applicaties. Of [SWR](https://swr.vercel.app/) van Vercel. 
