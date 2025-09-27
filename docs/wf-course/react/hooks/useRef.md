@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # useRef
 
+:::warning
+useRef is een geavanceerde hook die je niet vaak nodig hebt. Gebruik deze hook alleen als je echt weet wat je doet. De meeste toepassingen van useRef kunnen ook opgelost worden met useState of useEffect. Dus kijk eerst altijd of je het probleem niet op een reactievere manier kan oplossen (met useState of useEffect) voordat je useRef gebruikt.
+:::
+
 ## Werking
 
 Wanneer je wil dat een component een waarde wil onthouden, maar je wil niet dat de component opnieuw gerenderd wordt wanneer die waarde verandert, kan je gebruik maken van de `useRef` hook. Deze hook is een manier om een waarde te onthouden tussen renders van een component.
