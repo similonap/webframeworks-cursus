@@ -299,3 +299,170 @@ const App = () => {
 
 export default App;
 ```
+
+### Checkbox lijst
+
+We kunnen ook een lijst van checkboxen maken waarbij we de geselecteerde items in de parent component bijhouden:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface CheckboxProps {
+    label: string,
+    checked: boolean,
+    onChange: (checked: boolean) => void
+}
+
+const Checkbox = ({label, checked, onChange}: CheckboxProps) => {
+    return (
+        <div>
+            <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)}/>
+            <label>{label}</label>
+        </div>
+    );
+}
+
+const App = () => {
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+    const handleCheckboxChange = (item: string, isChecked: boolean) => {
+        if (isChecked) {
+            setSelectedItems([...selectedItems, item]);
+        } else {
+            setSelectedItems(selectedItems.filter(i => i !== item));
+        }
+    };
+
+    const items = ["Item 1", "Item 2", "Item 3"];
+
+    return (
+        <div>
+            <h1>Checkbox List</h1>
+            {items.map(item => (
+                <Checkbox
+                    key={item}
+                    label={item}
+                    checked={selectedItems.includes(item)}
+                    onChange={(isChecked) => handleCheckboxChange(item, isChecked)}
+                />
+            ))}
+            <div>
+                <h2>Selected Items:</h2>
+                <ul>
+                    {selectedItems.map(item => (
+                        <li key={item}>{item}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
+}
+
+export default App;
+```
+
+### Filter lijst
+
+We kunnen ook een filter lijst maken waarbij we de filter tekst in de parent component bijhouden:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface FilterInputProps {
+    filterText: string,
+    onFilterChange: (text: string) => void
+}
+
+const FilterInput = ({filterText, onFilterChange}: FilterInputProps) => {
+    return (
+        <div>
+            <input
+                type="text"
+                value={filterText}
+                onChange={(e) => onFilterChange(e.target.value)}
+                placeholder="Filter items..."
+            />
+        </div>
+    );
+}
+
+const App = () => {
+    const [filterText, setFilterText] = useState("");
+
+    const items = ["Apple", "Banana", "Orange", "Grapes", "Mango"];
+
+    const filteredItems = items.filter(item =>
+        item.toLowerCase().includes(filterText.toLowerCase())
+    );
+
+    return (
+        <div>
+            <h1>Filter List</h1>
+            <FilterInput filterText={filterText} onFilterChange={setFilterText}/>
+            <ul>
+                {filteredItems.map(item => (
+                    <li key={item}>{item}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default App;
+```
+
+### Lijst met een selectievakje
+
+````typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface ShoppingItem {
+    name: ShoppingItem,
+    quantity: number
+}
+
+interface SelectableItemProps {
+    item: string,
+    isSelected: boolean,
+    onSelect: (item: string) => void
+}
+
+const SelectableItem = ({item, isSelected, onSelect}: SelectableItemProps) => {
+    return (
+        <div
+            style={{
+                padding: "10px",
+                margin: "5px",
+                border: isSelected ? "2px solid blue" : "1px solid gray",
+                cursor: "pointer"
+            }}
+            onClick={() => onSelect(item)}
+        >
+            {item}
+        </div>
+    );
+}
+
+const App = () => {
+    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+    const items = ["Item A", "Item B", "Item C", "Item D"];
+
+    return (
+        <div>
+            <h1>Selectable List</h1>
+            {items.map(item => (
+                <SelectableItem
+                    key={item}
+                    item={item}
+                    isSelected={selectedItem === item}
+                    onSelect={setSelectedItem}
+                />
+            ))}
+            {selectedItem && <div>Selected: {selectedItem}</div>}
+        </div>
+    );
+}
+
+export default App;
+````
