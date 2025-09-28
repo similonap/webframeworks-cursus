@@ -1,0 +1,301 @@
+---
+sidebar_position: 15
+---
+
+# Child-Parent communicatie
+
+Tot nu toe hebben we altijd gezien dat je data kan doorgeven aan een component via properties (props). Dit is een manier om data van een parent component naar een child component door te geven. 
+
+Zo hadden we bijvoorbeeld een `Square` component die een property `color` had. Deze property werd doorgegeven vanuit de parent component `App`:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+interface SquareProps {
+    color: string
+}
+
+const Square = ({color}: SquareProps) => {
+    return <div style={{width: 100, height: 100, backgroundColor: color}}></div>
+}
+
+const App = () => {
+    return (
+        <>
+            <Square color="red"/>
+            <Square color="green"/>
+            <Square color="blue"/>
+        </>
+    );
+}
+
+export default App;
+```
+
+Dit is een voorbeeld van parent-to-child communicatie. Stel je voor dat we de `Square` component willen aanpassen als we op het vierkant klikken dan en deze dan een border krijgt. Dit kan je op de volgende manier doen:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface SquareProps {
+    color: string
+}
+
+const Square = ({color}: SquareProps) => {
+    const [clicked, setClicked] = useState(false);
+    let borderStyle = clicked ? {border: "5px solid black"} : {};
+    return (
+        <div style={{width: 100, height: 100, backgroundColor: color, ...borderStyle}} onClick={() => setClicked(!clicked)}/>
+    );
+}
+
+//hide-start
+const App = () => {
+    return (
+        <>
+            <Square color="red"/>
+            <Square color="green"/>
+            <Square color="blue"/>
+        </>
+    );
+}
+
+export default App;
+//hide-end
+```
+
+Elk component staat dus volledig op zichzelf en kan zijn eigen state bijhouden. Maar wat als we willen dat er maar één vierkant tegelijk geselecteerd kan zijn? Dus als we op een vierkant klikken, dan moet het andere vierkant zijn selectie verliezen. Dit kunnen we niet doen met de huidige opzet omdat elk component zijn eigen state bijhoudt. We moeten dus de state van welk vierkant geselecteerd is, bijhouden in de parent component `App`.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface SquareProps {
+    color: string,
+    selected: boolean,
+    onClick: () => void
+}
+
+const Square = ({color, selected, onClick}: SquareProps) => {
+    let borderStyle = selected ? {border: "5px solid black"} : {};
+    return (
+        <div style={{width: 100, height: 100, backgroundColor: color, ...borderStyle}} onClick={onClick}/>
+    );
+}
+
+const App = () => {
+    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+    return (
+        <>
+            <Square color="red" selected={selectedColor === "red"} onClick={() => setSelectedColor("red")}/>
+            <Square color="green" selected={selectedColor === "green"} onClick={() => setSelectedColor("green")}/>
+            <Square color="blue" selected={selectedColor === "blue"} onClick={() => setSelectedColor("blue")}/>
+        </>
+    );
+}
+
+export default App;
+```
+
+Je ziet in het voorbeeld hierboven dat je dus perfect ook een functie kan doorgeven als property. Deze functie kan dan gebruikt worden om te communiceren van het child component naar het parent component. Dit concept noemen we callback functies of event handlers.
+
+Je ziet dat we hier een vereenvoudigde versie van de onClick handler hebben gemaakt en hier niet de event parameter gebruiken. Als we deze toch nodig hebben in de parent component dan kunnen we deze ook doorgeven:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+interface SquareProps {
+    color: string,
+    selected: boolean,
+    onClick: React.MouseEventHandler<HTMLDivElement>
+}
+
+const Square = ({color, selected, onClick}: SquareProps) => {
+    let borderStyle = selected ? {border: "5px solid black"} : {};
+    return (
+        <div style={{width: 100, height: 100, backgroundColor: color, ...borderStyle}} onClick={onClick}/>
+    );
+}
+
+const App = () => {
+    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+    return (
+        <>
+            <Square color="red" selected={selectedColor === "red"} onClick={(e) => { console.log(e.currentTarget); setSelectedColor("red") }}/>
+            <Square color="green" selected={selectedColor === "green"} onClick={(e) => { console.log(e.currentTarget); setSelectedColor("green") }}/>
+            <Square color="blue" selected={selectedColor === "blue"} onClick={(e) => { console.log(e.currentTarget); setSelectedColor("blue") }}/>
+        </>
+    );
+}
+//hide-start
+export default App;
+//hide-end
+```
+
+Het is ook mogelijk om de hele state en de state setter door te geven naar het child component. Maar dit is niet aan te raden omdat je dan de encapsulatie van het component doorbreekt. Het is beter om alleen de nodige properties en functies door te geven. Gebruik dit alleen als je echt geen andere optie hebt.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface SquareProps {
+    color: string,
+    selectedColor: string | null,
+    setSelectedColor: React.Dispatch<React.SetStateAction<string | null>>
+}
+
+const Square = ({color, selectedColor, setSelectedColor}: SquareProps) => {
+    let borderStyle = selectedColor === color ? {border: "5px solid black"} : {};
+    return (
+        <div style={{width: 100, height: 100, backgroundColor: color, ...borderStyle}} onClick={() => setSelectedColor(color)}/>
+    );
+}
+
+const App = () => {
+    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+    return (
+        <>
+            <Square color="red" selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
+            <Square color="green" selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
+            <Square color="blue" selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
+        </>
+    );
+}
+
+export default App;
+```
+
+## Welke aanpak verkiezen?
+
+- ✅ **Voorkeur**: geef enkel de nodige properties en callback functies door  
+  - Child blijft eenvoudig en goed geïsoleerd  
+  - Parent behoudt controle over de state  
+
+- ➡️ **Optioneel**: geef de event handler rechtstreeks door (met de `event` als parameter)  
+  - Handig als de parent informatie uit het event zelf nodig heeft (bv. `e.currentTarget`)  
+  - Iets meer koppeling tussen parent en child, maar nog steeds overzichtelijk  
+
+- ⚠️ **Af te raden**: geef de volledige state en setter door  
+  - Doorbreekt de encapsulatie  
+  - Child wordt te afhankelijk van de interne logica van de parent 
+
+## Voorbeelden
+
+### Todo App met InputView
+
+We gaan een eenvoudige Todo app bouwen waar we de invoer in een aparte `InputView` component plaatsen. De `InputView` zal een callback functie krijgen om de nieuwe todo toe te voegen aan de lijst in de parent component `App`.
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface InputViewProps {
+    onAddTodo: (todo: string) => void
+}
+
+const InputView = ({onAddTodo}: InputViewProps) => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleAdd = () => {
+        if (inputValue.trim() !== "") {
+            onAddTodo(inputValue);
+            setInputValue("");
+        }
+    };
+
+    return (
+        <div>
+            <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+            <button onClick={handleAdd}>Add Todo</button>
+        </div>
+    );
+}
+
+const App = () => {
+    const [todos, setTodos] = useState<string[]>([]);
+
+    const addTodo = (todo: string) => {
+        setTodos([...todos, todo]);
+    };
+
+    return (
+        <div>
+            <h1>Todo List</h1>
+            <InputView onAddTodo={addTodo}/>
+            <ul>
+                {todos.map((todo, index) => (
+                    <li key={index}>{todo}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default App;
+```
+
+### Todo App met delete functie
+
+Je kan deze zelfs nog uitbreiden met een `TodoItem` component met een verwijder functie:
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface InputViewProps {
+    onAddTodo: (todo: string) => void
+}
+
+const InputView = ({onAddTodo}: InputViewProps) => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleAdd = () => {
+        if (inputValue.trim() !== "") {
+            onAddTodo(inputValue);
+            setInputValue("");
+        }
+    };
+
+    return (
+        <div>
+            <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+            <button onClick={handleAdd}>Add Todo</button>
+        </div>
+    );
+}
+
+interface TodoItemProps {
+    onDelete: () => void,
+    todo: string
+}
+
+const TodoItem = ({onDelete, todo}: TodoItemProps) => {
+    return (
+        <li>
+            {todo} <button onClick={onDelete}>Delete</button>
+        </li>
+    );
+}
+
+const App = () => {
+    const [todos, setTodos] = useState<string[]>([]);
+
+    const addTodo = (todo: string) => {
+        setTodos([...todos, todo]);
+    };
+
+    const deleteTodo = (index: number) => {
+        setTodos(todos.filter((_, i) => i !== index));
+    };
+
+    return (
+        <div>
+            <h1>Todo List</h1>
+            <InputView onAddTodo={addTodo}/>
+            <ul>
+                {todos.map((todo, index) => (
+                    <TodoItem key={index} todo={todo} onDelete={() => deleteTodo(index)}/>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default App;
+```
