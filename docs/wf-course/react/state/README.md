@@ -181,50 +181,50 @@ Hier is een voorbeeld waar we de regels van de `useState` hook niet respecteren:
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState } from "react";
 
-interface UserInfoProps {
-  askAge: boolean;
-}
+const BadCounter = ({ enableExtra }: { enableExtra: boolean }) => {
+  // ✅ Hook 1 – always runs
+  const [count, setCount] = useState(0);
 
-const UserInfo = ({ askAge }: UserInfoProps) => {
-  const [name, setName] = useState("");
-  if (askAge) {
-    const [age, setAge] = useState(0); // 1. Mag niet in een IF staan
-                                       // 2. Moet altijd bovenaan de functie staan
+  // ❌ Hook 2 – only runs sometimes
+  if (enableExtra) {
+    const [extra, setExtra] = useState(100); 
+    // React explodes if this runs on one render but not the next
+
+    return (
+      <>
+        <p>Count: {count}</p>
+        <p>Extra: {extra}</p>
+        <button onClick={() => setCount(count + 1)}>Increment Count</button>
+        <button onClick={() => setExtra(extra + 10)}>Increment Extra</button>
+      </>
+    );
   }
 
+  // If enableExtra = false, hook order is different → 💥
   return (
-    <fieldset>
-      <legend>User Info</legend>
-      <label htmlFor="name">Name:</label>
-      <input
-        name="name"
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <br />
-      {askAge && (
-        <>
-          <label htmlFor="name">Age:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </>
-      )}
-    </fieldset>
+    <>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+    </>
   );
 };
 
 const App = () => {
-  const [askAge, setAskAge] = useState(false);
+  const [showExtra, setShowExtra] = useState(false);
 
-  return (<>
-      <label>Ask age?</label>
-      <input type="checkbox" checked={askAge} onChange={(e) => setAskAge(e.target.checked)}/>
-      <UserInfo askAge={askAge} />
-    </>);
+  return (
+    <>
+      <label>
+        <input
+          type="checkbox"
+          checked={showExtra}
+          onChange={(e) => setShowExtra(e.target.checked)}
+        />
+        Enable Extra Counter
+      </label>
+      <BadCounter enableExtra={showExtra} />
+    </>
+  );
 };
 
 export default App;
