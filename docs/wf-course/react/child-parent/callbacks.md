@@ -466,3 +466,87 @@ const App = () => {
 
 export default App;
 ````
+
+### Formulier met validatie
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import {useState} from "react";
+
+interface FormProps {
+    onSubmit: (data: { name: string; email: string }) => void
+}
+
+interface FormErrors {
+    name?: string;
+    email?: string;
+}
+
+const Form = ({onSubmit}: FormProps) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+
+    const validate = () => {
+        const newErrors: FormErrors = {};
+        if (name.trim() === "") {
+            newErrors.name = "Name is required";
+        }
+        if (email.trim() === "") {
+            newErrors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            newErrors.email = "Email is invalid";
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (validate()) {
+            onSubmit({name, email});
+            setName("");
+            setEmail("");
+            setErrors({});
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Name:</label>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                {errors.name && <span style={{color: "red"}}>{errors.name}</span>}
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                {errors.email && <span style={{color: "red"}}>{errors.email}</span>}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    );
+}
+
+const App = () => {
+    const [submissions, setSubmissions] = useState<{ name: string; email: string }[]>([]);
+
+    const handleFormSubmit = (data: { name: string; email: string }) => {
+        setSubmissions([...submissions, data]);
+    };
+
+    return (
+        <div>
+            <h1>Form with Validation</h1>
+            <Form onSubmit={handleFormSubmit}/>
+            <h2>Submissions:</h2>
+            <ul>
+                {submissions.map((submission, index) => (
+                    <li key={index}>{submission.name} - {submission.email}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default App;
+````
