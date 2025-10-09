@@ -15,7 +15,7 @@ Met deze opdracht werk je aan de volgende leerdoelen:
 
 In deze opdracht maak je gebruik van React Native om een mobiele applicatie te maken. Je maakt deze opdracht **individueel**.
 
-Je kiest een onderwerp op basis van [de beschikbare APIs](https://sampleapis.assimilate.be/), **met uitzondering van de API die we gebruiken als voorbeeld in de les**. Je kan de lijst met beschikbare APIs (en hun endpoints) terugvinden op https://sampleapis.assimilate.be/.
+Je kiest een onderwerp op basis van [de beschikbare APIs](https://sampleapis.assimilate.be/), **met uitzondering van de API die we gebruiken als voorbeeld in de les**. Je kan de lijst met beschikbare APIs (en hun endpoints) terugvinden op https://sampleapis.assimilate.be/. Je mag ook een andere API gebruiken of gebruik maken van firebase/supabase als backend.
 
 ## 🛠️ Opdrachten
 
