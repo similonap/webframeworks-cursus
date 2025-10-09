@@ -165,30 +165,32 @@ De onderstaande hook illustreert dit:
 ```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
 import { useState, useEffect } from 'react';
 
-type FetchState<T> = {
-    data: T | null;
+
+interface FetchState<T> {
     loading: boolean;
+    data: T | null;
     error: Error | null;
+    refetch: () => void;
 }
 
-const useFetch = <T,>(url: string): FetchState<T> => {
-    const [data, setData] = useState<T | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+export function useFetch<T>(url: string): FetchState<T> {
     const [error, setError] = useState<Error | null>(null);
-    const [trigger, setTrigger] = useState(0); 
+    const [data, setData] = useState<T | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [trigger, setTrigger] = useState<number>(0);
 
-    const refetch = () => setTrigger(t => t + 1); 
+    const refetch = () => setTrigger(trigger => trigger + 1);
 
     useEffect(() => {
-        let cancelled = false;
-        const fetchData = async () => {
+        let cancelled: boolean = false;
+        const fetchData = async() => {
             try {
                 setLoading(true);
                 const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error("Something went wrong fetching data");
                 }
-                const result = await response.json();
+                const result : T = await response.json();
                 if (cancelled) return;
                 setData(result);
             } catch (err) {
@@ -196,16 +198,17 @@ const useFetch = <T,>(url: string): FetchState<T> => {
             } finally {
                 setLoading(false);
             }
-        };
-
+        }
         fetchData();
 
         return () => {
             cancelled = true;
         }
-    }, [url, trigger]);
+    }, [trigger, url]);
 
-    return { data, loading, error, refetch };
+    return {
+        data, loading, error, refetch
+    }
 }
 
 //hide-start
