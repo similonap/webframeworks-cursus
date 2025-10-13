@@ -415,3 +415,54 @@ const App = () => {
 
 export default App
 ```
+
+## ThemeProvider
+
+Ook ons voorbeeld van de light/dark theme kan je aan de hand van een aparte provider maken. 
+
+```typescript codesandbox={"template": "react", "filename": "src/App.tsx"}
+import { createContext, useState, type ReactNode } from "react";
+
+export type Theme = "dark" | "light";
+
+interface IThemeContext {
+    theme: Theme;
+    toggle: () => void
+}
+
+export const ThemeContext = createContext<IThemeContext>({theme: "light", toggle: () => {}});
+
+const ThemeProvider = ({children}: {children: ReactNode}) => {
+    const [theme, setTheme] = useState<Theme>("light");
+
+    const toggle = () => {
+        setTheme(theme => theme === "dark" ? "light" : "dark");
+    }
+
+    return (
+        <ThemeContext.Provider value={{ theme: theme, toggle: toggle }}>
+            {children}
+        </ThemeContext.Provider>
+    )
+}
+
+export default ThemeProvider;
+```
+
+Dan kan je eenvoudig de `ThemeProvider` gebruiken in je `App` component of je `main.tsx` bestand.
+
+```typescript
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+import ThemeProvider from "./providers/ThemeProvider.tsx"
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider>
+        <App />
+    </ThemeProvider>
+  </StrictMode>,
+)
+```
