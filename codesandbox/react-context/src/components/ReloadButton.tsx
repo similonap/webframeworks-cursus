@@ -1,11 +1,11 @@
 import React from 'react';
 import { useContext } from 'react';
-import { DataContext } from '../dataContext';
+import { DataContext } from '../providers/DataProvider';
 
 const ReloadButton = () => {
-  const { loadData, loading } = useContext(DataContext);
+  const { reload, loading } = useContext(DataContext);
   return (
-    <button disabled={loading} onClick={() => loadData()}>reload</button>
+    <button disabled={loading} onClick={() => reload()}>reload</button>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { DataContext } from '../dataContext';
+import { DataContext } from '../providers/DataProvider';
 
 const PostList = () => {
   const { posts } = useContext(DataContext);

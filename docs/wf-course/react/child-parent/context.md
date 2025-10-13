@@ -262,16 +262,21 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const loadData = async () => {
-      setLoading(true);
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const json = await response.json();
-      setPosts(json);
-      setLoading(false);
-  }
-
   useEffect(() => {
-      loadData();
+    let cancel = false;
+    const loadData = async () => {
+        setLoading(true);
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const json = await response.json();
+        if (cancel) return;
+        setPosts(json);
+        setLoading(false);
+    }
+    loadData();
+
+    return () => {
+        cancel = true;
+    }
   }, []);
 
   return (
@@ -282,7 +287,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
 }
 ```
 
-In de `DataProvider` component maken we een state aan voor de posts. We maken ook een functie aan om de data op te halen van de API. Deze functie wordt aangeroepen in de `useEffect` hook zodat de data wordt opgehaald als de component gemount wordt. We geven de posts en de loadData functie mee aan de provider zodat deze beschikbaar zijn in de onderliggende componenten. We voorzien ook een loading property zodat we kunnen zien of de data aan het laden is of niet.
+In de `DataProvider` component maken we een state aan voor de posts. We maken ook een functie aan om de data op te halen van de API. Deze functie wordt aangeroepen in de `useEffect` hook zodat de data wordt opgehaald als de component gemount wordt. We geven de posts en de `reload` functie mee aan de provider zodat deze beschikbaar zijn in de onderliggende componenten. We voorzien ook een loading property zodat we kunnen zien of de data aan het laden is of niet.
 
 Nu kunnen we de `DataProvider` component gebruiken in onze `App` component. Je kan zien dat het nu zeer eenvoudig is de data te gebruiken in de onderliggende componenten. We moeten enkel de `useContext` hook gebruiken om de data op te halen.
 
@@ -301,39 +306,43 @@ export interface Post {
 export interface DataContext {
   posts: Post[];
   loading: boolean;
-  loadData: () => void;
+  reload: () => void;
 }
 
-export const DataContext = React.createContext<DataContext>({posts: [], loading: false, loadData: () => {}});
+export const DataContext = React.createContext<DataContext>({posts: [], loading: false, reload: () => {}});
 
 export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const loadData = async () => {
-      setLoading(true);
-      setPosts([]);
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const json = await response.json();
-      setPosts(json);
-      setLoading(false);
-  }
+  const [trigger, setTrigger] = useState<number>(0);
 
   useEffect(() => {
-      loadData();
-  }, []);
+    const loadData = async () => {
+        setLoading(true);
+        setPosts([]);
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const json = await response.json();
+        setPosts(json);
+        setLoading(false);
+    }
+    loadData();
+  }, [trigger]);
+
+  const reload = () => {
+    setTrigger(trigger + 1); 
+  }
 
   return (
-      <DataContext.Provider value={{posts: posts, loadData: loadData, loading: loading}}>
+      <DataContext.Provider value={{posts: posts, reload: reload, loading: loading}}>
           {children}
       </DataContext.Provider>
   )
 }
 //hide-end
 const ReloadButton = () => {
-  const { loadData, loading } = useContext(DataContext);
+  const { reload, loading } = useContext(DataContext);
   return (
-    <button disabled={loading} onClick={() => loadData()}>reload</button>
+    <button disabled={loading} onClick={() => reload()}>reload</button>
   )
 }
 
@@ -389,7 +398,7 @@ Vergeet niet om de `createPost` functie mee te geven aan de provider.
 Het volledige voorbeeld kan je hier vinden:
 
 ```typescript codesandbox={"template": "react-context", "filename": "src/App.tsx"}
-import { DataProvider } from './dataContext';
+import { DataProvider } from './providers/DataProvider';
 import ReloadButton from './components/ReloadButton';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';

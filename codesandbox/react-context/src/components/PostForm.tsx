@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext, useState } from 'react';
-import { DataContext, Post } from '../dataContext';
+import { DataContext, Post } from '../providers/DataProvider';
 
 const PostForm = () => {
     const { createPost } = useContext(DataContext);
