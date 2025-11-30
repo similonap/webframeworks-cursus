@@ -23,7 +23,7 @@ Om duidelijk te maken wat er mogelijk is met server components en wat niet moet 
 - Zorg ervoor dat de prijs van de bitcoin elke 10 seconden wordt uitgelezen. Kan je dan nog altijd server components gebruiken? 
 - Probeer een server component te gebruiken voor het initieel inlezen van de bitcoin data. De data moet blijven updaten elke minuut.
 
-# 2. Y-Clone (twitter)
+## 2. Y-Clone (twitter)
 
 Maak een nieuwe Next.js applicatie aan en noem deze `y-clone-next`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
 
