@@ -351,6 +351,46 @@ export default UserCard;
 
 De `Home` component blijft een server component die de data ophaalt en de `UserCard` component is een client component die de interactiviteit afhandelt.
 
+## Error Boundaries
+
+In React kan je gebruik maken van Error Boundaries om fouten op te vangen in je componenten. Dit is vooral handig in combinatie met server components en Suspense, omdat je zo fouten kan afhandelen die optreden tijdens het laden van data. 
+
+In Next.js kan je een `error.tsx` bestand maken in een directory om een error boundary te definiëren voor alle componenten in die directory. Je plaatst deze file in dezelfde directory als waar je de error boundary wil toepassen. Let op dat dit component een client component moet zijn, dus je moet bovenaan het bestand `use client` zetten.
+
+```typescript
+'use client' // Error components must be Client Components
+ 
+import { useEffect } from 'react'
+ 
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error
+  reset: () => void
+}) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error)
+  }, [error])
+ 
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <button
+        onClick={
+          () => reset()
+        }
+      >
+        Try again
+      </button>
+    </div>
+  )
+}
+```
+
+Je krijgt hier een `error` object en een `reset` functie als props. Het `error` object bevat de fout die opgetreden is en de `reset` functie kan je aanroepen om te proberen de component opnieuw te laden. Dit is vooral handig in combinatie met Suspense, omdat je zo de gebruiker de mogelijkheid kan geven om het opnieuw te proberen als er een fout optreedt tijdens het laden van data. 
+
 ## Use case: MongoDB
 
 Een veel voorkomende use case voor server components is het ophalen van data uit een database. We hebben in vorige cursus gezien dat als we data uit een database willen ophalen, dat we daar een backend server voor nodig hebben zoals Express.js. In Next.js is dit niet nodig omdat we server components kunnen gebruiken om direct data uit een database op te halen. Dit kan bijvoorbeeld met MongoDB. 
