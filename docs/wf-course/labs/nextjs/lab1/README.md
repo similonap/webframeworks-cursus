@@ -22,3 +22,20 @@ Om duidelijk te maken wat er mogelijk is met server components en wat niet moet 
 - Zorg ervoor als je op de currency klikt dat deze een andere background color krijgt. Denk opnieuw goe na over welke componenten client en welke server componenten zijn.
 - Zorg ervoor dat de prijs van de bitcoin elke 10 seconden wordt uitgelezen. Kan je dan nog altijd server components gebruiken? 
 - Probeer een server component te gebruiken voor het initieel inlezen van de bitcoin data. De data moet blijven updaten elke minuut.
+
+# 2. Y-Clone (twitter)
+
+Maak een nieuwe Next.js applicatie aan en noem deze `y-clone-next`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
+
+Gebruik de volgende API's om posts en profiles op te halen:
+- Posts: https://raw.githubusercontent.com/similonap/json/refs/heads/master/y-clone/posts.json
+- Profiles: https://raw.githubusercontent.com/similonap/json/refs/heads/master/y-clone/profiles.json
+
+Zorg ervoor dat je de Post interface uitbreidt met een `profile` property die de profiel informatie bevat van de gebruiker die de post heeft gemaakt. Koppel deze data op basis van de `username` property van de Post met de `username` property van het Profile.
+
+
+![alt text](posts.png)
+
+Voorzie een kleine like button die simpelweg tussen twee states kan wisselen: geliked en niet geliked. Er hoeft hier uiteraard geen backend aan te pas te komen. 
+
+Denk goed na over welke componenten server en welke client componenten zijn.
