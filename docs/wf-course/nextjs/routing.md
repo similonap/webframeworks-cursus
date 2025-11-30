@@ -236,6 +236,47 @@ const ProductDetailClient = () => {
 export default ProductDetailClient;
 ```
 
+### notFound.tsx
+
+Je kan ook een `notFound.tsx` bestand aanmaken in een directory om een custom 404 pagina te maken voor alle componenten in die directory. Je plaatst deze file in dezelfde directory als waar je de 404 pagina wil toepassen. 
+
+```typescript
+const NotFound = () => {
+  return (
+    <div>
+      <h1>404 - Page Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+    </div>
+  );
+};
+export default NotFound;
+```
+
+Als je er voor wil zorgen dat een bepaalde pagina de 404 pagina toont, kan je de `notFound` functie aanroepen die meegeleverd wordt met Next.js. Deze functie zorgt ervoor dat de 404 pagina getoond wordt.
+
+```typescript
+"use client";
+import { useParams, notFound } from "next/navigation";
+
+const ProductDetailClient = () => {
+  const params = useParams();
+  const { id } = params;
+
+  if (id !== "1" && id !== "2" && id !== "3") {
+    notFound();
+  }
+
+  return (
+    <div>
+      <h1>Product Detail for ID: {id}</h1>
+      <p>This is the detail page for product with ID {id}.</p>
+    </div>
+  );
+};
+export default ProductDetailClient;
+```
+
+
 ### Search parameters
 
 #### Server component
