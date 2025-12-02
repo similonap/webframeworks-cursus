@@ -151,6 +151,30 @@ Als je naar /dashboard/invoices navigeert, dan zal de volgende structuur getoond
 
 ![Geneste Layouts](../images/layouts_1.png)
 
+### Imperatieve navigatie
+
+In sommige gevallen wil je misschien imperatief navigeren naar een andere pagina. Dit kan bijvoorbeeld handig zijn na het indienen van een formulier. In een client component kan je hiervoor de `useRouter` hook gebruiken die meegeleverd wordt met Next.js. Deze hook geeft een router object terug waarmee je kan navigeren.
+
+```typescript
+"use client";
+
+import { useRouter } from "next/navigation";
+
+const MyComponent = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/about");
+  };
+
+  return (
+    <button onClick={handleClick}>Go to About Page</button>
+  );
+};
+export default MyComponent;
+```
+
+
 ### Dynamische routes
 
 Je kan ook dynamische routes maken. Dit is handig als je bijvoorbeeld een pagina wil maken die de details van een bepaald item toont. Stel je voor dat we een pagina hebben die een lijst van producten toont. Als je op een product klikt, wil je naar een pagina navigeren die de details van dat product toont. 
