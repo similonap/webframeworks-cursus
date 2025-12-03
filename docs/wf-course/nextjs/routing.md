@@ -508,3 +508,83 @@ const ProductsPage = async(props: PageProps<"/products">) => {
 
 export default ProductsPage;
 ```
+
+### Voorbeeld: Paginatie met query parameters
+
+```typescript
+"use client";
+
+import { useSearchParams, useRouter } from "next/navigation";
+interface PaginationProps {
+    pageCount: number;
+    currentPage: number;
+}
+
+const Pagination = ({ pageCount, currentPage }: PaginationProps) => {
+    const searchParams = useSearchParams();
+    const { replace } = useRouter();
+
+    const changePage = (newPage: number) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("page", newPage.toString());
+        replace(`?${params.toString()}`);
+    }
+
+    return (
+        <div className="flex justify-center mt-4 space-x-2">
+            {Array.from({ length: pageCount }, (_, i) => i + 1).map(page => (
+                <button key={page} onClick={() => changePage(page)} className={`px-3 py-1 rounded ${page === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                    {page}
+                </button>
+            ))}
+        </div>
+    );
+};
+export default Pagination;
+```
+
+Terug naar het producten voorbeeld, we kunnen nu een paginatie component maken die de pagina's toont op basis van een `page` query parameter in de URL. We definiëren eerst een constante `PAGE_SIZE` die aangeeft hoeveel producten er per pagina getoond moeten worden.
+
+```typescript
+import Pagination from "@/components/Pagination";
+
+
+interface Product {
+  id: number;
+  name: string;
+}
+
+const products : Product[] = [
+  { id: 1, name: "Red Shirt" },
+  { id: 2, name: "Blue Jeans" },
+  { id: 3, name: "Green Hat" },
+  { id: 4, name: "Yellow Jacket" },
+  { id: 5, name: "Black Shoes" },
+  { id: 6, name: "White Socks" },
+];
+
+const PAGE_SIZE = 3;
+
+const ProductsPage = async(props: PageProps<"/products">) => {
+    const searchParams = await props.searchParams;
+    const page = parseInt(typeof searchParams.page === "string" ? searchParams.page : "1");
+
+    const pageCount = Math.ceil(products.length / PAGE_SIZE)
+    const productsByPage = products.slice(((page-1) * PAGE_SIZE), ((page) * PAGE_SIZE));
+
+    return (
+      <div>
+        <h1>Products</h1>
+        <Pagination pageCount={pageCount} currentPage={page} />
+        <ul>
+          {productsByPage.map((product) => (
+            <li key={product.id}>
+              <Link href={`/products/${product.id}`}>{product.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+}
+export default ProductsPage;
+```

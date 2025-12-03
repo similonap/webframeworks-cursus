@@ -1,22 +1,26 @@
 import SearchBox from "@/components/SearchBox";
 import { Spell } from "../types";
+import Pagination from "@/components/Pagination";
 
-const Search = async(props: PageProps<"/search">) => {
+const PAGE_SIZE = 5;
+
+const Paging = async(props: PageProps<"/paging">) => {
     const searchParams = await props.searchParams;
-    const q = typeof searchParams.q === "string" ? searchParams.q : "";
+    const page = parseInt(typeof searchParams.page === "string" ? searchParams.page : "1");
 
     const response = await fetch("https://sampleapis.assimilate.be/harrypotter/spells");
     if (!response.ok) {
         throw new Error("Failed to fetch spells");
     }
     const spells: Spell[] = await response.json();
-    const filteredSpells = spells.filter(spell => spell.name.toLowerCase().includes(q.toLowerCase()));
+    const pageCount = Math.ceil(spells.length / PAGE_SIZE)
+    const spellsByPage = spells.slice(((page-1) * PAGE_SIZE), ((page) * PAGE_SIZE));
 
     return (
         <div>
-            <SearchBox />
+            <Pagination pageCount={pageCount} currentPage={page} />
             <ul>
-                {filteredSpells.map(spell => (
+                {spellsByPage.map(spell => (
                     <li key={spell.id}>
                         <h2 className="text-xl font-bold">{spell.name}</h2>
                         <p className="italic">{spell.alignment}</p>
@@ -28,4 +32,4 @@ const Search = async(props: PageProps<"/search">) => {
     );
 }
 
-export default Search;
+export default Paging;
