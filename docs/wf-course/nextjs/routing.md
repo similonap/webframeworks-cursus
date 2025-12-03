@@ -174,6 +174,12 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
+Je hebt ook nog de volgende methodes beschikbaar op het router object:
+- `replace(href: string)`: Navigeert naar de opgegeven URL, maar vervangt de huidige entry in de geschiedenis in plaats van een nieuwe entry toe te voegen.
+- `back()`: Navigeert terug naar de vorige pagina in de geschiedenis.
+- `forward()`: Navigeert vooruit naar de volgende pagina in de geschiedenis.
+- `refresh()`: Vernieuwt de huidige pagina, waarbij alle data opnieuw wordt opgehaald. De state van client componenten blijft behouden. 
+
 
 ### Dynamische routes
 
