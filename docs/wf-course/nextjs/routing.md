@@ -306,6 +306,11 @@ const ProductDetailClient = () => {
 export default ProductDetailClient;
 ```
 
+### Grouped routes
+
+Je kan ook gebruik maken van grouped routes om je directory structuur overzichtelijker te maken. Dit is handig als je bijvoorbeeld een aantal pagina's hebt die bij elkaar horen, maar je wil niet dat deze pagina's een extra niveau in de URL krijgen. Je kan ook op deze manier gedeelde layouts maken voor een groep pagina's zonder dat dit invloed heeft op de URL structuur.
+
+Je kan een grouped route maken door een directory aan te maken met de naam `(group-name)`. De naam tussen de ronde haken geeft aan dat dit een grouped route is. In deze directory kan je dan nieuwe bestanden en directories aanmaken zoals je normaal zou doen.
 
 ### Search parameters
 
@@ -314,6 +319,20 @@ export default ProductDetailClient;
 In een server component (zoals een pagina of layout) kan je ook gebruik maken van search parameters (of query parameters). Dit zijn de parameters die in de URL staan na het vraagteken (`?`). Stel dat we een pagina hebben die een lijst van producten toont en we willen deze lijst filteren op basis van een zoekterm. We kunnen dan de zoekterm als een search parameter in de URL meegeven, bijvoorbeeld `/products?q=shirt`.
 
 ```typescript
+interface Product {
+  id: number;
+  name: string;
+}
+
+const products : Product[] = [
+  { id: 1, name: "Red Shirt" },
+  { id: 2, name: "Blue Jeans" },
+  { id: 3, name: "Green Hat" },
+  { id: 4, name: "Yellow Jacket" },
+  { id: 5, name: "Black Shoes" },
+  { id: 6, name: "White Socks" },
+];
+
 const ProductsPage = async(props: PageProps<"/products">) => {
     const searchParams = await props.searchParams;
     const q = typeof searchParams.q === "string" ? searchParams.q : "";
@@ -376,4 +395,116 @@ const SearchBox = () => {
 };
 
 export default SearchBox;
+```
+
+#### Voorbeeld: Posts sorteren aan de hand van query parameters
+
+We kunnen een client component maken die de sortering van posts aanpast op basis van query parameters in de URL. We maken hiervoor een `SortSelect` component die twee select elementen bevat: één voor het veld waarop gesorteerd wordt en één voor de richting van de sortering (oplopend of aflopend).
+
+```typescript
+"use client";
+
+import { SortDirection, SortField } from "@/app/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import { SortDirection, SortField } from "@/types";
+
+const SortSelect = () => {
+    const searchParams = useSearchParams();
+    const { replace } = useRouter();
+
+    const sortField : SortField = (searchParams.get("sortField") || "id") as SortField;
+    const sortDirection : SortDirection = (searchParams.get("sortDirection") || "asc") as SortDirection;
+
+    const onChangeSortField: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+        const newSort = e.target.value;
+        const params = new URLSearchParams(searchParams.toString());
+        if (newSort) {
+            params.set("sortField", newSort);
+        } else {
+            params.delete("sortField");
+        }
+        replace(`?${params.toString()}`);
+    };
+
+    const onChangeSortDirection: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+        const newSort = e.target.value;
+        const params = new URLSearchParams(searchParams.toString());
+        if (newSort) {
+            params.set("sortDirection", newSort);
+        } else {
+            params.delete("sortDirection");
+        }
+        replace(`?${params.toString()}`);
+    };
+
+    return (
+        <div>
+            <label htmlFor="sort" className="mr-2 font-medium">Sort by:</label>
+            <select id="sortField" name="sortField" className="border border-gray-300 rounded-md p-2" onChange={onChangeSortField} value={sortField}>
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+            </select>
+
+            <label htmlFor="sortDirection" className="ml-4 mr-2 font-medium">Direction:</label>
+            <select id="sortDirection" name="sortDirection" className="border border-gray-300 rounded-md p-2" onChange={onChangeSortDirection} value={sortDirection}>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+    );
+}
+
+export default SortSelect;
+```
+
+Deze kan je dan als volgt gebruiken om de sortering van een lijst van posts aan te passen:
+
+```typescript
+import Link from "next/link";
+import { SortDirection, SortField } from "@/types";
+
+interface Product {
+  id: number;
+  name: string;
+}
+
+const products : Product[] = [
+  { id: 1, name: "Red Shirt" },
+  { id: 2, name: "Blue Jeans" },
+  { id: 3, name: "Green Hat" },
+  { id: 4, name: "Yellow Jacket" },
+  { id: 5, name: "Black Shoes" },
+  { id: 6, name: "White Socks" },
+];
+
+const ProductsPage = async(props: PageProps<"/products">) => {
+    const searchParams = await props.searchParams;
+    const sortField : SortField = (typeof searchParams.sortField === "string" ? searchParams.sortField : "id") as SortField;
+    const sortDirection : SortDirection = (typeof searchParams.sortDirection === "string" ? searchParams.sortDirection : "asc") as SortDirection;
+
+    const sortedProducts = products.sort((a, b) => {
+        let fieldA = a[sortField];
+        let fieldB = b[sortField];
+
+        if (fieldA < fieldB) return sortDirection === "asc" ? -1 : 1;
+        if (fieldA > fieldB) return sortDirection === "asc" ? 1 : -1;
+        return 0;
+    });
+
+    return (
+      <div>
+        <h1>Products</h1>
+        <SortSelect />
+        <ul>
+          {sortedProducts.map((product) => (
+            <li key={product.id}>
+              <Link href={`/products/${product.id}`}>{product.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+}
+
+export default ProductsPage;
 ```

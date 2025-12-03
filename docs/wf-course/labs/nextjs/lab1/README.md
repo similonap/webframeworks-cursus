@@ -6,7 +6,10 @@ Voor dit labo moet je de volgende theorie bekeken hebben:
 
 ## 1. Bitcoin Price
 
-Maak een nieuwe Next.js applicatie aan en noem deze `bitcoin-next`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
+> 📂 **Naam project:** `lab-nextjs-bitcoin`  
+> 🔗 **Basis project:** n/a
+
+Maak een nieuwe Next.js applicatie aan en noem deze `lab-nextjs-bitcoin`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
 
 Gebruik de https://sampleapis.assimilate.be/bitcoin/current API om de huidige prijs van Bitcoin op te halen en te tonen in je applicatie. Je laat 3 blokken zien met de prijs informatie per currency (USD, EUR, GBP).
 
@@ -25,7 +28,10 @@ Om duidelijk te maken wat er mogelijk is met server components en wat niet moet 
 
 ## 2. Y-Clone (twitter)
 
-Maak een nieuwe Next.js applicatie aan en noem deze `y-clone-next`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
+> 📂 **Naam project:** `lab-nextjs-y-basic`  
+> 🔗 **Basis project:** n/a
+
+Maak een nieuwe Next.js applicatie aan en noem deze `lab-nextjs-y-basic`. Je mag zelf kiezen of je tailwind css wil gebruiken of niet.
 
 Gebruik de volgende API's om posts en profiles op te halen:
 - Posts: https://raw.githubusercontent.com/similonap/json/refs/heads/master/y-clone/posts.json
