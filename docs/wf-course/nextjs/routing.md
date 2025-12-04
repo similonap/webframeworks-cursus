@@ -266,9 +266,9 @@ const ProductDetailClient = () => {
 export default ProductDetailClient;
 ```
 
-### notFound.tsx
+### not-found.tsx
 
-Je kan ook een `notFound.tsx` bestand aanmaken in een directory om een custom 404 pagina te maken voor alle componenten in die directory. Je plaatst deze file in dezelfde directory als waar je de 404 pagina wil toepassen. 
+Je kan ook een `not-found.tsx` bestand aanmaken in een directory om een custom 404 pagina te maken voor alle componenten in die directory. Je plaatst deze file in dezelfde directory als waar je de 404 pagina wil toepassen. 
 
 ```typescript
 const NotFound = () => {
