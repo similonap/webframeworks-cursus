@@ -1,4 +1,4 @@
-# Labo 2
+# Labo 3
 
 Voor dit labo moet je de volgende theorie bekeken hebben:
 - Form Handling
