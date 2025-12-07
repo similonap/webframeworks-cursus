@@ -297,3 +297,20 @@ export const createMessage = async (state: CreateMessageState, formData: FormDat
 ```
 
 Vervolgens kunnen we nu de `createMessageAction` meegeven aan het formulier.
+
+### revalidatePath
+
+Soms wil je na het indienen van een formulier de pagina of een deel van de pagina opnieuw valideren om de nieuwste data weer te geven. In Next.js kun je hiervoor de `revalidatePath` functie gebruiken, die je kunt importeren uit `next/cache`. Met deze functie kun je een specifiek pad opgeven dat opnieuw gevalideerd moet worden. Dit veroorzaakt dat Next.js de data voor dat pad opnieuw ophaalt en de bijbehorende componenten opnieuw rendert.
+
+Stel dat je een formulier hebt waarmee gebruikers reacties kunnen plaatsen op een blogpost. Nadat een gebruiker een reactie heeft ingediend, wil je dat de lijst met reacties automatisch wordt bijgewerkt om de nieuwe reactie weer te geven. Je kunt dit doen door `revalidatePath` aan te roepen met het pad van de blogpost nadat de reactie is opgeslagen.
+
+```typescript
+import { revalidatePath } from "next/cache";
+
+export const submitComment = async (formData: FormData) => {
+    // Code om de reactie op te slaan in de database
+
+    // Na het opslaan van de reactie, hervalideer het pad van de blogpost
+    revalidatePath("/blog/my-post");
+}
+```
