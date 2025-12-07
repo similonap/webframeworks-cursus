@@ -315,22 +315,232 @@ export const submitComment = async (formData: FormData) => {
 }
 ```
 
-### Actions rechstreeks vanuit Client Component
+## Use case: Todo List
 
-In sommige gevallen wil je een server action rechtstreeks vanuit een Client Component aanroepen, bijvoorbeeld als je iets wil togglen zonder een formulier te gebruiken. Dit kan ook met de `useActionState` hook.
+We gaan een eenvoudige Todo List maken waarbij we een formulier hebben om nieuwe todo's toe te voegen en een lijst om de bestaande todo's weer te geven. We zullen gebruik maken van Server Actions om de todo's op te slaan in een MongoDB database en de lijst opnieuw te valideren nadat een nieuwe todo is toegevoegd.
+
+### Database setup
+
+We hebben een `database.ts` file nodig om de connectie met de database te maken en een `Todo` model om de todo's op te slaan.
 
 ```typescript
-import { useActionState } from "react-dom";
-import { toggleLike } from "./actions";
+import { Collection, MongoClient } from "mongodb";
+import { Todo } from "@/types";
 
-const LikeButton = ({ postId }: { postId: string }) => {
-    const [state, toggleLikeAction, pending] = useActionState(toggleLike, { liked: false });
+const client = new MongoClient(process.env.MONGODB_URI!);
+
+export const todosCollection: Collection<Todo> = client.db("todos").collection<Todo>("todos");
+
+export const getTodos = async (): Promise<Todo[]> => {
+    let todos = await todosCollection.find().toArray();
+    return todos.map(todo => ({
+        id: todo.id,
+        title: todo.title,
+        completed: todo.completed,
+    }));
+}
+
+export const addTodo = async (title: string): Promise<void> => {
+    let max = await todosCollection.find().sort({ id: -1 }).limit(1).toArray();
+    let id = max[0]?.id + 1 || 1;
+    await todosCollection.insertOne({
+        id: id,
+        title,
+        completed: false,
+    });
+}
+
+export const getTodoById = async (id: number): Promise<Todo | null> => {
+    return await todosCollection.findOne({ id });
+}
+
+export const updateTodo = async (id: number, completed: boolean): Promise<void> => {
+    await todosCollection.updateOne({ id }, { $set: { completed } });
+}
+```
+
+### Todo model
+
+```typescript
+export interface Todo {
+    id: number;
+    title: string;
+    completed: boolean;
+}
+``` 
+
+### Actions
+
+```typescript
+"use server";
+
+import { addTodo, getTodoById, updateTodo } from "@/database";
+import { revalidatePath } from "next/cache";
+
+export const addTodoAction = async (formData: FormData): Promise<void> => {
+    const title = formData.get("title") as string;
+    if (!title) {
+        return;
+    }
+    await addTodo(title);
+    revalidatePath("/");
+}
+
+export const toggleTodoCompletion = async (formdata: FormData): Promise<void> => {
+    const id = Number(formdata.get("id"));
+    let todo = await getTodoById(id);
+    if (!todo) return;
+
+    await updateTodo(id, !todo.completed);
+
+    revalidatePath("/");
+
+    return ;
+
+}
+```
+
+### Add Todo Form component
+
+```typescript
+import { addTodoAction } from "@/actions";
+import SubmitButton from "./SubmitButton";
+
+const AddTodoForm = () => {
+    return (
+        <form className="mb-4" action={addTodoAction}>
+            <input
+                type="text"
+                name="title"
+                placeholder="New todo"
+                className="border border-gray-300 rounded px-3 py-2 mr-2 w-64"
+            />
+            <SubmitButton/>
+        </form>
+    )
+}
+
+export default AddTodoForm;
+```
+
+### Todo List component
+
+```typescript
+import { getTodos } from "@/database";
+import TodoItem from "./TodoItem";
+
+const TodoList = async () => {
+
+    const todos = await getTodos();
 
     return (
-        <button onClick={() => toggleLikeAction(postId)} disabled={pending}>
-            {state.liked ? "Unlike" : "Like"}
-        </button>
+        <div className="max-w-md mx-auto mt-10">
+            <ul>
+                {todos.map(todo => (
+                    <TodoItem key={todo.id} todo={todo} />
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default TodoList;
+``` 
+
+### Todo Item component
+
+```typescript
+"use client";
+
+import { toggleTodoCompletion } from "@/actions";
+import { Todo } from "@/types"
+
+export interface TodoItemProps {
+    todo: Todo
+}
+
+const TodoItem = ({ todo }: TodoItemProps) => {
+    return (
+        <li className="mb-2 w-lg p-4 bg-white rounded shadow flex items-center justify-between">
+            <span className={todo.completed ? "line-through text-gray-500" : ""}>
+                {todo.title}
+            </span>
+            <form action={toggleTodoCompletion}>
+                <input type="hidden" name="id" value={todo.id} />
+                <input type="checkbox" defaultChecked={todo.completed} onChange={(e) => {
+                    e.currentTarget.form?.requestSubmit();
+                }}/>
+            </form>
+        </li>
     );
 }
-export default LikeButton;
+
+export default TodoItem;
 ```
+
+### Page component
+
+```typescript
+import AddTodoForm from "@/components/AddTodoForm";
+import TodoList from "@/components/TodoList";
+import { Suspense } from "react";
+
+export default function Home() {
+  return (
+    <div className="flex flex-1 flex-col items-center justify-center min-h-screen py-2">
+        <h1 className="text-2xl font-bold mb-4">Todo List</h1>
+
+        <AddTodoForm/>
+        <Suspense fallback={<div>Loading...</div>}>
+            <TodoList/>
+        </Suspense>
+    </div>
+  );
+}
+```
+
+### Pending state voor checkbox
+
+In de `TodoItem` component kunnen we de `useActionState` hook gebruiken om een pending state te krijgen voor de checkbox. Op die manier kunnen we de checkbox disablen terwijl de actie aan het uitvoeren is.
+
+We moeten dan wel de `toggleTodoCompletion` actie een klein beetje aanpassen zodat hij de vorige state meekrijgt en deze kan updaten.
+
+```typescript
+interface ToggleTodoCompletionState {
+    error: string | null;
+}
+
+export const toggleTodoCompletion = async (previousState: ToggleTodoCompletionState, formdata: FormData): Promise<ToggleTodoCompletionState> => {
+    const id = Number(formdata.get("id"));
+    let todo = await getTodoById(id);
+    if (!todo) {
+        return { error: "Todo not found" };
+    }
+
+    await updateTodo(id, !todo.completed);
+
+    revalidatePath("/");
+
+    return {
+        error: null
+    }
+
+}
+```
+
+Vervolgens kunnen we nu de `useActionState` hook gebruiken in de `TodoItem` component.
+
+```typescript
+    const [state, toggleTodoCompletionAction, pending] = useActionState(toggleTodoCompletion, { error: null})
+```
+
+We kunnen nu de `toggleTodoCompletionAction` meegeven aan het formulier en de checkbox disablen als de actie aan het uitvoeren is.
+
+```typescript
+    <form action={toggleTodoCompletionAction}>
+        <input type="hidden" name="id" value={todo.id} />
+        <input type="checkbox" defaultChecked={todo.completed} disabled={pending} onChange={(e) => {
+            e.currentTarget.form?.requestSubmit();
+        }}/>
+    </form>
+``` 

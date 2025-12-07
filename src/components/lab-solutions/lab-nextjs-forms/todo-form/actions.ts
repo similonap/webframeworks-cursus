@@ -1,18 +1,14 @@
 "use server";
 
 import { addTodo, getTodoById, updateTodo } from "@/database";
-import { error } from "console";
 import { revalidatePath } from "next/cache";
 
 export const addTodoAction = async (formData: FormData): Promise<void> => {
     const title = formData.get("title") as string;
-
     if (!title) {
         return;
     }
-
     await addTodo(title);
-
     revalidatePath("/");
 }
 
