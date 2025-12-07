@@ -314,3 +314,23 @@ export const submitComment = async (formData: FormData) => {
     revalidatePath("/blog/my-post");
 }
 ```
+
+### Actions rechstreeks vanuit Client Component
+
+In sommige gevallen wil je een server action rechtstreeks vanuit een Client Component aanroepen, bijvoorbeeld als je iets wil togglen zonder een formulier te gebruiken. Dit kan ook met de `useActionState` hook.
+
+```typescript
+import { useActionState } from "react-dom";
+import { toggleLike } from "./actions";
+
+const LikeButton = ({ postId }: { postId: string }) => {
+    const [state, toggleLikeAction, pending] = useActionState(toggleLike, { liked: false });
+
+    return (
+        <button onClick={() => toggleLikeAction(postId)} disabled={pending}>
+            {state.liked ? "Unlike" : "Like"}
+        </button>
+    );
+}
+export default LikeButton;
+```
