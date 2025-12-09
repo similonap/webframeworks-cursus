@@ -40,5 +40,3 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
 export const createUser = async (user: User): Promise<void> => {
     await userCollection.insertOne(user);
 }
-
-seedDummyUsers().catch(err => console.error("Error seeding dummy users:", err));

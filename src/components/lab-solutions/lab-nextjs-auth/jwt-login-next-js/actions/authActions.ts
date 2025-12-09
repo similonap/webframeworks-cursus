@@ -39,17 +39,6 @@ const validateName = (name: string) => {
     return errors;
 }
 
-
-interface LoginState {
-    errors: {
-        email: string[];
-        password: string[];
-        general: string[];
-    };
-    email: string;
-    success: boolean;
-}
-
 interface RegisterState {
     errors: {
         email: string[];
@@ -122,6 +111,16 @@ export const register = async (prevState: RegisterState, formData: FormData): Pr
     await createUser(newUser);
 
     redirect("/auth/login");
+}
+
+interface LoginState {
+    errors: {
+        email: string[];
+        password: string[];
+        general: string[];
+    };
+    email: string;
+    success: boolean;
 }
 
 export const login = async (prevState: LoginState, formData: FormData): Promise<LoginState> => {

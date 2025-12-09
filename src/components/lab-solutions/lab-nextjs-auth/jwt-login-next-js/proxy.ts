@@ -7,8 +7,6 @@ export async function proxy(request: NextRequest) {
     const cookieStore = await cookies();
     const jwtCookie = cookieStore.get("jwt");
 
-    console.log("JWT Cookie:", jwtCookie);
-
     if (jwtCookie) {
         jwt.verify(jwtCookie.value, process.env.JWT_SECRET!, (err, decoded) => {
             if (err) return NextResponse.redirect(new URL('/auth/login', request.url));
