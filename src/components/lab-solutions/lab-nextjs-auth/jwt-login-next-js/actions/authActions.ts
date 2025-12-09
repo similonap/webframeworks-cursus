@@ -1,27 +1,11 @@
 "use server";
 
-import { User } from "@/app/types";
+import { findUserByEmail } from "@/database/auth";
+import { User } from "@/types";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
-const DUMMY_USERS: User[] = [
-    {
-        id: "1",
-        email: "jon.doe@acme.com",
-        name: "Jon Doe",
-        avatar: "jon-doe.jpg",
-        passwordHash: bcrypt.hashSync("password123", 10)
-    },
-    {
-        id: "2",
-        email: "alice.doe@acme.com",
-        name: "Alice Doe",
-        avatar: "alice-doe.jpg",
-        passwordHash: bcrypt.hashSync("mypassword", 10)
-    }
-]
 
 const validateEmail = (email: string) => {
     const errors: string[] = [];
@@ -77,7 +61,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
     }
 
 
-    const user = DUMMY_USERS.find(u => u.email === email);
+    const user = await findUserByEmail(email);
 
     if (!user) {
         return {
