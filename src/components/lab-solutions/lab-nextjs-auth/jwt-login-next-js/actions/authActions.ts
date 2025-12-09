@@ -1,11 +1,12 @@
 "use server";
 
-import { findUserByEmail } from "@/database/auth";
+import { findUserByEmail, createUser } from "@/database/auth";
 import { User } from "@/types";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import crypto from "crypto";
 
 const validateEmail = (email: string) => {
     const errors: string[] = [];
@@ -30,6 +31,14 @@ const validatePassword = (password: string) => {
     return errors;
 }
 
+const validateName = (name: string) => {
+    const errors: string[] = [];
+    if (!name) {
+        errors.push("Name is required");
+    }
+    return errors;
+}
+
 
 interface LoginState {
     errors: {
@@ -39,6 +48,80 @@ interface LoginState {
     };
     email: string;
     success: boolean;
+}
+
+interface RegisterState {
+    errors: {
+        email: string[];
+        password: string[];
+        confirmPassword: string[];
+        name: string[];
+        general: string[];
+    };
+    email: string;
+    name: string;
+    success: boolean;
+}
+
+export const register = async (prevState: RegisterState, formData: FormData): Promise<RegisterState> => {
+    let email = formData.get("email")?.toString() ?? "";
+    let password = formData.get("password")?.toString() ?? "";
+    let confirmPassword = formData.get("confirmPassword")?.toString() ?? "";
+    let name = formData.get("name")?.toString() ?? "";
+
+    let emailErrors = validateEmail(email);
+    let passwordErrors = validatePassword(password);
+    let nameErrors = validateName(name);
+    let confirmPasswordErrors: string[] = [];
+
+    if (password !== confirmPassword) {
+        confirmPasswordErrors.push("Passwords do not match");
+    }
+
+    if (emailErrors.length > 0 || passwordErrors.length > 0 || nameErrors.length > 0 || confirmPasswordErrors.length > 0) {
+        return {
+            errors: {
+                email: emailErrors,
+                password: passwordErrors,
+                confirmPassword: confirmPasswordErrors,
+                name: nameErrors,
+                general: []
+            },
+            email: email,
+            name: name,
+            success: false
+        }
+    }
+
+    const existingUser = await findUserByEmail(email);
+    if (existingUser) {
+        return {
+            errors: {
+                email: ["User already exists"],
+                password: [],
+                confirmPassword: [],
+                name: [],
+                general: []
+            },
+            email: email,
+            name: name,
+            success: false
+        }
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+    
+    const newUser: User = {
+        id: crypto.randomUUID(),
+        email,
+        name,
+        avatar: "", 
+        passwordHash
+    };
+
+    await createUser(newUser);
+
+    redirect("/auth/login");
 }
 
 export const login = async (prevState: LoginState, formData: FormData): Promise<LoginState> => {
