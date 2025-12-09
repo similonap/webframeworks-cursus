@@ -53,6 +53,7 @@ interface LoginState {
         password: string[];
         general: string[];
     };
+    email: string;
     success: boolean;
 }
 
@@ -70,6 +71,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
                 password: passwordErrors,
                 general: []
             },
+            email: email,
             success: false
         }
     }
@@ -84,6 +86,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
                 email: [],
                 password: []
             },
+            email: email,
             success: false
         }
     }
@@ -97,6 +100,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
                 email: [],
                 password: []
             },
+            email: email,            
             success: false
         }
     }
@@ -128,6 +132,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
 
     return {
         success: true,
+        email: email,
         errors: {
             email: [],
             password: [],

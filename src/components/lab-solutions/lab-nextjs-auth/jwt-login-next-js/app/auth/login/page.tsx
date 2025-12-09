@@ -15,11 +15,10 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { useActionState } from "react"
+import { useActionState, useState } from "react"
 
 const LoginPage = () => {
-
-    const [state, loginAction, pending] = useActionState(login, { success: false, errors: { email: [], password: [], general: [] } });
+    const [state, loginAction, pending] = useActionState(login, { success: false, email: "", errors: { email: [], password: [], general: [] } });
 
     return (
         <div className="flex flex-col flex-1 justify-center">
@@ -46,6 +45,7 @@ const LoginPage = () => {
                                     id="email"
                                     name="email"
                                     type="text"
+                                    defaultValue={state.email}
                                     placeholder="m@example.com"
                                 />
                                 {state.errors.email.length > 0 && (
