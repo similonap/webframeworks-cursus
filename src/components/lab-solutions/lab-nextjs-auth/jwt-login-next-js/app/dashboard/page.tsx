@@ -1,6 +1,4 @@
 import { getCurrentUser, logout } from "@/actions/authActions";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
 export default async function Page() {
@@ -8,11 +6,11 @@ export default async function Page() {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle>Dashboard</CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4 items-center">
+            <div className="w-full max-w-md bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+                <div className="p-6 border-b border-gray-200">
+                    <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+                </div>
+                <div className="p-6 flex flex-col gap-4 items-center">
                     {user.avatar && (
                         <Image
                             src={`/${user.avatar}`}
@@ -28,12 +26,15 @@ export default async function Page() {
                     </div>
 
                     <form action={logout} className="w-full">
-                        <Button type="submit" className="w-full">
+                        <button 
+                            type="submit" 
+                            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-black text-white hover:bg-gray-800"
+                        >
                             Logout
-                        </Button>
+                        </button>
                     </form>
-                </CardContent>
-            </Card>
+                </div>
+            </div>
         </div>
     )
 }
