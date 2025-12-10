@@ -8,14 +8,14 @@ export const userCollection: Collection<User> = client.db("auth-jwt").collection
 
 const DUMMY_USERS: User[] = [
     {
-        id: "1",
+        id: 1,
         email: "jon.doe@acme.com",
         name: "Jon Doe",
         avatar: "jon-doe.jpg",
         passwordHash: bcrypt.hashSync("password123", 10)
     },
     {
-        id: "2",
+        id: 2,
         email: "alice.doe@acme.com",
         name: "Alice Doe",
         avatar: "alice-doe.jpg",
@@ -37,6 +37,13 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
     return await userCollection.findOne({ email });
 }
 
-export const createUser = async (user: User): Promise<void> => {
-    await userCollection.insertOne(user);
+export const findUserById = async (id: number): Promise<User | null> => {
+    return await userCollection.findOne({ id });
+}
+
+export const createUser = async (user: Omit<User, "id">): Promise<void> => {
+    const lastUser = await userCollection.find().sort({ id: -1 }).limit(1).toArray();
+    const newId = lastUser.length > 0 ? lastUser[0].id + 1 : 1;
+    const userWithId: User = { id: newId, ...user };
+    await userCollection.insertOne(userWithId);
 }

@@ -1,6 +1,6 @@
 "use server";
 
-import { findUserByEmail, createUser } from "@/database/auth";
+import { findUserByEmail, createUser, findUserById } from "@/database/auth";
 import { User } from "@/types";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -100,8 +100,7 @@ export const register = async (prevState: RegisterState, formData: FormData): Pr
 
     const passwordHash = await bcrypt.hash(password, 10);
     
-    const newUser: User = {
-        id: crypto.randomUUID(),
+    const newUser: Omit<User, "id"> = {
         email,
         name,
         avatar: "", 
@@ -173,10 +172,7 @@ export const login = async (prevState: LoginState, formData: FormData): Promise<
 
     const token = jwt.sign(
         {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            avatar: user.avatar
+            id: user.id
         },
         process.env.JWT_SECRET!,
         {
@@ -217,7 +213,12 @@ export const getCurrentUser = async (): Promise<User> => {
 
     try {
         const decoded = jwt.verify(jwtCookie.value, process.env.JWT_SECRET!) as User;
-        return decoded;
+        
+        const user = await findUserById(decoded.id);
+        if (!user) {
+            throw new Error("User not found");
+        }
+        return user;
     } catch (e) {
         throw new Error("Invalid token");
     }
