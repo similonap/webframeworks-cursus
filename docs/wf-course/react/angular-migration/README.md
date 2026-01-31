@@ -197,5 +197,93 @@ en dan kan je deze component gebruiken in een andere component:
 <Tag label="React" color="blue" />
 ```
 
+## State en reactiviteit
 
+In React zijn niet alle properties standaard reactief zoals in Angular. In React moet je expliciet aangeven welke data reactief moet zijn door gebruik te maken van `useState` hook. Deze werkt heel gelijkaardig aan `signals` in Angular. Dus tegenwoordig lijken de concepten van reactiviteit in Angular en React meer op elkaar dan vroeger.
 
+### Angular signals voorbeeld
+
+```ts
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-counter",
+  templateUrl: "./counter.component.html",
+  styleUrls: ["./counter.component.css"]
+})
+export class CounterComponent {
+  count: signal<number> = signal(0);
+}
+```
+
+```html
+<div>
+  <p>Count: {{ count() }}</p>
+  <button (click)="count.set(count() + 1)">Increment</button>
+</div>
+```
+
+### React useState voorbeeld
+
+```tsx
+import React, { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState<number>(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+```
+
+Opgelet je mag NOOIT de state variabele direct aanpassen, dus niet `count = count + 1`, maar altijd via de setter functie `setCount`.
+
+## Data binding en events
+
+In Anngular heb je verschillende manieren om data binding te doen, zoals property binding, event binding en two-way binding met `ngModel`. In React wordt data binding voornamelijk gedaan via props en state, en event handling gebeurt via event handlers die aan JSX-elementen worden gekoppeld.
+
+### Angular event binding voorbeeld
+
+```html
+<input [(ngModel)]="username" placeholder="Enter your name" />
+<p>Hello, {{ username }}!</p>
+```
+
+```ts
+import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+
+@Component({
+  selector: "app-greeting",
+  templateUrl: "./greeting.component.html",
+  styleUrls: ["./greeting.component.css"],
+  imports: [FormsModule]
+})
+export class GreetingComponent {
+  username: signal<string> = signal("");
+}
+```
+
+### React event handling voorbeeld
+
+```tsx
+import React, { useState } from "react";
+
+const Greeting = () => {
+  const [username, setUsername] = useState<string>("");
+
+  return (
+    <div>
+      <input
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter your name"
+      />
+      <p>Hello, {username}!</p>
+    </div>
+  );
+};
