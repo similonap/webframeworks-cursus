@@ -1,5 +1,7 @@
 # Van angular developer naar react developer
 
+![alt text](image.png)
+
 ## Componenten
 
 In Angular worden componenten gemaakt met behulp van TypeScript-klassen, decorateurs en HTML-sjablonen. In React worden componenten gemaakt met behulp van JavaScript-functies of klassen, JSX en props/state. Ook wordt in angular de html en de logica vaak in aparte bestanden geplaatst, terwijl in React de logica en de markup vaak in hetzelfde bestand worden geplaatst.
