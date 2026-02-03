@@ -2,6 +2,27 @@
 
 ![alt text](image.png)
 
+## Tooling
+
+Angular en React hebben verschillende tooling om je te helpen bij het ontwikkelen van je applicatie. 
+
+### Angular tooling
+
+Angular gebruikt de Angular CLI om je te helpen bij het ontwikkelen van je applicatie. De Angular CLI biedt een aantal handige commando's om je te helpen bij het ontwikkelen van je applicatie. Bij angular kan je componenten genereren met behulp van de Angular CLI.
+
+```bash
+ng new my-app
+ng generate component my-component
+```
+
+### React tooling
+
+React gebruikt de `vite` tool om je te helpen bij het ontwikkelen van je applicatie. Vite biedt een aantal handige commando's om je te helpen bij het ontwikkelen van je applicatie. Er zijn geen extra speciale tools om componenten te genereren, maar die hebben over het algemeen iets minder boilerplate code.
+
+```bash
+npm create vite@latest my-app
+```
+
 ## Componenten
 
 In Angular worden componenten gemaakt met behulp van TypeScript-klassen, decorateurs en HTML-sjablonen. In React worden componenten gemaakt met behulp van JavaScript-functies of klassen, JSX en props/state. Ook wordt in angular de html en de logica vaak in aparte bestanden geplaatst, terwijl in React de logica en de markup vaak in hetzelfde bestand worden geplaatst.
@@ -867,5 +888,151 @@ const DataFetcher = () => {
 export default DataFetcher;
 ```
 
+## Gegevens delen over meerdere componenten
 
+### Angular
 
+Met angular kan je gebruik maken van services om gegevens te delen over meerdere componenten. 
+
+```ts
+@Injectable({
+    providedIn: 'root'
+})
+export class DataService {
+    private _todos = signal<Todo[]>([]);
+
+    constructor(private http: HttpClient) {}
+
+    fetchTodos() {
+        this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+            .subscribe({
+                next: (todos) => {
+                    this._todos.set(todos);
+                },  
+                error: (err) => {
+                    console.error(err);
+                }
+            });
+    }
+
+    get todos() {
+        return this._todos;
+    }
+}
+```
+
+en dan kan je in de todos array aanspreken in elk component door de service in te injecteren.
+
+```ts
+@Component({
+    selector: 'app-todos',
+    templateUrl: './todos.component.html',
+    styleUrls: ['./todos.component.css']
+})
+export class TodosComponent {
+    constructor(private dataService: DataService) {}
+
+    ngOnInit() {
+        this.dataService.fetchTodos();
+    }
+}
+```
+
+```html
+<ul>
+    @for (todo of dataService.todos(); track todo.id) {
+        <li>
+            {{ todo.title }} - {{ todo.completed ? 'Done' : 'Pending' }}
+        </li>
+    }
+</ul>
+``` 
+
+### React
+
+In react hebben we geen services die we kunnen injecteren. Maar we kunnen gebruik maken van context om gegevens te delen over meerdere componenten en een gelijkaardige constructie opzetten.
+
+```tsx
+// TodoProvider.tsx
+import { createContext, useEffect, useState } from 'react';
+
+interface TodoContextProps {
+   todos: Todo[]
+}
+
+const TodoContext = createContext<TodoContextProps>({
+    todos: []
+});
+
+const TodoProvider = ({ children }: { children: React.ReactNode }) => {
+    const [todos, setTodos] = useState<Todo[]>([]);
+
+    useEffect(() => {
+      let cancel = false;
+      const fetchTodos = async () => {
+          const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+          const data = await response.json();
+          setTodos(data);
+      };
+
+      fetchTodos();
+
+      return () => {
+          cancel = true;
+      };
+    }, []);
+
+    return (
+        <TodoContext.Provider value={{ todos }}>
+            {children}
+        </TodoContext.Provider>
+    );
+};
+
+export const useTodoContext = () => {
+    const context = useContext(TodoContext);
+    if (!context) {
+        throw new Error('useTodoContext must be used within a TodoProvider');
+    }
+    return context;
+} 
+
+export default TodoProvider;
+```
+
+Je moet dan enkel deze provider in je app component als wrapper gebruiken en dan zullen alle componenten die binnen deze provider staan toegang hebben tot de todos array. Bijvoorbeeld in het `main.tsx` bestand.
+
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+import TodoProvider from "./providers/TodoProvider.tsx"
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <TodoProvider>
+        <App />
+    </TodoProvider>
+  </StrictMode>,
+)
+```
+
+en dan kan je de todos array in elke component gebruiken door de `useTodoContext` hook te gebruiken.
+
+```tsx
+const TodoList = () => {
+    const { todos } = useTodoContext();
+    return (
+        <ul>
+            {todos.map(todo => (
+                <li key={todo.id}>
+                    {todo.title} - {todo.completed ? 'Done' : 'Pending'}
+                </li>
+            ))}
+        </ul>
+    );
+};
+
+export default TodoList;
+```
