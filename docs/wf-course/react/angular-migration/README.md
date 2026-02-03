@@ -236,6 +236,7 @@ export class MessageComponent {
 
 ### React if statement voorbeeld
 
+```tsx
 const MessageComponent = () => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
