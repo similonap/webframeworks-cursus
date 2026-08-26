@@ -29,33 +29,56 @@ Je zal hier dan een aantal vragen krijgen over de configuratie van je project. Z
 │  React
 │
 ◇  Select a variant:
-│  TypeScript + SWC
+│  TypeScript
+│
+◇  Which linter to use?
+│  Oxlint
+│
+◇  Install with npm and start now?
+│  Yes
 ```
 
-`Project name` kies je uiteraard zelf. De andere opties zorgen ervoor dat we een react applicatie aanmaken met typescript. SWC is een snelle JavaScript/TypeScript transpiler die gebruikt wordt door `vite`. 
-
-Je kan ook het commando uitvoeren zonder de vragen te beantwoorden door de volgende opties mee te geven:
-
-```bash
-npm create vite@latest our-first-react-app -- --template react-ts
-```
-
-Let op het extra `--` teken. Dit zorgt ervoor dat de opties niet door `npm` worden geïnterpreteerd, maar door `vite`. Zonder ga je toch nog de interactieve modus te zien krijgen.
+`Project name` kies je uiteraard zelf. De andere opties zorgen ervoor dat we een react applicatie aanmaken met typescript. `Oxlint` is een snelle linter (geschreven in Rust) die gebruikt wordt om veelvoorkomende fouten in je code op te sporen. Door op de laatste vraag `Yes` te antwoorden zal `vite` automatisch de dependencies installeren met `npm` en meteen de development server opstarten.
 
 We kunnen nu de folder `our-first-react-app` openen in Visual Studio Code en naar de inhoud van het project kijken:
 
-![Het vite commando maakt veel bestanden aan. In het begin zullen we er niet veel aanpassen.](img/react-project-folder-contents.png)
+```
+our-first-react-app/
+├── node_modules/
+├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+├── src/
+│   ├── assets/
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── .gitignore
+├── .oxlintrc.json
+├── index.html
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
 
 Hier merk je onder andere volgende bestanden en folders in op:
 
 * **node\_modules** deze folder bevat alle packages die werden geïnstalleerd bij het runnen van het `vite` commando. Alle packages die je zelf installeert met `npm install` zullen ook in deze folder terecht komen. **Normaal doe je nooit rechtstreeks aanpassingen in deze folder.**
 * **package.json** beschrijft welke packages geïnstalleerd moeten zijn om deze applicatie uit te voeren. We noemen dit ook de **dependencies** van de applicatie. Het `npm install` commando zal deze dependencies dan installeren in de `node_modules` folder.
 * **src** bevat de eigenlijke bestanden die rechtstreeks te maken hebben met react. Hier zal jouw broncode in komen. Het belangrijkste bestand op dit moment is het `App.tsx` bestand. Daar zullen we eerst onze eerste React code schrijven. Later zullen we dit opsplitsen in verschillende bestanden om het overzicht te bewaren.
-* **public** bevat het HTML-bestand waarin de react applicatie zal getoond worden. Hier moet je meestal niets voor aanpassen want alle visuele componenten worden in react zelf gerenderd. Deze folder bevat ook andere dingen zoals het icoontje dat je in het tabblad van je browser ziet.
+* **public** bevat statische bestanden zoals het icoontje dat je in het tabblad van je browser ziet. Hier moet je meestal niets voor aanpassen want alle visuele componenten worden in react zelf gerenderd.
+* **index.html** is het HTML-bestand waarin de react applicatie uiteindelijk getoond wordt. Dit bestand staat in de root van je project, niet in de `public` folder.
 
-Je kan de applicatie opstarten door `npm run dev` uit te voeren in je terminal venster. Als alles in orde is zal je browser automatisch openen op de eerste en enige pagina van jouw webapplicatie:
+Omdat je op `Install with npm and start now?` met `Yes` geantwoord hebt, is de development server al automatisch opgestart. Als je de server later nog eens moet opstarten kan dat door `npm run dev` uit te voeren in je terminal venster. Als alles in orde is zal je browser automatisch openen op de eerste en enige pagina van jouw webapplicatie:
 
-![De starter applicatie ziet er normaal zo uit in je browser.](img/screenshot-react-vite.png)
+![De starter applicatie ziet er normaal zo uit in je browser.](img/screenshot-react-vite-2.png)
 
 :::info
 Als je problemen hebt met het bereiken van de applicatie vanuit een devcontainer kan je de `package.json` aanpassen. Voeg de volgende regel aanpassen in de `scripts` sectie:
@@ -74,8 +97,9 @@ Het eerste component waar je altijd mee in aanraking zal komen kan je vinden in 
 
 ```typescript
 import { useState } from 'react'
+import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from './assets/vite.svg'
 import './App.css'
 
 function App() {
@@ -83,26 +107,27 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </section>
+      {/* ... nog wat extra links naar de Vite en React documentatie */}
     </>
   )
 }
