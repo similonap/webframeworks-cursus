@@ -355,7 +355,7 @@ const pokemons: Pokemon[] = [
 
 ## 10. Javascript functions
 
-> 📂 **Naam project:** lab-javascript-functions
+> 📂 **Naam project:** lab-javascript-functions  
 > 🔗 **Basis project:** n/a
 
 Maak een nieuwe react applicatie aan `lab-javascript-functions`. We beginnen met een lijst van gebruikers. Elke gebruiker heeft een naam, leeftijd, een boolean die aangeeft of de gebruiker een security badge heeft en een lijst van beschikbaarheden. Elke beschikbaarheid heeft een dag en een tijdstip. Je kan hiervoor de volgende interfaces gebruiken:
