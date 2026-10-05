@@ -1,0 +1,4 @@
+[submodule "course-material"]
+	path = course-material
+	url = https://github.com/similonap/web-monorepo-docusaurus.git
+	branch = main

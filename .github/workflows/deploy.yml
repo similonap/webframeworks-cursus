@@ -1,37 +1,46 @@
 name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - master
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          node-version: 18
-          cache: npm
+          fetch-depth: 0
+          submodules: recursive
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Fetch latest course material
+        run: git submodule update --init --remote --recursive --checkout course-material
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: course-material/package-lock.json
+
       - name: Build website
         run: npm run build
         env:
-          BASE_URL: "/webframeworks-cursus/"
+          BASE_URL: /webframeworks-cursus/
 
-      # Popular action to deploy to GitHub Pages:
-      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./build
-        env:
-          BASE_URL: "/webframeworks-cursus/"          
+          publish_dir: ./.course/build
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com

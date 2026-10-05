@@ -3,58 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "setup": "node scripts/course-material.cjs setup",
+    "preassemble": "npm run setup",
+    "assemble": "node scripts/course-material.cjs assemble",
+    "prestart": "npm run setup",
+    "start": "node scripts/course-material.cjs start",
+    "predev": "npm run setup",
+    "dev": "node scripts/course-material.cjs start",
+    "prebuild": "npm run setup",
+    "build": "node scripts/course-material.cjs build",
+    "serve": "node scripts/course-material.cjs serve",
+    "clear": "node scripts/course-material.cjs clear",
+    "pretypecheck": "npm run setup",
+    "typecheck": "node scripts/course-material.cjs typecheck"
   },
-  "dependencies": {
-    "@docusaurus/core": "^3.8.1",
-    "@docusaurus/preset-classic": "^3.8.1",
-    "@docusaurus/theme-mermaid": "^3.8.1",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^1.2.1",
-    "codesandbox": "^2.2.3",
-    "docusaurus-lunr-search": "^3.6.0",
-    "glob": "^8.0.3",
-    "html-entities": "^2.3.3",
-    "istextorbinary": "^6.0.0",
-    "prism-react-renderer": "^2.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-loader-spinner": "^5.3.4",
-    "react-player": "^2.11.0",
-    "react-router-dom": "^6.4.3",
-    "swr": "^2.3.6"
-  },
-  "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/tsconfig": "^3.8.1",
-    "@docusaurus/types": "^3.8.1",
-    "typescript": "^5.2.0"
-  },
-  "overrides": {
-    "@docusaurus/*": "^3.8.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "engines": {
-    "node": ">=18.17"
-  }
+  "engines": {"node": ">=22.0"}
 }
