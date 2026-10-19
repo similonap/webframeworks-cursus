@@ -1,0 +1,204 @@
+{
+  "title": "Quiz: Exceptions",
+  "description": "Test je kennis over `throw`, `try`/`catch`/`finally`, het `Error`-object en het type van een opgevangen fout.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat doet de `throw` statement?",
+      "options": [
+        "Ze logt een foutmelding naar de console en gaat gewoon verder",
+        "Ze geeft `undefined` terug uit de functie",
+        "Ze stopt de normale uitvoering en gooit een fout op die hogerop opgevangen kan worden",
+        "Ze herstart het programma"
+      ],
+      "answer": 2,
+      "explanation": "`throw` onderbreekt de normale uitvoering. De fout 'borrelt' omhoog tot ze in een `catch` block opgevangen wordt, of het programma crasht als dat nergens gebeurt."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `divide(5, 0)` terug bij deze functie?\n\n```ts\nfunction divide(a: number, b: number): number {\n  return a / b;\n}\n```",
+      "options": [
+        "`NaN`",
+        "`Infinity`",
+        "`0`",
+        "Een `Error`"
+      ],
+      "answer": 1,
+      "explanation": "Delen door 0 geeft in JavaScript geen fout maar `Infinity`. Net daarom willen we zelf een `Error` opgooien om dit geval netjes af te handelen."
+    },
+    {
+      "type": "single",
+      "prompt": "In welk block plaats je code die je wil uitvoeren als er een fout optreedt?",
+      "options": [
+        "`throw`",
+        "`try`",
+        "`finally`",
+        "`catch`"
+      ],
+      "answer": 3,
+      "explanation": "De 'risicovolle' code staat in het `try` block; het `catch` block vangt de fout op en bepaalt wat er dan moet gebeuren."
+    },
+    {
+      "type": "single",
+      "prompt": "Welk block wordt altijd uitgevoerd, of er nu een fout optrad of niet?",
+      "options": [
+        "`finally`",
+        "`try`",
+        "`catch`",
+        "`throw`"
+      ],
+      "answer": 0,
+      "explanation": "Het `finally` block draait altijd — handig om bijvoorbeeld een bestand of verbinding te sluiten, ongeacht of er een fout was."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is in TypeScript standaard het type van `error` in `catch (error) { ... }`?",
+      "options": [
+        "`unknown`",
+        "`Error`",
+        "`any`",
+        "`string`"
+      ],
+      "answer": 0,
+      "explanation": "Standaard is een opgevangen fout van het type `unknown` (of `any`). Je weet immers niet welk type er precies opgegooid werd, dus moet je eerst controleren — bijvoorbeeld met `instanceof Error` — voor je `error.message` mag lezen."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat gebeurt er als een opgegooide fout nergens in een `try`/`catch` opgevangen wordt?",
+      "options": [
+        "De functie geeft `undefined` terug",
+        "De fout wordt stilletjes naar de console gelogd en het programma loopt door",
+        "De fout wordt automatisch genegeerd",
+        "Het programma stopt met uitvoeren (het 'crasht')"
+      ],
+      "answer": 3,
+      "explanation": "Een niet-opgevangen fout borrelt helemaal naar boven en stopt het programma. Met `try`/`catch` kan je dat voorkomen en de fout netjes afhandelen."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over `try`/`catch`/`finally` kloppen?",
+      "options": [
+        "Code in het `try` block die ná een opgegooide fout staat, wordt overgeslagen",
+        "Het `catch` block voert enkel uit als er een fout optrad",
+        "Het `finally` block voert zowel bij succes als bij een fout uit",
+        "Een `try` block moet altijd een `catch` block hebben en mag nooit enkel `finally` gebruiken"
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Zodra er in het `try` block een fout opgegooid wordt, springt de uitvoering meteen naar `catch` — de rest van het `try` block wordt overgeslagen. `catch` draait enkel bij een fout, `finally` draait altijd. Een `try` mag ook met enkel `finally` (zonder `catch`) gecombineerd worden."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk sleutelwoord gebruik je om zelf een fout op te gooien?",
+      "accept": [
+        "throw"
+      ],
+      "placeholder": "sleutelwoord…",
+      "explanation": "Met `throw` gooi je een fout op, bijvoorbeeld `throw new Error(\"...\")`."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke property van een `Error`-object bevat de foutboodschap?",
+      "accept": [
+        "message",
+        ".message"
+      ],
+      "placeholder": "property…",
+      "explanation": "`error.message` bevat de tekst die je aan `new Error(\"...\")` meegaf."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de twee sleutelwoorden in om de fout op te vangen.",
+      "language": "typescript",
+      "template": "function divide(a: number, b: number): number {\n  if (b === 0) {\n    throw new Error(\"Delen door nul mag niet\");\n  }\n  return a / b;\n}\n\nlet boodschap = \"geen fout\";\n{{0}} {\n  divide(5, 0);\n} {{1}} (error) {\n  boodschap = \"Fout opgevangen\";\n}",
+      "blanks": [
+        {
+          "placeholder": "..",
+          "width": 7
+        },
+        {
+          "placeholder": "..",
+          "width": 7
+        }
+      ],
+      "tests": [
+        {
+          "expression": "boodschap",
+          "expected": "Fout opgevangen",
+          "description": "de fout werd opgevangen"
+        }
+      ],
+      "explanation": "De risicovolle aanroep staat in het `try` block; het `catch (error)` block vangt de opgegooide fout op en zet `boodschap`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Lees de foutboodschap uit het opgevangen `Error`-object.",
+      "language": "typescript",
+      "template": "function divide(a: number, b: number): number {\n  if (b === 0) throw new Error(\"Delen door nul mag niet\");\n  return a / b;\n}\n\nlet boodschap = \"\";\ntry {\n  divide(5, 0);\n} catch (error: any) {\n  boodschap = error.{{0}};\n}",
+      "blanks": [
+        {
+          "placeholder": "property",
+          "width": 10
+        }
+      ],
+      "tests": [
+        {
+          "expression": "boodschap",
+          "expected": "Delen door nul mag niet",
+          "description": "boodschap bevat de foutmelding"
+        }
+      ],
+      "explanation": "`error.message` bevat de tekst die aan `new Error(\"...\")` meegegeven werd."
+    },
+    {
+      "type": "fill",
+      "prompt": "Zorg dat de tekst `\"altijd\"` sowieso toegevoegd wordt — vul het juiste block aan.",
+      "language": "typescript",
+      "template": "let log: string[] = [];\ntry {\n  throw new Error(\"oeps\");\n} catch (error) {\n  log.push(\"catch\");\n} {{0}} {\n  log.push(\"altijd\");\n}",
+      "blanks": [
+        {
+          "placeholder": "..",
+          "width": 9
+        }
+      ],
+      "tests": [
+        {
+          "expression": "log.join(\",\")",
+          "expected": "catch,altijd",
+          "description": "finally draait na catch"
+        }
+      ],
+      "explanation": "Het `finally` block draait altijd, ná het `catch` block. De `log` bevat dus eerst `\"catch\"` en daarna `\"altijd\"`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Controleer veilig of de opgevangen waarde een echte `Error` is voor je `.message` leest.",
+      "language": "typescript",
+      "template": "function risky(): void {\n  throw new Error(\"kapot\");\n}\n\nlet boodschap = \"onbekend\";\ntry {\n  risky();\n} catch (error: unknown) {\n  if (error {{0}} Error) {\n    boodschap = error.message;\n  }\n}",
+      "blanks": [
+        {
+          "placeholder": "..",
+          "width": 12
+        }
+      ],
+      "tests": [
+        {
+          "expression": "boodschap",
+          "expected": "kapot",
+          "description": "boodschap is de message van de Error"
+        }
+      ],
+      "explanation": "Bij type `unknown` moet je eerst narrowen met `error instanceof Error`. Pas binnen die `if` weet TypeScript dat `error` een `Error` is en mag je `error.message` lezen."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. Deze code compileert niet.",
+      "code": "let error: unknown = new Error(\"oeps\");\nconsole.log(error.[[message]]);",
+      "explanation": "Op een waarde van type `unknown` mag je niet zomaar `.message` lezen. Controleer eerst met `if (error instanceof Error)`, of typeer als `any`."
+    }
+  ]
+}

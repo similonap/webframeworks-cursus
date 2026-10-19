@@ -1,0 +1,107 @@
+{
+  "title": "Quiz: Array.map()",
+  "description": "Test je kennis over de `map` functie: wat ze teruggeeft, hoe je objecten omzet naar een property en hoe je de index gebruikt.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `map()` terug?",
+      "options": [
+        "Een nieuwe array waarin elk element getransformeerd is",
+        "Hetzelfde array, maar aangepast",
+        "Eén enkele waarde",
+        "Het aantal elementen in de array"
+      ],
+      "answer": 0,
+      "explanation": "`map()` maakt een nieuwe array waarin elk element door de callback is getransformeerd. De originele array blijft ongewijzigd."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is waar over de lengte van het resultaat van `map()`?",
+      "options": [
+        "Het resultaat is altijd korter dan de originele array",
+        "Het resultaat heeft evenveel elementen als de originele array",
+        "Het resultaat heeft altijd 1 element",
+        "Dat hangt af van de callback"
+      ],
+      "answer": 1,
+      "explanation": "`map()` transformeert elk element één-op-één, dus het resultaat heeft evenveel elementen als de originele array. (Wil je elementen weglaten, gebruik dan `filter`.)"
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is de tweede parameter die de callback van `map()` meekrijgt?",
+      "options": [
+        "De volledige array",
+        "De vorige waarde",
+        "De index (het rangnummer) van het element",
+        "De lengte van de array"
+      ],
+      "answer": 2,
+      "explanation": "De callback krijgt naast het element ook de index mee: `array.map((element, index) => …)`."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over `map()` kloppen?",
+      "options": [
+        "Het geeft een nieuwe array terug",
+        "Het resultaat heeft dezelfde lengte als de originele array",
+        "Je kan er een array van objecten mee omzetten naar een array van één property",
+        "Het wijzigt de originele array"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "`map()` geeft een nieuwe array van dezelfde lengte terug en is ideaal om objecten om te zetten naar één property. De originele array wordt níet gewijzigd."
+    },
+    {
+      "type": "text",
+      "prompt": "Bij welk getal begint de index in de callback van `map()`?",
+      "accept": ["0"],
+      "placeholder": "een getal…",
+      "explanation": "De index begint bij `0`, dus het eerste element heeft index 0."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik `map` om elk getal te verdubbelen.",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 2, 3];\nlet doubled = numbers.map(n => n {{0}} 2);",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "doubled", "expected": [2, 4, 6], "description": "doubled is [2, 4, 6]" }
+      ],
+      "explanation": "Vermenigvuldig elk element met 2: `numbers.map(n => n * 2)`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik `map` om uit de studenten enkel hun namen te halen.",
+      "language": "typescript",
+      "template": "let studenten = [{ naam: \"Sam\" }, { naam: \"Lee\" }];\nlet namen = studenten.map(s => s.{{0}});",
+      "blanks": [
+        { "placeholder": "property", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "namen", "expected": ["Sam", "Lee"], "description": "namen is [\"Sam\", \"Lee\"]" }
+      ],
+      "explanation": "Lees de property `naam` van elk object: `studenten.map(s => s.naam)`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de tweede parameter (het rangnummer) aan zodat elke taak genummerd wordt.",
+      "language": "typescript",
+      "template": "let taken : string[] = [\"Afwassen\", \"Stofzuigen\"];\nlet genummerd = taken.map((taak, {{0}}) => `Taak ${index + 1}: ${taak}`);",
+      "blanks": [
+        { "placeholder": "parameter", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "genummerd", "expected": ["Taak 1: Afwassen", "Taak 2: Stofzuigen"], "description": "de taken zijn genummerd vanaf 1" }
+      ],
+      "explanation": "De tweede parameter is de index; hier `index` genoemd zodat `index + 1` in de tekst werkt."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. Het type van het resultaat klopt niet.",
+      "code": "let namen : string[] = [\"Sam\", \"Lee\"];\nlet lengtes : [[string]][] = namen.map(n => n.length);",
+      "explanation": "`n.length` is een `number`, dus `map` geeft een `number[]` terug. Het type hoort dus `number[]` te zijn, niet `string[]`."
+    }
+  ]
+}

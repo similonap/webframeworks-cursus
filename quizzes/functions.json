@@ -1,0 +1,136 @@
+{
+  "title": "Quiz: Functions",
+  "description": "Test je kennis over functies: types van parameters en return, `void`, optionele en default parameters, rest parameters, arrow functions en callbacks.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Waar declareer je het return type van een functie?",
+      "options": [
+        "Voor de `function` keyword",
+        "Na de parameters, achter een dubbele punt",
+        "Tussen de parameters",
+        "In de naam van de functie"
+      ],
+      "answer": 1,
+      "explanation": "Het return type staat na de parameters: `function add(a: number, b: number): number { … }`."
+    },
+    {
+      "type": "single",
+      "prompt": "Welk type gebruik je voor een functie die niets teruggeeft?",
+      "options": ["`null`", "`empty`", "`void`", "`none`"],
+      "answer": 2,
+      "explanation": "`void` betekent dat de functie niets teruggeeft. Je mag het ook weglaten; dan leidt TypeScript `void` af."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat gebeurt er als je het type van een parameter niet declareert?\n\n`function log(message) { … }`",
+      "options": [
+        "TypeScript geeft een fout: parameter heeft impliciet het `any` type",
+        "De parameter krijgt automatisch het type `string`",
+        "Niets, dat is helemaal in orde",
+        "De functie geeft `undefined` terug"
+      ],
+      "answer": 0,
+      "explanation": "Zonder type krijgt de parameter impliciet `any`, wat TypeScript afkeurt: *Parameter 'message' implicitly has an 'any' type.*"
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe maak je een parameter optioneel?",
+      "options": [
+        "`b?: number`",
+        "`b!: number`",
+        "`b: number?`",
+        "`optional b: number`"
+      ],
+      "answer": 0,
+      "explanation": "Een `?` na de parameternaam maakt ze optioneel: `function multiply(a: number, b?: number)`. Als ze ontbreekt is `b` `undefined`."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe geef je een parameter een default waarde van 1?",
+      "options": [
+        "`b: number = 1`",
+        "`b: number => 1`",
+        "`b = number(1)`",
+        "`default b: number`"
+      ],
+      "answer": 0,
+      "explanation": "Je plaatst de default waarde na de declaratie: `b: number = 1`. Roep je de functie zonder dat argument aan, dan wordt 1 gebruikt."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over arrow functions kloppen?",
+      "options": [
+        "Met maar 1 statement mag je de accolades weglaten",
+        "Als de functie iets returnt, mag je `return` én de accolades weglaten",
+        "Met maar 1 parameter mag je de haakjes rond de parameter weglaten",
+        "Een arrow function moet altijd een naam hebben"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "Bij één statement vervallen de accolades; bij een return vervalt ook `return`; bij één parameter vervallen de haakjes. Arrow functions mogen ook anoniem zijn (zonder naam)."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk symbool (de pijl-operator) gebruik je om een arrow function te schrijven?",
+      "accept": ["=>", "pijl", "arrow"],
+      "placeholder": "een operator…",
+      "explanation": "De pijl-operator `=>` declareert een arrow function, bv. `let add = (a, b) => a + b;`."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke notatie (drie tekens) gebruik je voor een rest parameter die een onbepaald aantal argumenten opvangt?",
+      "accept": ["...", "spread", "rest"],
+      "placeholder": "een notatie…",
+      "explanation": "Met `...` vang je alle argumenten op in een array: `function sum(...numbers: number[])`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul aan zodat `b` een default waarde van 1 krijgt.",
+      "language": "typescript",
+      "template": "function multiply(a: number, b: number {{0}} 1): number {\n  return a * b;\n}",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "multiply(5)", "expected": 5, "description": "multiply(5) === 5 (b is standaard 1)" },
+        { "expression": "multiply(2, 3)", "expected": 6, "description": "multiply(2, 3) === 6" }
+      ],
+      "explanation": "Een default waarde geef je met `=`: `b: number = 1`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de rest parameter aan zodat `sum` een onbepaald aantal getallen kan optellen.",
+      "language": "typescript",
+      "template": "function sum({{0}} numbers: number[]): number {\n  let total = 0;\n  for (let n of numbers) total += n;\n  return total;\n}",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "sum(1, 2, 3, 4, 5)", "expected": 15, "description": "sum(1,2,3,4,5) === 15" },
+        { "expression": "sum()", "expected": 0, "description": "sum() === 0" }
+      ],
+      "explanation": "Een rest parameter begint met `...`: `function sum(...numbers: number[])`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Maak hiervan een arrow function met verkorte syntax (impliciete return).",
+      "language": "typescript",
+      "template": "let add = (a: number, b: number): number {{0}} a + b;",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "add(1, 2)", "expected": 3, "description": "add(1, 2) === 3" },
+        { "expression": "add(10, 5)", "expected": 15, "description": "add(10, 5) === 15" }
+      ],
+      "explanation": "De pijl-operator `=>` maakt er een arrow function van; zonder accolades wordt `a + b` automatisch teruggegeven."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fouten aan in deze twee functies.",
+      "code": "function log([[message]]) {\n  console.log(message);\n}\n\nfunction add(a: number, b: number): [[string]] {\n  return a + b;\n}",
+      "explanation": "De parameter `message` heeft geen type en krijgt impliciet `any` (fout). En `add` zegt dat het een `string` teruggeeft, maar `a + b` is een `number`."
+    }
+  ]
+}

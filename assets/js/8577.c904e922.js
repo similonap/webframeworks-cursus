@@ -1,1 +1,0 @@
-(self.webpackChunkwebframeworks_cursus=self.webpackChunkwebframeworks_cursus||[]).push([[8577],{20549:(s,e,r)=>{"use strict";r.d(e,{A:()=>c});var u=r(58291);const c=u},45741:()=>{}}]);

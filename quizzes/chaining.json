@@ -1,0 +1,69 @@
+{
+  "title": "Quiz: Method chaining",
+  "description": "Test je kennis over het aan elkaar hangen van arraymethodes.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat is het resultaat?\n```ts\n[1, 2, 3, 4].filter(n => n > 2).map(n => n * 10);\n```",
+      "options": [
+        "`[10, 20, 30, 40]`",
+        "`[30, 40]`",
+        "`[3, 4]`",
+        "`70`"
+      ],
+      "answer": 1,
+      "explanation": "`filter` houdt `[3, 4]` over, daarna maakt `map` er `[30, 40]` van."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarom kan je na `reduce` meestal geen `.map(...)` meer schrijven?",
+      "options": [
+        "`reduce` geeft één waarde terug, geen array",
+        "`reduce` past de originele array aan",
+        "`map` moet altijd eerst komen",
+        "Je mag maximaal twee methodes chainen"
+      ],
+      "answer": 0,
+      "explanation": "Chaining werkt enkel als de vorige stap iets teruggeeft waarop de volgende methode bestaat. `reduce` geeft meestal een getal of een object terug."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het resultaat?\n```ts\n[2, 5, 8].map(n => n * 2).filter(n => n > 5);\n```",
+      "options": [
+        "`[5, 8]`",
+        "`[16]`",
+        "`[10, 16]`",
+        "`[4, 10, 16]`"
+      ],
+      "answer": 2,
+      "explanation": "`map` maakt `[4, 10, 16]`, daarna houdt `filter` enkel de getallen groter dan 5 over: `[10, 16]`."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke methodes kan je in het **midden** van een keten gebruiken (ze geven een array terug)?",
+      "options": [
+        "`filter`",
+        "`find`",
+        "`map`",
+        "`join`"
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "`filter` en `map` geven een array terug. `find` geeft één element terug en `join` een string."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarom zet je `filter` best zo vroeg mogelijk in een keten?",
+      "options": [
+        "Omdat `filter` anders niet werkt",
+        "Omdat de volgende stappen dan minder elementen moeten verwerken",
+        "Omdat `filter` de array sorteert",
+        "Dat maakt niets uit"
+      ],
+      "answer": 1,
+      "explanation": "Hoe vroeger je filtert, hoe minder werk de volgende stappen hebben."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "title": "Quiz: concat, join en reverse",
+  "description": "Test je kennis over arrays samenvoegen, omzetten naar een string en omkeren.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\nlet a: number[] = [1, 2];\nlet b: number[] = a.concat([3, 4]);\nconsole.log(a);\n```",
+      "options": [
+        "`[1, 2, 3, 4]`",
+        "`[3, 4]`",
+        "`[1, 2, [3, 4]]`",
+        "`[1, 2]`"
+      ],
+      "answer": 3,
+      "explanation": "`concat` geeft een **nieuwe** array terug. De originele array `a` blijft ongewijzigd."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[\"Andie\", \"Bert\", \"Cedric\"].join(\" - \")` terug?",
+      "options": [
+        "`\"Andie - Bert - Cedric\"`",
+        "`[\"Andie - \", \"Bert - \", \"Cedric\"]`",
+        "`\"Andie,Bert,Cedric\"`",
+        "`\"AndieBertCedric\"`"
+      ],
+      "answer": 0,
+      "explanation": "`join` plakt alle elementen aan elkaar tot één string, met het meegegeven scheidingsteken ertussen."
+    },
+    {
+      "type": "single",
+      "prompt": "Welk scheidingsteken gebruikt `join()` als je niets meegeeft?",
+      "options": [
+        "Een spatie",
+        "Niets",
+        "Een komma",
+        "Een puntkomma"
+      ],
+      "answer": 2,
+      "explanation": "Zonder argument gebruikt `join` een komma: `[1, 2, 3].join()` geeft `\"1,2,3\"`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\nlet numbers: number[] = [1, 2, 3];\nnumbers.reverse();\nconsole.log(numbers);\n```",
+      "options": [
+        "`[1, 2, 3]`",
+        "`[3, 2, 1]`",
+        "`undefined`",
+        "`\"321\"`"
+      ],
+      "answer": 1,
+      "explanation": "`reverse` past de **originele** array aan. Na de aanroep is `numbers` dus omgekeerd."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `\"abc\".split(\"\").reverse().join(\"\")` terug?",
+      "options": [
+        "`\"abc\"`",
+        "`[\"c\", \"b\", \"a\"]`",
+        "`\"c,b,a\"`",
+        "`\"cba\"`"
+      ],
+      "answer": 3,
+      "explanation": "`split(\"\")` maakt er `[\"a\", \"b\", \"c\"]` van, `reverse` keert om en `join(\"\")` plakt alles zonder scheidingsteken terug aan elkaar."
+    }
+  ]
+}

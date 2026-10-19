@@ -1,0 +1,134 @@
+{
+  "title": "Quiz: Array.filter()",
+  "description": "Test je kennis over de `filter` methode: wat ze teruggeeft, wat de callback moet teruggeven en het verschil met `map`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `filter()` terug?",
+      "options": [
+        "Een nieuwe array met enkel de elementen waarvoor de callback `true` teruggeeft",
+        "Eén enkel element dat voldoet",
+        "De originele array, maar aangepast",
+        "Het aantal elementen dat voldoet"
+      ],
+      "answer": 0,
+      "explanation": "`filter()` behoudt enkel de elementen waarvoor de callback `true` teruggeeft, en stopt die in een nieuwe array."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat moet de callback van `filter()` teruggeven?",
+      "options": [
+        "Een `number`",
+        "Een `boolean` (`true` of `false`)",
+        "Een nieuwe array",
+        "Een string"
+      ],
+      "answer": 1,
+      "explanation": "De callback is een test die een `boolean` teruggeeft: `true` om het element te behouden, `false` om het weg te laten."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het verschil tussen `map()` en `filter()`?",
+      "options": [
+        "`map()` transformeert elk element; `filter()` houdt elementen bij of laat ze weg",
+        "Ze doen exact hetzelfde",
+        "`filter()` transformeert elk element; `map()` laat elementen weg",
+        "`map()` wijzigt de originele array, `filter()` niet"
+      ],
+      "answer": 0,
+      "explanation": "`map()` transformeert elk element (zelfde lengte); `filter()` selecteert elementen, dus het resultaat kan korter zijn. Geen van beide wijzigt de originele array."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over `filter()` kloppen?",
+      "options": [
+        "Het geeft een nieuwe array terug",
+        "De callback geeft een `boolean` terug",
+        "Het resultaat kan minder elementen hebben dan de originele array",
+        "Het wijzigt de originele array"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "`filter()` geeft een nieuwe (mogelijk kortere) array terug op basis van een boolean-test. De originele array blijft ongewijzigd."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke boolean-waarde moet de callback teruggeven om een element te behouden?",
+      "accept": ["true"],
+      "placeholder": "true of false…",
+      "explanation": "Geeft de callback `true` terug, dan wordt het element behouden in de nieuwe array."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik `filter` om enkel de even getallen te behouden.",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 2, 3, 4, 5, 6];\nlet even = numbers.filter(n => n % 2 {{0}} 0);",
+      "blanks": [
+        { "placeholder": "..", "width": 5 }
+      ],
+      "tests": [
+        { "expression": "even", "expected": [2, 4, 6], "description": "even is [2, 4, 6]" }
+      ],
+      "explanation": "Een getal is even als de rest na deling door 2 gelijk is aan 0: `n % 2 === 0`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Behoud enkel de woorden die langer zijn dan 3 tekens.",
+      "language": "typescript",
+      "template": "let woorden : string[] = [\"aa\", \"bbbb\", \"c\", \"dddd\"];\nlet lang = woorden.filter(w => w.length {{0}} 3);",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "lang", "expected": ["bbbb", "dddd"], "description": "lang is [\"bbbb\", \"dddd\"]" }
+      ],
+      "explanation": "Gebruik `>` om enkel woorden met meer dan 3 tekens te behouden: `w.length > 3`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Behoud enkel de actieve mensen (de objecten waarvan `actief` `true` is).",
+      "language": "typescript",
+      "template": "let mensen = [{ naam: \"Sam\", actief: true }, { naam: \"Lee\", actief: false }];\nlet actieven = mensen.filter(m => m.{{0}});",
+      "blanks": [
+        { "placeholder": "property", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "actieven.length", "expected": 1, "description": "er blijft 1 actieve persoon over" },
+        { "expression": "actieven[0].naam", "expected": "Sam", "description": "dat is Sam" }
+      ],
+      "explanation": "De property `actief` is zelf al een boolean, dus `m.actief` volstaat als test."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik `filter` om het getal `3` te \"verwijderen\" uit de lijst (behoud alles wat niet gelijk is aan 3).",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 2, 3, 4, 3, 5];\nnumbers = numbers.filter(n => n {{0}} 3);",
+      "blanks": [
+        { "placeholder": "..", "width": 5 }
+      ],
+      "tests": [
+        { "expression": "numbers", "expected": [1, 2, 4, 5], "description": "numbers is [1, 2, 4, 5]" }
+      ],
+      "explanation": "Je behoudt alle elementen die níet gelijk zijn aan 3 met `n !== 3`. Zo verdwijnen alle voorkomens van `3`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik de tweede parameter `index` om de dubbele getallen te verwijderen (behoud enkel het eerste voorkomen van elke waarde).",
+      "language": "typescript",
+      "template": "let numbers : number[] = [3, 1, 3, 2, 1];\nlet uniek = numbers.filter((value, index) => numbers.indexOf(value) {{0}} index);",
+      "blanks": [
+        { "placeholder": "..", "width": 5 }
+      ],
+      "tests": [
+        { "expression": "uniek", "expected": [3, 1, 2], "description": "uniek is [3, 1, 2]" }
+      ],
+      "explanation": "`numbers.indexOf(value)` geeft de index van het eerste voorkomen. Enkel als die gelijk is (`===`) aan de huidige `index` behoud je het element; dubbels vallen weg."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. Het type van het resultaat klopt niet.",
+      "code": "let numbers : number[] = [1, 2, 3, 4];\nlet groot : [[string]][] = numbers.filter(n => n > 2);",
+      "explanation": "`filter` op een `number[]` geeft opnieuw een `number[]` terug. Het type hoort dus `number[]` te zijn, niet `string[]`."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Quiz: Array.shift() en Array.unshift()",
+  "description": "Test je kennis over elementen toevoegen aan en verwijderen van het begin van een array.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat is de inhoud van `names` na deze code?\n```ts\nlet names: string[] = [\"Bert\"];\nnames.push(\"Cedric\");\nnames.unshift(\"Andie\");\n```",
+      "options": [
+        "`[\"Bert\", \"Cedric\", \"Andie\"]`",
+        "`[\"Cedric\", \"Bert\", \"Andie\"]`",
+        "`[\"Andie\", \"Bert\", \"Cedric\"]`",
+        "`[\"Andie\", \"Cedric\", \"Bert\"]`"
+      ],
+      "answer": 2,
+      "explanation": "`push` voegt achteraan toe, `unshift` vooraan. Het resultaat is `[\"Andie\", \"Bert\", \"Cedric\"]`."
+    },
+    {
+      "type": "single",
+      "prompt": "Je bouwt een wachtrij (queue, FIFO): wie eerst komt, wordt eerst geholpen. Welke combinatie gebruik je?",
+      "options": [
+        "`push` en `pop`",
+        "`unshift` en `unshift`",
+        "`pop` en `shift`",
+        "`push` en `shift`"
+      ],
+      "answer": 3,
+      "explanation": "Je voegt achteraan toe met `push` en haalt vooraan weg met `shift`. Zo wordt het oudste element als eerste behandeld."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke methodes passen de originele array aan?",
+      "options": [
+        "`push`",
+        "`pop`",
+        "`shift`",
+        "`unshift`"
+      ],
+      "answers": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "Alle vier passen ze de originele array aan: ze voegen een element toe of halen er een weg."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het type van `first` in `let first = names.shift();` als `names` een `string[]` is?",
+      "options": [
+        "`string`",
+        "`string[]`",
+        "`string | undefined`",
+        "`number`"
+      ],
+      "answer": 2,
+      "explanation": "Als de array leeg is, kan `shift` niets verwijderen en geeft het `undefined` terug. Het type is dus `string | undefined`."
+    }
+  ]
+}

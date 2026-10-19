@@ -1,0 +1,202 @@
+{
+  "title": "Quiz: Modules",
+  "description": "Test je kennis over modules (`export`/`import`), default exports, `import type`, het testen met Jest en npm packages.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat doe je met het sleutelwoord `export` voor een functie?",
+      "options": [
+        "Je verbergt de functie voor de rest van je code",
+        "Je maakt de functie beschikbaar zodat andere bestanden ze kunnen importeren",
+        "Je publiceert de functie automatisch op npm",
+        "Je voert de functie meteen uit zodra het bestand geladen wordt"
+      ],
+      "answer": 1,
+      "explanation": "`export` maakt een functie (of interface, variabele…) onderdeel van de publieke interface van de module, zodat andere bestanden ze met `import` kunnen gebruiken."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe importeer je de named exports `areaCircle` en `areaSquare` uit `area.ts` in dezelfde map?",
+      "options": [
+        "`import { areaCircle, areaSquare } from 'area';`",
+        "`import * as area from './area.ts';`",
+        "`import { areaCircle, areaSquare } from './area';`",
+        "`import areaCircle, areaSquare from './area';`"
+      ],
+      "answer": 2,
+      "explanation": "Named exports zet je tussen accolades, en het pad is relatief (`./area`) en zónder de extensie `.ts`."
+    },
+    {
+      "type": "single",
+      "prompt": "Je hebt een **default export**:\n\n```ts\nexport default function (r: number): number {\n  return Math.PI * r * r;\n}\n```\n\nHoe importeer je die correct?",
+      "options": [
+        "`import default area from './area';`",
+        "`import { default } from './area';`",
+        "`import { area } from './area';` — met accolades",
+        "`import area from './area';` — zonder accolades, naam vrij te kiezen"
+      ],
+      "answer": 3,
+      "explanation": "Een default export importeer je zónder accolades. Omdat er maar één default is, mag je zelf de naam kiezen waaronder je ze importeert."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarvoor gebruik je `import type { Person } from './types';`?",
+      "options": [
+        "Om duidelijk te maken dat je enkel een type importeert (het verdwijnt bij het compileren naar JavaScript)",
+        "Om het type sneller te laten inladen tijdens runtime",
+        "Het is verplicht voor élke import van een interface",
+        "Om een interface automatisch in een klasse om te zetten"
+      ],
+      "answer": 0,
+      "explanation": "`import type` importeert enkel typeinformatie. Die bestaat alleen tijdens het compileren en wordt uit de gegenereerde JavaScript verwijderd."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarom gebruik je in Jest `toBeCloseTo` in plaats van `toBe` bij het testen van bv. `areaCircle(2)`?",
+      "options": [
+        "Omdat decimale getallen door afrondingsfouten klein kunnen afwijken",
+        "Omdat `toBe` niet bestaat voor getallen",
+        "Omdat `toBeCloseTo` sneller is",
+        "Omdat `areaCircle` een string teruggeeft"
+      ],
+      "answer": 0,
+      "explanation": "Computers slaan decimalen binair op, wat tot kleine afrondingsfouten leidt. `toBeCloseTo` controleert of de waarden dicht genoeg bij elkaar liggen, in plaats van exact gelijk."
+    },
+    {
+      "type": "single",
+      "prompt": "Welke Jest-methode controleert of een functie een fout gooit?",
+      "options": [
+        "`toBe`",
+        "`toBeFalsy`",
+        "`toEqual`",
+        "`toThrow`"
+      ],
+      "answer": 3,
+      "explanation": "`toThrow` controleert of de aangeroepen functie een fout opgooit, en je kan er ook de verwachte foutboodschap aan meegeven."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarom geef je bij `expect(() => areaRectangle(-2, 3)).toThrow(...)` een **callback** mee in plaats van de aanroep rechtstreeks?",
+      "options": [
+        "Omdat `toThrow` alleen met pijlfuncties werkt",
+        "Omdat de functie anders twee keer wordt uitgevoerd",
+        "Zodat Jest de functie zelf kan aanroepen en de fout kan opvangen; anders crasht de test al bij het uitvoeren",
+        "Het maakt geen verschil, beide werken identiek"
+      ],
+      "answer": 2,
+      "explanation": "Geef je `areaRectangle(-2, 3)` rechtstreeks mee, dan wordt de fout meteen opgegooid vóór Jest iets kan controleren. Met een callback voert Jest de functie zelf uit binnen een `try`/`catch` en controleert ze de fout."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het verschil tussen een `dependency` en een `devDependency`?",
+      "options": [
+        "Een `devDependency` is enkel nodig tijdens de ontwikkeling (bv. testen of linting); een `dependency` is nodig om de app in productie te laten draaien",
+        "Een `dependency` installeer je met `--save-dev`, een `devDependency` zonder",
+        "Een `devDependency` wordt globaal geïnstalleerd, een `dependency` lokaal",
+        "Er is geen verschil, het zijn twee namen voor hetzelfde"
+      ],
+      "answer": 0,
+      "explanation": "`devDependencies` (geïnstalleerd met `--save-dev`) heb je enkel nodig tijdens het ontwikkelen — denk aan Jest of TypeScript. Gewone `dependencies` zijn nodig om de applicatie in productie te draaien."
+    },
+    {
+      "type": "single",
+      "prompt": "Moet je de map `node_modules` toevoegen aan je Git-repository?",
+      "options": [
+        "Ja — anders werkt het project niet bij anderen",
+        "Nee — je zet ze in `.gitignore`; iedereen herstelt ze met `npm install` op basis van `package.json`",
+        "Ja, maar enkel de `dependencies`, niet de `devDependencies`",
+        "Nee, want npm uploadt die map automatisch naar de cloud"
+      ],
+      "answer": 1,
+      "explanation": "`node_modules` kan altijd opnieuw aangemaakt worden met `npm install` (alles staat in `package.json`). Daarom hoort die map in `.gitignore` en stuur je ze ook nooit mee in een zip."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over modules en imports kloppen?",
+      "options": [
+        "Je kan een functie pas importeren als ze geëxporteerd is met `export`",
+        "Je kan meerdere named exports per bestand hebben",
+        "In het importpad laat je de extensie `.ts` weg",
+        "Een bestand kan maar één default export hebben"
+      ],
+      "answers": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explanation": "Allemaal juist: meerdere named exports per bestand, maximaal één default export, het pad zonder `.ts`, en enkel geëxporteerde functies kan je importeren."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk sleutelwoord plaats je voor een functie om ze buiten het bestand bruikbaar te maken?",
+      "accept": [
+        "export"
+      ],
+      "placeholder": "sleutelwoord…",
+      "explanation": "Met `export` maak je de functie beschikbaar voor andere modules."
+    },
+    {
+      "type": "text",
+      "prompt": "In welke map plaatst npm de geïnstalleerde packages?",
+      "accept": [
+        "node_modules",
+        "node modules"
+      ],
+      "placeholder": "mapnaam…",
+      "explanation": "npm installeert packages automatisch in de map `node_modules`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de berekening aan zodat de functie de oppervlakte van een rechthoek teruggeeft.",
+      "language": "typescript",
+      "template": "function areaRectangle(l: number, w: number): number {\n  return l {{0}} w;\n}",
+      "blanks": [
+        {
+          "placeholder": "..",
+          "width": 3
+        }
+      ],
+      "tests": [
+        {
+          "expression": "areaRectangle(2, 3)",
+          "expected": 6,
+          "description": "areaRectangle(2, 3) === 6"
+        },
+        {
+          "expression": "areaRectangle(5, 10)",
+          "expected": 50,
+          "description": "areaRectangle(5, 10) === 50"
+        }
+      ],
+      "explanation": "De oppervlakte van een rechthoek is lengte × breedte: `l * w`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gooi een fout op wanneer een van de zijden negatief is.",
+      "language": "typescript",
+      "template": "function areaRectangle(l: number, w: number): number {\n  if (l < 0 || w < 0) {\n    {{0}} new Error(\"Length and width must be non-negative\");\n  }\n  return l * w;\n}\n\nlet boodschap = \"ok\";\ntry {\n  areaRectangle(-2, 3);\n} catch (e: any) {\n  boodschap = e.message;\n}",
+      "blanks": [
+        {
+          "placeholder": "..",
+          "width": 7
+        }
+      ],
+      "tests": [
+        {
+          "expression": "boodschap",
+          "expected": "Length and width must be non-negative",
+          "description": "de fout werd opgegooid en opgevangen"
+        }
+      ],
+      "explanation": "Met `throw new Error(...)` gooi je de fout op. In de test wordt ze opgevangen in het `catch` block, waar we de `message` uitlezen."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. `areaCircle` is een named export (geen default export).",
+      "code": "import [[areaCircle]] from './area';\nconsole.log(areaCircle(2));",
+      "explanation": "Named exports moet je tussen accolades importeren: `import { areaCircle } from './area';`. Zonder accolades probeer je een default export te importeren, die er niet is."
+    }
+  ]
+}

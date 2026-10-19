@@ -1,0 +1,66 @@
+{
+  "title": "Quiz: indexOf, lastIndexOf en includes",
+  "description": "Test je kennis over zoeken naar een waarde in een array.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[\"appel\", \"peer\", \"kiwi\", \"peer\"].indexOf(\"peer\")` terug?",
+      "options": [
+        "`3`",
+        "`1`",
+        "`true`",
+        "`[1, 3]`"
+      ],
+      "answer": 1,
+      "explanation": "`indexOf` geeft de index van het **eerste** voorkomen terug: index 1."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[\"appel\", \"peer\", \"kiwi\", \"peer\"].lastIndexOf(\"peer\")` terug?",
+      "options": [
+        "`1`",
+        "`-1`",
+        "`3`",
+        "`4`"
+      ],
+      "answer": 2,
+      "explanation": "`lastIndexOf` geeft de index van het **laatste** voorkomen terug: index 3."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `indexOf` terug als de waarde niet in de array voorkomt?",
+      "options": [
+        "`undefined`",
+        "`null`",
+        "`0`",
+        "`-1`"
+      ],
+      "answer": 3,
+      "explanation": "Wordt de waarde niet gevonden, dan geeft `indexOf` `-1` terug. Daarom controleer je meestal met `index !== -1`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat print `console.log([\"appel\", \"peer\"].includes(\"Appel\"));`?",
+      "options": [
+        "`false`",
+        "`true`",
+        "`0`",
+        "`-1`"
+      ],
+      "answer": 0,
+      "explanation": "`includes` vergelijkt met `===` en is dus hoofdlettergevoelig. `\"Appel\"` is niet hetzelfde als `\"appel\"`."
+    },
+    {
+      "type": "single",
+      "prompt": "Je hebt een array `users` van objecten `{ name: string }`. Hoe controleer je of er een gebruiker met naam `\"Bert\"` in zit?",
+      "options": [
+        "`users.includes(\"Bert\")`",
+        "`users.includes({ name: \"Bert\" })`",
+        "`users.some(u => u.name === \"Bert\")`",
+        "`users.indexOf(\"Bert\") !== -1`"
+      ],
+      "answer": 2,
+      "explanation": "`includes` en `indexOf` zoeken naar exact hetzelfde element. Een nieuw object met dezelfde inhoud is een ander object. Met `some` kan je zoeken met een voorwaarde."
+    }
+  ]
+}

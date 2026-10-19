@@ -1,0 +1,140 @@
+{
+  "title": "Quiz: Interfaces",
+  "description": "Test je kennis over interfaces, optionele properties, geneste objecten, het `Record` type en de operators `?.`, `!` en `as`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat beschrijft een `interface` in TypeScript?",
+      "options": [
+        "De manier waarop een functie wordt aangeroepen",
+        "Welke properties een object moet en mag bevatten",
+        "De volgorde waarin code wordt uitgevoerd",
+        "Hoeveel geheugen een object gebruikt"
+      ],
+      "answer": 1,
+      "explanation": "Een interface beschrijft de vorm van een object: welke properties het heeft en van welk type die zijn."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat gebeurt er als je een verplichte property uit de interface weglaat bij het maken van een object?",
+      "options": [
+        "Niets, de property krijgt automatisch `undefined`",
+        "De property wordt `null`",
+        "TypeScript geeft een foutmelding",
+        "Het object wordt genegeerd"
+      ],
+      "answer": 2,
+      "explanation": "TypeScript geeft een fout: *Property '…' is missing in type …*. Verplichte properties moeten aanwezig zijn."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe maak je een property optioneel in een interface?",
+      "options": [
+        "Met een `?` na de naam: `age?: number`",
+        "Met een `!` na de naam: `age!: number`",
+        "Met het woord `optional` ervoor",
+        "Door het type weg te laten"
+      ],
+      "answer": 0,
+      "explanation": "Een `?` na de propertynaam maakt ze optioneel: `age?: number`. Ze mag dan ontbreken."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Gegeven `interface Person { name: string; age: number; }`. Welke objecten geven een TypeScript-fout?",
+      "options": [
+        "`{ naem: \"Debbie\", age: 30 }` (typfout in propertynaam)",
+        "`{ name: \"Debbie\", age: 30, isAdmin: true }` (extra property)",
+        "`{ name: \"Debbie\", age: \"30\" }` (verkeerd type)",
+        "`{ name: \"Debbie\", age: 30 }`"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "Een typfout, een onbekende extra property én een verkeerd type geven elk een fout. Enkel het laatste object klopt precies met `Person`."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke operator gebruik je om veilig een property op te vragen van een object dat misschien `undefined` is (optional chaining)?",
+      "accept": ["?.", "optional chaining"],
+      "placeholder": "een operator…",
+      "explanation": "De optional chaining operator `?.` geeft `undefined` terug als het object ervoor niet bestaat, in plaats van een fout."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk keyword gebruik je voor een type assertion (TypeScript vertellen welk type een waarde heeft)?",
+      "accept": ["as"],
+      "placeholder": "een keyword…",
+      "explanation": "Met `as` doe je een type assertion, bv. `const users = data as User[];`. Het verandert de waarde niet, enkel wat TypeScript denkt."
+    },
+    {
+      "type": "single",
+      "prompt": "Waarvoor gebruik je `Record<string, number>`?",
+      "options": [
+        "Een object waarvan je de keys niet op voorhand kent, met string-keys en number-waarden",
+        "Een array van getallen",
+        "Een functie die een getal teruggeeft",
+        "Een tuple met een string en een number"
+      ],
+      "answer": 0,
+      "explanation": "`Record<K, V>` beschrijft een object met keys van type `K` en waarden van type `V`. Handig als je de keys niet op voorhand kent."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat doet de non-null assertion operator `!` (bv. `user.address!.street`)?",
+      "options": [
+        "Hij keert een boolean om",
+        "Hij vertelt TypeScript dat de waarde zeker niet `null` of `undefined` is",
+        "Hij maakt de property optioneel",
+        "Hij verwijdert de property"
+      ],
+      "answer": 1,
+      "explanation": "`!` zegt tegen de compiler dat de waarde zeker niet `null`/`undefined` is. Gebruik hem voorzichtig: bij een verkeerde aanname krijg je een runtime-fout."
+    },
+    {
+      "type": "fill",
+      "prompt": "Maak `age` optioneel zodat het object zonder `age` toch geldig is.",
+      "language": "typescript",
+      "template": "interface User {\n  name: string;\n  age{{0}} number;\n}\n\nlet u : User = { name: \"Sam\" };",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "u.name", "expected": "Sam", "description": "u.name === \"Sam\" en de code compileert" }
+      ],
+      "explanation": "Met `age?: number` is `age` optioneel; het object mag dan enkel `name` bevatten."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul het `Record` type aan: een telefoonboek met namen (string) als key en nummers (string) als waarde.",
+      "language": "typescript",
+      "template": "let phoneBook : Record<{{0}}, {{1}}> = {};\nphoneBook[\"Andie\"] = \"+32 123\";",
+      "blanks": [
+        { "placeholder": "key-type", "width": 8 },
+        { "placeholder": "value-type", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "phoneBook[\"Andie\"]", "expected": "+32 123", "description": "phoneBook[\"Andie\"] === \"+32 123\"" }
+      ],
+      "explanation": "Zowel de keys als de waarden zijn strings: `Record<string, string>`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik optional chaining zodat `straat` veilig de straat ophaalt, ook al is `address` optioneel.",
+      "language": "typescript",
+      "template": "interface Address { street: string; }\ninterface User { name: string; address{{0}} Address; }\n\nlet u : User = { name: \"Sam\", address: { street: \"Dorpsstraat\" } };\nlet straat = u.address{{1}}street;",
+      "blanks": [
+        { "placeholder": "..", "width": 4 },
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "straat", "expected": "Dorpsstraat", "description": "straat === \"Dorpsstraat\"" }
+      ],
+      "explanation": "`address?: Address` maakt het optioneel; met `u.address?.street` haal je de straat veilig op zonder fout als `address` zou ontbreken."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fouten aan. Dit object klopt niet met de interface `Person`.",
+      "code": "interface Person {\n  name: string;\n  age: number;\n}\n\nlet p : Person = {\n  [[naem]]: \"Debbie\",\n  age: [[\"30\"]]\n};",
+      "explanation": "`naem` is een typfout voor `name` (en daardoor ontbreekt `name`). En `age` moet een `number` zijn, niet de string `\"30\"`."
+    }
+  ]
+}

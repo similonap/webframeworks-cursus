@@ -1,0 +1,133 @@
+{
+  "title": "Quiz: Array.reduce()",
+  "description": "Test je kennis over `reduce`: de accumulator, de currentValue, de initialValue en wat je er allemaal mee kan bouwen.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat heeft `reduce` verplicht nodig?",
+      "options": [
+        "Enkel een callback-functie; de initiële waarde is optioneel",
+        "Verplicht een callback-functie én een initiële waarde",
+        "Een begin- en een eindindex",
+        "Twee arrays"
+      ],
+      "answer": 0,
+      "explanation": "Enkel de callback-functie is verplicht. De `initialValue` is optioneel: geef je ze niet mee, dan gebruikt `reduce` het eerste element van de array als startwaarde van de accumulator."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is de `accumulator` in een `reduce`?",
+      "options": [
+        "Het huidige element waar de functie naar kijkt",
+        "De waarde die je doorgeeft aan de volgende stap en waarin je het resultaat verzamelt",
+        "De index van het huidige element",
+        "De volledige array"
+      ],
+      "answer": 1,
+      "explanation": "De accumulator (vaak `acc`) is de waarde die je telkens doorgeeft aan de volgende stap; daarin verzamel je het eindresultaat."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat stelt de `currentValue` voor?",
+      "options": [
+        "De startwaarde",
+        "Het tussenresultaat",
+        "Het element uit de array waar de functie op dat moment naar kijkt",
+        "De vorige accumulator"
+      ],
+      "answer": 2,
+      "explanation": "De `currentValue` (vaak `curr`) is het element uit de array dat op dat moment verwerkt wordt."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat bepaalt de nieuwe waarde van de accumulator bij elke stap?",
+      "options": [
+        "De return-waarde van de callback-functie",
+        "De lengte van de array",
+        "De index van het element",
+        "Altijd de initialValue"
+      ],
+      "answer": 0,
+      "explanation": "Wat de callback teruggeeft, wordt de nieuwe waarde van de accumulator voor de volgende stap."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat gebeurt er als je géén `initialValue` meegeeft?",
+      "options": [
+        "De accumulator begint op `0`",
+        "De accumulator begint op `undefined`",
+        "Het eerste element van de array wordt als startwaarde gebruikt",
+        "Je krijgt altijd een fout"
+      ],
+      "answer": 2,
+      "explanation": "Zonder `initialValue` neemt `reduce` het eerste element als startpunt van de accumulator. Dat is handig bij bv. het zoeken van een maximum."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over `reduce` kloppen?",
+      "options": [
+        "Je verzamelt het resultaat in de accumulator",
+        "De return-waarde van de callback wordt de nieuwe accumulator",
+        "Je kan er een getal, object of array mee opbouwen",
+        "Je moet altijd een initialValue meegeven"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "Je bouwt een resultaat op in de accumulator via de return-waarde, en dat resultaat kan van alles zijn. De `initialValue` is niet verplicht."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke operator is de Nullish Assignment operator (geeft enkel een waarde toe als de variabele `undefined`/`null` is)?",
+      "accept": ["??=", "nullish assignment"],
+      "placeholder": "een operator…",
+      "explanation": "De `??=` operator kent enkel een waarde toe als de huidige waarde `null` of `undefined` is, bv. `(acc[curr.dept] ??= []).push(...)`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Bereken de som van de getallen met `reduce`.",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 2, 3, 4, 5];\nlet sum = numbers.reduce((acc, curr) => acc {{0}} curr, {{1}});",
+      "blanks": [
+        { "placeholder": "..", "width": 4 },
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "sum", "expected": 15, "description": "sum === 15" }
+      ],
+      "explanation": "Tel elk getal bij de accumulator op (`acc + curr`) en begin bij `0`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Tel met `reduce` hoeveel keer elke letter voorkomt.",
+      "language": "typescript",
+      "template": "let letters : string[] = ['a', 'b', 'a'];\nlet freq = letters.reduce((acc, curr) => {\n  acc[curr] = (acc[curr] ?? 0) {{0}} 1;\n  return acc;\n}, {} as Record<string, number>);",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "freq[\"a\"]", "expected": 2, "description": "'a' komt 2 keer voor" },
+        { "expression": "freq[\"b\"]", "expected": 1, "description": "'b' komt 1 keer voor" }
+      ],
+      "explanation": "Verhoog de teller met `+ 1`. De startwaarde `{} as Record<string, number>` is nodig zodat TypeScript het type van de accumulator kent."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vind het grootste getal met `reduce` (zonder initialValue). Vul de ternaire operator aan.",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 5, 3, 2, 5, 6];\nlet max = numbers.reduce((acc, curr) => curr > acc {{0}} curr : acc);",
+      "blanks": [
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "max", "expected": 6, "description": "max === 6" }
+      ],
+      "explanation": "De ternaire operator `? :` kiest de grootste: `curr > acc ? curr : acc`. Zonder initialValue is het eerste element de startwaarde."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. TypeScript kan het type van de accumulator niet afleiden.",
+      "code": "let letters : string[] = ['a', 'b', 'a'];\nlet freq = letters.reduce((acc, curr) => {\n  acc[curr] = (acc[curr] ?? 0) + 1;\n  return acc;\n}, [[{}]]);",
+      "explanation": "De startwaarde `{}` heeft geen bruikbaar type, dus TypeScript weet niet dat je er strings als key in mag steken. Geef het type expliciet: `{} as Record<string, number>`."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Quiz: Array.forEach()",
+  "description": "Test je kennis over `forEach` en het verschil met `map` en `for...of`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `forEach` terug?",
+      "options": [
+        "Een nieuwe array",
+        "Het eerste element",
+        "`undefined` (het returntype is `void`)",
+        "Het aantal elementen"
+      ],
+      "answer": 2,
+      "explanation": "`forEach` voert enkel de callback uit voor elk element en geeft niets terug."
+    },
+    {
+      "type": "single",
+      "prompt": "Je wil van een array met getallen een nieuwe array maken met alle getallen verdubbeld. Wat gebruik je best?",
+      "options": [
+        "`map`",
+        "`forEach`",
+        "`find`",
+        "`includes`"
+      ],
+      "answer": 0,
+      "explanation": "`map` geeft een nieuwe array terug met het resultaat van de callback voor elk element. `forEach` geeft niets terug."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat kan je wel in een `for...of` lus maar niet in een `forEach`?",
+      "options": [
+        "Het element uitprinten",
+        "De index gebruiken",
+        "Een callback functie meegeven",
+        "De lus vroegtijdig stoppen met `break`"
+      ],
+      "answer": 3,
+      "explanation": "In een `for...of` lus kan je `break` gebruiken. In een `forEach` wordt de callback altijd voor elk element uitgevoerd."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\n[\"a\", \"b\"].forEach((letter, index) => console.log(index + letter));\n```",
+      "options": [
+        "`a0` en `b1`",
+        "`0a` en `1b`",
+        "`a` en `b`",
+        "`0` en `1`"
+      ],
+      "answer": 1,
+      "explanation": "De tweede parameter van de callback is de index. `index + letter` geeft dus `\"0a\"` en `\"1b\"`."
+    }
+  ]
+}

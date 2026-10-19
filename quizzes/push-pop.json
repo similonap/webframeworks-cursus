@@ -1,0 +1,54 @@
+{
+  "title": "Quiz: Array.push() en Array.pop()",
+  "description": "Test je kennis over elementen toevoegen aan en verwijderen van het einde van een array.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `pop()` terug?",
+      "options": [
+        "Het verwijderde laatste element",
+        "De nieuwe lengte van de array",
+        "De array zonder het laatste element",
+        "Niets (`void`)"
+      ],
+      "answer": 0,
+      "explanation": "`pop()` geeft het element terug dat het van het einde heeft verwijderd, of `undefined` als de array leeg was."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\nlet numbers: number[] = [1, 2, 3];\nconsole.log(numbers.push(4));\n```",
+      "options": [
+        "`[1, 2, 3, 4]`",
+        "`4`",
+        "`undefined`",
+        "`3`"
+      ],
+      "answer": 1,
+      "explanation": "`push` geeft de **nieuwe lengte** van de array terug. Na het toevoegen van `4` bevat de array 4 elementen."
+    },
+    {
+      "type": "single",
+      "prompt": "Je bouwt een \"ongedaan maken\"-functie (stack, LIFO): de laatste actie wordt als eerste ongedaan gemaakt. Welke combinatie gebruik je?",
+      "options": [
+        "`push` en `shift`",
+        "`unshift` en `push`",
+        "`push` en `pop`",
+        "`shift` en `pop`"
+      ],
+      "answer": 2,
+      "explanation": "Bij een stack voeg je achteraan toe met `push` en haal je ook achteraan weg met `pop`. Zo komt het laatst toegevoegde element er als eerste weer uit."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het type van `last` in `let last = names.pop();` als `names` een `string[]` is?",
+      "options": [
+        "`string`",
+        "`string[]`",
+        "`number`",
+        "`string | undefined`"
+      ],
+      "answer": 3,
+      "explanation": "Op een lege array valt er niets te verwijderen en geeft `pop` `undefined` terug. Het type is dus `string | undefined`."
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "title": "Quiz: Array.find() en findIndex()",
+  "description": "Test je kennis over de `find` methode: wat ze teruggeeft, wat er gebeurt als er geen match is en waarom het resultaat `| undefined` kan zijn, en het verschil met `findIndex`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `find()` terug?",
+      "options": [
+        "Het eerste element waarvoor de callback `true` teruggeeft",
+        "Een nieuwe array met alle elementen die voldoen",
+        "De index van het eerste element dat voldoet",
+        "Een `boolean` die zegt of er een match is"
+      ],
+      "answer": 0,
+      "explanation": "`find()` geeft het eerste element terug waarvoor de callback `true` teruggeeft. Wil je álle matches als array, gebruik dan `filter()`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `find()` terug als geen enkel element voldoet aan de voorwaarde?",
+      "options": [
+        "`null`",
+        "Een lege array `[]`",
+        "`undefined`",
+        "Het laatste element"
+      ],
+      "answer": 2,
+      "explanation": "Vindt `find()` geen match, dan geeft ze `undefined` terug. Daarom moet je altijd rekening houden met `undefined`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het type van `let resultaat = [1, 2, 3].find(n => n > 1);`?",
+      "options": [
+        "`number`",
+        "`number | undefined`",
+        "`number[]`",
+        "`boolean`"
+      ],
+      "answer": 1,
+      "explanation": "Omdat `find()` ook `undefined` kan teruggeven (als er geen match is), is het type `number | undefined`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het verschil tussen `find()` en `filter()`?",
+      "options": [
+        "`find()` geeft het eerste passende element terug; `filter()` geeft een array met alle passende elementen",
+        "Ze doen exact hetzelfde",
+        "`find()` geeft een array terug; `filter()` één element",
+        "`find()` wijzigt de originele array, `filter()` niet"
+      ],
+      "answer": 0,
+      "explanation": "`find()` stopt bij het eerste element dat voldoet en geeft dat element (of `undefined`) terug. `filter()` overloopt de hele array en geeft een nieuwe array met alle passende elementen."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken over `find()` kloppen?",
+      "options": [
+        "Het geeft het eerste passende element terug",
+        "Het stopt zodra er een match gevonden is",
+        "Het kan `undefined` teruggeven",
+        "Het geeft altijd een array terug"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "`find()` stopt bij de eerste match en geeft dat element terug, of `undefined` als er geen match is. Een array geeft het nooit terug (dat doet `filter()`)."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke waarde krijg je terug van `find()` als geen enkel element aan de voorwaarde voldoet?",
+      "accept": ["undefined"],
+      "placeholder": "een waarde…",
+      "explanation": "Zonder match geeft `find()` `undefined` terug."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik `find` om het eerste even getal te zoeken.",
+      "language": "typescript",
+      "template": "let numbers : number[] = [1, 3, 4, 6, 8];\nlet eersteEven = numbers.find(n => n % 2 {{0}} 0);",
+      "blanks": [
+        { "placeholder": "..", "width": 5 }
+      ],
+      "tests": [
+        { "expression": "eersteEven", "expected": 4, "description": "eersteEven === 4" }
+      ],
+      "explanation": "Een getal is even als `n % 2 === 0`. `find` geeft het eerste zo'n getal terug: `4`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Zoek de gebruiker met `id` gelijk aan 2.",
+      "language": "typescript",
+      "template": "let users = [{ id: 1, naam: \"Sam\" }, { id: 2, naam: \"Lee\" }];\nlet gevonden = users.find(u => u.id {{0}} 2);",
+      "blanks": [
+        { "placeholder": "..", "width": 5 }
+      ],
+      "tests": [
+        { "expression": "gevonden?.naam", "expected": "Lee", "description": "de gevonden gebruiker is Lee" }
+      ],
+      "explanation": "Vergelijk de `id` van elke gebruiker met `===` tot je een match vindt: `u.id === 2`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Zoek de eerste naam die met de letter \"C\" begint.",
+      "language": "typescript",
+      "template": "let namen : string[] = [\"Andie\", \"Bert\", \"Cedric\", \"Charlie\"];\nlet eersteC = namen.find(naam => naam.{{0}}(\"C\"));",
+      "blanks": [
+        { "placeholder": "methode", "width": 12 }
+      ],
+      "tests": [
+        { "expression": "eersteC", "expected": "Cedric", "description": "eersteC === \"Cedric\"" }
+      ],
+      "explanation": "`startsWith(\"C\")` geeft `true` als de string met `\"C\"` begint. `find` geeft de eerste zo'n naam terug: `\"Cedric\"`."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fout aan. Het type van de variabele klopt niet.",
+      "code": "let numbers : number[] = [1, 2, 3];\nlet eerste : [[number]] = numbers.find(n => n > 1);",
+      "explanation": "`find` kan `undefined` teruggeven als er geen match is. Het type moet dus `number | undefined` zijn, niet enkel `number`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[1, 3, 4, 7].findIndex(n => n % 2 === 0)` terug?",
+      "options": ["`4`", "`true`", "`2`", "`[2]`"],
+      "answer": 2,
+      "explanation": "`findIndex` geeft de **index** van het eerste element dat voldoet. `4` staat op index 2."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `findIndex` terug als geen enkel element voldoet?",
+      "options": ["`undefined`", "`null`", "`0`", "`-1`"],
+      "answer": 3,
+      "explanation": "Net zoals `indexOf` geeft `findIndex` `-1` terug als er niets gevonden is. Het type is dus gewoon `number`."
+    }
+  ]
+}

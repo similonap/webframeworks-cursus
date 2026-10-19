@@ -1,0 +1,93 @@
+{
+  "title": "Quiz: Array.sort()",
+  "description": "Test je kennis over sorteren met en zonder vergelijkingsfunctie, en over sorteren zonder de originele array aan te passen.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\nlet numbers: number[] = [10, 2, 1, 25];\nnumbers.sort();\nconsole.log(numbers);\n```",
+      "options": [
+        "`[1, 2, 10, 25]`",
+        "`[25, 10, 2, 1]`",
+        "`[10, 2, 1, 25]`",
+        "`[1, 10, 2, 25]`"
+      ],
+      "answer": 3,
+      "explanation": "Zonder vergelijkingsfunctie sorteert `sort` als tekst: `\"1\"`, `\"10\"`, `\"2\"`, `\"25\"`."
+    },
+    {
+      "type": "single",
+      "prompt": "Welke vergelijkingsfunctie sorteert getallen van klein naar groot?",
+      "options": [
+        "`(a, b) => a - b`",
+        "`(a, b) => b - a`",
+        "`(a, b) => a > b`",
+        "`(a, b) => 0`"
+      ],
+      "answer": 0,
+      "explanation": "`a - b` is negatief als `a` kleiner is, waardoor `a` voor `b` komt."
+    },
+    {
+      "type": "single",
+      "prompt": "De vergelijkingsfunctie geeft een **positief** getal terug. Wat betekent dat?",
+      "options": [
+        "`a` komt voor `b`",
+        "`b` komt voor `a`",
+        "De volgorde blijft behouden",
+        "Het sorteren stopt"
+      ],
+      "answer": 1,
+      "explanation": "Negatief: `a` eerst. Positief: `b` eerst. `0`: de volgorde blijft behouden."
+    },
+    {
+      "type": "single",
+      "prompt": "Past `sort` de originele array aan?",
+      "options": [
+        "Nee, het geeft altijd een nieuwe array terug",
+        "Enkel bij strings",
+        "Ja",
+        "Enkel als je een vergelijkingsfunctie meegeeft"
+      ],
+      "answer": 2,
+      "explanation": "`sort` sorteert de originele array. Wil je die behouden, sorteer dan een kopie met `slice()` of met de spread operator: `[...numbers].sort()`."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe sorteer je een array `students` alfabetisch op de property `name`?",
+      "options": [
+        "`students.sort((a, b) => a.name - b.name)`",
+        "`students.sort(\"name\")`",
+        "`students.sort()`",
+        "`students.sort((a, b) => a.name.localeCompare(b.name))`"
+      ],
+      "answer": 3,
+      "explanation": "Strings kan je niet van elkaar aftrekken. `localeCompare` geeft zelf een negatief getal, een positief getal of `0` terug."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat print deze code?\n```ts\nlet numbers: number[] = [3, 1, 2];\nlet sorted: number[] = [...numbers].sort((a, b) => a - b);\nconsole.log(numbers);\n```",
+      "options": [
+        "`[1, 2, 3]`",
+        "`[3, 1, 2]`",
+        "`[3, 2, 1]`",
+        "`undefined`"
+      ],
+      "answer": 1,
+      "explanation": "`[...numbers]` maakt een kopie, en enkel die kopie wordt gesorteerd. `sorted` is `[1, 2, 3]`, maar `numbers` blijft `[3, 1, 2]`."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Na welke regels is `numbers` nog altijd **ongewijzigd** `[3, 1, 2]`?",
+      "options": [
+        "`let sorted = numbers.sort((a, b) => a - b);`",
+        "`let sorted = numbers.slice().sort((a, b) => a - b);`",
+        "`let sorted = [...numbers].sort((a, b) => a - b);`",
+        "`let copy = numbers; copy.sort((a, b) => a - b);`"
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "`slice()` en `[...numbers]` maken een kopie, dus enkel de kopie wordt gesorteerd. `numbers.sort()` muteert de originele array, en `copy = numbers` is geen kopie: `copy` verwijst naar dezelfde array."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "title": "Quiz: every en some",
+  "description": "Test je kennis over `every` en `some`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[2, 4, 5, 8].every(n => n % 2 === 0)` terug?",
+      "options": [
+        "`true`",
+        "`false`",
+        "`[2, 4, 8]`",
+        "`5`"
+      ],
+      "answer": 1,
+      "explanation": "`every` geeft enkel `true` als **alle** elementen voldoen. `5` is oneven, dus het resultaat is `false`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[1, 3, 4, 7].some(n => n % 2 === 0)` terug?",
+      "options": [
+        "`4`",
+        "`false`",
+        "`2`",
+        "`true`"
+      ],
+      "answer": 3,
+      "explanation": "`some` geeft `true` als **minstens één** element voldoet. `4` is even."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoeveel keer wordt de callback uitgevoerd in `[1, 2, 3, 4, 5].some(n => n > 1)`?",
+      "options": [
+        "1 keer",
+        "5 keer",
+        "2 keer",
+        "0 keer"
+      ],
+      "answer": 2,
+      "explanation": "`some` stopt zodra een element voldoet. `1` voldoet niet, `2` wel. Daarna ligt het antwoord vast en stopt `some`."
+    },
+    {
+      "type": "single",
+      "prompt": "Bij welk element stopt `every`?",
+      "options": [
+        "Bij het eerste element dat **niet** voldoet",
+        "Bij het eerste element dat voldoet",
+        "Altijd bij het laatste element",
+        "Bij het element met index 0"
+      ],
+      "answer": 0,
+      "explanation": "Zodra een element niet voldoet, is het antwoord van `every` zeker `false`. De rest wordt niet meer bekeken."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[].every(n => n > 10)` terug?",
+      "options": [
+        "`false`",
+        "`undefined`",
+        "`true`",
+        "Een fout"
+      ],
+      "answer": 2,
+      "explanation": "Op een lege array is er geen enkel element dat niet voldoet, dus `every` geeft `true` terug. `some` zou `false` teruggeven."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke uitspraken kloppen?",
+      "options": [
+        "`every` en `some` geven altijd een `boolean` terug",
+        "`some` past de originele array aan",
+        "`every` overloopt altijd alle elementen",
+        "Met `some` kan je zoeken met een voorwaarde, met `includes` enkel op een exacte waarde"
+      ],
+      "answers": [
+        0,
+        3
+      ],
+      "explanation": "Beide geven een `boolean` terug en passen de array niet aan. `every` stopt bij het eerste element dat niet voldoet."
+    }
+  ]
+}

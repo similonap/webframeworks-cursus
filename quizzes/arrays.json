@@ -1,0 +1,157 @@
+{
+  "title": "Quiz: Arrays",
+  "description": "Test je kennis over arrays in TypeScript: declaratie, indexen, `length`, loops, de spread operator, multi-dimensionale arrays en tuples.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Hoe declareer je een array van getallen in TypeScript (zoals in de les)?",
+      "options": [
+        "`let numbers : number[];`",
+        "`let numbers : [number];`",
+        "`let numbers : array(number);`",
+        "`let numbers : number{};`"
+      ],
+      "answer": 0,
+      "explanation": "Je geeft het type van de elementen gevolgd door `[]`: `let numbers : number[];`."
+    },
+    {
+      "type": "single",
+      "prompt": "Bij welke index begint het eerste element van een array?",
+      "options": ["`1`", "`0`", "`-1`", "Dat hangt af van het type"],
+      "answer": 1,
+      "explanation": "Ook in TypeScript begint de eerste index bij `0`. `fruits[0]` is dus het eerste element."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `fruits[3]` als `fruits` maar 3 elementen heeft?\n\n`let fruits : string[] = [\"Banana\", \"Apple\", \"Orange\"];`",
+      "options": ["`undefined`", "`null`", "`\"\"` (lege string)", "Een foutmelding"],
+      "answer": 0,
+      "explanation": "Index 3 bestaat niet (geldige indexen zijn 0, 1 en 2). Je krijgt `undefined` terug, geen foutmelding."
+    },
+    {
+      "type": "text",
+      "prompt": "Welke property gebruik je om te weten hoeveel elementen een array bevat?",
+      "accept": ["length", ".length"],
+      "placeholder": "een property…",
+      "explanation": "`fruits.length` geeft het aantal elementen terug."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke manieren om over een array te lopen komen in de les voor?",
+      "options": [
+        "Een klassieke `for` loop met een teller",
+        "Een `for...of` loop",
+        "Een `for...each` loop",
+        "Een `loop...over` blok"
+      ],
+      "answers": [0, 1],
+      "explanation": "De les toont een klassieke `for` loop en een `for...of` loop. `for...each` en `loop...over` bestaan niet in TypeScript."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is de waarde van `matrix[1][2]`?\n\n`let matrix : number[][] = [[1,2,3],[4,5,6],[7,8,9]];`",
+      "options": ["`3`", "`6`", "`8`", "`9`"],
+      "answer": 1,
+      "explanation": "`matrix[1]` is `[4,5,6]` en daarvan is index `2` gelijk aan `6`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het juiste type voor een tuple met precies een `number` voor x en een `number` voor y?",
+      "options": ["`number[]`", "`[number, number]`", "`number[2]`", "`(number, number)`"],
+      "answer": 1,
+      "explanation": "Een tuple heeft een vast aantal elementen met gekende types: `[number, number]`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat wordt er op het scherm getoond?\n\n```ts\nlet fruits : string[] = [\"Banana\", \"Apple\"];\nlet moreFruits : string[] = [\"Kiwi\", ...fruits, \"Pear\"];\n\nconsole.log(fruits);\n```",
+      "options": [
+        "`[ 'Kiwi', 'Banana', 'Apple', 'Pear' ]`",
+        "`[ 'Banana', 'Apple', 'Kiwi', 'Pear' ]`",
+        "`[ 'Banana', 'Apple' ]`",
+        "`[ 'Kiwi', [ 'Banana', 'Apple' ], 'Pear' ]`"
+      ],
+      "answer": 2,
+      "explanation": "De spread operator maakt een **nieuwe** array. `moreFruits` is `[ 'Kiwi', 'Banana', 'Apple', 'Pear' ]`, maar `fruits` zelf blijft ongewijzigd: `[ 'Banana', 'Apple' ]`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul aan zodat `numbers` een array van getallen is met de waarden 1 tot en met 5.",
+      "language": "typescript",
+      "template": "let numbers : {{0}} = [1, 2, 3, 4, 5];",
+      "blanks": [
+        { "placeholder": "type", "width": 10 }
+      ],
+      "tests": [
+        { "expression": "numbers.length", "expected": 5, "description": "numbers heeft 5 elementen" },
+        { "expression": "numbers[0]", "expected": 1, "description": "numbers[0] === 1" }
+      ],
+      "explanation": "Het type van een array van getallen is `number[]`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul het tuple-type aan voor een coördinaat met twee getallen.",
+      "language": "typescript",
+      "template": "const coordinate : [{{0}}, {{1}}] = [50, 3];",
+      "blanks": [
+        { "placeholder": "type x", "width": 8 },
+        { "placeholder": "type y", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "coordinate[0]", "expected": 50, "description": "x === 50" },
+        { "expression": "coordinate[1]", "expected": 3, "description": "y === 3" }
+      ],
+      "explanation": "Beide elementen zijn getallen, dus het type is `[number, number]`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vervang het derde fruit (`Orange`) door `Pear` via zijn index.",
+      "language": "typescript",
+      "template": "let fruits : string[] = [\"Banana\", \"Apple\", \"Orange\"];\nfruits[{{0}}] = \"Pear\";",
+      "blanks": [
+        { "placeholder": "index", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "fruits[2]", "expected": "Pear", "description": "het derde element is nu \"Pear\"" },
+        { "expression": "fruits.length", "expected": 3, "description": "de array heeft nog steeds 3 elementen" }
+      ],
+      "explanation": "Het derde element staat op index `2` (tellen begint bij 0)."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de `for...of` loop aan zodat `totaal` de som van alle getallen wordt.",
+      "language": "typescript",
+      "template": "let getallen : number[] = [10, 20, 30];\nlet totaal : number = 0;\nfor (let n {{0}} getallen) {\n  totaal {{1}} n;\n}",
+      "blanks": [
+        { "placeholder": "..", "width": 4 },
+        { "placeholder": "..", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "totaal", "expected": 60, "description": "totaal === 60" }
+      ],
+      "explanation": "Een `for...of` loop schrijf je met `of`, en je telt elk getal op met `totaal += n;`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Maak met de spread operator een nieuwe array `moreFruits` met `\"Kiwi\"` vooraan, daarna alle elementen van `fruits` en `\"Pear\"` achteraan. `fruits` zelf mag niet veranderen.",
+      "language": "typescript",
+      "template": "let fruits : string[] = [\"Banana\", \"Apple\", \"Orange\"];\nlet moreFruits : string[] = [{{0}}, {{1}}, {{2}}];",
+      "blanks": [
+        { "placeholder": "vooraan", "width": 8 },
+        { "placeholder": "spread", "width": 10 },
+        { "placeholder": "achteraan", "width": 8 }
+      ],
+      "tests": [
+        { "expression": "moreFruits", "expected": ["Kiwi", "Banana", "Apple", "Orange", "Pear"], "description": "moreFruits is [Kiwi, Banana, Apple, Orange, Pear]" },
+        { "expression": "fruits", "expected": ["Banana", "Apple", "Orange"], "description": "fruits is ongewijzigd" }
+      ],
+      "explanation": "Wat je vóór `...fruits` zet komt vooraan, wat je erna zet komt achteraan: `[\"Kiwi\", ...fruits, \"Pear\"]`."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fouten aan. Deze code mengt verkeerde types in arrays.",
+      "code": "let getallen : number[] = [1, 2, 3];\ngetallen[0] = [[\"vier\"]];\n\nlet namen : string[] = [\"Sam\", [[10]], \"Lee\"];",
+      "explanation": "`getallen` is een `number[]`, dus je mag er geen string (`\"vier\"`) in zetten. `namen` is een `string[]`, dus `10` (een number) hoort daar niet thuis."
+    }
+  ]
+}

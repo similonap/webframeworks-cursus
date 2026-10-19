@@ -1,0 +1,78 @@
+{
+  "title": "Quiz: slice en splice",
+  "description": "Test je kennis over het verschil tussen `slice` en `splice`.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat geeft `[\"a\", \"b\", \"c\", \"d\", \"e\"].slice(1, 3)` terug?",
+      "options": [
+        "`[\"b\", \"c\", \"d\"]`",
+        "`[\"a\", \"b\", \"c\"]`",
+        "`[\"b\", \"c\"]`",
+        "`[\"c\", \"d\"]`"
+      ],
+      "answer": 2,
+      "explanation": "`slice(start, end)` neemt de elementen vanaf `start` tot (maar niet tot en met) `end`: index 1 en 2."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het belangrijkste verschil tussen `slice` en `splice`?",
+      "options": [
+        "`splice` past de originele array aan, `slice` niet",
+        "`slice` past de originele array aan, `splice` niet",
+        "Ze doen hetzelfde, maar `splice` is sneller",
+        "`slice` werkt enkel met strings"
+      ],
+      "answer": 0,
+      "explanation": "`slice` maakt een kopie van een stuk van de array. `splice` haalt elementen uit de originele array en kan er nieuwe tussenvoegen."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is de inhoud van `letters` na deze code?\n```ts\nlet letters: string[] = [\"a\", \"b\", \"c\", \"d\"];\nletters.splice(1, 2);\n```",
+      "options": [
+        "`[\"a\", \"b\", \"c\", \"d\"]`",
+        "`[\"b\", \"c\"]`",
+        "`[\"a\", \"d\"]`",
+        "`[\"a\", \"c\", \"d\"]`"
+      ],
+      "answer": 2,
+      "explanation": "`splice(1, 2)` verwijdert 2 elementen vanaf index 1 (`\"b\"` en `\"c\"`) uit de originele array. Er blijft `[\"a\", \"d\"]` over."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `splice` terug?",
+      "options": [
+        "De aangepaste array",
+        "Een array met de verwijderde elementen",
+        "De nieuwe lengte",
+        "`true` als er iets verwijderd is"
+      ],
+      "answer": 1,
+      "explanation": "`splice` geeft altijd een array terug met de elementen die verwijderd zijn (eventueel leeg)."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe voeg je `\"X\"` in op index 2 zonder iets te verwijderen?",
+      "options": [
+        "`letters.splice(2, 1, \"X\")`",
+        "`letters.slice(2, 0, \"X\")`",
+        "`letters.splice(\"X\", 2)`",
+        "`letters.splice(2, 0, \"X\")`"
+      ],
+      "answer": 3,
+      "explanation": "Met een `deleteCount` van `0` verwijder je niets; de extra argumenten worden op index 2 ingevoegd."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat geeft `numbers.slice(-2)` terug voor `numbers = [1, 2, 3, 4, 5]`?",
+      "options": [
+        "`[4, 5]`",
+        "`[1, 2]`",
+        "`[1, 2, 3]`",
+        "`[]`"
+      ],
+      "answer": 0,
+      "explanation": "Een negatieve index telt vanaf het einde. `slice(-2)` neemt de laatste twee elementen."
+    }
+  ]
+}

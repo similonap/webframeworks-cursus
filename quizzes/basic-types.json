@@ -1,0 +1,146 @@
+{
+  "title": "Quiz: Basic types",
+  "description": "Test je kennis over de basis types in TypeScript: `number`, `string`, `boolean`, `null`, `undefined`, `any`, `unknown` en union types.",
+  "questions": [
+    {
+      "type": "single",
+      "prompt": "Wat is het belangrijkste verschil tussen TypeScript en JavaScript?",
+      "options": [
+        "TypeScript draait sneller in de browser",
+        "TypeScript voegt types toe aan de taal",
+        "TypeScript heeft een andere syntax voor functies",
+        "TypeScript heeft geen variabelen"
+      ],
+      "answer": 1,
+      "explanation": "Zoals de naam zegt is de belangrijkste toevoeging van TypeScript het toevoegen van types. Daardoor is je code minder foutgevoelig en leesbaarder."
+    },
+    {
+      "type": "single",
+      "prompt": "Hoe spreken we in de programmeerwereld over het feit dat een variabele zijn type nooit meer kan veranderen?",
+      "options": ["dynamically typed", "loosely typed", "strongly typed", "untyped"],
+      "answer": 2,
+      "explanation": "Dit noemen ze **strongly typed**. Eenmaal een variabele een type heeft, kan dat type niet meer veranderen. De waarde mag wel veranderen zolang het type hetzelfde blijft."
+    },
+    {
+      "type": "single",
+      "prompt": "Welk type gebruikt TypeScript voor zowel gehele getallen als kommagetallen?",
+      "options": ["`int`", "`float`", "`double`", "`number`"],
+      "answer": 3,
+      "explanation": "In TypeScript is er geen verschil tussen integers en floating point getallen. Alle getallen gebruiken het `number` type."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke van de volgende zijn geldige speciale numerieke waarden van het `number` type?",
+      "options": ["`Infinity`", "`-Infinity`", "`NaN`", "`null`"],
+      "answers": [0, 1, 2],
+      "explanation": "`Infinity`, `-Infinity` en `NaN` horen bij het `number` type. `null` is een apart type met enkel de waarde `null`."
+    },
+    {
+      "type": "multiple",
+      "prompt": "Welke soorten quotes kan je gebruiken om een `string` te maken in TypeScript?",
+      "options": [
+        "Double quotes: `\"Hello\"`",
+        "Single quotes: `'Hello'`",
+        "Backticks: `` `Hello` ``",
+        "Slashes: `/Hello/`"
+      ],
+      "answers": [0, 1, 2],
+      "explanation": "Er zijn drie soorten quotes: double, single en backticks. Backticks (template literals) laten je toe variabelen en expressies in te voegen met `${...}`."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het resultaat van `parseInt(\"getal\")`?",
+      "options": ["`0`", "`undefined`", "`NaN`", "Een foutmelding (crash)"],
+      "answer": 2,
+      "explanation": "`NaN` (Not a Number) komt voor bij rekenfouten of mislukte conversies. JavaScript crasht niet, maar geeft `NaN` terug."
+    },
+    {
+      "type": "single",
+      "prompt": "Welk type krijgt `b` door type inference?\n\n`let b = \"Hello\";`",
+      "options": ["`number`", "`string`", "`any`", "`unknown`"],
+      "answer": 1,
+      "explanation": "TypeScript leidt zelf af (type inference) dat `b` van het type `string` is, omdat de beginwaarde een string is."
+    },
+    {
+      "type": "single",
+      "prompt": "Welke waarde stelt voor dat een variabele wél bestaat maar bewust \"leeg\" of \"niets\" bevat?",
+      "options": ["`undefined`", "`null`", "`NaN`", "`any`"],
+      "answer": 1,
+      "explanation": "`null` stelt bewust \"niets\" of \"leeg\" voor. `undefined` betekent dat er nog géén waarde is toegekend."
+    },
+    {
+      "type": "single",
+      "prompt": "Wat is het belangrijkste verschil tussen `any` en `unknown`?",
+      "options": [
+        "`unknown` is dwingt je het type te controleren voor je het gebruikt, `any` niet",
+        "`any` is veiliger dan `unknown`",
+        "`unknown` kan geen string bevatten",
+        "Er is geen verschil"
+      ],
+      "answer": 0,
+      "explanation": "`unknown` is veiliger: je moet het type eerst controleren (bv. met `typeof`) voor je er bewerkingen op doet. Met `any` verlies je alle typecontrole."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk type gebruik je het best zo weinig mogelijk omdat je er alle voordelen van TypeScript mee verliest?",
+      "accept": ["any"],
+      "placeholder": "een type…",
+      "explanation": "Het `any` type schakelt typecontrole uit. Gebruik het zo weinig mogelijk; kies bij voorkeur `unknown` als het type echt onbekend is."
+    },
+    {
+      "type": "text",
+      "prompt": "Welk teken gebruik je om een union type te schrijven (bv. een variabele die een `number` óf `string` mag zijn)?",
+      "accept": ["|", "pipe"],
+      "placeholder": "een teken…",
+      "explanation": "Een union type schrijf je met het `|` teken, bijvoorbeeld `let id : number | string`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Vul de declaratie aan: `a` moet een variabele van het type `number` zijn met beginwaarde `0`.",
+      "language": "typescript",
+      "template": "let a : {{0}} = {{1}};",
+      "blanks": [
+        { "placeholder": "type", "width": 8 },
+        { "placeholder": "waarde", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "a", "expected": 0, "description": "a is gelijk aan 0" }
+      ],
+      "explanation": "Je declareert een number met `let a : number = 0;`. Het type staat na de dubbele punt."
+    },
+    {
+      "type": "fill",
+      "prompt": "Maak een union type aan: `id` mag een `number` of een `string` bevatten, met beginwaarde `1`.",
+      "language": "typescript",
+      "template": "let id : number {{0}} string = {{1}};",
+      "blanks": [
+        { "placeholder": "teken", "width": 3 },
+        { "placeholder": "waarde", "width": 4 }
+      ],
+      "tests": [
+        { "expression": "id", "expected": 1, "description": "id is gelijk aan 1" }
+      ],
+      "explanation": "Een union type schrijf je met `|`: `let id : number | string = 1;`."
+    },
+    {
+      "type": "fill",
+      "prompt": "Gebruik een template literal (backticks) zodat de begroeting `Hello, Andie!` wordt opgebouwd met de variabele `name`.",
+      "language": "typescript",
+      "template": "let name : string = \"Andie\";\nlet greeting : string = `Hello, {{0}}!`;",
+      "blanks": [
+        { "placeholder": "..", "width": 10 }
+      ],
+      "tests": [
+        { "expression": "greeting", "expected": "Hello, Andie!", "description": "greeting === \"Hello, Andie!\"" }
+      ],
+      "explanation": "Binnen backticks voeg je een variabele in met `${name}`. Het resultaat is `Hello, Andie!`."
+    },
+    {
+      "type": "errors",
+      "language": "typescript",
+      "prompt": "Klik de fouten aan. Deze code geeft TypeScript-fouten door verkeerde types.",
+      "code": "let id : number = 1;\nid = [[\"abc\"]];\n\nlet isActief : boolean = [[\"true\"]];\n\nlet naam : string = [[42]];",
+      "explanation": "`id` is een `number`, dus je mag er geen string aan toekennen. `isActief` is een `boolean`; `\"true\"` is een string, het hoort `true` te zijn. `naam` is een `string`, dus `42` (een number) is fout."
+    }
+  ]
+}

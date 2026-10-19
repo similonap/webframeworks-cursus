@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebframeworks_cursus=self.webpackChunkwebframeworks_cursus||[]).push([[8188],{38188:(e,s,r)=>{r.d(s,{createPieServices:()=>u.f});var u=r(19786);r(58198)}}]);
