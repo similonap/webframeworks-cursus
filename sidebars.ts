@@ -186,53 +186,56 @@ const sidebars: SidebarsConfig = {
       doc('exercises/react/labo-7-quizapp/README', 'Quizapp'),
       doc('exercises/react/labo-7-happy-workers/README', 'Happy Workers'),
     ]),
-    labo(8, 'React: context en routing', [
+    labo(8, 'React: context', [
       doc('exercises/react/labo-8-wake-up-neo/README', 'Wake up Neo'),
       doc('exercises/react/labo-8-basic-context/README', 'Basic context'),
+      doc('exercises/react/labo-8-petshelter/README', 'Dierenasiel De Warme Poot'),
       doc('exercises/react/labo-8-todo-app/README', 'Todo App'),
       doc('exercises/react/labo-8-quiz-app/README', 'Quiz App'),
-      doc('exercises/react/labo-8-pokemon-app/README', 'Pokémon app'),
-      doc('exercises/react/labo-8-portfolio-app/README', 'Portfolio app'),
-      doc('exercises/react/labo-8-quiz-app-met-react-router/README', 'Quiz app met React Router'),
     ]),
-    labo(9, 'React Native: core components', [
+    labo(9, 'React: routing', [
+      doc('exercises/react/labo-9-pokemon-app/README', 'Pokémon app'),
+      doc('exercises/react/labo-9-portfolio-app/README', 'Portfolio app'),
+      doc('exercises/react/labo-9-quiz-app-met-react-router/README', 'Quiz app met React Router'),
+    ]),
+    labo(10, 'React Native: core components', [
       doc('exercises/react-native/labo-1-core-components/README', 'Core Components'),
       doc('exercises/react-native/labo-1-randommovieposters/README', 'RandomMoviePosters'),
     ]),
-    labo(10, 'React Native: styling en flexbox', [
+    labo(11, 'React Native: styling en flexbox', [
       doc('exercises/react-native/labo-2-rainbows/README', 'Rainbows'),
     ]),
-    labo(11, 'React Native: state', [
+    labo(12, 'React Native: state', [
       doc('exercises/react-native/labo-3-twitter/README', 'Twitter'),
       doc('exercises/react-native/labo-3-dark-light-toggle/README', 'Dark/Light Toggle'),
       doc('exercises/react-native/labo-3-rainbows-met-state/README', 'Rainbows met state'),
     ]),
-    labo(12, 'React Native: navigatie', [
+    labo(13, 'React Native: navigatie', [
       doc('exercises/react-native/labo-4-twitter/README', 'Twitter'),
       doc('exercises/react-native/labo-4-rainbow-navigation/README', 'Rainbow Navigation'),
     ]),
-    labo(13, 'React Native: opslag en lijsten', [
+    labo(14, 'React Native: opslag en lijsten', [
       doc('exercises/react-native/labo-5-rainbow-asyncstorage/README', 'Rainbow AsyncStorage'),
       doc('exercises/react-native/labo-5-todo-app/README', 'Todo App'),
     ]),
-    labo(14, 'React Native: herhaling', [
+    labo(15, 'React Native: herhaling', [
       doc('exercises/react-native/labo-6-herhalingsopdracht-bpost-app/README', 'BPost app'),
     ]),
-    labo(15, 'Next.js: rendering en data', [
+    labo(16, 'Next.js: rendering en data', [
       doc('exercises/nextjs/labo-1-bitcoin-price/README', 'Bitcoin Price'),
       doc('exercises/nextjs/labo-1-y-clone-twitter/README', 'Y-Clone'),
     ]),
-    labo(16, 'Next.js: routing', [
+    labo(17, 'Next.js: routing', [
       doc('exercises/nextjs/labo-2-search-sorting-paging/README', 'Search/Sorting/Paging'),
       doc('exercises/nextjs/labo-2-y-clone-routing-twitter/README', 'Y-Clone Routing'),
     ]),
-    labo(17, 'Next.js: forms', [
+    labo(18, 'Next.js: forms', [
       doc('exercises/nextjs/labo-3-y-clone-forms-twitter/README', 'Y-Clone Forms'),
     ]),
-    labo(18, 'Next.js: login', [
+    labo(19, 'Next.js: login', [
       doc('exercises/nextjs/labo-4-y-clone-login-twitter/README', 'Y-Clone Login'),
     ]),
-    labo(19, 'Next.js: herhaling', [
+    labo(20, 'Next.js: herhaling', [
       doc('exercises/nextjs/labo-5-herhalingsoefening-spotifi/README', 'Spotifi'),
     ]),
   ],
